@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const userRouter = require("./routes");
 
 dotenv.config();
 
@@ -20,8 +21,6 @@ mongoose
 );
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
+app.use("/user", userRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
