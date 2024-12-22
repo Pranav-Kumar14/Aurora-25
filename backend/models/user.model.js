@@ -21,6 +21,17 @@ const userSchema = new mongoose.Schema({
         trim: true,
         index: true
     },
+    team: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Team',
+        default: null,
+
+    },
+    collegeid:{
+        type: Number,
+        required: true,
+
+    },
     password: {
         type: String,
         required: [true, "Password is required"],
