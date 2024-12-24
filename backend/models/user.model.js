@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
         default: null,
 
     },
-    collegeid:{
+    collegeid: {
         type: Number,
         required: true,
 
@@ -39,4 +39,4 @@ const userSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-modeule.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
