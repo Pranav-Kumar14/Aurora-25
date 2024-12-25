@@ -55,9 +55,9 @@ const createTeam = async (req, res) => {
   };
 
 const teamRequest = async (req, res) => {
-  const { teamId, email } = req.body;
+  const { teamId, userId } = req.body;
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ _id: userId });
     if (!user) {
       return res.json({ success: false, message: "User not found" });
     }
@@ -84,7 +84,7 @@ const teamRequest = async (req, res) => {
 
     team.joinRequests.push(user._id);
     await team.save();
-    sendJoinRequestEmail(email)
+    sendJoinRequestEmail(user.email)
 
     return res.json({ success: true, message: "Join request sent successfully", team });
   } catch (error) {
@@ -132,13 +132,13 @@ const teamList = async (req, res) => {
   
       if (email) {
        
-        const leader = await User.findOne({ email });
-        if (!leader) {
-          return res.json({ success: false, message: "Leader not found" });
+        const user = await User.findOne({ email });
+        if (!user) {
+          return res.json({ success: false, message: "User not found" });
         }
   
-        // Fetch team where the leader is the owner
-        teams = await Team.find({ leader: leader._id })
+        // Fetch team where the user is the owner
+        teams = await Team.find({ user: user._id })
           .populate("leader", "username email")
           .populate("members", "username email")
           .populate("joinRequests", "username email")
@@ -147,7 +147,7 @@ const teamList = async (req, res) => {
         // Fetch  public teams for general users
         teams = await Team.find({ visibility: "public" })
           .populate("leader", "username email")
-          .select("teamname description visibility"); 
+          .select("teamname description visibility registered"); 
       }
   
       return res.json({ success: true, teams });
@@ -287,17 +287,13 @@ const checkLeader = async (req, res) => {
   
   // Controller to reject join requests
   const rejectRequest = async (req, res) => {
-    const { teamId, userId, leaderEmail } = req.body;
+    const { teamId, userId } = req.body;
   
     try {
-      const leader = await User.findOne({ email: leaderEmail });
-      if (!leader) {
-        return res.json({ success: false, message: "Leader not found" });
-      }
   
       const team = await Team.findOne({ _id: teamId });
-      if (!team || team.leader.toString() !== leader._id.toString()) {
-        return res.json({ success: false, message: "You are not authorized to reject requests for this team." });
+      if (!team) {
+        return res.json({ success: false, message: "Team Not Found" });
       }
   
       const userIndex = team.joinRequests.indexOf(userId);
