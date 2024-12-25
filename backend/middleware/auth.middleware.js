@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
-const ApiError = require('../utils/errorUtils');
+const {ApiError} = require('../utils/ApiError');
 
 const authMiddleware = async (req, res, next) => {
     try {

@@ -2,8 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const Router = require("./routes/auth.routes");
+const userRouter = require("./routes/auth.routes");
 const teamRouter = require("./routes/team.routes");
+const paymentRouter = require("./routes/payment.routes")
 
 dotenv.config();
 
@@ -22,8 +23,9 @@ mongoose
   );
 
 // Routes
-app.use("/user", Router);
+app.use("/user", userRouter);
 app.use("/team", teamRouter);
+app.use("/payment", paymentRouter);
 
 app.get("/", (req, res) => {
   res.send("API is running...");

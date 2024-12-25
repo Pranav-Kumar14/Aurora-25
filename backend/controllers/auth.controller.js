@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/user.model");
 const { generateToken } = require("../utils/jwtUtils");
-const { ApiError, ApiResponse } = require("../utils");
+const { ApiError } = require("../utils/ApiError");
+const {ApiResponse} = require("../utils/ApiResponse")
 const e = require("express");
 
 const registerUser = async (req, res) => {
@@ -84,4 +85,4 @@ const changeCurrentPassword = async (req, res) => {
     )
 }
 
-module.exports = { registerUser, loginUser };
+module.exports = { registerUser, loginUser , changeCurrentPassword};
