@@ -1,30 +1,30 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/user.model");
 const { generateToken } = require("../utils/jwtUtils");
-const { ApiError, ApiResponse } = require("../utils");
 const e = require("express");
 
 const registerUser = async (req, res) => {
-  const { fullName, username, email, password } = req.body;
+  const { fullName, username, email, password,collegeid } = req.body;
 
-  if ((fullName, username === "" || email === "" || password === "")) {
-    throw new ApiError(400, "All fields are required");
+  if ((fullName, username === "" || email === "" || password === ""|| collegeid=== "")) {
+    return res.status(400).json({ message: "Please fill in all fields" });
   }
-  const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+  const existingUser = await User.findOne({ $or: [{ username }, { email },{collegeid}] });
   if (existingUser) {
-    throw new ApiError(409, "Username or Email already exists");
+    return res.status(400).json({ message: "Username or email already exists" });
   }
   let newUser
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    newUser = await User.create({
-      username: username.toLowerCase(),
-      fullName,
-      email,
-      password: hashedPassword,
-    });
+  const hashedPassword = await bcrypt.hash(password, 10);
+  newUser = await User.create({
+    username: username.toLowerCase(),
+    fullName,
+    email,
+    collegeid,
+    password: hashedPassword,
+  });
   } catch (error) {
-    throw new ApiError(500, "Error creating user");
+    return res.status(500).json({ message: "Error creating user" });
   }
 
   const createdUser = await User.findById(newUser._id).select(
@@ -32,24 +32,26 @@ const registerUser = async (req, res) => {
   );
 
   if (!createdUser) {
-    throw new ApiError(500, "User creation failed");
+    return res.status(404).json({ message: "User not found" });
   }
 
   return res
     .status(201)
-    .json(new ApiResponse(200, createdUser, "User successfully registered"));
+    .json({ message: "User created successfully", user: createdUser });
 };
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   if (email === "" || password === "") {
-    throw new ApiError(400, "All fields are required");
+    return res.status(400).json({ message: "Please fill in all fields" });
   }
 
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ error: "User not found" });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid)
@@ -67,20 +69,20 @@ const changeCurrentPassword = async (req, res) => {
 
   const user = await User.findById(req.user?._id)
   if (!user) {
-    throw new ApiError(404, "User not found")
+    return res.status(404).json({ message: "User not found" });
   }
   const isPasswordCorrect = await user.isPassword(oldPassword)
 
   if (!isPasswordCorrect) {
-    throw new ApiError(400, "Password Incorrect")
+    return res.status(401).json({ error: "Invalid old password" });
   }
-  user.passowrd = await bcrypt.hash(newPassword, 10);
+  user.password = await bcrypt.hash(newPassword, 10);
   await user.save()
 
   return res
     .status(200)
     .json(
-      new ApiResponse(200, {}, "Password Changed Successfully")
+      { message: "Password changed successfully" }
     )
 }
 
