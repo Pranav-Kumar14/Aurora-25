@@ -10,15 +10,13 @@ const {createTeam, joinTeam, teamList, teamRequest, checkLeader,getUserTeam,
 const authMiddleware = require("../middleware/auth.middleware")
 
 
-
-
-router.post("/create",authMiddleware,createTeam)
+router.post("/create",createTeam)
 
 router.get("/list",teamList)
 
-router.post("/join",authMiddleware,joinTeam)
+router.post("/join",joinTeam)
 
-router.post("/request-join",authMiddleware,teamRequest)
+router.post("/request-join",teamRequest)
 
 router.get("/check-leader",checkLeader)
 

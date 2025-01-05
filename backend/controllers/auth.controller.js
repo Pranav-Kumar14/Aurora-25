@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
     password: hashedPassword,
   });
   } catch (error) {
-    return res.status(500).json({ message: "Error creating user" });
+    return res.status(500).json({ message: `Error creating user ${error}` });
   }
 
   const createdUser = await User.findById(newUser._id).select(

@@ -1,8 +1,10 @@
 const nodemailer =require('nodemailer');
+// import { render } from '@react-email/render';
+// import WelcomeEmail from './email';
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
-
+const name="EMAil it"
 
 const transporter = nodemailer.createTransport(
     {
@@ -11,19 +13,23 @@ const transporter = nodemailer.createTransport(
         port:'465',
         auth:{
             user:'gotomail.cc@gmail.com',
-            pass:process.env.password
+            pass:process.env.PASSWORD
         }
     }
 )
 
 async function sendMail(to,subject,message){
     try {
+        // const htmlContent = await render(<WelcomeEmail name={name} />);
+
         await transporter.sendMail({
+            from:'gotomail.cc@gmail.com',
             to:to,
             subject:subject,
             html:message,
         })
-        console.log('Email Sent:');
+
+        console.log('Email Sent Successfully');
        
         
     } catch (error) {
@@ -31,4 +37,13 @@ async function sendMail(to,subject,message){
     }
   
 }
+
+(async () => {
+    const to = 'tidob13668@gholar.com';
+    const subject = 'Welcome to Our Service!';
+    const name = 'John Doe'; 
+  
+    await sendMail(to, subject, name);
+  })();
+
 module.exports = { sendMail };
