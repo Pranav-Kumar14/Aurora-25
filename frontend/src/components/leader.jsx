@@ -13,8 +13,8 @@ const LeaderLogin = ({ onClose }) => {
   const [showAddMemberPopup, setShowAddMemberPopup] = useState(false);
   const [newMemberEmail, setNewMemberEmail] = useState("");
 
-  const url = "http://localhost:3000";
-
+  const url = "http://localhost:6000";
+  // const url = "https://team-test.onrender.com"; 
   const handleAddMember = async () => {
     try {
       const response = await axios.post(url + "/team", {
@@ -40,7 +40,8 @@ const LeaderLogin = ({ onClose }) => {
     setMessage(""); // Reset previous messages
 
     try {
-      const response = await axios.post(url + "/team/team-leader", { email });
+      const response = await axios.post(url + "/team/check-leader", { email });
+      console.log(`${response}`)
 
       if (response.data.success) {
         if (response.data.isLeader) {

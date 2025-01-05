@@ -12,7 +12,7 @@ const PublicTeams = ({ onClose }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // const url = "https://team-test.onrender.com";
-  const url = "http://localhost:3000";
+  const url = "http://localhost:6000";
 
   useEffect(() => {
     const fetchTeams = async () => {

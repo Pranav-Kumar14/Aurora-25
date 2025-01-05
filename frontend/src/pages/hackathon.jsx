@@ -3,6 +3,8 @@ import CreateTeam from "../components/teams";
 import PublicTeams from "../components/publicteams";
 import LeaderLogin from "../components/leader";
 
+import Newfile from "../components/new";
+
 function Hackathon() {
   const [showCreateTeam, setShowCreateTeam] = useState(false);
   const [showPublicTeams, setShowPublicTeams] = useState(false);
@@ -61,8 +63,12 @@ function Hackathon() {
           ) : (
             <LeaderLogin onClose={()=> setLeaderLogin(false)} />
           )}
+          ) : (
+            <Newfile onClose={()=> setLeaderLogin(false)} />
+          )}
         </div>
       </div>
+      
     </div>
   );
 }
