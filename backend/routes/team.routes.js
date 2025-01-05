@@ -18,7 +18,7 @@ router.post("/join",joinTeam)
 
 router.post("/request-join",teamRequest)
 
-router.get("/check-leader",checkLeader)
+router.post("/check-leader",checkLeader)
 
 router.get("/user-team", getUserTeam);
 

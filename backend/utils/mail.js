@@ -38,12 +38,5 @@ async function sendMail(to,subject,message){
   
 }
 
-(async () => {
-    const to = 'tidob13668@gholar.com';
-    const subject = 'Welcome to Our Service!';
-    const name = 'John Doe'; 
-  
-    await sendMail(to, subject, name);
-  })();
 
 module.exports = { sendMail };
