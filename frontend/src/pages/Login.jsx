@@ -20,7 +20,7 @@ export default function Login() {
             localStorage.setItem('token', response.token);
             setUser(response.user);
             toast.success('Login successful!');
-            navigate('/profile');
+            navigate('/hackathon');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Login failed');
         }
