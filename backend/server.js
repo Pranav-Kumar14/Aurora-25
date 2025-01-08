@@ -11,11 +11,15 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
 app.use(express.json());
 
 // Connect to MongoDB
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 8000;
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))

@@ -85,7 +85,7 @@ module.exports = mongoose.model('User', userSchema);
 
 // Node.js v20.16.0
 // mohaksinghal@MOHAKs-MacBook-Air backend % node server.js
-// Server running on port 6000
+// Server running on port 8000
 // Connected to MongoDB
 // Email Sent Successfully
 // /Users/mohaksinghal/Documents/GitHub/Aurora-Web-Dev-2025/backend/node_modules/mongoose/lib/schema/number.js:380
