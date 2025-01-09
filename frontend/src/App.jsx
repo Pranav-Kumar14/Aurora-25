@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import Hackathon from './pages/hackathon';
 import Home from './pages/Hackathonmain';
 import Navbar from './components/navbar';
+import Workshop from './pages/Workshop';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/hackathon" element={<Home />} />
           <Route path="/hackathon-info" element={<Hackathon />} />
+          <Route path="/workshop" element={<Workshop />} />
 
           <Route
             path="/profile"
