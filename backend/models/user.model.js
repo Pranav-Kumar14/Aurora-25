@@ -36,6 +36,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
     },
+    workshopPaid: {
+        type: Boolean,
+        default: false
+    },
+    hackathonPaid: {
+        type: Boolean,
+        default: false
+    }
 
 }, { timestamps: true })
 
