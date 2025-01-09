@@ -11,8 +11,7 @@ const Public = ({ onClose }) => {
     const [teamIdToJoin, setTeamIdToJoin] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // const url = "https://team-test.onrender.com";
-    const url = "http://localhost:6000";
+    const url = "http://localhost:8000";
 
     useEffect(() => {
         const fetchTeams = async () => {

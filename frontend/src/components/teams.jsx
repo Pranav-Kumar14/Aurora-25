@@ -9,8 +9,7 @@ const Teams = ({ onClose }) => {
     });
     const [message, setMessage] = useState("");
     const [createdTeam, setCreatedTeam] = useState(null);
-    // const url = "https://team-test.onrender.com";
-    const url = "http://localhost:6000";
+    const url = "http://localhost:8000";
 
     const handleChange = (e) => {
         const { name, value } = e.target;
