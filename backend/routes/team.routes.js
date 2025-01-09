@@ -1,24 +1,24 @@
 const express = require("express");
 const router = express.Router();
-const {createTeam, joinTeam, teamList, teamRequest, checkLeader,getUserTeam,
+const { createTeam, joinTeam, teamList, teamRequest, checkLeader, getUserTeam,
   updateVisibility,
   approveRequest,
   rejectRequest,
   removeMember,
   leaveTeam,
-  updateDescription,} = require("../controllers/team.controller")
+  updateDescription, } = require("../controllers/team.controller")
 const authMiddleware = require("../middleware/auth.middleware")
 
 
-router.post("/create",createTeam)
+router.post("/create", createTeam)
 
-router.get("/list",teamList)
+router.get("/list", teamList)
 
-router.post("/join",joinTeam)
+router.post("/join", authMiddleware, joinTeam)
 
-router.post("/request-join",teamRequest)
+router.post("/request-join", authMiddleware, teamRequest)
 
-router.post("/check-leader",checkLeader)
+router.post("/check-leader", checkLeader)
 
 router.get("/user-team", getUserTeam);
 
