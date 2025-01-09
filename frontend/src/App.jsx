@@ -7,16 +7,21 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Hackathon from './pages/hackathon';
+import Home from './pages/Hackathonmain';
+import Navbar from './components/navbar';
 
 function App() {
   return (
+    <>
+    <Navbar/>
     <Router>
       <AuthProvider>
         <Toaster position="top-right" />
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/hackathon" element={<Hackathon />} />
+          <Route path="/hackathon" element={<Home />} />
+          <Route path="/hackathon-info" element={<Hackathon />} />
 
           <Route
             path="/profile"
@@ -30,6 +35,7 @@ function App() {
         </Routes>
       </AuthProvider>
     </Router>
+    </>
   );
 }
 
