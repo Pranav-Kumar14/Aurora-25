@@ -1,10 +1,8 @@
 const nodemailer =require('nodemailer');
-// import { render } from '@react-email/render';
-// import WelcomeEmail from './email';
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
-const name="EMAil it"
+
 
 const transporter = nodemailer.createTransport(
     {
@@ -20,23 +18,17 @@ const transporter = nodemailer.createTransport(
 
 async function sendMail(to,subject,message){
     try {
-        // const htmlContent = await render(<WelcomeEmail name={name} />);
-
         await transporter.sendMail({
-            from:'gotomail.cc@gmail.com',
             to:to,
             subject:subject,
             html:message,
         })
-
-        console.log('Email Sent Successfully');
+        console.log('Email Sent:');
        
         
     } catch (error) {
-        console.log('Email Sent:error');
+        console.log('Email Sent:error', error.messag);
     }
   
 }
-
-
 module.exports = { sendMail };
