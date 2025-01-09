@@ -1,4 +1,5 @@
 import React from "react";
+import icon from "../images/frame.png"
 
 const workpage = () => {
   return (
@@ -54,10 +55,12 @@ const workpage = () => {
           .fill(0)
           .map((_, index) => (
             <div
-                key={index}
-                className="rounded-[36px] border border-white bg-white/10 shadow-[2px_2px_10px_rgba(255,227,80,0.4)] backdrop-blur-[22.5px] p-5 transform transition hover:scale-105"
+              key={index}
+              className="rounded-[36px] border border-white bg-white/10 shadow-[2px_2px_10px_rgba(255,227,80,0.4)] backdrop-blur-[22.5px] p-5 transform transition hover:scale-105"
             >
-              
+              <div className="flex justify-center mb-4">
+                <img src={icon} alt="Workshop Icon" className="w-16 h-16" />
+              </div>
               <h2 className="text-xl font-semibold text-center mb-2">
                 Neural Networks
               </h2>
