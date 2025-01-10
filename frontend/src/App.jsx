@@ -10,6 +10,7 @@ import Hackathon from './pages/hackathon';
 import Home from './pages/Hackathonmain';
 import Navbar from './components/navbar';
 import Workshop from './pages/Workshop';
+import Workpage from "./pages/workpage"
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           <Route path="/hackathon" element={<Home />} />
           <Route path="/hackathon-info" element={<Hackathon />} />
           <Route path="/workshop" element={<Workshop />} />
-
+            <Route path="/workpage" element={<Workpage/>}/>  
           <Route
             path="/profile"
             element={
