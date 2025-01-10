@@ -1,26 +1,45 @@
-import React from "react";
-import { Route, Router, Routes } from "react-router-dom";
-import Hackathon from "./pages/hackathoncomponents";
-import Navbar from "./components/navbar";
-import Home from "./pages/HackathonHome";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from './context/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Hackathon from './pages/hackathon';
+import Home from './pages/Hackathonmain';
+import Navbar from './components/navbar';
+import Workshop from './pages/Workshop';
 import Workpage from "./pages/workpage"
 
-const App = () => {
+function App() {
   return (
     <>
     <Navbar/>
-    
-    <Routes>
-    
-      <Route path="/" element={<Home/> } />
-      <Route path="/hackathon" element={<Hackathon />} />
-      <Route path="/workpage" element={<Workpage/>}/>      
-
-      {/* <Route path="/about" element={<About />} /> */}
-      {/* <Route path="/contact" element={<Contact />} /> */}
-    </Routes>
+    <Router>
+      <AuthProvider>
+        <Toaster position="top-right" />
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/hackathon" element={<Home />} />
+          <Route path="/hackathon-info" element={<Hackathon />} />
+          <Route path="/workshop" element={<Workshop />} />
+            <Route path="/workpage" element={<Workpage/>}/>  
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
     </>
   );
-};
+}
 
 export default App;
