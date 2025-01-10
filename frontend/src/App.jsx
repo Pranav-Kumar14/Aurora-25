@@ -8,15 +8,16 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Hackathon from './pages/hackathon';
 import Home from './pages/Hackathonmain';
-import Navbar from './components/navbar';
 import Workshop from './pages/Workshop';
 import Workpage from "./pages/workpage"
+import Navbar from './components/navbar';
 
 function App() {
   return (
     <>
-    <Navbar/>
+    
     <Router>
+      <Navbar/>
       <AuthProvider>
         <Toaster position="top-right" />
         <Routes>
