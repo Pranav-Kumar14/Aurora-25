@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getProfile } from '../services/auth';
+// import { getProfile } from '../services/auth'; // Uncomment if needed
 
 const AuthContext = createContext({
     user: null,
@@ -15,20 +15,28 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            getProfile()
-                .then((response) => {
-                    setUser(response.user);
-                })
-                .catch(() => {
-                    localStorage.removeItem('token');
-                })
-                .finally(() => {
-                    setLoading(false);
-                });
+            // Example of fetching profile data
+            // getProfile()
+            //     .then((response) => {
+            //         setUser(response.user);
+            //     })
+            //     .catch((error) => {
+            //         console.error('Error fetching profile:', error);
+            //         localStorage.removeItem('token');
+            //     })
+            //     .finally(() => {
+            //         setLoading(false);
+            //     });
         } else {
-            setLoading(false);
+            setLoading(false); // No token, loading ends
         }
     }, []);
+
+    useEffect(() => {
+        if (!user) {
+            localStorage.removeItem('token'); // Clear token if user logs out
+        }
+    }, [user]);
 
     return (
         <AuthContext.Provider
