@@ -3,10 +3,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { useWindowScroll } from "react-use";
 
 const navItems = [
-  { name: "Home", path: "/#" }, 
-  { name: "Team", path: "/#" },
-  { name: "About", path: "/about" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", path: "/" }, 
+  { name: "Team", path: "/hackathon-info" },
+  { name: "Hackathon", path: "/hackathon" },
+  { name: "Workshops", path: "/workshop" },
+  { name: "Login", path: "/login" },
 ];
 const Navmenu = ({ className }) => {
   return (
@@ -45,12 +46,12 @@ const Navbar = () => {
   return (
     <div
       ref={navContainerRef}
-      className="fixed  h-16 w-screen  z-50 transition-all  duration-700  bg-violet-950 rounded-lg px-[15%] "
+      className="fixed  h-16 w-screen  z-50 transition-all  duration-700  bg-[#010627]  px-[15%] "
     >
       <header>
         <nav className="flex items-center justify-between p-4 ">
           <div className="flex  items-center justify-between w-full">
-            <img src="/img/logo.png" alt="logo" className="w-11" />
+            <img src="/aurora_logo.png" alt="logo" className="w-11" />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="block md:hidden text-white"
@@ -64,9 +65,9 @@ const Navbar = () => {
           
           </div>
 
-        <Navmenu className="hidden md:flex space-x-8"/>
+        <Navmenu className="hidden md:flex space-x-8  font-press-start"/>
         {isMenuOpen && (
-          <Navmenu className="absolute top-16 left-0 right-0 bg-black text-white flex flex-col items-center py-4 space-y-4 z-40 rounded-lg" />
+          <Navmenu className="absolute top-16 left-0 right-0 bg-[#040222] text-white flex flex-col items-center justify-center py-4 space-y-4 z-40  h-screen  font-press-start" />
         )}
        
         </nav>
