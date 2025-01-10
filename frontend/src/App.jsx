@@ -15,34 +15,9 @@ import Navbar from './components/navbar';
 function App() {
   return (
     <>
-<<<<<<< Updated upstream
-    
-    <Router>
-      <Navbar/>
-      <AuthProvider>
-        <Toaster position="top-right" />
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/hackathon" element={<Home />} />
-          <Route path="/hackathon-info" element={<Hackathon />} />
-          <Route path="/workshop" element={<Workshop />} />
-            <Route path="/workpage" element={<Workpage/>}/>  
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </AuthProvider>
-    </Router>
-=======
-      <Navbar />
+
       <Router>
+        <Navbar />
         <AuthProvider>
           <Toaster position="top-right" />
           <Routes>
@@ -64,7 +39,6 @@ function App() {
           </Routes>
         </AuthProvider>
       </Router>
->>>>>>> Stashed changes
     </>
   );
 }
