@@ -1,79 +1,132 @@
-import gsap from "gsap/all";
-import React, { useEffect, useRef, useState } from "react";
-import { useWindowScroll } from "react-use";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import logo from "../images/logo.png";
+import user from "../images/log.png";
+import hack from "../images/trophy.png";
 
-const navItems = [
-  { name: "Home", path: "/" }, 
-  { name: "Team", path: "/hackathon-info" },
-  { name: "Hackathon", path: "/hackathon" },
-  { name: "Workshops", path: "/workshop" },
-  { name: "Login", path: "/login" },
-];
-const Navmenu = ({ className }) => {
-  return (
-    <div className={className}>
-      {navItems.map((item, index) => (
-        <a key={index} className="text-white text-lg uppercase cursor-pointer" href={item.path}>
-          {item.name} 
-        </a>
-      ))}
-    </div>
-  );
-};
-
-const Navbar = () => {
-  const navContainerRef = useRef(null);
-  const [IsNavbarVisible, setIsNavbarVisible] = useState(true);
-  const [lastScrollY, setlastScrollY] = useState(0);
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const { y: currentScrollY } = useWindowScroll();
-  useEffect(() => {
-    if (currentScrollY === 0) {
-      setIsNavbarVisible(true);
-      navContainerRef.current.classList.remove("floating-nav");
-    } else if (currentScrollY > lastScrollY) {
-      setIsNavbarVisible(false);
-      navContainerRef.current.classList.add("floating-nav");
-    } else if (currentScrollY < lastScrollY) {
-      setIsNavbarVisible(true);
-      navContainerRef.current.classList.add("floating-nav");
-    }
-    setlastScrollY(currentScrollY);
-  });
-  
+  const navigate = useNavigate();
 
   return (
-    <div
-      ref={navContainerRef}
-      className="fixed  h-16 w-screen  z-50 transition-all  duration-700  bg-[#010627]  px-[15%] "
-    >
-      <header>
-        <nav className="flex items-center justify-between p-4 ">
-          <div className="flex  items-center justify-between w-full">
-            <img src="/aurora_logo.png" alt="logo" className="w-11" />
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="block md:hidden text-white"
-            >
-              <img 
-                src={isMenuOpen ? "/img/close.svg" : "/img/menu.svg"}
-                alt="Menu"
-                className="w-8 h-8"
-              />
-            </button>
-          
+    <header className="bg-[#040d49] sticky top-0 z-50 w-screen overflow-hidden">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex-shrink-0 mt-2">
+            <img className="h-14 w-auto" src={logo} alt="Logo" />
           </div>
 
-        <Navmenu className="hidden md:flex space-x-8  font-press-start"/>
-        {isMenuOpen && (
-          <Navmenu className="absolute top-16 left-0 right-0 bg-[#040222] text-white flex flex-col items-center justify-center py-4 space-y-4 z-40  h-screen  font-press-start" />
-        )}
-       
-        </nav>
-      </header>
-    </div>
-  );
-};
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white focus:outline-none"
+            >
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d={
+                    isMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
+                />
+              </svg>
+            </button>
+          </div>
 
-export default Navbar;
+          <div className="hidden lg:flex space-x-16 mx-auto mt-3">
+            <div
+              className="text-white hover:text-blue-500 font-medium cursor-pointer"
+              onClick={() => navigate("/home")}
+            >
+              Home
+            </div>
+            <div
+              className="text-white hover:text-blue-500 font-medium cursor-pointer"
+              onClick={() => navigate("/speaker")}
+            >
+              Speaker
+            </div>
+            <div
+              className="text-white hover:text-blue-500 font-medium cursor-pointer"
+              onClick={() => navigate("/sponsors")}
+            >
+              Sponsors
+            </div>
+            <div
+              className="text-white hover:text-blue-500 font-medium cursor-pointer"
+              onClick={() => navigate("/developers")}
+            >
+              Developers
+            </div>
+            <div
+              className="bg-[#9D31A1] text-white px-3 rounded-3xl hover:bg-[#d343d8] cursor-pointer"
+              onClick={() => navigate("/hackathon")}
+            >
+              <img className="h-5 w-5 inline-block" src={hack} /> Hackathon
+            </div>
+            <div
+              className="bg-[#9D31A1] text-white px-3 rounded-3xl hover:bg-[#d343d8] cursor-pointer"
+              onClick={() => navigate("/workshop")}
+            >
+              <img className="h-5 w-5 inline-block" src={hack} /> Workshop
+            </div>
+          </div>
+          <div className="hidden lg:block">
+            <img
+              className="h-20 w-20 cursor-pointer"
+              src={user}
+              alt="Login"
+              onClick={() => navigate("/login")}
+            />
+          </div>
+        </div>
+
+        {isMenuOpen && (
+          <div className="lg:hidden">
+            <div className="space-y-4 p-4 bg-[#040d49] rounded-md">
+              <div
+                className="block text-white hover:text-blue-500 font-medium cursor-pointer"
+                onClick={() => navigate("/home")}
+              >
+                Home
+              </div>
+              <div
+                className="block text-white hover:text-blue-500 font-medium cursor-pointer"
+                onClick={() => navigate("/about")}
+              >
+                About
+              </div>
+              <div
+                className="block text-white hover:text-blue-500 font-medium cursor-pointer"
+                onClick={() => navigate("/hackathon")}
+              >
+                Hackathon
+              </div>
+              <div
+                className="block text-white hover:text-blue-500 font-medium cursor-pointer"
+                onClick={() => navigate("/speakers")}
+              >
+                Speakers
+              </div>
+              <button
+                className="w-auto bg-[#9D31A1] rounded-3xl text-white px-4 py-2 hover:bg-blue-600"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </button>
+            </div>
+          </div>
+        )}
+      </nav>
+    </header>
+  );
+}
