@@ -42,7 +42,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          <div className="hidden lg:flex space-x-16 mx-auto mt-3">
+          <div className="hidden lg:flex space-x-16 mx-auto mt-">
             <div
               className="text-white hover:text-blue-500 font-medium cursor-pointer"
               onClick={() => navigate("/home")}
@@ -91,10 +91,13 @@ export default function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div className="lg:hidden">
+          <div className="flex justify-center">
+
+          
+          <div className="lg:hidden w-fit ">
             <div className="space-y-4 p-4 bg-[#040d49] rounded-md">
               <div
-                className="block text-white hover:text-blue-500 font-medium cursor-pointer"
+                className=" block text-white hover:text-blue-500 font-medium cursor-pointer "
                 onClick={() => navigate("/home")}
               >
                 Home
@@ -117,13 +120,17 @@ export default function Navbar() {
               >
                 Speakers
               </div>
-              <button
-                className="w-auto bg-[#9D31A1] rounded-3xl text-white px-4 py-2 hover:bg-blue-600"
-                onClick={() => navigate("/login")}
+              <div
+                className="w-fit bg-[#9D31A1] rounded-3xl text-white px-4 py-2 hover:bg-[#d343d8]"
+                
               >
+                <div onClick={()=> navigate("/login")}>
                 Login
-              </button>
+                </div>
+                
+              </div>
             </div>
+          </div>
           </div>
         )}
       </nav>
