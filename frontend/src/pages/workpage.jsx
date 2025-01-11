@@ -14,18 +14,28 @@ const WorkPage = () => {
   const { user, setUser } = useAuth();
 
   const handleRegister = (workshop) => {
-    const key = `${workshop.date}-${workshop.time}`;
+    const key = `${workshop.date}-${workshop.time}`; // Unique key for each workshop group
+  
     setSelectedWorkshops((prev) => {
       if (prev[key]?.id === workshop.id) {
-        // Unregister if already selected
-        const { [key]: _, ...rest } = prev;
+        // If the workshop is already selected, unregister it
+        const { [key]: _, ...rest } = prev; // Remove the selected workshop
         return rest;
-      } else {
-        // Register and unselect others in the same group
-        return { ...prev, [key]: workshop };
+      } else if (prev[key]) {
+        // If another workshop is already selected in the same time slot
+        const confirmSwitch = window.confirm(
+          `You have already selected "${prev[key].title}" on ${workshop.date} at ${workshop.time}.\n\n` +
+          `Do you want to switch to "${workshop.title}"?`
+        );
+        if (!confirmSwitch) {
+          return prev; // Keep the current selection if user cancels
+        }
       }
+      // Register the selected workshop and replace the previous one in the same group
+      return { ...prev, [key]: workshop };
     });
   };
+  
 
   const handleSubmit = () => {
     const selectedIds = Object.values(selectedWorkshops).map((workshop) => workshop.id);
