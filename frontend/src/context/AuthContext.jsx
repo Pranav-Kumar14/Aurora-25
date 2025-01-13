@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
         if (token) {
             getProfile(token)
                 .then((response) => {
+                    console.log(response.data.data)
                     // Assuming response contains user details
                     if (response && response.data.data) {
                         setUser(response.data.data);

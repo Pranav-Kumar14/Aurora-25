@@ -2,9 +2,11 @@ import React from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { User, LogOut } from "lucide-react";
+import { workshops } from "../constants/workshops"; // Import workshops data
 
 export default function Profile() {
     const { user, setUser } = useAuth();
+    console.log(user);
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -14,6 +16,16 @@ export default function Profile() {
     };
 
     if (!user) return null;
+
+    // Map workshop IDs to their details (title, date, time)
+    const registeredWorkshops = user.workshops
+        ? user.workshops.map((id) => {
+            const workshop = workshops.find((w) => w.id === id);
+            return workshop
+                ? `${workshop.title} - ${workshop.date} at ${workshop.time}`
+                : `Unknown Workshop (ID: ${id})`;
+        })
+        : [];
 
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -60,10 +72,10 @@ export default function Profile() {
                             <div className="sm:col-span-2">
                                 <dt className="text-sm font-medium text-gray-500">Registered Workshops</dt>
                                 <dd className="mt-1 text-sm text-gray-900">
-                                    {user.workshops && user.workshops.length > 0 ? (
+                                    {registeredWorkshops.length > 0 ? (
                                         <ul className="list-disc ml-5">
-                                            {user.workshops.map((workshop, index) => (
-                                                <li key={index}>{workshop}</li>
+                                            {registeredWorkshops.map((details, index) => (
+                                                <li key={index}>{details}</li>
                                             ))}
                                         </ul>
                                     ) : (
