@@ -1,4 +1,5 @@
 import api from './api';
+import { useJwt } from "react-jwt";
 
 export const register = async (data) => {
     const response = await api.post('/user/register', data);
@@ -7,10 +8,12 @@ export const register = async (data) => {
 
 export const login = async (data) => {
     const response = await api.post('/user/login', data);
+    console.log(response);
     return response.data;
 };
 
-export const getProfile = async () => {
-    const response = await api.get('/user/profile');
-    return response.data;
+export const getProfile = async (token) => {
+    const payload = await api.post('/user/token', {token});
+    console.log(payload);
+    return payload;
 };

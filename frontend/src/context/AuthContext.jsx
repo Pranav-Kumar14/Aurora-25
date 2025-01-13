@@ -13,20 +13,31 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
+
         if (token) {
-            getProfile()
+            getProfile(token)
                 .then((response) => {
-                    setUser(response.user);
+                    console.log(response.data.data)
+                    // Assuming response contains user details
+                    if (response && response.data.data) {
+                        setUser(response.data.data);
+                    } else {
+                        console.error('Invalid profile response:', response);
+                        sessionStorage.removeItem('token');
+                    }
                 })
-                .catch(() => {
-                    localStorage.removeItem('token');
+                .catch((error) => {
+                    console.error('Error fetching profile:', error);
+                    sessionStorage.removeItem('token');
                 })
                 .finally(() => {
                     setLoading(false);
                 });
         } else {
-            setLoading(false);
+            setLoading(false); // No token, loading ends
+            console.log('User is logged out.');
+            sessionStorage.removeItem('token');
         }
     }, []);
 

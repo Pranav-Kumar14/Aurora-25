@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema({
     hackathonPaid: {
         type: Boolean,
         default: false
+    },
+    workshops:{
+        type: Array,
+        default:[],
     }
 
 }, { timestamps: true })

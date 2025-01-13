@@ -16,6 +16,7 @@ import Navbar from './components/navbar';
 import Footer from './components/Footer';
 import Workshop from './pages/Workshop';
 import Workpage from "./pages/workpage"
+import Navbar from './components/navbar';
 
 
 function App() {

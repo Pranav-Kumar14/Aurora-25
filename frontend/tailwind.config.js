@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       fontFamily: {
         pixelify: ['Pixelify Sans', 'sans-serif'], 
+        'press-start': ['"Press Start 2P"', 'monospace'],
       },
     },
   },
