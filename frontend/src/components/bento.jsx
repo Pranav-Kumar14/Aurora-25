@@ -59,7 +59,7 @@ const items = [
 const BentoGrid = () => {
     return (
         <div className="flex items-center justify-center w-auto h-screen ">
-        <div className="grid w-full h-full grid-rows-5 grid-cols-3 gap-3 p-16 mx-20">
+        <div className="grid w-full h-full grid-rows-5 grid-cols-3 gap-3 p-16 mx-60 ">
         {items.map((item, i) => (
             <div
             key={i}
