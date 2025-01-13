@@ -8,7 +8,7 @@ export default function Profile() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         setUser(null);
         navigate("/login");
     };

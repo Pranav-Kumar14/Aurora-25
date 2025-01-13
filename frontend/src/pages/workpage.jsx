@@ -12,10 +12,11 @@ const workshops = [
 const WorkPage = () => {
   const [selectedWorkshops, setSelectedWorkshops] = useState({});
   const { user, setUser } = useAuth();
+  console.log(user);
 
   const handleRegister = (workshop) => {
     const key = `${workshop.date}-${workshop.time}`; // Unique key for each workshop group
-  
+
     setSelectedWorkshops((prev) => {
       if (prev[key]?.id === workshop.id) {
         // If the workshop is already selected, unregister it
@@ -35,7 +36,7 @@ const WorkPage = () => {
       return { ...prev, [key]: workshop };
     });
   };
-  
+
 
   const handleSubmit = () => {
     const selectedIds = Object.values(selectedWorkshops).map((workshop) => workshop.id);
@@ -53,7 +54,7 @@ const WorkPage = () => {
     };
 
     // Make the API request
-    fetch("http://localhost:8000/updateWorkshops", {
+    fetch("http://localhost:8000/user/updateWorkshops", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

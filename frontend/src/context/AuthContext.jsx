@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-// import { getProfile } from '../services/auth'; // Uncomment if needed
+import { getProfile } from '../services/auth';
 
 const AuthContext = createContext({
     user: null,
@@ -13,30 +13,32 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
+
         if (token) {
-            // Example of fetching profile data
-            // getProfile()
-            //     .then((response) => {
-            //         setUser(response.user);
-            //     })
-            //     .catch((error) => {
-            //         console.error('Error fetching profile:', error);
-            //         localStorage.removeItem('token');
-            //     })
-            //     .finally(() => {
-            //         setLoading(false);
-            //     });
+            getProfile(token)
+                .then((response) => {
+                    // Assuming response contains user details
+                    if (response && response.data.data) {
+                        setUser(response.data.data);
+                    } else {
+                        console.error('Invalid profile response:', response);
+                        sessionStorage.removeItem('token');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error fetching profile:', error);
+                    sessionStorage.removeItem('token');
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
         } else {
             setLoading(false); // No token, loading ends
+            console.log('User is logged out.');
+            sessionStorage.removeItem('token');
         }
     }, []);
-
-    useEffect(() => {
-        if (!user) {
-            localStorage.removeItem('token'); // Clear token if user logs out
-        }
-    }, [user]);
 
     return (
         <AuthContext.Provider
