@@ -14,16 +14,15 @@ const Home = () => {
         <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
             <Hero />
             <Timer targetDate={new Date("2025-01-23T00:00:00")} />
-
             <KeynoteSpeakerCard />
 
             <img src={partners} alt="partners" className="w-1/4 py-8 mx-auto" />
+
             <img src={workshops} alt="workshops" className="w-1/4 py-8 mx-auto" />
+
             <img src={hackathon} alt="hackathon" className="w-1/4 py-8 mx-auto" />
 
             <BentoGrid />
-
-
 
         </div>
     )
