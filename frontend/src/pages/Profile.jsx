@@ -6,7 +6,7 @@ import { workshops } from "../constants/workshops"; // Import workshops data
 
 export default function Profile() {
     const { user, setUser } = useAuth();
-    console.log(user);
+    console.log(user)
     const navigate = useNavigate();
 
     const handleLogout = () => {
