@@ -1,69 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
 
-const Timer = ({ targetDate }) => {
-    const calculateTimeLeft = () => {
-        const now = new Date();
-        const difference = targetDate - now;
-        return {
-        days: Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24))),
-        hours: Math.max(0, Math.floor((difference / (1000 * 60 * 60)) % 24)),
-        minutes: Math.max(0, Math.floor((difference / (1000 * 60)) % 60)),
-        //   seconds: Math.max(0, Math.floor((difference / 1000) % 60)),
-        };
+const CountdownTimer = () => {
+  const calculateTimeLeft = () => {
+    const eventDate = new Date('2025-02-02T00:00:00');
+    const now = new Date();
+    const difference = eventDate - now;
+
+    return {
+      days: Math.max(0, Math.floor(difference / (1000 * 60 * 60 * 24))),
+      hours: Math.max(0, Math.floor((difference / (1000 * 60 * 60)) % 24)),
+      minutes: Math.max(0, Math.floor((difference / 1000 / 60) % 60)),
+      seconds: Math.max(0, Math.floor((difference / 1000) % 60)),
     };
+  };
 
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-    const [totalTime, setTotalTime] = useState(targetDate - new Date());
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-        setTimeLeft(calculateTimeLeft());
-        }, 1000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
 
-        return () => clearInterval(timer);
-    }, [targetDate]);
+    return () => clearInterval(timer);
+  }, []);
 
-    const getProgress = (value, max) => (1 - value / max) * 100;
-
-    return (
-        <div className="flex justify-center space-x-8 py-10  text-white">
-        {/* Circular Timer */}
-        {[
-            { label: "Days", value: timeLeft.days, max: Math.ceil(totalTime / (1000 * 60 * 60 * 24)) },
-            { label: "Hours", value: timeLeft.hours, max: 24 },
-            { label: "Minutes", value: timeLeft.minutes, max: 60 },
-            // { label: "Seconds", value: timeLeft.seconds, max: 60 },
-        ].map((time, index) => (
-            <div key={index} className="text-center">
-            <svg className="w-24 h-24">
-                {/* Background Circle */}
-                <circle
-                cx="50%"
-                cy="50%"
-                r="38"
-                stroke="rgba(255, 255, 255, 0.2)"
-                strokeWidth="4"
-                fill="none"
-                />
-                {/* Filling Circle */}
-                <circle
-                cx="50%"
-                cy="50%"
-                r="38"
-                stroke="#00d4ff"
-                strokeWidth="4"
-                fill="none"
-                strokeDasharray="240"
-                strokeDashoffset={(getProgress(time.value, time.max) * 240) / 100}
-                className="transition-all duration-1000 ease-out"
-                />
-            </svg>
-            <div className="text-2xl font-bold mt-2">{time.value}</div>
-            <div className="text-sm">{time.label}</div>
-            </div>
-        ))}
-        </div>
-    );
+  return (
+    <div className="text-white font-press-start text-[25px] md:text-[40px] flex space-x-4 ">
+      <span className='font-press-start '>{String(timeLeft.days).padStart(2, '0')}</span>:
+      <span className='font-press-start '>{String(timeLeft.hours).padStart(2, '0')}</span>:
+      <span className='font-press-start '>{String(timeLeft.minutes).padStart(2, '0')}</span>:
+      <span className='font-press-start '>{String(timeLeft.seconds).padStart(2, '0')}</span>
+    </div>
+  );
 };
 
-export default Timer;
+export default CountdownTimer;
