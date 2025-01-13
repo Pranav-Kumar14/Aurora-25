@@ -5,6 +5,7 @@ import { User, LogOut } from 'lucide-react';
 
 export default function Profile() {
     const { user, setUser } = useAuth();
+    console.log("user check ",user)
     const navigate = useNavigate();
 
     const handleLogout = () => {

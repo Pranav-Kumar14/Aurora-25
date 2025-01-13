@@ -11,10 +11,20 @@ import Home from './pages/Hackathonmain';
 import Navbar from './components/navbar';
 import Workshop from './pages/Workshop';
 import Workpage from "./pages/workpage"
+<<<<<<< Updated upstream
+=======
+import Navbar from './components/navbar';
+import Teamlogin from './components/teamlogin';
+import TeamManagement from './components/teamlogin2';
+import TeamManagementPage from './pages/HackDemo';
+import Teams from './components/Teams';
+import CreateTeam from './components/Createteam';
+>>>>>>> Stashed changes
 
 function App() {
   return (
     <>
+<<<<<<< Updated upstream
     <Navbar/>
     <Router>
       <AuthProvider>
@@ -38,6 +48,36 @@ function App() {
         </Routes>
       </AuthProvider>
     </Router>
+=======
+
+      <Router>
+        <Navbar />
+        <AuthProvider>
+          <Toaster position="top-right" />
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/hackathon" element={<Hackathon />} />
+            <Route path="/workshop" element={<Workshop />} />
+            <Route path="/workpage" element={<Workpage />} />
+            <Route path="/fetch" element={<Teamlogin />} />
+            <Route path="/fetchteam" element={<TeamManagement />} />
+            <Route path="/fetchnew" element={<TeamManagementPage />} />
+            <Route path="/createteam" element={<CreateTeam/>} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
+>>>>>>> Stashed changes
     </>
   );
 }
