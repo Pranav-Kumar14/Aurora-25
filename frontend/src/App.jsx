@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import Hackathon from './pages/hackathon';
 import Home from './pages/Home';
 import Navbar from './components/navbar';
+import Footer from './components/Footer';
 import Workshop from './pages/Workshop';
 import Workpage from "./pages/workpage"
 
@@ -27,7 +28,7 @@ function App() {
             <Routes>
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/hackathon" element={<Home />} />
+                <Route path="/home" element={<Home />} />
                 <Route path="/hackathon-info" element={<Hackathon />} />
                 <Route path="/workshop" element={<Workshop />} />
                 <Route path="/workpage" element={<Workpage/>}/>
@@ -43,6 +44,8 @@ function App() {
             </Routes>
         </AuthProvider>
         </Router>
+        <Footer />
+
         </>
     );
 }
