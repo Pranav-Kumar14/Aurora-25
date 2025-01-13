@@ -20,10 +20,10 @@ const TeamManagementPage = () => {
 
      const { user, setUser } = useAuth();
 //  console.log("user check ",user,"token",token)
-  const [publicTeams] = useState([
-    { id: 1, name: "Team Aurora", leader: "Souvik" },
-    { id: 2, name: "Team Orion", leader: "Alex" },
-  ]);
+  // const [publicTeams] = useState([
+  //   { id: 1, name: "Team Aurora", leader: "Souvik" },
+  //   { id: 2, name: "Team Orion", leader: "Alex" },
+  // ]);
 
   const [showTeams, setShowTeams] = useState(false);
 
@@ -190,55 +190,63 @@ const TeamManagementPage = () => {
 
 
   return (
-    <div className="bg-gradient-to-br from-[#1B1033] to-[#451A7A] text-white min-h-screen p-8">
+    <div className="bg-gradient-to-br from-[#0f0d14] to-[#281046] text-white min-h-screen p-8">
       <div className="max-w-5xl mx-auto space-y-8">
         {!showTeams ? (
           <>
             <section>
-              <h1 className="text-3xl font-bold mb-6 pt-20">Team Management</h1>
+              <div className="text-3xl font-bold mb-6 pt-20 flex">
+              <img 
+                    src="../../public/Frame.png" 
+                    alt="Image description" 
+                    className="w-16 h-16 rounded-md object-cover"
+                  />
+                <h2 className="p-5">Team Management</h2>
+                </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <button
-                  className="bg-gray-100 text-black rounded-lg shadow-md px-6 py-4 hover:bg-gray-200 flex justify-between items-center"
+                  className="bg-gray-300 text-black rounded-lg shadow-md px-6 py-4 hover:bg-gray-400 flex justify-between items-center border"
                   onClick={() => setShowTeams(true)}
                 >
                   <div>
                     <h2 className="text-xl font-bold">Create a Team</h2>
-                    <p className="text-sm">
+                    <p className="text-md p-2">
                       Bring your vision to life! Click here to assemble a team
                       and start collaborating towards your goals.
                     </p>
                   </div>
-                  <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
+                  <img 
+                    src="../../public/create.png" 
+                    alt="Image description" 
+                    className="w-16 h-16 rounded-md object-cover"
+                  />
+
                 </button>
-                <button
-                  className="bg-gray-100 text-black rounded-lg shadow-md px-6 py-4 hover:bg-gray-200 flex justify-between items-center"
-                  onClick={() => setShowTeams(true)}
-                >
-                  <div>
-                    <h2 className="text-xl font-bold">Join a Team</h2>
-                    <p className="text-sm">
-                      Bring your vision to life! Click here to join a team and
-                      start collaborating towards your goals.
-                    </p>
-                  </div>
-                  <div className="w-16 h-16 bg-gray-300 rounded-md"></div>
-                </button>
+                
               </div>
             </section>
 
+
             <section>
-              <h2 className="text-2xl font-bold mb-4 m-auto">
+            <div className="text-3xl font-bold mb-6 pt-10 flex">
+              <img 
+                    src="../../public/Frame.png" 
+                    alt="Image description" 
+                    className="w-16 h-16 rounded-md object-cover"
+                  />
+                <h2 className="text-3xl font-bold p-5">
                 Team name : {team?.teamname}
               </h2>
+                </div>
               
               <div className="flex gap-4 mb-4">
                 {["private", "public"].map((type) => (
                   <button
                     key={type}
-                    className={`px-4 py-2 rounded-lg text-white ${
+                    className={`px-4 py-2 rounded-lg border ${
                       visibility === type
-                        ? "bg-[#6932E2]"
-                        : "bg-gray-600 hover:bg-gray-500"
+                        ? "bg-gray-200 text-black"
+                        : "bg-[#0f0d14] text-white hover:bg-gray-800"
                     }`}
                     onClick={() => {setVisibility(type);
                         updateVisibility(type);}}
@@ -250,7 +258,7 @@ const TeamManagementPage = () => {
               <div className="mb-6">
         <label
           htmlFor="description"
-          className="block text-lg font-medium text-black mb-2"
+          className="block text-lg font-medium text-white mb-2"
         >
           Edit Team Description
         </label>
@@ -258,11 +266,11 @@ const TeamManagementPage = () => {
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-3 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
           placeholder="Enter a new team description"
         />
         <button
-          className="mt-4 bg-[#6932E2] text-white py-2 px-4 rounded-lg  focus:outline-none"
+          className="mt-4 bg-[#0f0d14] text-white hover:bg-gray-900 hover:text-white py-2 px-4 rounded-lg  focus:outline-none"
           onClick={updateDescription}
         >
           Update Description
@@ -270,7 +278,7 @@ const TeamManagementPage = () => {
 
         <div className="mt-6">
             <button
-              className="mt-4 bg-[#6932E2] text-white py-2 px-4 rounded-lg  focus:outline-none"
+              className="mt-4 bg-gray-700 text-white hover:bg-gray-400 hover:text-black py-2 px-4 rounded-lg  focus:outline-none"
               onClick={() => setShowAddMemberPopup(true)}
             >
               Add Member
@@ -278,7 +286,7 @@ const TeamManagementPage = () => {
           </div>
           {showAddMemberPopup && (
             <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-              <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+              <div className="bg-gray-200 p-8 rounded-lg shadow-lg w-96">
                 <h2 className="text-2xl text-center text-black font-semibold mb-4">
                   Add Team Member
                 </h2>
@@ -298,7 +306,7 @@ const TeamManagementPage = () => {
                 />
                 <div className="flex justify-between mt-6">
                   <button
-                    className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+                    className="bg-[#0f0d14] text-white py-2 px-4 rounded-lg hover:bg-gray-800"
                     onClick={handleAddMember}
                   >
                     Add Member
@@ -319,20 +327,24 @@ const TeamManagementPage = () => {
                 {members.map((member,index) => (
                   <div
                     key={index}
-                    className="bg-[#1E1E2E] text-white rounded-xl p-4 flex flex-col items-center gap-4 shadow-md"
+                    className="bg-gray-200 text-gray-800 rounded-xl p-4 flex flex-col items-center gap-4 shadow-md"
                   >
-                    <div className="w-16 h-16 bg-[#FFFFFF20] rounded-full"></div>
+                    <img 
+                    src="../../public/Group.png" 
+                    alt="Image description" 
+                    className="w-16 h-16 rounded-md object-cover"
+                  />
                     <h3 className="text-lg font-bold">{member.username}</h3>
                     <p className="text-sm text-gray-400">{member.leader}</p>
                     {member.role === "Leader" ? (
                         
                       <button onClick={handleDissolveTeam()}
-                      className="bg-[#6932E2] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
                         Disolve Team
                       </button>
                     ) : (
                       <button onClick={() => handleRemoveMember(member._id)}
-                      className="bg-[#6932E2] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
                         Remove
                       </button>
                     )}
@@ -342,24 +354,37 @@ const TeamManagementPage = () => {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold mb-4">Join Request</h2>
+            <div className="text-3xl font-bold mb-6 pt-5 flex">
+              <img 
+                    src="../../public/Frame.png" 
+                    alt="Image description" 
+                    className="w-16 h-16 rounded-md object-cover"
+                  />
+                <h2 className="text-3xl font-bold mb-4 p-5">Join Request</h2>
+                </div>
+              
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {joinRequests.map((request) => (
                   <div
                   key={request._id}
-                    className="bg-[#1E1E2E] text-white rounded-xl p-4 flex flex-col items-center gap-4 shadow-md"
+                    className="bg-gray-300 text-white rounded-xl p-4 flex flex-col items-center gap-4 shadow-md"
                   >
-                    <div className="w-16 h-16 bg-[#FFFFFF20] rounded-full"></div>
-                    <p className="text-sm text-center text-gray-400">
+                    <img 
+                      src="../../public/reqicon.png" 
+                      alt="Image description" 
+                      className="w-16 h-16 rounded-full object-cover"
+                    />
+
+                    <p className="text-sm text-center text-black">
                       {request.username} would like to join your team.
                     </p>
                     <div className="flex gap-2">
                       <button  onClick={() =>
                         handleRequestAction(request._id, "approve")
-                      } className="bg-[#6932E2] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      } className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
                         Accept
                       </button>
-                      <button  onClick={() => handleRejectRequest(request._id, "reject")} className="bg-[#6932E2] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      <button  onClick={() => handleRejectRequest(request._id, "reject")} className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
                         Decline
                       </button>
                     </div>
