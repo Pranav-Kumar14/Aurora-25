@@ -50,7 +50,7 @@ function App() {
               />
             </a>
           </div>
-          <p className="text-lg font-medium text-center">
+          <p className="text-lg font-large text-center  text-white ">
             ‘Project To Product: The Art Of Scaling Systems’
           </p>
           <div className="flex items-center justify-center mt-6 space-x-4 text-gray-400">
