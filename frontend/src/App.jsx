@@ -11,44 +11,50 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Hackathon from './pages/hackathon';
-import Home from './pages/Home';
+import Home from './pages/Hackathonmain';
+import Workpage from "./pages/workpage"
 import Navbar from './components/navbar';
-import Footer from './components/Footer';
-import Workpage from "./pages/workpage";
+import Teamlogin from './components/teamlogin';
+import TeamManagement from './components/teamlogin2';
+import TeamManagementPage from './pages/HackDemo';
+import Teams from './components/Teams';
+import CreateTeam from './components/Createteam';
 import Developer from "./pages/Developer";
 
-
 function App() {
-    return (
-        <>
+  return (
+    <>
 
-            <Router>
-                <Navbar />
-                <AuthProvider>
-                    <Toaster position="top-right" />
-                    <Routes>
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/home" element={<Home />} />
-                        <Route path="/hackathon-info" element={<Hackathon />} />
-                        <Route path="/workshop" element={<Workpage />} />
-                        <Route path="/developer" element={<Developer />} />
-                        <Route
-                            path="/profile"
-                            element={
-                                <ProtectedRoute>
-                                    <Profile />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route path="/" element={<Navigate to="/login" replace />} />
-                    </Routes>
-                </AuthProvider>
-            </Router>
-            <Footer />
-
-        </>
-    );
+      <Router>
+        <Navbar />
+        <AuthProvider>
+          <Toaster position="top-right" />
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/hackathon" element={<Hackathon />} />
+            <Route path="/workshop" element={<Workpage />} />
+            <Route path="/fetch" element={<Teamlogin />} />
+            <Route path="/fetchteam" element={<TeamManagement />} />
+            <Route path="/fetchnew" element={<TeamManagementPage />} />
+            <Route path="/createteam" element={<CreateTeam/>} />
+            <Route path="/developer" element={<Developer />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/" element={<Navigate to="/login" replace />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
+     <Footer />
+    </>
+  );
 }
 
 export default App;

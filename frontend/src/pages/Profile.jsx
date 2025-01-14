@@ -7,6 +7,7 @@ import { updateProfile } from "../services/auth";
 
 export default function Profile() {
     const { user, setUser } = useAuth();
+    console.log("user check ",user)
     const [registeredWorkshops, setRegisteredWorkshops] = useState([]);
     const navigate = useNavigate();
 
