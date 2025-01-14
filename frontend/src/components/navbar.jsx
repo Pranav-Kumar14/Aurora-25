@@ -56,12 +56,12 @@ function Navbar() {
                         >
                             Hackathon
                         </Link>
-                        <Link
-                            to="/workshop"
+                        <a
+                            href="/workshop"
                             className="bg-purple-500 hover:bg-purple-600 text-white lg:px-3 md:px-2 py-2 rounded-full text-sm font-medium"
                         >
                             Workshop
-                        </Link>
+                        </a>
                     </div>
 
                     {/* Profile icon on the right */}
