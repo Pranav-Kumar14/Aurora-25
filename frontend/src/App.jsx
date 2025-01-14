@@ -14,8 +14,8 @@ import Hackathon from './pages/hackathon';
 import Home from './pages/Home';
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
-import Workshop from './pages/Workshop';
-import Workpage from "./pages/workpage"
+import Workpage from "./pages/workpage";
+import Developer from "./pages/Developer";
 
 
 function App() {
@@ -31,8 +31,8 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/home" element={<Home />} />
                         <Route path="/hackathon-info" element={<Hackathon />} />
-                        <Route path="/workshop" element={<Workshop />} />
-                        <Route path="/workpage" element={<Workpage />} />
+                        <Route path="/workshop" element={<Workpage />} />
+                        <Route path="/developer" element={<Developer />} />
                         <Route
                             path="/profile"
                             element={

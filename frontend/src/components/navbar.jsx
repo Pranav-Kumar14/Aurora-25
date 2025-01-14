@@ -21,7 +21,7 @@ function Navbar() {
                     {/* Center-aligned tabs */}
                     <div className="hidden md:flex flex-grow justify-center space-x-8">
                         <Link
-                            to="/"
+                            to="/home"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             Home
@@ -43,6 +43,12 @@ function Navbar() {
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             Sponsors
+                        </Link>
+                        <Link
+                            to="/developer"
+                            className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
+                        >
+                            Developer
                         </Link>
                         <Link
                             to="/hackathon"
