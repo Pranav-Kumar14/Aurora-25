@@ -25,7 +25,7 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="text-white justify-center font-press-start text-[25px] md:text-[40px] flex space-x-4 ">
+    <div className="text-white justify-center font-press-start text-[25px] md:text-[40px] flex space-x-4 mb-4 ">
       <span className='font-press-start '>{String(timeLeft.days).padStart(2, '0')}</span>:
       <span className='font-press-start '>{String(timeLeft.hours).padStart(2, '0')}</span>:
       <span className='font-press-start '>{String(timeLeft.minutes).padStart(2, '0')}</span>:
