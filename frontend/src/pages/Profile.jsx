@@ -1,18 +1,63 @@
-import React from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import { User, LogOut } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { User, LogOut } from "lucide-react";
+import { workshops } from "../constants/workshops";
+import { updateProfile } from "../services/auth";
 
 export default function Profile() {
     const { user, setUser } = useAuth();
     console.log("user check ",user)
+    const [registeredWorkshops, setRegisteredWorkshops] = useState([]);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (!user) return; // Avoid calling when user is null
+
+            try {
+                const response = await updateProfile(user.email);
+
+                if (!response) {
+                    throw new Error(`Failed to fetch user data: ${response.status}`);
+                }
+
+                const updatedUser = response.data.user;
+
+                // Update user only if it has changed
+                if (JSON.stringify(user) !== JSON.stringify(updatedUser)) {
+                    setUser(updatedUser);
+                }
+
+                sessionStorage.removeItem("token");
+                sessionStorage.setItem("token", response.data.token);
+
+                // Map workshop IDs to their details
+                const workshopsList = updatedUser.workshops
+                    ? updatedUser.workshops.map((id) => {
+                        const workshop = workshops.find((w) => w.id === id);
+                        return workshop
+                            ? `${workshop.title} - ${workshop.date} at ${workshop.time}`
+                            : `Unknown Workshop (ID: ${id})`;
+                    })
+                    : [];
+                setRegisteredWorkshops(workshopsList);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchUserData();
+    }, [user]); // Only depend on `user`
+
+
     const handleLogout = () => {
-        localStorage.removeItem('token');
+        sessionStorage.removeItem("token");
         setUser(null);
-        navigate('/login');
+        navigate("/login");
     };
+
+    if (!user) return null;
 
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -32,24 +77,41 @@ export default function Profile() {
                         </button>
                     </div>
                 </div>
+
                 <div className="px-4 py-5 sm:p-6">
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
                         <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">Full name</dt>
-                            <dd className="mt-1 text-sm text-gray-900">{user?.fullName}</dd>
+                            <dt className="text-sm font-medium text-gray-500">Full Name</dt>
+                            <dd className="mt-1 text-sm text-gray-900">{user.fullName}</dd>
                         </div>
                         <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">Username</dt>
-                            <dd className="mt-1 text-sm text-gray-900">{user?.username}</dd>
+                            <dd className="mt-1 text-sm text-gray-900">{user.username}</dd>
                         </div>
                         <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                            <dd className="mt-1 text-sm text-gray-900">{user?.email}</dd>
+                            <dt className="text-sm font-medium text-gray-500">Email Address</dt>
+                            <dd className="mt-1 text-sm text-gray-900">{user.email}</dd>
                         </div>
                         <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">College ID</dt>
-                            <dd className="mt-1 text-sm text-gray-900">{user?.collegeid}</dd>
+                            <dd className="mt-1 text-sm text-gray-900">{user.collegeid}</dd>
                         </div>
+                        {user.workshopPaid && (
+                            <div className="sm:col-span-2">
+                                <dt className="text-sm font-medium text-gray-500">Registered Workshops</dt>
+                                <dd className="mt-1 text-sm text-gray-900">
+                                    {registeredWorkshops.length > 0 ? (
+                                        <ul className="list-disc ml-5">
+                                            {registeredWorkshops.map((details, index) => (
+                                                <li key={index}>{details}</li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        "No workshops registered."
+                                    )}
+                                </dd>
+                            </div>
+                        )}
                     </dl>
                 </div>
             </div>
