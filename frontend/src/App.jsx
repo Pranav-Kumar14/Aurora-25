@@ -21,8 +21,9 @@ import Workpage from "./pages/workpage"
 function App() {
     return (
         <>
-            <Navbar />
+
             <Router>
+                <Navbar />
                 <AuthProvider>
                     <Toaster position="top-right" />
                     <Routes>
