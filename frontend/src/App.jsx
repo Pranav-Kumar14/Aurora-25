@@ -15,7 +15,8 @@ import Home from './pages/Home';
 import Navbar from './components/navbar';
 import Footer from './components/Footer';
 import Workshop from './pages/Workshop';
-import Workpage from "./pages/workpage"
+import Workpage from "./pages/workpage";
+import Speaker from './pages/Speaker';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                         <Route path="/hackathon-info" element={<Hackathon />} />
                         <Route path="/workshop" element={<Workshop />} />
                         <Route path="/workpage" element={<Workpage />} />
+                        <Route path="/speaker" element={<Speaker />} />
                         <Route
                             path="/profile"
                             element={
