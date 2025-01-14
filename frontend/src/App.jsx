@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { AuthProvider } from '../context/AuthContext';
-import { ProtectedRoute } from '../components/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -16,7 +16,6 @@ import Navbar from './components/navbar';
 import Footer from './components/Footer';
 import Workshop from './pages/Workshop';
 import Workpage from "./pages/workpage"
-import Navbar from './components/navbar';
 
 
 function App() {
