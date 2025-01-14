@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import icon from "../images/frame.png";
 import { useAuth } from '../context/AuthContext';
 import { Navigate, useNavigate } from "react-router-dom";
 import { workshops } from "../constants/workshops";
+import { getProfile } from "../services/auth";
 
 const WorkPage = () => {
+  const token = sessionStorage.getItem('token');
   const [selectedWorkshops, setSelectedWorkshops] = useState({});
-  const { user, setUser } = useAuth();
+  const [registeredWorkshops, setRegisteredWorkshops] = useState([]);
   const navigate = useNavigate();
-  console.log(user);
+  const { user, setUser } = useAuth();
 
   const handleRegister = (workshop) => {
     const key = `${workshop.date}-${workshop.time}`; // Unique key for each workshop group
@@ -65,14 +67,27 @@ const WorkPage = () => {
       })
       .then((data) => {
         console.log("Success:", data);
-        // Optionally, update the user context with the new workshops
+        // Update the user context
         setUser((prev) => ({
           ...prev,
           workshops: data.workshops,
         }));
+        alert("Workshops successfully updated!");
+        navigate("/profile"); // Optionally navigate to the profile page
       })
       .catch((error) => console.error("Error:", error));
   };
+
+  useEffect(() => {
+    const setWorkshops = async () => {
+      const user1 = await getProfile(token);
+      console.log(user1)
+      setRegisteredWorkshops(user1.data.data.workshops)
+    }
+
+    setWorkshops();
+  }, [])
+
 
 
   return (
@@ -106,8 +121,8 @@ const WorkPage = () => {
       <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 px-10">
         {workshops.map((workshop) => {
           const key = `${workshop.date}-${workshop.time}`;
-          const isSelected = selectedWorkshops[key]?.id === workshop.id;
-
+          const isSelected = registeredWorkshops.find((id) => id === workshop.id);
+          // console.log(registeredWorkshops);
           return (
             <div
               key={workshop.id}

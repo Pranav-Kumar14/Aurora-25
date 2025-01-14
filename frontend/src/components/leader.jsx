@@ -13,7 +13,7 @@ const Leader = ({ onClose }) => {
     const [showAddMemberPopup, setShowAddMemberPopup] = useState(false);
     const [newMemberEmail, setNewMemberEmail] = useState("");
 
-    const url = "http://localhost:6000";
+    const url = "http://localhost:8000";
 
     const handleAddMember = async () => {
         try {

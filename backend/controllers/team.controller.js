@@ -15,7 +15,7 @@ const {
 } = require("../utils/mailContent.js");
 
 const createTeam = async (req, res) => {
-  const { teamname, email, visibility } = req.body;
+  const { teamname, email, visibility, description } = req.body;
   try {
     const user = await User.findOne({ email });
     if (!user) {
@@ -38,6 +38,7 @@ const createTeam = async (req, res) => {
     }
 
     const teamVisibility = visibility || "private";
+    const teamDescription = description || "";
 
     const team = await Team.create({
       teamname,
@@ -45,6 +46,7 @@ const createTeam = async (req, res) => {
       members: [user._id],
       joinRequests: [],
       visibility: teamVisibility,
+      description: teamDescription,
     });
 
     user.team = team._id;
@@ -121,9 +123,9 @@ const teamRequest = async (req, res) => {
 };
 
 const joinTeam = async (req, res) => {
-  const { teamName, email } = req.body;
+  const { teamId, userId } = req.body;
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findById(userId);
     if (!user) {
       return res.json({ success: false, message: "User not found" });
     }
@@ -131,7 +133,7 @@ const joinTeam = async (req, res) => {
       return res.json({ success: false, message: "You are already in a Team" });
     }
 
-    const team = await Team.findOne({ teamname: teamName });
+    const team = await Team.findById(teamId);
     if (!team) {
       return res.json({ success: false, message: "Team not found" });
     }
@@ -154,63 +156,64 @@ const joinTeam = async (req, res) => {
   } catch (error) {
     return res.json({
       success: false,
-      message: "ServerError",
+      message: `ServerError ${error}`,
       error: error.message,
     });
   }
 };
 
-
-const teamList = async (req, res) => {
-  const { email } = req.params;
-
-  try {
-    let teams = [];
-
-    if (email) {
-      const user = await User.findOne({ email });
-      if (!user) {
-        return res.json({ success: false, message: "User not found" });
-      }
-
-      const leaderTeams = await Team.find({ leader: user._id })
-        .populate("leader", "username email")
-        .populate("members", "username email")
-        .populate("joinRequests", "username email")
-        .select("teamname description visibility registered");
-
-      if (leaderTeams.length > 0) {
-        return res.json({ success: true, teams: leaderTeams });
-      }
-
-
-      const memberTeams = await Team.find({ members: user._id })
-        .populate("leader", "username email")
-        .populate("members", "username email")
-        .select("teamname description visibility registered");
-
-      if (memberTeams.length > 0) {
-       
-        return res.json({ success: true, teams: memberTeams });
-      }
-      return res.json({
-        success: false,
-        message: "User is not a leader or a member of any team.",
-      });
-    } else {
-      // Fetch public teams for general users
-      teams = await Team.find({ visibility: "public" })
-        .populate("leader", "username email")
-        .select("teamname description visibility");
-
-      return res.json({ success: true, teams });
+const teamLists = async (req, res) => {
+ const {email}= req.query;
+  if (email) {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
     }
-  } catch (error) {
-    return res.json({ success: false, message: "Server error", error: error.message });
+
+    const leaderTeams = await Team.find({ leader: user._id })
+      .populate("leader", "username email")
+      .populate("members", "username email")
+      .populate("joinRequests", "username email")
+      .select("teamname description visibility registered");
+
+    if (leaderTeams.length > 0) {
+      return res.json({ success: true, teams: leaderTeams });
+    }
+
+    const memberTeams = await Team.find({ members: user._id })
+      .populate("leader", "username email")
+      .populate("members", "username email")
+      .select("teamname description visibility registered");
+
+    if (memberTeams.length > 0) {
+      return res.json({ success: true, teams: memberTeams });
+    }
+    return res.json({
+      success: false,
+      message: "User is not a leader or a member of any team.",
+    });
+  } else {
+    console.log("Error")
   }
 };
+const teamList = async (req, res) => {
+  try {
+    let teams = [];
+    // Fetch public teams for general users
+    teams = await Team.find({ visibility: "public" })
+      .populate("leader", "username email")
+      .populate("members", "username email")
+      .select("teamname description visibility");
 
-
+    return res.json({ success: true, teams });
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
 
 const checkLeader = async (req, res) => {
   const { email } = req.body;
@@ -387,11 +390,10 @@ const rejectRequest = async (req, res) => {
   const { teamId, userId } = req.body;
 
   try {
-    const team = await Team.findOne({ _id: teamId });
+    const team = await Team.findById(teamId);
     if (!team) {
-      return res.json({ success: false, message: "Team Not Found" });
+      return res.json({ success: false, message: "Team not found" });
     }
-
     const userIndex = team.joinRequests.indexOf(userId);
     if (userIndex === -1) {
       return res.json({
@@ -416,10 +418,10 @@ const rejectRequest = async (req, res) => {
 
 // Controller to remove a team member
 const removeMember = async (req, res) => {
-  const { teamId, userId, leaderEmail } = req.body;
+  const { teamId, userId, leaderId } = req.body;
 
   try {
-    const leader = await User.findOne({ email: leaderEmail });
+    const leader = await User.findById(leaderId);
     if (!leader) {
       return res.json({ success: false, message: "Leader not found" });
     }
@@ -551,6 +553,47 @@ const updateDescription = async (req, res) => {
   }
 };
 
+const CancelRequest =async (req, res) => {
+  const { teamId, userId } = req.body;
+
+  try {
+    // Find the team by ID
+    const team = await Team.findById(teamId);
+    if (!team) {
+      return res.json({ success: false, message: "Team not found." });
+    }
+
+    // Check if the user is in joinRequests
+    const userIndex = team.joinRequests.findIndex(
+      (request) => request.toString() === userId.toString()
+    );
+
+    if (userIndex === -1) {
+      return res.json({
+        success: false,
+        message: "You have no pending join request for this team.",
+      });
+    }
+
+    // Remove the user from joinRequests
+    team.joinRequests.splice(userIndex, 1);
+    await team.save();
+
+    return res.json({
+      success: true,
+      message: "Your join request has been successfully canceled.",
+      team,
+    });
+  } catch (error) {
+    console.error("Error canceling join request:", error.message);
+    return res.json({
+      success: false,
+      message: `Server error occurred.${error}`,
+      error: error.message,
+    });
+  }
+}
+
 module.exports = {
   createTeam,
   joinTeam,
@@ -564,4 +607,6 @@ module.exports = {
   removeMember,
   leaveTeam,
   updateDescription,
+  teamLists,
+  CancelRequest,
 };

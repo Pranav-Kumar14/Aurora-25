@@ -21,7 +21,7 @@ function Navbar() {
                     {/* Center-aligned tabs */}
                     <div className="hidden md:flex flex-grow justify-center space-x-8">
                         <Link
-                            to="/"
+                            to="/home"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             Home
@@ -45,17 +45,23 @@ function Navbar() {
                             Sponsors
                         </Link>
                         <Link
+                            to="/developer"
+                            className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
+                        >
+                            Developer
+                        </Link>
+                        <Link
                             to="/hackathon"
                             className="bg-pink-500 hover:bg-pink-600 text-white lg:px-3 md:px-2 py-2 rounded-full text-sm font-medium"
                         >
                             Hackathon
                         </Link>
-                        <Link
-                            to="/workshop"
+                        <a
+                            href="/workshop"
                             className="bg-purple-500 hover:bg-purple-600 text-white lg:px-3 md:px-2 py-2 rounded-full text-sm font-medium"
                         >
                             Workshop
-                        </Link>
+                        </a>
                     </div>
 
                     {/* Profile icon on the right */}

@@ -17,3 +17,9 @@ export const getProfile = async (token) => {
     console.log(payload);
     return payload;
 };
+
+export const updateProfile = async (email) => {
+    const payload = await api.post('/user/newtoken', { email });
+    console.log(payload);
+    return payload;
+};
