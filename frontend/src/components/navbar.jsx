@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import auroralogo from '../../public/aurora_logo.png';
+import auroralogo from '../images/aurora_logo.png';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
