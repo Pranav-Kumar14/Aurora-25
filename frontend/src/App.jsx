@@ -1,11 +1,5 @@
 
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
@@ -26,8 +20,6 @@ import Teamlogin from './components/teamlogin';
 import TeamManagement from './components/teamlogin2';
 import TeamManagementPage from './pages/HackDemo';
 import CreateTeam from './components/Createteam';
-import Teams from "./components/Teams";
-import Workpage from "./pages/workpage";
 import Developer from "./pages/Developer";
 import Footer from "./components/Footer";
 import WorkshopPage from './pages/WorkshopPage';
@@ -46,7 +38,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/speaker" element={<Speaker />} />
             <Route path="/hackathon" element={<Hackathon />} />
-            <Route path="/workshop" element={<Workpage />} />
+            <Route path="/workshop" element={<WorkshopPage />} />
             <Route path="/fetch" element={<Teamlogin />} />
             <Route path="/fetchteam" element={<TeamManagement />} />
             <Route path="/hackathon-info" element={<TeamManagementPage />} />

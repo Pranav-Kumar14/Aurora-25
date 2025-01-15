@@ -1,5 +1,5 @@
 import Hero from '../components/Hero'
-import CountdownTimer from '../components/Timer'
+import CountdownTimer from '../components/CountdownTimer'
 import KeynoteSpeakerCard from '../components/keynote_card'
 import hackathon from '../images/HACKATHON.png'
 import partners from '../images/PARTNERS.png'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
-import CountdownTimer from '../components/Timer';
+import CountdownTimer from '../components/CountdownTimer';
 import FAQ from '../components/faq';
 const image="/aurora_logo.png"
 const teamRules = [
