@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -9,22 +10,27 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
+// import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import Hackathon from "./pages/Hackathonmain";
-import Home from "./pages/Home";
-import Workpage from "./pages/workpage";
-import Navbar from "./components/navbar";
-import Teamlogin from "./components/teamlogin";
-import TeamManagement from "./components/teamlogin2";
-import TeamManagementPage from "./pages/HackDemo";
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
+import Hackathon from './pages/Hackathonmain';
+import Home from './pages/Home';
+import Navbar from './components/navbar';
+import Teamlogin from './components/teamlogin';
+import TeamManagement from './components/teamlogin2';
+import TeamManagementPage from './pages/HackDemo';
+import CreateTeam from './components/Createteam';
 import Teams from "./components/Teams";
-import CreateTeam from "./components/Createteam";
+import Workpage from "./pages/workpage";
 import Developer from "./pages/Developer";
 import Footer from "./components/Footer";
+import WorkshopPage from './pages/WorkshopPage';
 import Speaker from "./pages/Speaker";
 
 function App() {
