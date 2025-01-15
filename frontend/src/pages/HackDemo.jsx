@@ -3,6 +3,10 @@ import Teams from "../components/Teams";
 import axios from "axios";
 import Public from "../components/Public";
 import { useAuth } from "../context/AuthContext";
+import createpng from "../images/create.png";
+import framepng from "../images/Frame.png";
+import groupimg from "../images/Group.png";
+import reqimg from "../images/reqicon.png";
 
 const TeamManagementPage = () => {
   const [team, setTeam] = useState(null);
@@ -16,7 +20,7 @@ const TeamManagementPage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
-  const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem("token");
 
   const { user, setUser } = useAuth();
   //  console.log("user check ",user,"token",token)
@@ -36,8 +40,7 @@ const TeamManagementPage = () => {
     try {
       const response = await axios.get(`${url}/list/team`, {
         params: { email: email },
-      }
-      );
+      });
       if (response.data.success) {
         const teamData = response.data.teams[0];
         console.log("Fetched team data:", teamData);
@@ -50,7 +53,7 @@ const TeamManagementPage = () => {
         setJoinRequests(teamData.joinRequests || []);
       } else {
         setMessage("Failed to fetch team details.");
-        console.error("error")
+        console.error("error");
       }
     } catch (error) {
       console.log(`Error fetching team details.: ${error}`);
@@ -58,7 +61,6 @@ const TeamManagementPage = () => {
   };
   useEffect(() => {
     FetchTeamDetails("abh@gmail.com");
-
   }, []);
 
   const updateVisibility = async (newvisibility) => {
@@ -95,8 +97,7 @@ const TeamManagementPage = () => {
     }
   };
   const handleRequestAction = async (userId, action) => {
-    const endpoint =
-      action === "approve" ? "/approve-request" : "";
+    const endpoint = action === "approve" ? "/approve-request" : "";
     try {
       const response = await axios.post(url + `${endpoint}`, {
         teamId: team._id,
@@ -114,13 +115,11 @@ const TeamManagementPage = () => {
     }
   };
   const handleRejectRequest = async (userId, action) => {
-    const endpoint =
-      action === "reject" ? "/reject-request" : "";
+    const endpoint = action === "reject" ? "/reject-request" : "";
     try {
       const response = await axios.post(url + `${endpoint}`, {
         teamId: team._id,
         userId,
-
       });
       if (response.data.success) {
         setMessage(response.data.message);
@@ -172,7 +171,9 @@ const TeamManagementPage = () => {
   };
   const handleDissolveTeam = async () => {
     try {
-      const response = await axios.post(url + "/leave", { email: team.leader.email || team.members.email || "" });
+      const response = await axios.post(url + "/leave", {
+        email: team.leader.email || team.members.email || "",
+      });
       if (response.data.success) {
         setMessage(response.data.message);
         setTeam(null);
@@ -186,9 +187,6 @@ const TeamManagementPage = () => {
     }
   };
 
-
-
-
   return (
     <div className="bg-gradient-to-br from-[#0f0d14] to-[#281046] text-white min-h-screen p-8">
       <div className="max-w-5xl mx-auto space-y-8">
@@ -197,7 +195,7 @@ const TeamManagementPage = () => {
             <section>
               <div className="text-3xl font-bold mb-6 pt-20 flex">
                 <img
-                  src="../images/Frame.png"
+                  src={framepng}
                   alt="Image description"
                   className="w-16 h-16 rounded-md object-cover"
                 />
@@ -216,21 +214,18 @@ const TeamManagementPage = () => {
                     </p>
                   </div>
                   <img
-                    src="../images/create.png"
+                    src={createpng}
                     alt="Image description"
                     className="w-16 h-16 rounded-md object-cover"
                   />
-
                 </button>
-
               </div>
             </section>
-
 
             <section>
               <div className="text-3xl font-bold mb-6 pt-10 flex">
                 <img
-                  src="../images/Frame.png"
+                  src={framepng}
                   alt="Image description"
                   className="w-16 h-16 rounded-md object-cover"
                 />
@@ -243,10 +238,11 @@ const TeamManagementPage = () => {
                 {["private", "public"].map((type) => (
                   <button
                     key={type}
-                    className={`px-4 py-2 rounded-lg border ${visibility === type
-                      ? "bg-gray-200 text-black"
-                      : "bg-[#0f0d14] text-white hover:bg-gray-800"
-                      }`}
+                    className={`px-4 py-2 rounded-lg border ${
+                      visibility === type
+                        ? "bg-gray-200 text-black"
+                        : "bg-[#0f0d14] text-white hover:bg-gray-800"
+                    }`}
                     onClick={() => {
                       setVisibility(type);
                       updateVisibility(type);
@@ -331,21 +327,24 @@ const TeamManagementPage = () => {
                     className="bg-gray-200 text-gray-800 rounded-xl p-4 flex flex-col items-center gap-4 shadow-md"
                   >
                     <img
-                      src="../images/Group.png"
+                      src={grpimg}
                       alt="Image description"
                       className="w-16 h-16 rounded-md object-cover"
                     />
                     <h3 className="text-lg font-bold">{member.username}</h3>
                     <p className="text-sm text-gray-400">{member.leader}</p>
                     {member.role === "Leader" ? (
-
-                      <button onClick={handleDissolveTeam()}
-                        className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      <button
+                        onClick={handleDissolveTeam()}
+                        className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]"
+                      >
                         Disolve Team
                       </button>
                     ) : (
-                      <button onClick={() => handleRemoveMember(member._id)}
-                        className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      <button
+                        onClick={() => handleRemoveMember(member._id)}
+                        className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]"
+                      >
                         Remove
                       </button>
                     )}
@@ -357,7 +356,7 @@ const TeamManagementPage = () => {
             <section>
               <div className="text-3xl font-bold mb-6 pt-5 flex">
                 <img
-                  src="../images/Frame.png"
+                  src={framepng}
                   alt="Image description"
                   className="w-16 h-16 rounded-md object-cover"
                 />
@@ -371,7 +370,7 @@ const TeamManagementPage = () => {
                     className="bg-gray-300 text-white rounded-xl p-4 flex flex-col items-center gap-4 shadow-md"
                   >
                     <img
-                      src="../images/reqicon.png"
+                      src={reqimg}
                       alt="Image description"
                       className="w-16 h-16 rounded-full object-cover"
                     />
@@ -380,12 +379,20 @@ const TeamManagementPage = () => {
                       {request.username} would like to join your team.
                     </p>
                     <div className="flex gap-2">
-                      <button onClick={() =>
-                        handleRequestAction(request._id, "approve")
-                      } className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      <button
+                        onClick={() =>
+                          handleRequestAction(request._id, "approve")
+                        }
+                        className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]"
+                      >
                         Accept
                       </button>
-                      <button onClick={() => handleRejectRequest(request._id, "reject")} className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      <button
+                        onClick={() =>
+                          handleRejectRequest(request._id, "reject")
+                        }
+                        className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]"
+                      >
                         Decline
                       </button>
                     </div>
@@ -393,7 +400,6 @@ const TeamManagementPage = () => {
                 ))}
               </div>
             </section>
-
 
             <Public />
           </>

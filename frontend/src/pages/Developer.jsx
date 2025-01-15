@@ -17,8 +17,8 @@ const developers = [
         role: "Lead Developer",
         description: "Jane is the mastermind behind our most innovative features.",
         img: "https://via.placeholder.com/150",
-        ldlink: "www.linkdin.com",
-        gitlink: "www.github.com",
+        ldlink: "https://github.com/",
+        gitlink: "https://www.github.com",
     },
     {
         name: "Aarya R",

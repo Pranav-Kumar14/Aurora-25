@@ -31,7 +31,11 @@ function App() {
             fintech startup, Aaritay Tech.
           </p>
           <div className="flex justify-center space-x-4 my-4">
-            <a href="www.insta.com" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/p/C2m-ekAPTWH/?img_index=2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 src={instaicon}
                 className="w-[47.49px] h-[42.75px]"
@@ -39,7 +43,7 @@ function App() {
               />
             </a>
             <a
-              href="www.linkedin.com"
+              href="https://in.linkedin.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
