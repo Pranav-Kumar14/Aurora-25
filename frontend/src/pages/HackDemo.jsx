@@ -5,8 +5,8 @@ import Public from "../components/Public";
 import { useAuth } from "../context/AuthContext";
 import createpng from "../images/create.png";
 import framepng from "../images/Frame.png";
-import groupimg from "../images/Group.png";
 import reqimg from "../images/reqicon.png";
+import grpimg from "../images/Group.png";
 
 const TeamManagementPage = () => {
   const [team, setTeam] = useState(null);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import icon from "../images/frame.png";
+import icon from "../images/Frame.png";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 import { workshops } from "../constants/workshops";
