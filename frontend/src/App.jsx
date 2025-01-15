@@ -10,10 +10,6 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
-// import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import Register from './pages/Register';
