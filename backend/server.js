@@ -31,7 +31,7 @@ app.use("/user", userRouter);
 app.use("/team", teamRouter);
 app.use("/payment", paymentRouter);
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("API is running...");
 });
 

@@ -7,6 +7,7 @@ import createpng from "../images/create.png";
 import framepng from "../images/Frame.png";
 import reqimg from "../images/reqicon.png";
 import grpimg from "../images/Group.png";
+import BaseUrl from "../BaseUrl";
 
 const TeamManagementPage = () => {
   const [team, setTeam] = useState(null);
@@ -34,7 +35,7 @@ const TeamManagementPage = () => {
   const handleClose = () => {
     setShowTeams(false);
   };
-  const url = "http://localhost:8000/team";
+  const url = BaseUrl;
 
   const FetchTeamDetails = async (email) => {
     try {

@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 import { workshops } from "../constants/workshops";
 import { getProfile } from "../services/auth";
+import BaseUrl from "../BaseUrl";
 
 const WorkshopPage = () => {
   const token = sessionStorage.getItem('token');
@@ -54,7 +55,7 @@ const WorkshopPage = () => {
     };
 
     // Make the API request
-    fetch("http://localhost:8000/user/updateWorkshops", {
+    fetch(`${BaseUrl}/user/updateWorkshops`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

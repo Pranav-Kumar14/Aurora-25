@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import BaseUrl from "../BaseUrl";
 
 const TeamManagement = ({  }) => {
   const [team, setTeam] = useState(null);
@@ -13,7 +14,7 @@ const TeamManagement = ({  }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
 
-  const url = "http://localhost:8000/team";
+  const url = BaseUrl;
 
 
   const FetchTeamDetails = async (email) => {
