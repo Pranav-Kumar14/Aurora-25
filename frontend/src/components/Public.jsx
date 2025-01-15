@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import framepng from "../images/Frame.png";
+import teamimg from "../images/teampub.png";
 
 const PublicTeams = () => {
   const [teams, setTeams] = useState([]);
@@ -78,7 +80,7 @@ const PublicTeams = () => {
     <div className="w-full mx-auto">
       <div className="text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
         <img
-          src="../images/Frame.png"
+          src={framepng}
           alt="Public Teams Icon"
           className="w-20 h-20 object-contain"
         />
@@ -105,27 +107,28 @@ const PublicTeams = () => {
             >
               <div className="absolute top-4 right-4">
                 <img
-                  src={"../images/teampub.png"}
+                  src={teamimg}
                   alt={`${team.teamname} Logo`}
                   className="w-16 h-16 object-cover rounded-md"
                 />
               </div>
 
-              <h3 className="text-2xl font-bold text-black">
-                {team.teamname}
-              </h3>
+              <h3 className="text-2xl font-bold text-black">{team.teamname}</h3>
               <p className="mt-2 text-black">
-                <span className="font-medium">Leader:</span> {team.leader?.username || "Unknown"}
+                <span className="font-medium">Leader:</span>{" "}
+                {team.leader?.username || "Unknown"}
               </p>
               <p className="mt-2 text-black">
-                <span className="font-medium">Description:</span> {team.description || "No description provided"}
+                <span className="font-medium">Description:</span>{" "}
+                {team.description || "No description provided"}
               </p>
 
               <button
-                className={`mt-4 w-full py-2 px-4 rounded-lg font-medium ${team.isRequested
-                  ? "text-black bg-gray-200 hover:bg-gray-400 border border-black"
-                  : "text-white bg-[#0f0d14] hover:bg-[#1f113e]"
-                  }`}
+                className={`mt-4 w-full py-2 px-4 rounded-lg font-medium ${
+                  team.isRequested
+                    ? "text-black bg-gray-200 hover:bg-gray-400 border border-black"
+                    : "text-white bg-[#0f0d14] hover:bg-[#1f113e]"
+                }`}
                 onClick={() =>
                   team.isRequested
                     ? handleCancelRequest(team._id)
