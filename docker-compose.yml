@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - mongo
+    networks:
+      - mern
+    environment:
+     - PORT=8000
+     - MONGO_URI=mongodb+srv://aaaaryaaa:aarya1234@cluster0.v1xer.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+     - PASSWORD=btzzjatdewbpxboh
+     - ACCESS_TOKEN_SECRET=qwertghgbvbn
+     - JWT_SECRET=qwertghgbvbn
+     - KEY_ID = rzp_test_JxkUxiAr4SKhw6
+     - KEY_SECRET = 4OSBUr6hNztty97CWy2tiYzE
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "8080:8080"
+    networks:
+      - mern
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - mern
+
+volumes:
+  mongo_data:
+
+networks:
+  mern:
