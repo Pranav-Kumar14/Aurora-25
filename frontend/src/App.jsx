@@ -20,6 +20,7 @@ import CreateTeam from './components/Createteam';
 import Developer from "./pages/Developer";
 import Footer from "./components/Footer";
 import WorkshopPage from './pages/WorkshopPage';
+import Speaker from "./pages/Speaker";
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/home" element={<Home />} />
+                        <Route path="/speaker" element={<Speaker />} />
                         <Route path="/hackathon" element={<Hackathon />} />
                         {/* <Route path="/workshop" element={<Workpage />} /> */}
                         <Route path='/workshop' element={<WorkshopPage />} />

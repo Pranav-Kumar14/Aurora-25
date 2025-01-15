@@ -15,11 +15,11 @@ const TeamManagementPage = () => {
   const [newMemberEmail, setNewMemberEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
-  const [teamMembers,setTeamMembers] = useState([]);
+  const [teamMembers, setTeamMembers] = useState([]);
   const token = sessionStorage.getItem('token');
 
-     const { user, setUser } = useAuth();
-//  console.log("user check ",user,"token",token)
+  const { user, setUser } = useAuth();
+  //  console.log("user check ",user,"token",token)
   // const [publicTeams] = useState([
   //   { id: 1, name: "Team Aurora", leader: "Souvik" },
   //   { id: 2, name: "Team Orion", leader: "Alex" },
@@ -34,7 +34,7 @@ const TeamManagementPage = () => {
 
   const FetchTeamDetails = async (email) => {
     try {
-      const response = await axios.get(`${url}/list/team`,{
+      const response = await axios.get(`${url}/list/team`, {
         params: { email: email },
       }
       );
@@ -58,7 +58,7 @@ const TeamManagementPage = () => {
   };
   useEffect(() => {
     FetchTeamDetails("abh@gmail.com");
- 
+
   }, []);
 
   const updateVisibility = async (newvisibility) => {
@@ -66,7 +66,7 @@ const TeamManagementPage = () => {
       const response = await axios.post(url + "/update-visibility", {
         teamId: team._id,
         leaderEmail: team.leader.email,
-        visibility:newvisibility,
+        visibility: newvisibility,
       });
       if (response.data.success) {
         setMessage(response.data.message);
@@ -96,7 +96,7 @@ const TeamManagementPage = () => {
   };
   const handleRequestAction = async (userId, action) => {
     const endpoint =
-      action === "approve" ? "/approve-request" :"";
+      action === "approve" ? "/approve-request" : "";
     try {
       const response = await axios.post(url + `${endpoint}`, {
         teamId: team._id,
@@ -115,12 +115,12 @@ const TeamManagementPage = () => {
   };
   const handleRejectRequest = async (userId, action) => {
     const endpoint =
-      action === "reject" ? "/reject-request" :"";
+      action === "reject" ? "/reject-request" : "";
     try {
       const response = await axios.post(url + `${endpoint}`, {
         teamId: team._id,
         userId,
-    
+
       });
       if (response.data.success) {
         setMessage(response.data.message);
@@ -136,23 +136,23 @@ const TeamManagementPage = () => {
   const handleAddMember = async () => {
     try {
       const response = await axios.post(url + "/join", {
-        teamName: team.teamname, 
-        email: newMemberEmail, 
+        teamName: team.teamname,
+        email: newMemberEmail,
       });
-  
+
       if (response.data.success) {
-        setMessage(response.data.message); 
-        setShowAddMemberPopup(false); 
+        setMessage(response.data.message);
+        setShowAddMemberPopup(false);
         setNewMemberEmail("");
-        fetchTeamDetails(email); 
+        fetchTeamDetails(email);
       } else {
-        setMessage(response.data.message); 
+        setMessage(response.data.message);
       }
     } catch (error) {
-      setMessage("Error adding member. Please try again."); 
+      setMessage("Error adding member. Please try again.");
     }
   };
-  
+
   const handleRemoveMember = async (userId) => {
     try {
       const response = await axios.post(url + "/remove-member", {
@@ -172,7 +172,7 @@ const TeamManagementPage = () => {
   };
   const handleDissolveTeam = async () => {
     try {
-      const response = await axios.post(url + "/leave", { email: team.leader.email || team.members.email ||"" });
+      const response = await axios.post(url + "/leave", { email: team.leader.email || team.members.email || "" });
       if (response.data.success) {
         setMessage(response.data.message);
         setTeam(null);
@@ -196,13 +196,13 @@ const TeamManagementPage = () => {
           <>
             <section>
               <div className="text-3xl font-bold mb-6 pt-20 flex">
-              <img 
-                    src="../../public/Frame.png" 
-                    alt="Image description" 
-                    className="w-16 h-16 rounded-md object-cover"
-                  />
+                <img
+                  src="../images/Frame.png"
+                  alt="Image description"
+                  className="w-16 h-16 rounded-md object-cover"
+                />
                 <h2 className="p-5">Team Management</h2>
-                </div>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <button
                   className="bg-gray-300 text-black rounded-lg shadow-md px-6 py-4 hover:bg-gray-400 flex justify-between items-center border"
@@ -215,136 +215,137 @@ const TeamManagementPage = () => {
                       and start collaborating towards your goals.
                     </p>
                   </div>
-                  <img 
-                    src="../../public/create.png" 
-                    alt="Image description" 
+                  <img
+                    src="../images/create.png"
+                    alt="Image description"
                     className="w-16 h-16 rounded-md object-cover"
                   />
 
                 </button>
-                
+
               </div>
             </section>
 
 
             <section>
-            <div className="text-3xl font-bold mb-6 pt-10 flex">
-              <img 
-                    src="../../public/Frame.png" 
-                    alt="Image description" 
-                    className="w-16 h-16 rounded-md object-cover"
-                  />
+              <div className="text-3xl font-bold mb-6 pt-10 flex">
+                <img
+                  src="../images/Frame.png"
+                  alt="Image description"
+                  className="w-16 h-16 rounded-md object-cover"
+                />
                 <h2 className="text-3xl font-bold p-5">
-                Team name : {team?.teamname}
-              </h2>
-                </div>
-              
+                  Team name : {team?.teamname}
+                </h2>
+              </div>
+
               <div className="flex gap-4 mb-4">
                 {["private", "public"].map((type) => (
                   <button
                     key={type}
-                    className={`px-4 py-2 rounded-lg border ${
-                      visibility === type
-                        ? "bg-gray-200 text-black"
-                        : "bg-[#0f0d14] text-white hover:bg-gray-800"
-                    }`}
-                    onClick={() => {setVisibility(type);
-                        updateVisibility(type);}}
+                    className={`px-4 py-2 rounded-lg border ${visibility === type
+                      ? "bg-gray-200 text-black"
+                      : "bg-[#0f0d14] text-white hover:bg-gray-800"
+                      }`}
+                    onClick={() => {
+                      setVisibility(type);
+                      updateVisibility(type);
+                    }}
                   >
                     {type === "private" ? "Private" : "Public"}
                   </button>
                 ))}
               </div>
               <div className="mb-6">
-        <label
-          htmlFor="description"
-          className="block text-lg font-medium text-white mb-2"
-        >
-          Edit Team Description
-        </label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-3 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
-          placeholder="Enter a new team description"
-        />
-        <button
-          className="mt-4 bg-[#0f0d14] text-white hover:bg-gray-900 hover:text-white py-2 px-4 rounded-lg  focus:outline-none"
-          onClick={updateDescription}
-        >
-          Update Description
-        </button>
-
-        <div className="mt-6">
-            <button
-              className="mt-4 bg-gray-700 text-white hover:bg-gray-400 hover:text-black py-2 px-4 rounded-lg  focus:outline-none"
-              onClick={() => setShowAddMemberPopup(true)}
-            >
-              Add Member
-            </button>
-          </div>
-          {showAddMemberPopup && (
-            <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
-              <div className="bg-gray-200 p-8 rounded-lg shadow-lg w-96">
-                <h2 className="text-2xl text-center text-black font-semibold mb-4">
-                  Add Team Member
-                </h2>
                 <label
-                  htmlFor="newMemberEmail"
-                  className="block text-lg font-medium text-gray-700 mb-2"
+                  htmlFor="description"
+                  className="block text-lg font-medium text-white mb-2"
                 >
-                  Enter Member's Email
+                  Edit Team Description
                 </label>
-                <input
-                  type="email"
-                  id="newMemberEmail"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Enter email"
-                  value={newMemberEmail}
-                  onChange={(e) => setNewMemberEmail(e.target.value)}
+                <textarea
+                  id="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="w-full p-3 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="Enter a new team description"
                 />
-                <div className="flex justify-between mt-6">
+                <button
+                  className="mt-4 bg-[#0f0d14] text-white hover:bg-gray-900 hover:text-white py-2 px-4 rounded-lg  focus:outline-none"
+                  onClick={updateDescription}
+                >
+                  Update Description
+                </button>
+
+                <div className="mt-6">
                   <button
-                    className="bg-[#0f0d14] text-white py-2 px-4 rounded-lg hover:bg-gray-800"
-                    onClick={handleAddMember}
+                    className="mt-4 bg-gray-700 text-white hover:bg-gray-400 hover:text-black py-2 px-4 rounded-lg  focus:outline-none"
+                    onClick={() => setShowAddMemberPopup(true)}
                   >
                     Add Member
                   </button>
-                  <button
-                    className="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600"
-                    onClick={() => setShowAddMemberPopup(false)}
-                  >
-                    Cancel
-                  </button>
                 </div>
+                {showAddMemberPopup && (
+                  <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-gray-200 p-8 rounded-lg shadow-lg w-96">
+                      <h2 className="text-2xl text-center text-black font-semibold mb-4">
+                        Add Team Member
+                      </h2>
+                      <label
+                        htmlFor="newMemberEmail"
+                        className="block text-lg font-medium text-gray-700 mb-2"
+                      >
+                        Enter Member's Email
+                      </label>
+                      <input
+                        type="email"
+                        id="newMemberEmail"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Enter email"
+                        value={newMemberEmail}
+                        onChange={(e) => setNewMemberEmail(e.target.value)}
+                      />
+                      <div className="flex justify-between mt-6">
+                        <button
+                          className="bg-[#0f0d14] text-white py-2 px-4 rounded-lg hover:bg-gray-800"
+                          onClick={handleAddMember}
+                        >
+                          Add Member
+                        </button>
+                        <button
+                          className="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600"
+                          onClick={() => setShowAddMemberPopup(false)}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          )}
-      </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {members.map((member,index) => (
+                {members.map((member, index) => (
                   <div
                     key={index}
                     className="bg-gray-200 text-gray-800 rounded-xl p-4 flex flex-col items-center gap-4 shadow-md"
                   >
-                    <img 
-                    src="../../public/Group.png" 
-                    alt="Image description" 
-                    className="w-16 h-16 rounded-md object-cover"
-                  />
+                    <img
+                      src="../images/Group.png"
+                      alt="Image description"
+                      className="w-16 h-16 rounded-md object-cover"
+                    />
                     <h3 className="text-lg font-bold">{member.username}</h3>
                     <p className="text-sm text-gray-400">{member.leader}</p>
                     {member.role === "Leader" ? (
-                        
+
                       <button onClick={handleDissolveTeam()}
-                      className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                        className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
                         Disolve Team
                       </button>
                     ) : (
                       <button onClick={() => handleRemoveMember(member._id)}
-                      className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                        className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
                         Remove
                       </button>
                     )}
@@ -354,24 +355,24 @@ const TeamManagementPage = () => {
             </section>
 
             <section>
-            <div className="text-3xl font-bold mb-6 pt-5 flex">
-              <img 
-                    src="../../public/Frame.png" 
-                    alt="Image description" 
-                    className="w-16 h-16 rounded-md object-cover"
-                  />
+              <div className="text-3xl font-bold mb-6 pt-5 flex">
+                <img
+                  src="../images/Frame.png"
+                  alt="Image description"
+                  className="w-16 h-16 rounded-md object-cover"
+                />
                 <h2 className="text-3xl font-bold mb-4 p-5">Join Request</h2>
-                </div>
-              
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {joinRequests.map((request) => (
                   <div
-                  key={request._id}
+                    key={request._id}
                     className="bg-gray-300 text-white rounded-xl p-4 flex flex-col items-center gap-4 shadow-md"
                   >
-                    <img 
-                      src="../../public/reqicon.png" 
-                      alt="Image description" 
+                    <img
+                      src="../images/reqicon.png"
+                      alt="Image description"
                       className="w-16 h-16 rounded-full object-cover"
                     />
 
@@ -379,12 +380,12 @@ const TeamManagementPage = () => {
                       {request.username} would like to join your team.
                     </p>
                     <div className="flex gap-2">
-                      <button  onClick={() =>
+                      <button onClick={() =>
                         handleRequestAction(request._id, "approve")
                       } className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
                         Accept
                       </button>
-                      <button  onClick={() => handleRejectRequest(request._id, "reject")} className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
+                      <button onClick={() => handleRejectRequest(request._id, "reject")} className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e]">
                         Decline
                       </button>
                     </div>
@@ -393,8 +394,8 @@ const TeamManagementPage = () => {
               </div>
             </section>
 
-            
-            <Public/>
+
+            <Public />
           </>
         ) : (
           <Teams onClose={handleClose} />
