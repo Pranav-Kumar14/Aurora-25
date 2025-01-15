@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import framepng from "../images/Frame.png";
 import teamimg from "../images/teampub.png";
+import BaseUrl from "../BaseUrl";
 
 const PublicTeams = () => {
   const [teams, setTeams] = useState([]);
@@ -9,7 +10,7 @@ const PublicTeams = () => {
   const [error, setError] = useState(null);
   const [userId, setUserId] = useState("67840bb36508b75887fe0f46");
 
-  const url = "http://localhost:8000/team";
+  const url = BaseUrl;
 
   useEffect(() => {
     const fetchTeams = async () => {

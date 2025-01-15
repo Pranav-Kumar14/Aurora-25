@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import BaseUrl from "../BaseUrl";
 
 const Teams = ({ onClose }) => {
   const [teamData, setTeamData] = useState({
@@ -9,7 +10,7 @@ const Teams = ({ onClose }) => {
     description: "",
   });
   const [message, setMessage] = useState("");
-  const url = "http://localhost:8000";
+  const url = BaseUrl;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
