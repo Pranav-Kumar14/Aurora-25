@@ -68,7 +68,7 @@ const TiltCard = () => {
             transformStyle: "preserve-3d",
             transform,
         }}
-        className="relative w-[32rem] h-[24rem] rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 shadow-lg"
+        className="relative w-[32rem] h-[24rem] rounded-xl bg-gradient-to-br from-pink-500 to-purple-500 shadow-lg"
         >
         <div
             style={{
