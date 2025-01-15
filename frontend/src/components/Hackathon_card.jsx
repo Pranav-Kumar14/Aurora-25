@@ -68,7 +68,7 @@ const TiltCard = () => {
             transformStyle: "preserve-3d",
             transform,
         }}
-        className="relative w-[32rem] h-[24rem] rounded-xl bg-gradient-to-br from-indigo-300 to-violet-300 shadow-lg"
+        className="relative w-[32rem] h-[24rem] rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 shadow-lg"
         >
         <div
             style={{
@@ -76,20 +76,23 @@ const TiltCard = () => {
             }}
             className="absolute inset-[2rem] grid place-content-center rounded-xl bg-white shadow-lg"
         >
-            <FiMousePointer
-            style={{
-                transform: "translateZ(25px)",
-            }}
-            className="mx-auto text-4xl"
-            />
-            <p
-            style={{
-                transform: "translateZ(25px)",
-            }}
-            className="text-center text-2xl font-bold"
-            >
-            HOVER ME
-            </p>
+            <a href="/hackathon">
+                {/* <FiMousePointer
+                style={{
+                    transform: "translateZ(25px)",
+                }}
+                className="mx-auto text-4xl"
+                /> */}
+                <p
+                style={{
+                    transform: "translateZ(25px)",
+                }}
+                className="text-center text-2xl font-bold"
+                >
+                    {/* Insert the hackathon wala content here */}
+                HOVER ME
+                </p>
+            </a>
         </div>
         </motion.div>
     );
