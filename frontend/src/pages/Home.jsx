@@ -7,7 +7,7 @@ import hackathon from '../images/HACKATHON.png'
 import partners from '../images/PARTNERS.png'
 import workshops from '../images/WORKSHOPS.png'
 import HackathonCard from '../components/Hackathon_card'
-
+import Workshop from './Workshop'
 
 const Home = () => {
     return (
@@ -19,6 +19,7 @@ const Home = () => {
             <img src={partners} alt="partners" className="w-1/4 py-8 mx-auto" />
 
             <img src={workshops} alt="workshops" className="w-1/4 py-8 mx-auto" />
+            <Workshop/>
 
             <img src={hackathon} alt="hackathon" className="w-1/4 py-8 mx-auto" />
 
