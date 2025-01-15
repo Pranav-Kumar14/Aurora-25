@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import hackathon from '../images/HACKATHON.png'
 import partners from '../images/PARTNERS.png'
 import workshops from '../images/WORKSHOPS.png'
-import BentoGrid from '../components/bento'
+import HackathonCard from '../components/Hackathon_card'
 
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
 
             <img src={hackathon} alt="hackathon" className="w-1/4 py-8 mx-auto" />
 
-            <BentoGrid />
+            <HackathonCard />
 
         </div>
     )
