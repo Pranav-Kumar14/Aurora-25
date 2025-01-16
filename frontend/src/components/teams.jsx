@@ -63,27 +63,25 @@ const Teams = ({ onClose }) => {
           {/* Team Name */}
           <div className="mb-4">
             <label className="block text-lg mb-2 font-press-start">Team Name</label>
-            <input
-              type="text"
+            <textarea
               name="teamname"
               value={teamData.teamname}
               onChange={handleChange}
-              className={`${inputStyle} bg-[#6d8dd2] text-white`}
+              className={`${inputStyle} bg-[#010A1E] text-white`}
               placeholder="Enter team name"
-              required
+              rows="1"
             />
           </div>
           {/* Email */}
           <div className="mb-4">
-            <label className="block text-lg mb-2 font-press-start">Your Email</label>
-            <input
-              type="email"
+            <label className="block text-lg mb-2 font-press-start">Email</label>
+            <textarea
               name="email"
               value={teamData.email}
               onChange={handleChange}
               className={`${inputStyle} bg-[#010A1E] text-white`}
               placeholder="Enter your email"
-              required
+              rows="1"
             />
           </div>
           {/* Visibility */}

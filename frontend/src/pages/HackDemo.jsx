@@ -65,7 +65,7 @@ const TeamManagementPage = () => {
       });
       if (response.data.success) {
         setMessage(response.data.message);
-        window.location.reload(); 
+        window.location.reload();
       } else {
         setMessage(response.data.message);
       }
@@ -83,7 +83,7 @@ const TeamManagementPage = () => {
       });
       if (response.data.success) {
         setMessage("Team description updated successfully.");
-        window.location.reload(); 
+        window.location.reload();
       } else {
         setMessage("Error updating description. Please try again.");
       }
@@ -103,7 +103,7 @@ const TeamManagementPage = () => {
       });
       if (response.data.success) {
         setMessage(response.data.message);
-        window.location.reload(); 
+        window.location.reload();
       } else {
         setMessage(response.data.message);
       }
@@ -121,7 +121,7 @@ const TeamManagementPage = () => {
       });
       if (response.data.success) {
         setMessage(response.data.message);
-        window.location.reload(); 
+        window.location.reload();
       } else {
         setMessage(response.data.message);
         window.location.reload();
@@ -142,7 +142,7 @@ const TeamManagementPage = () => {
         setMessage(response.data.message);
         setShowAddMemberPopup(false);
         setNewMemberEmail("");
-        window.location.reload(); 
+        window.location.reload();
       } else {
         setMessage(response.data.message);
       }
@@ -160,7 +160,7 @@ const TeamManagementPage = () => {
       });
       if (response.data.success) {
         setMessage(response.data.message);
-        window.location.reload(); 
+        window.location.reload();
       } else {
         setMessage(response.data.message);
         window.location.reload();
@@ -178,7 +178,7 @@ const TeamManagementPage = () => {
       if (response.data.success) {
         setMessage(response.data.message);
         setTeam(null);
-        window.location.reload(); 
+        window.location.reload();
       } else {
         setMessage(response.data.message);
       }
@@ -189,7 +189,7 @@ const TeamManagementPage = () => {
     }
   };
 
-  
+
 
 
   return (
@@ -226,7 +226,7 @@ const TeamManagementPage = () => {
                 </button>
               </div>
             </section>
-  
+
             <section>
               <div className="text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
                 <img
@@ -238,7 +238,7 @@ const TeamManagementPage = () => {
                   Team : {team?.teamname}
                 </h2>
               </div>
-  
+
               <div className="flex gap-4 mb-4 font-press-start">
                 {["private", "public"].map((type) => (
                   <button
@@ -278,7 +278,7 @@ const TeamManagementPage = () => {
                 >
                   Update Description
                 </button>
-  
+
                 <div className="mt-6 font-press-start">
                   <button
                     className="mt-4 bg-gray-700 text-white hover:bg-gray-400 hover:text-black py-2 px-4 rounded-lg focus:outline-none font-press-start"
@@ -299,14 +299,14 @@ const TeamManagementPage = () => {
                       >
                         Enter Member's Email
                       </label>
-                      <input
-                        type="email"
-                        id="newMemberEmail"
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-press-start"
-                        placeholder="Enter email"
+                        <textarea
+                        name="email"
                         value={newMemberEmail}
                         onChange={(e) => setNewMemberEmail(e.target.value)}
-                      />
+                        className={` w-full p-3 border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-black font-press-start text-black`}
+                        placeholder="Enter email"
+                        rows="1"
+                        />
                       <div className="flex justify-between mt-6 font-press-start">
                         <button
                           className="bg-[#0f0d14] text-white py-2 px-4 rounded-lg hover:bg-gray-800 font-press-start"
@@ -325,7 +325,7 @@ const TeamManagementPage = () => {
                   </div>
                 )}
               </div>
-  
+
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-press-start">
                 {members.map((member, index) => (
                   <div
@@ -358,7 +358,7 @@ const TeamManagementPage = () => {
                 ))}
               </div>
             </section>
-  
+
             <section>
               <div className="text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
                 <img
@@ -368,7 +368,7 @@ const TeamManagementPage = () => {
                 />
                 <h2 className="text-3xl font-bold p-5 font-press-start">Join Request</h2>
               </div>
-  
+
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-press-start">
                 {joinRequests.map((request) => (
                   <div
@@ -380,7 +380,7 @@ const TeamManagementPage = () => {
                       alt="Image description"
                       className="w-16 h-16 rounded-full object-cover"
                     />
-  
+
                     <p className="text-sm text-center text-black font-press-start">
                       {request.username} would like to join your team.
                     </p>
@@ -406,7 +406,7 @@ const TeamManagementPage = () => {
                 ))}
               </div>
             </section>
-  
+
             <Public />
           </>
         ) : (
@@ -415,7 +415,7 @@ const TeamManagementPage = () => {
       </div>
     </div>
   );
-  
+
 };
 
 export default TeamManagementPage;
