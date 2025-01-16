@@ -9,6 +9,8 @@ import {
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import PaymentPage from './pages/Payment';
+
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -37,6 +39,7 @@ function App() {
         <AuthProvider>
           <Toaster position="top-right" />
           <Routes>
+            <Route path="/payment" element={<PaymentPage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
@@ -61,6 +64,7 @@ function App() {
         </AuthProvider>
       </Router>
       <Footer />
+      
     </>
   );
 }
