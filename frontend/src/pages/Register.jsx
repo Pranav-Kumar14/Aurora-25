@@ -105,10 +105,6 @@ export default function Register() {
                             </div>
                         </div>
 
-
-                        <div className="hidden sm:block border-l-2 border-dotted border-white h-full mx-4"></div>
-
-
                         <div className="flex flex-col space-y-4 w-full sm:w-5/12">
                             <div>
                                 <label htmlFor="collegeid" className="block text-md font-medium text-white">
