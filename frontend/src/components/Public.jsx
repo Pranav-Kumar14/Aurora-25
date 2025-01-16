@@ -84,19 +84,19 @@ const PublicTeams = () => {
           alt="Public Teams Icon"
           className="w-20 h-20 object-contain"
         />
-        <h2 className="text-white">Public Teams</h2>
+        <h2 className="text-3xl font-bold p-5 font-press-start">Public Teams</h2>
       </div>
 
       {loading && (
-        <p className="text-center text-lg text-gray-400">
+        <p className="text-center text-lg text-gray-400 font-press-start">
           Loading public teams...
         </p>
       )}
       {error && <p className="text-center text-red-400 font-medium">{error}</p>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {teams.length === 0 ? (
-          <p className="col-span-full text-center text-lg text-gray-400">
+          <p className="col-span-full text-center text-lg text-gray-400 font-press-start">
             No public teams available.
           </p>
         ) : (
@@ -109,22 +109,22 @@ const PublicTeams = () => {
                 <img
                   src={teamimg}
                   alt={`${team.teamname} Logo`}
-                  className="w-16 h-16 object-cover rounded-md"
+                  className="w-14 h-14 object-cover rounded-md"
                 />
               </div>
 
-              <h3 className="text-2xl font-bold text-black">{team.teamname}</h3>
-              <p className="mt-2 text-black">
-                <span className="font-medium">Leader:</span>{" "}
+              <h3 className="text-2xl font-bold text-black font-press-start">{team.teamname}</h3>
+              <p className="mt-2 text-black font-press-start">
+                <span className="font-medium font-press-start">Leader:</span>{" "}
                 {team.leader?.username || "Unknown"}
               </p>
-              <p className="mt-2 text-black">
-                <span className="font-medium">Description:</span>{" "}
+              <p className="mt-2 text-black font-press-start">
+                <span className="font-medium font-press-start">Description:</span>{" "}
                 {team.description || "No description provided"}
               </p>
 
               <button
-                className={`mt-4 w-full py-2 px-4 rounded-lg font-medium ${
+                className={`mt-4 w-full py-2 px-4 rounded-lg font-medium font-press-start ${
                   team.isRequested
                     ? "text-black bg-gray-200 hover:bg-gray-400 border border-black"
                     : "text-white bg-[#0f0d14] hover:bg-[#1f113e]"
