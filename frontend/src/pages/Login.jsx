@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/auth';
 import { useAuth } from '../context/AuthContext';
-
+import toast from 'react-hot-toast'
 import LoginBg from '../images/Bg1.png';
 import LoginIcon from '../images/log.png';
 import LoginText from '../images/LOGIN.png';
