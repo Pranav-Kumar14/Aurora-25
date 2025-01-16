@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import { load } from '@cashfreepayments/cashfree-js';
-import '../../styles/Payment.css'
 
 function PaymentPage() {
     const [orderId, setOrderId] = useState("");
@@ -86,7 +85,7 @@ function PaymentPage() {
                         Payment Status: {paymentStatus}
                     </div>
                 )}
-                <button 
+                <button
                     className="payment-button"
                     onClick={handlePayment}
                     disabled={loading}

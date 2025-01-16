@@ -17,6 +17,7 @@
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
+    "cashfree": "^1.0.1",
     "cashfree-pg": "^4.3.10",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
