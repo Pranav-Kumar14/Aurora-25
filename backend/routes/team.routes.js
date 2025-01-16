@@ -12,7 +12,7 @@ const { createTeam, joinTeam, teamList, teamRequest, checkLeader, getUserTeam,
 
 router.post("/create", createTeam)
 
-router.get("/list/", teamList)
+router.get("/list", teamList)
 router.get("/list/team", teamLists)
 
 
