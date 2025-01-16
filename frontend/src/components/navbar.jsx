@@ -140,40 +140,70 @@ function Navbar() {
                 <div className="md:hidden bg-gradient-to-r from-[#0f0d39] to-[#201867]">
                     <div className="space-y-1 px-2 pt-2 pb-3">
                         <Link
-                            to="/"
+                            to="/home"
                             className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
                         >
-                            Home
+                            <img
+                            className="ml-[0.25rem] h-4 w-auto"
+                            src={Home}
+                            alt="Home"
+                        />
                         </Link>
                         <Link
                             to="/speaker"
                             className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
                         >
-                            Speaker
+                            <img
+                            className="ml-[0.25rem] h-4 w-auto"
+                            src={Speaker}
+                            alt="speaker"
+                        />
                         </Link>
-                        <Link
+                        {/* <Link
                             to="/timeline"
                             className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
                         >
                             Timeline
-                        </Link>
+                        </Link> */}
                         <Link
                             to="/sponsors"
-                            className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
+                            className="block px-3 py-2 rounded-md text-base font-medium"
                         >
-                            Sponsors
+                            <img
+                            className="ml-[0.25rem] h-4 w-auto"
+                            src={Sponsors}
+                            alt="Sponsors"
+                        />
+                        </Link>
+                        <Link
+                        to="/developer"
+                        className="block px-3 py-2 rounded-md text-base font-medium"
+                        >
+                            <img
+                            className="ml-[0.25rem] h-4 w-auto"
+                            src={Dev}
+                            alt="Developers"
+                        />
                         </Link>
                         <Link
                             to="/hackathon"
-                            className="block bg-pink-500 hover:bg-pink-600 text-white px-3 py-2 rounded-full text-base font-medium"
+                            className="block px-3 py-2 rounded-full text-base font-medium"
                         >
-                            Hackathon
+                            <img
+                            className="h-9 w-auto"
+                            src={Hack}
+                            alt="Hackathon"
+                        />
                         </Link>
                         <Link
                             to="/workshop"
-                            className="block bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-full text-base font-medium"
+                            className="block px-3 py-2 rounded-full text-base font-medium"
                         >
-                            Workshop
+                            <img
+                            className="h-[38px] w-auto"
+                            src={Work}
+                            alt="Workshop"
+                        />
                         </Link>
                     </div>
                 </div>

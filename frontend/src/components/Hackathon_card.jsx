@@ -5,15 +5,14 @@ import {
     useMotionValue,
     useSpring,
 } from "framer-motion";
-import { FiMousePointer } from "react-icons/fi";
 
 const HackathonCard = () => {
     return (
-        <div className="grid w-full place-content-center px-4 py-12 text-slate-900">
-        <TiltCard />
+        <div className="grid w-full place-content-center px-4 py-8 text-slate-900">
+            <TiltCard />
         </div>
     );
-    };
+};
 
 const ROTATION_RANGE = 32.5; // Range of rotation in degrees
 
@@ -60,40 +59,33 @@ const TiltCard = () => {
 
     return (
         <motion.div
-        ref={ref}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{
-            perspective: "1000px", // Add perspective for 3D effect
-            transformStyle: "preserve-3d",
-            transform,
-        }}
-        className="relative w-[32rem] h-[24rem] rounded-xl bg-gradient-to-br from-pink-500 to-purple-500 shadow-lg"
-        >
-        <div
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
             style={{
-            transform: "translateZ(50px)", // Add depth for inner content
+                perspective: "1000px", // Add perspective for 3D effect
+                transformStyle: "preserve-3d",
+                transform,
             }}
-            className="absolute inset-[2rem] grid place-content-center rounded-xl bg-white shadow-lg"
+            className="relative w-[20rem] h-[14rem] sm:w-[24rem] sm:h-[18rem] md:w-[28rem] md:h-[20rem] lg:w-[32rem] lg:h-[24rem] rounded-xl bg-gradient-to-br from-pink-500 to-purple-500 shadow-lg"
         >
-            <a href="/hackathon">
-                {/* <FiMousePointer
+            <div
                 style={{
-                    transform: "translateZ(25px)",
+                    transform: "translateZ(50px)", // Add depth for inner content
                 }}
-                className="mx-auto text-4xl"
-                /> */}
-                <p
-                style={{
-                    transform: "translateZ(25px)",
-                }}
-                className="text-center text-2xl font-bold"
-                >
-                    {/* Insert the hackathon wala content here */}
-                HOVER ME
-                </p>
-            </a>
-        </div>
+                className="absolute inset-[1rem] sm:inset-[1.5rem] md:inset-[2rem] grid place-content-center rounded-xl bg-white shadow-lg"
+            >
+                <a href="/hackathon">
+                    <p
+                        style={{
+                            transform: "translateZ(25px)",
+                        }}
+                        className="text-center text-lg sm:text-xl md:text-2xl font-bold"
+                    >
+                        HOVER ME
+                    </p>
+                </a>
+            </div>
         </motion.div>
     );
 };
