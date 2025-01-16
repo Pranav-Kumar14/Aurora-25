@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import auroralogo from '../images/aurora_logo.png';
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <nav className="bg-gradient-to-r from-[#0f0d39] to-[#201867] sticky top-0 z-50">
@@ -66,7 +68,9 @@ function Navbar() {
 
                     {/* Profile icon on the right */}
                     <div className="hidden md:block pt-2">
-                        <button className="text-white hover:text-blue-300">
+                        <button className="text-white hover:text-blue-300"
+                        onClick={() => navigate("/profile")}
+                        >
                             <svg
                                 className="h-12 w-12"
                                 xmlns="http://www.w3.org/2000/svg"
