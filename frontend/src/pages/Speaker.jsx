@@ -5,7 +5,7 @@ import instaicon from "../images/insta.png";
 import cal from "../images/calendar.png";
 import clock from "../images/clock.png";
 
-function App() {
+function Speaker() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#030d4b] via-[#020428] to-[#020322] flex flex-col justify-center items-center px-4 py-8 sm:px-6 lg:px-8">
       {/* Title */}
@@ -78,4 +78,4 @@ function App() {
   );
 }
 
-export default App;
+export default Speaker;
