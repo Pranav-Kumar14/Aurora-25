@@ -2,13 +2,15 @@ import React from "react";
 
 function Hero() {
   return (
-    <section className=" text-white py-20">
-      <div className="max-w-4xl mx-auto text-center">
+    <section className="text-white py-16 sm:py-20 lg:py-24">
+      <div className="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
         {/* Title */}
-        <h1 className="text-6xl font-serif font-bold mb-8">Aurora `25</h1>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-6 sm:mb-8 lg:mb-10">
+          Aurora `25
+        </h1>
 
         {/* Description */}
-        <p className="text-lg font-sans leading-relaxed mb-12">
+        <p className="text-base sm:text-lg lg:text-xl font-sans leading-relaxed sm:leading-relaxed lg:leading-loose mb-8 sm:mb-10 lg:mb-12">
           Get ready to embark on an unforgettable journey into the realms of
           technology with TechWeek: Aurora, brought to you by ISTE Manipal. This
           year, we’re taking it to the next level with an incredible lineup of
@@ -28,10 +30,10 @@ function Hero() {
         {/* Register Button */}
         <a
           href="/register"
-          className="bg-purple-500 hover:bg-purple-600 text-white px-8 py-4 rounded-full text-lg font-medium inline-flex items-center"
+          className="bg-purple-500 hover:bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-medium inline-flex items-center"
         >
           <svg
-            className="h-6 w-6 mr-2"
+            className="h-5 w-5 sm:h-6 sm:w-6 mr-2"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
