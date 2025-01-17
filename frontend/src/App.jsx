@@ -1,10 +1,10 @@
 
 import React from "react";
 import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Navigate,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "./context/AuthContext";
@@ -29,7 +29,7 @@ import Footer from "./components/Footer";
 import WorkshopPage from './pages/WorkshopPage';
 import Speaker from "./pages/Speaker";
 import Carousel from "./components/Carousel";
-
+import ForgotPassword from "./pages/ForgotPassword";
 function App() {
   return (
     <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
@@ -50,7 +50,8 @@ function App() {
             <Route path="/hackathon-info" element={<TeamManagementPage />} />
             <Route path="/createteam" element={<CreateTeam />} />
             <Route path="/developer" element={<Developer />} />
-            <Route path="testing" element={<Carousel/>} />
+            <Route path="testing" element={<Carousel />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route
               path="/profile"
               element={
