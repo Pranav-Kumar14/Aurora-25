@@ -14,13 +14,13 @@ const Footer = () => {
         >
         <h2 className="bg-purple-500 hover:bg-purple-600 text-white px-2 py-1 mb-4 rounded-full text-lg font-medium inline-flex items-center">Contact Us</h2>
         <div className="flex justify-center space-x-6 mb-6">
-            <a href="#" className="text-white hover:text-gray-400">
+            <a href="https://www.instagram.com/iste_manipal/" className="text-white hover:text-gray-400">
             <i className="fab fa-instagram text-2xl"></i>
             </a>
-            <a href="#" className="text-white hover:text-gray-400">
+            <a href="https://www.facebook.com/istemanipal/" className="text-white hover:text-gray-400">
             <i className="fab fa-facebook text-2xl"></i>
             </a>
-            <a href="#" className="text-white hover:text-gray-400">
+            <a href="https://in.linkedin.com/company/iste-manipal" className="text-white hover:text-gray-400">
             <i className="fab fa-linkedin text-2xl"></i>
             </a>
         </div>
