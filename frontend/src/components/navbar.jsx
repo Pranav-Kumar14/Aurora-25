@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import auroralogo from "../images/aurora_logo.png";
 import { useNavigate } from "react-router-dom";
-import Home from "../images/Home.png";
-import Speaker from "../images/Speaker.png";
-import Dev from "../images/Developers.png";
-import Hack from "../images/Hack.png";
-import Icon from "../images/Icon.png";
-import Sponsors from "../images/Sponsers.png";
-import Work from "../images/Work.png";
+// import Home from "../images/Home.png";
+// import Speaker from "../images/Speaker.png";
+// import Dev from "../images/Developers.png";
+// import Hack from "../images/Hack.png";
+// import Icon from "../images/Icon.png";
+// import Sponsors from "../images/Sponsers.png";
+// import Work from "../images/Work.png";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,7 @@ function Navbar() {
                     <div className="mr-[2rem] flex-shrink-0 py-2">
                         <img
                             className="h-12 w-12"
-                            src={auroralogo}
+                            src= "https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/logo_b0anb8.png"
                             alt="Logo"
                         />
                     </div>
@@ -35,7 +35,7 @@ function Navbar() {
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src={Home}
+                            src= "https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
                             alt="Home"
                         />
                         </Link>
@@ -45,7 +45,7 @@ function Navbar() {
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src={Speaker}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
                             alt="speaker"
                         />
                         </Link>
@@ -65,7 +65,7 @@ function Navbar() {
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src={Sponsors}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Sponsers_th9hym.png"
                             alt="Sponsors"
                         />
                         </Link>
@@ -75,7 +75,7 @@ function Navbar() {
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src={Dev}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
                             alt="Developers"
                         />
                         </Link>
@@ -85,7 +85,7 @@ function Navbar() {
                         >
                             <img
                             className="h-10 w-auto"
-                            src={Hack}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
                             alt="Hackathon"
                         />
                         </Link>
@@ -95,7 +95,7 @@ function Navbar() {
                         >
                             <img
                             className="h-10 w-auto"
-                            src={Work}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
                             alt="Logo"
                         />
                         </a>
@@ -158,7 +158,7 @@ function Navbar() {
                         >
                             <img
                             className="ml-[0.25rem] h-4 w-auto"
-                            src={Home}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
                             alt="Home"
                         />
                         </Link>
@@ -168,7 +168,7 @@ function Navbar() {
                         >
                             <img
                             className="ml-[0.25rem] h-4 w-auto"
-                            src={Speaker}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
                             alt="speaker"
                         />
                         </Link>
@@ -184,7 +184,7 @@ function Navbar() {
                         >
                             <img
                             className="ml-[0.25rem] h-4 w-auto"
-                            src={Sponsors}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Sponsers_th9hym.png"
                             alt="Sponsors"
                         />
                         </Link>
@@ -194,7 +194,7 @@ function Navbar() {
                         >
                             <img
                             className="ml-[0.25rem] h-4 w-auto"
-                            src={Dev}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
                             alt="Developers"
                         />
                         </Link>
@@ -204,7 +204,7 @@ function Navbar() {
                         >
                             <img
                             className="h-9 w-auto"
-                            src={Hack}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
                             alt="Hackathon"
                         />
                         </Link>
@@ -214,7 +214,7 @@ function Navbar() {
                         >
                             <img
                             className="h-[38px] w-auto"
-                            src={Work}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
                             alt="Workshop"
                         />
                         </Link>

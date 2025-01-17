@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../services/auth';
 import toast from 'react-hot-toast';
-import RegisterBg from '../images/Bg2.jpg';
-import SignInText from '../images/SIGN UP.png';
+// import RegisterBg from '../images/Bg2.jpg';
+// import SignInText from '../images/SIGN UP.png';
 
 export default function Register() {
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ export default function Register() {
     return (
         <div
             style={{
-                backgroundImage: `url(${RegisterBg})`,
+                backgroundImage: `url("https://res.cloudinary.com/db1ziohil/image/upload/v1737121208/Bg2_kokjkl.jpg")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -40,7 +40,7 @@ export default function Register() {
 
                     <div className="flex flex-row items-center justify-center space-x-4">
                             <img
-                                src={SignInText}
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/SIGN_UP_imhjkv.png"
                                 alt="Login Text"
                                 style={{ height: '50px', width: 'auto',paddingBottom: '15px' }}
                             />

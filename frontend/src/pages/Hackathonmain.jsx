@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import CountdownTimer from '../components/CountdownTimer';
 import FAQ from '../components/faq';
-const image="/aurora_logo.png"
+
 const teamRules = [
   "Each team can have a minimum of 2 and a maximum of 4 members.",
   "Each team should have one team leader who will be responsible for forwarding all necessary information to their team.",
@@ -16,7 +16,7 @@ const Home = () => {
     const navigate = useNavigate();
   return (
     <>
-    <div className='bg-[#010627] text-white min-h-dvh w-screen '>
+    <div className='bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-dvh w-screen '>
     <div className=' flex  flex-col items-center justify-center font-press-start h-screen'>
        <h1 className='font-press-start font-bold text-[40px] text-center md:text-[80px] '> AURORA </h1> 
        <div>
@@ -31,7 +31,7 @@ const Home = () => {
   ]}
   wrapper="span"
   speed={50} // Adjust typing speed
-  className="ml-7 font-press-start block text-[15px] max-w-[90%]"
+  className="ml-7 font-pixelify block text-[15px] max-w-[90%]"
   repeat={Infinity}
 />
 
@@ -40,7 +40,8 @@ const Home = () => {
       
 
        {/* <p className='text-white w-10/12  font-press-start'> Unleash your creativity and innovation at Aurora Hackathon! Collaborate, code, and create transformative solutions to real-world challenges. Join us for an unforgettable journey of learning, networking, and problem-solving.</p> */}
-       <button onClick={() => navigate('/hackathon-info ')} className='bg-black text-white p-5 my-8 '> Register now</button>
+       {/*<button onClick={() => navigate('/hackathon-info ')} className='bg-black text-white p-5 my-8 '> Register now</button>*/}
+       <button className='bg-black text-white p-5 my-8 '> Registrations Soon</button>
 
       
        <CountdownTimer/>

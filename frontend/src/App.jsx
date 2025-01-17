@@ -24,7 +24,6 @@ import Teamlogin from './components/teamlogin';
 import TeamManagement from './components/teamlogin2';
 import TeamManagementPage from './pages/HackDemo';
 import CreateTeam from './components/Createteam';
-import Teams from "./components/Teams";
 import Workpage from "./pages/workpage";
 import Developer from "./pages/Developer";
 import Footer from "./components/Footer";
@@ -49,7 +48,7 @@ function App() {
             <Route path="/workshop" element={<Workpage />} />
             <Route path="/fetch" element={<Teamlogin />} />
             <Route path="/fetchteam" element={<TeamManagement />} />
-            <Route path="/hackathon-info" element={<TeamManagementPage />} />
+            <Route path="/fetchnew" element={<TeamManagementPage />} />
             <Route path="/createteam" element={<CreateTeam />} />
             <Route path="/developer" element={<Developer />} />
             <Route path="testing" element={<Carousel/>} />

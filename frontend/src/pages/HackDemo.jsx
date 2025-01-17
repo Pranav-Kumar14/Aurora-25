@@ -3,10 +3,10 @@ import Teams from "../components/teams";
 import axios from "axios";
 import Public from "../components/Public";
 import { useAuth } from "../context/AuthContext";
-import createpng from "../images/create.png";
-import framepng from "../images/Frame.png";
-import reqimg from "../images/reqicon.png";
-import grpimg from "../images/Group.png";
+// import createpng from "../images/create.png";
+// import framepng from "../images/Frame.png";
+// import reqimg from "../images/reqicon.png";
+// import grpimg from "../images/Group.png";
 
 const TeamManagementPage = () => {
   const [team, setTeam] = useState(null);
@@ -193,14 +193,14 @@ const TeamManagementPage = () => {
 
 
   return (
-    <div className="bg-gradient-to-br from-[#0f0d14] to-[#281046] text-white min-h-screen p-8 font-press-start">
+    <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen p-8 font-press-start">
       <div className="max-w-5xl mx-auto space-y-8">
         {!showTeams ? (
           <>
             <section>
               <div className="text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
                 <img
-                  src={framepng}
+                  src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
                   alt="Image description"
                   className="w-16 h-16 rounded-md object-cover"
                 />
@@ -219,7 +219,7 @@ const TeamManagementPage = () => {
                     </p>
                   </div>
                   <img
-                    src={createpng}
+                    src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/create_b4n2uf.png"
                     alt="Image description"
                     className="w-16 h-16 rounded-md object-cover"
                   />
@@ -230,7 +230,7 @@ const TeamManagementPage = () => {
             <section>
               <div className="text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
                 <img
-                  src={framepng}
+                  src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
                   alt="Image description"
                   className="w-16 h-16 rounded-md object-cover"
                 />
@@ -334,7 +334,7 @@ const TeamManagementPage = () => {
                     className="bg-gray-200 text-gray-800 rounded-xl p-4 flex flex-col items-center gap-4 shadow-md font-press-start"
                   >
                     <img
-                      src={grpimg}
+                      src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Group_n98bl6.png"
                       alt="Image description"
                       className="w-16 h-16 rounded-md object-cover"
                     />
@@ -363,7 +363,7 @@ const TeamManagementPage = () => {
             <section>
               <div className="text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
                 <img
-                  src={framepng}
+                  src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
                   alt="Image description"
                   className="w-16 h-16 rounded-md object-cover"
                 />
@@ -377,7 +377,7 @@ const TeamManagementPage = () => {
                     className="bg-gray-300 text-white rounded-xl p-4 flex flex-col items-center gap-4 shadow-md font-press-start"
                   >
                     <img
-                      src={reqimg}
+                      src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/reqicon_cnnpyi.png"
                       alt="Image description"
                       className="w-16 h-16 rounded-full object-cover"
                     />

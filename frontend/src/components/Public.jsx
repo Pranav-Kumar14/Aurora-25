@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import framepng from "../images/Frame.png";
-import teamimg from "../images/teampub.png";
+// import framepng from "../images/Frame.png";
+// import teamimg from "../images/teampub.png";
 
 const PublicTeams = () => {
   const [teams, setTeams] = useState([]);
@@ -31,7 +31,7 @@ const PublicTeams = () => {
     };
 
     fetchTeams();
-  }, [abh40]);
+  }, []);
 
   const handleJoinTeam = async (teamId) => {
     try {
@@ -80,7 +80,7 @@ const PublicTeams = () => {
     <div className="w-full mx-auto">
       <div className="text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
         <img
-          src={framepng}
+          src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
           alt="Public Teams Icon"
           className="w-20 h-20 object-contain"
         />
@@ -107,7 +107,7 @@ const PublicTeams = () => {
             >
               <div className="absolute top-4 right-4">
                 <img
-                  src={teamimg}
+                  src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/teampub_dhyyms.png"
                   alt={`${team.teamname} Logo`}
                   className="w-14 h-14 object-cover rounded-md"
                 />

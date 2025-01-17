@@ -31,7 +31,7 @@ export default function Login() {
     return (
         <div
             style={{
-                backgroundImage: `url(${LoginBg})`,
+                backgroundImage: `url("https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Bg1_ouzd2n.png")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -43,7 +43,7 @@ export default function Login() {
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
     <div className="flex flex-row items-center justify-center space-x-4">
         <img
-            src={LoginText}
+            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/LOGIN_zpic7f.png"
             alt="Login Text"
             style={{ height: '50px', width: 'auto',paddingBottom: '15px' }}
         />

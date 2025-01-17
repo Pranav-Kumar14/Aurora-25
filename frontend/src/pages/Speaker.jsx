@@ -1,9 +1,9 @@
 import React from "react";
-import speakerImage from "../images/image.png";
-import ldin from "../images/lkdin.png";
-import instaicon from "../images/insta.png";
+// import speakerImage from "../images/image.png";
+// import ldin from "../images/lkdin.png";
+// import instaicon from "../images/insta.png";
 import cal from "../images/calendar.png";
-import clock from "../images/clock.png";
+// import clock from "../images/clock.png";
 
 function Speaker() {
   return (
@@ -16,7 +16,7 @@ function Speaker() {
         {/* Speaker Image */}
         <div className="flex-none w-full sm:w-1/3 flex justify-center items-center mb-6 sm:mb-0">
           <img
-            src={speakerImage}
+            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/image_yvaffc.png"
             alt="Dale Vaz"
             className="w-40 h-40 sm:w-[240px] sm:h-[240px] lg:w-[322px] lg:h-[341px] rounded-full"
           />
@@ -39,7 +39,7 @@ function Speaker() {
               rel="noopener noreferrer"
             >
               <img
-                src={instaicon}
+                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/insta_n9kt5i.png"
                 className="w-10 h-10 sm:w-[47.49px] sm:h-[42.75px]"
                 alt="Instagram Icon"
               />
@@ -50,7 +50,7 @@ function Speaker() {
               rel="noopener noreferrer"
             >
               <img
-                src={ldin}
+                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121208/lkdin_ajtvwk.png"
                 className="w-10 h-10 sm:w-[47.49px] sm:h-[42.75px]"
                 alt="LinkedIn Icon"
               />
@@ -61,11 +61,11 @@ function Speaker() {
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start mt-6 space-y-2 sm:space-y-0 sm:space-x-4 text-gray-400">
             <div className="flex items-center space-x-2">
-              <img src={clock} alt="Clock Icon" className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/clock_elpwob.png" alt="Clock Icon" className="w-5 h-5 sm:w-6 sm:h-6" />
               <span>20th January, 2025</span>
             </div>
             <div className="flex items-center space-x-2">
-              <img src={cal} alt="Calendar Icon" className="w-5 h-5 sm:w-6 sm:h-6" />
+              <img src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Icon_erj8vd.png" alt="Calendar Icon" className="w-5 h-5 sm:w-6 sm:h-6" />
               <span>7:00 - 9:00 PM</span>
             </div>
           </div>
