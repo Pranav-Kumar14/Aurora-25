@@ -21,6 +21,9 @@ const Ctfevent = () => {
           <p>Team Size: 2-4</p>
         </div>
       </div>
+      <button className="w-[150px] h-[40px] bg-[#9d31a1] rounded-[40px] shadow-[inset_0px_4px_5px_0px_rgba(0,0,0,0.25)] border border-black mt-10">
+          Register Now!
+        </button>
     </div>
   );
 };

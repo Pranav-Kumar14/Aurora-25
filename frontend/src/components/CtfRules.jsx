@@ -3,8 +3,8 @@ import React from 'react'
 const CtfRules = () => {
   return (
     <div className="bg-customPurple text-white py-12">
-        <h2 className="text-2xl font-bold text-center mb-6">Rules</h2>
-        <ul className="list-disc max-w-2xl mx-auto px-8">
+        <h2 className="text-xl font-bold text-center text-[61.21px] mb-6">Rules</h2>
+        <ul className="list-disc max-w-2xl text-2xl mx-auto px-8 pt-10 pb-11">
           <li>Each team can have a minimum of 2 and a maximum of 4 members.</li>
           <li>
             Each team should have one team leader, who will be responsible for
