@@ -1,16 +1,16 @@
 import React from 'react';
-import footerImg from '../assets/footer_img.png'; // Update the path to your image
+// import footerImg from '../assets/footer_img.png'; // Update the path to your image
 
 const Footer = () => {
     return (
         // FOOTER IMAGE IS MESSED UP (TRIED TO INCLUDE THE SAME IMAGE AS THE ONE FROM DESGIN BUT RATIO IS BAAAAAAAADDDDDDDDDD) ; IF SOMEONE CAN FIX JUST REPLACE IT IN ASSETS WITH THE SAME NAME EVERYTHING ELSE IS FINE
         <footer
         className="text-white text-center py-8"
-        style={{
-            backgroundImage: `url(${footerImg})`,
-            backgroundSize: 'fill',
-            backgroundPosition: 'center',
-        }}
+        // style={{
+        //     backgroundImage: `url(${footerImg})`,
+        //     backgroundSize: 'fill',
+        //     backgroundPosition: 'center',
+        // }}
         >
         <h2 className="bg-purple-500 hover:bg-purple-600 text-white px-2 py-1 mb-4 rounded-full text-lg font-medium inline-flex items-center">Contact Us</h2>
         <div className="flex justify-center space-x-6 mb-6">

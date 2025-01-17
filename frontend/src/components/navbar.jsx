@@ -101,13 +101,15 @@ function Navbar() {
 
                     {/* Profile icon on the right */}
                     <div className="ml-[2rem] hidden md:block pt-2">
-                        <button className="text-white hover:text-blue-300">
+                        <Link
+                        to='/profile'
+                        className="text-white hover:text-blue-300">
                         <img
                             className="h-12 w-auto"
                             src={Icon}
                             alt="profile"
                         />
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Mobile menu button */}

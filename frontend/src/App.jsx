@@ -34,7 +34,7 @@ import Carousel from "./components/Carousel";
 
 function App() {
   return (
-    <>
+    <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
       <Router>
         <Navbar />
         <AuthProvider>
@@ -66,8 +66,8 @@ function App() {
         </AuthProvider>
       </Router>
       <Footer />
-      
-    </>
+
+    </div>
   );
 }
 
