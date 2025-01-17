@@ -7,6 +7,7 @@ import { getProfile } from "../services/auth";
 import toast from 'react-hot-toast';
 
 const WorkshopPage = () => {
+import BaseUrl from "../BaseUrl";
 
   const token = sessionStorage.getItem('token');
   const [selectedWorkshops, setSelectedWorkshops] = useState({});

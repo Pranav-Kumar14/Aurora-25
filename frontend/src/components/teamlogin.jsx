@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import BaseUrl from "../BaseUrl";
 
 const Teamlogin = () => {
   const [team, setTeam] = useState(null);
@@ -10,7 +11,7 @@ const Teamlogin = () => {
   const [joinRequests, setJoinRequests] = useState([]);
   const [message, setMessage] = useState("");
 
-  const url = "http://localhost:8000/team";
+  const url = BaseUrl;
 
   const MemberCard = ({ name, email, role }) => (
     <div className="p-4 border rounded-lg shadow-md mb-4">

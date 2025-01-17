@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import BaseUrl from "../BaseUrl";
 
 const Teams = ({ onClose }) => {
   const [teamData, setTeamData] = useState({
@@ -9,7 +10,7 @@ const Teams = ({ onClose }) => {
     description: "",
   });
   const [message, setMessage] = useState("");
-  const url = "http://localhost:8000";
+  const url = BaseUrl;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,44 +37,56 @@ const Teams = ({ onClose }) => {
     }
   };
 
-  const inputStyle = "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]";
-  const containerStyle = "w-full p-6 bg-gray-800 rounded-lg shadow-lg max-w-md";
+  const inputStyle =
+    "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]";
+  const containerStyle =
+    "w-full p-6 bg-gray-800 rounded-lg shadow-lg max-w-md";
 
   return (
     <div className="w-full h-full flex items-center justify-center p-8 text-white pt-20">
       <div className={containerStyle}>
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold">Create a Team</h2>
-          <button onClick={onClose} className="bg-red-500 px-3 py-1 rounded-md hover:bg-red-700">X</button>
+          <h2 className="text-2xl font-bold font-press-start">Create a Team</h2>
+          <button
+            onClick={onClose}
+            className="bg-red-500 px-3 py-1 rounded-md hover:bg-red-700"
+          >
+            X
+          </button>
         </div>
-        {message && <div className="mt-4 p-4 bg-green-200 text-green-800 rounded-lg">{message}</div>}
+        {message && (
+          <div className="mt-4 p-4 bg-green-200 text-green-800 rounded-lg">
+            {message}
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="mt-6">
+          {/* Team Name */}
           <div className="mb-4">
-            <label className="block text-lg mb-2">Team Name</label>
-            <input
-              type="text"
+            <label className="block text-lg mb-2 font-press-start">Team Name</label>
+            <textarea
               name="teamname"
               value={teamData.teamname}
               onChange={handleChange}
-              className={`${inputStyle} bg-[#6d8dd2] text-white`}
+              className={`${inputStyle} bg-[#010A1E] text-white`}
               placeholder="Enter team name"
-              required
+              rows="1"
             />
           </div>
+          {/* Email */}
           <div className="mb-4">
-            <label className="block text-lg mb-2">Your Email</label>
-            <input
-              type="email"
+            <label className="block text-lg mb-2 font-press-start">Email</label>
+            <textarea
               name="email"
               value={teamData.email}
               onChange={handleChange}
               className={`${inputStyle} bg-[#010A1E] text-white`}
               placeholder="Enter your email"
-              required
+              rows="1"
             />
           </div>
+          {/* Visibility */}
           <div className="mb-4">
-            <label className="block text-lg mb-2">Visibility</label>
+            <label className="block text-lg mb-2 font-press-start">Visibility</label>
             <select
               name="visibility"
               value={teamData.visibility}
@@ -84,8 +97,9 @@ const Teams = ({ onClose }) => {
               <option value="public">Public</option>
             </select>
           </div>
+          {/* Description */}
           <div className="mb-6">
-            <label className="block text-lg mb-2">Description</label>
+            <label className="block text-lg mb-2 font-press-start">Description</label>
             <textarea
               name="description"
               value={teamData.description}
@@ -95,7 +109,11 @@ const Teams = ({ onClose }) => {
               rows="4"
             />
           </div>
-          <button type="submit" className="w-full bg-[#0f0d14] py-2 rounded-lg hover:bg-[#1e113a]">
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-[#0f0d14] py-2 rounded-lg hover:bg-[#1e113a] font-press-start"
+          >
             Create Team
           </button>
         </form>

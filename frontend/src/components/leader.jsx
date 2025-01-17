@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import BaseUrl from "../BaseUrl";
 
 const Leader = ({ onClose }) => {
     const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const Leader = ({ onClose }) => {
     const [showAddMemberPopup, setShowAddMemberPopup] = useState(false);
     const [newMemberEmail, setNewMemberEmail] = useState("");
 
-    const url = "http://localhost:8000";
+    const url = BaseUrl;
 
     const handleAddMember = async () => {
         try {

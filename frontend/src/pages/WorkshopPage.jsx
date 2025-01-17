@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { workshops } from "../constants/workshops";
 import { getProfile } from "../services/auth";
 import toast from 'react-hot-toast';
+import BaseUrl from "../BaseUrl";
 
 const WorkshopPage = () => {
   const token = sessionStorage.getItem('token');
