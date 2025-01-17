@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import Partners from "../constants/partners";
+=======
+import workshp from "../constants/ws";
+>>>>>>> Stashed changes
 =======
 import workshp from "../constants/ws";
 >>>>>>> Stashed changes
@@ -16,7 +20,11 @@ const Carousel = () => {
         setCurrentIndex((prev) =>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         prev === 0 ? Partners.length - 1 : prev - 1
+=======
+            prev === 0 ? workshp.length - 1 : prev - 1
+>>>>>>> Stashed changes
 =======
             prev === 0 ? workshp.length - 1 : prev - 1
 >>>>>>> Stashed changes
@@ -30,8 +38,11 @@ const Carousel = () => {
         setCurrentIndex((prev) =>
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         prev === Partners.length - 1 ? 0 : prev + 1
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             (prev + 1) % workshp.length
