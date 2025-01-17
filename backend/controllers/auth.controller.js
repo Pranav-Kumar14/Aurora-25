@@ -1,28 +1,28 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const User = require("../models/user.model");
 const { generateToken } = require("../utils/jwtUtils");
 const e = require("express");
 
 const registerUser = async (req, res) => {
-  const { fullName, username, email, password,collegeid } = req.body;
+  const { fullName, username, email, password, collegeid } = req.body;
 
-  if ((fullName, username === "" || email === "" || password === ""|| collegeid=== "")) {
+  if ((fullName, username === "" || email === "" || password === "" || collegeid === "")) {
     return res.status(400).json({ message: "Please fill in all fields" });
   }
-  const existingUser = await User.findOne({ $or: [{ username }, { email },{collegeid}] });
+  const existingUser = await User.findOne({ $or: [{ username }, { email }, { collegeid }] });
   if (existingUser) {
     return res.status(400).json({ message: "Username or email already exists" });
   }
   let newUser
   try {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  newUser = await User.create({
-    username: username.toLowerCase(),
-    fullName,
-    email,
-    collegeid,
-    password: hashedPassword,
-  });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    newUser = await User.create({
+      username: username.toLowerCase(),
+      fullName,
+      email,
+      collegeid,
+      password: hashedPassword,
+    });
   } catch (error) {
     return res.status(500).json({ message: `Error creating user ${error}` });
   }
@@ -38,7 +38,7 @@ const registerUser = async (req, res) => {
   return res
     .status(201)
     .json({ message: "User created successfully", user: createdUser });
-    
+
 };
 
 const loginUser = async (req, res) => {
@@ -58,8 +58,8 @@ const loginUser = async (req, res) => {
     if (!isPasswordValid)
       return res.status(401).json({ error: "Invalid credentials" });
 
-    const token = generateToken(user._id);
-    res.status(200).json({ message: "Login successful", token });
+    const token = generateToken(user);
+    res.status(200).json({ message: "Login successful", token, user });
   } catch (error) {
     res.status(500).json({ error: "Login failed" });
   }
@@ -86,9 +86,6 @@ async function handlePasswordReset(req, res) {
   return res.status(200).json({ message: "Password Reset Successful" })
 }
 
-<<<<<<< Updated upstream
-module.exports = { registerUser, loginUser , changeCurrentPassword};
-=======
 const updateWorkshops = async (req, res) => {
   const { userId, selectedWorkshops } = req.body;
 
@@ -115,9 +112,4 @@ const updateWorkshops = async (req, res) => {
   }
 };
 
-
 module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops };
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
