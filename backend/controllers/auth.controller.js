@@ -117,4 +117,7 @@ const updateWorkshops = async (req, res) => {
 
 
 module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops };
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

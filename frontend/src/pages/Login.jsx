@@ -11,6 +11,9 @@ import LoginBg from '../images/Bg1.png';
 import LoginIcon from '../images/log.png';
 import LoginText from '../images/LOGIN.png';
 import { Link } from 'react-router-dom';
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 export default function Login() {
@@ -38,6 +41,7 @@ export default function Login() {
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <div className="flex justify-center">
                     <LogIn className="h-12 w-12 text-indigo-600" />
                 </div>
@@ -45,6 +49,8 @@ export default function Login() {
                     Sign in to your account
                 </h2>
 =======
+=======
+>>>>>>> Stashed changes
                 <div className="flex flex-row items-center justify-center space-x-4">
                     <img
                         src={LoginText}
@@ -52,6 +58,9 @@ export default function Login() {
                         style={{ height: '50px', width: 'auto', paddingBottom: '15px' }}
                     />
                 </div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </div>
 
@@ -89,6 +98,7 @@ export default function Login() {
                         </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                         <div>
                             <button
                                 type="submit"
@@ -109,6 +119,13 @@ export default function Login() {
                                 type="submit"
                                 className="w-full sm:w-1/2 py-3 px-5 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#040D4C] hover:bg-[#072C5F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 
+=======
+                        <div className="mt-6 flex justify-center">
+                            <button
+                                type="submit"
+                                className="w-full sm:w-1/2 py-3 px-5 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#040D4C] hover:bg-[#072C5F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+
+>>>>>>> Stashed changes
                             >
                                 Sign In
                             </button>
