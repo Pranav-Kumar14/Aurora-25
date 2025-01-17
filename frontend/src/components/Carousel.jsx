@@ -1,18 +1,38 @@
 import React, { useState } from "react";
+<<<<<<< Updated upstream
 import Partners from "../constants/partners";
+=======
+import workshp from "../constants/ws";
+>>>>>>> Stashed changes
 
 const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handlePrev = () => {
         setCurrentIndex((prev) =>
+<<<<<<< Updated upstream
         prev === 0 ? Partners.length - 1 : prev - 1
+=======
+            prev === 0 ? workshp.length - 1 : prev - 1
+>>>>>>> Stashed changes
         );
     };
 
     const handleNext = () => {
         setCurrentIndex((prev) =>
+<<<<<<< Updated upstream
         prev === Partners.length - 1 ? 0 : prev + 1
+=======
+            (prev + 1) % workshp.length
+        );
+    };
+
+    const getVisibleItems = () => {
+        return workshp.slice(currentIndex, currentIndex + visibleCount).concat(
+            currentIndex + visibleCount > workshp.length
+                ? workshp.slice(0, (currentIndex + visibleCount) % workshp.length)
+                : []
+>>>>>>> Stashed changes
         );
     };
 
