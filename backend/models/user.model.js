@@ -39,6 +39,15 @@ const userSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
+userSchema.static('updatePassword', async function (email, password) {
+    const user = await this.findOne({ email })
+    if (!user) throw new Error('User not found')
+
+    user.password = password
+    await user.save()
+    return { msg: "Password updated successfully", user }
+})
+
 module.exports = mongoose.model('User', userSchema);
 
 // throw new CastError('Number', val, this.path, err, this);

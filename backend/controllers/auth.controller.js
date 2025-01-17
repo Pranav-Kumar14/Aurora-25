@@ -65,26 +65,56 @@ const loginUser = async (req, res) => {
   }
 };
 
-const changeCurrentPassword = async (req, res) => {
-  const { oldPassword, newPassword } = req.body
-
-  const user = await User.findById(req.user?._id)
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
+async function handlePasswordReset(req, res) {
+  const email = req.body.email
+  const newPassword = req.body.newPassword
+  const confirmPassword = req.body.confirmPassword
+  if (newPassword !== confirmPassword) {
+    return res.status(404).json({ error: "Passwords do not match" })
   }
-  const isPasswordCorrect = await user.isPassword(oldPassword)
-
-  if (!isPasswordCorrect) {
-    return res.status(401).json({ error: "Invalid old password" });
+  try {
+    // const msg = await updatePassword(email, newPassword)
+    const user = await this.findOne({ email })
+    if (!user) throw new Error('User not found')
+    const id = user._id;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await User.findByIdAndUpdate(id, { password: hashedPassword });
+    console.log("password updated successfully! ")
+  } catch (error) {
+    return res.status(404).json({ error: error })
   }
-  user.password = await bcrypt.hash(newPassword, 10);
-  await user.save()
-
-  return res
-    .status(200)
-    .json(
-      { message: "Password changed successfully" }
-    )
+  return res.status(200).json({ message: "Password Reset Successful" })
 }
 
+<<<<<<< Updated upstream
 module.exports = { registerUser, loginUser , changeCurrentPassword};
+=======
+const updateWorkshops = async (req, res) => {
+  const { userId, selectedWorkshops } = req.body;
+
+  if (!userId || !Array.isArray(selectedWorkshops)) {
+    return res.status(400).json({ message: "Invalid request data" });
+  }
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.workshops = selectedWorkshops; // Update workshops array
+    await user.save();
+
+    return res.status(200).json({
+      message: "Workshops updated successfully",
+      workshops: user.workshops,
+    });
+  } catch (error) {
+    console.error("Error updating workshops:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
+module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops };
+>>>>>>> Stashed changes
