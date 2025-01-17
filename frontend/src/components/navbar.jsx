@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import auroralogo from "../images/aurora_logo.png";
+import { useNavigate } from "react-router-dom";
 import Home from "../images/Home.png";
 import Speaker from "../images/Speaker.png";
 import Dev from "../images/Developers.png";
@@ -11,6 +12,7 @@ import Work from "../images/Work.png";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <nav className="pt-2 bg-gradient-to-r from-[#0f0d39] to-[#201867] sticky top-0 z-50">
@@ -100,13 +102,24 @@ function Navbar() {
                     </div>
 
                     {/* Profile icon on the right */}
-                    <div className="ml-[2rem] hidden md:block pt-2">
-                        <button className="text-white hover:text-blue-300">
-                        <img
-                            className="h-12 w-auto"
-                            src={Icon}
-                            alt="profile"
-                        />
+                    <div className="hidden md:block pt-2">
+                        <button className="text-white hover:text-blue-300"
+                        onClick={() => navigate("/profile")}
+                        >
+                            <svg
+                                className="h-12 w-12"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M5.121 18.364A9 9 0 1118.364 5.121 9 9 0 015.121 18.364z"
+                                />
+                            </svg>
                         </button>
                     </div>
 
