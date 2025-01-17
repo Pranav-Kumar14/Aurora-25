@@ -46,7 +46,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/speaker" element={<Speaker />} />
             <Route path="/hackathon" element={<Hackathon />} />
-            <Route path="/workshop" element={<Workpage />} />
+            <Route path="/workshop" element={<WorkshopPage />} />
             <Route path="/fetch" element={<Teamlogin />} />
             <Route path="/fetchteam" element={<TeamManagement />} />
             <Route path="/hackathon-info" element={<TeamManagementPage />} />

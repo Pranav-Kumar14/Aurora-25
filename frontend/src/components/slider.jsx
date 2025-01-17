@@ -6,8 +6,6 @@ const InfiniteCarousel = () => {
     const controls = useAnimation();
     const [isHovered, setIsHovered] = useState(false);
 
-    const visibleCount = 5; // Number of items to show at a time
-
     const startAnimation = () => {
         controls.start({
             x: [0, -1000],
@@ -28,7 +26,7 @@ const InfiniteCarousel = () => {
 
     return (
         <div
-            className="relative flex items-center justify-center w-full h-48 px-6 overflow-hidden"
+            className="relative flex items-center justify-center w-full h-48 md:h-56 lg:h-64 px-4 sm:px-6 lg:px-8 overflow-hidden"
             onMouseEnter={() => {
                 setIsHovered(true);
                 stopAnimation();
@@ -39,7 +37,7 @@ const InfiniteCarousel = () => {
             }}
         >
             <motion.div
-                className="flex space-x-6"
+                className="flex space-x-4 sm:space-x-6"
                 animate={controls}
                 initial={{ x: 0 }}
             >
@@ -47,7 +45,7 @@ const InfiniteCarousel = () => {
                 {[...Partners, ...Partners].map((item, index) => (
                     <div
                         key={`${item.id}-${index}`}
-                        className="w-32 h-32 flex-shrink-0 rounded-lg bg-white shadow-md flex items-center justify-center"
+                        className="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-lg bg-white shadow-md flex items-center justify-center"
                     >
                         <img
                             src={item.src}
