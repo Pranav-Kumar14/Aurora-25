@@ -7,7 +7,7 @@ const { createTeam, joinTeam, teamList, teamRequest, checkLeader, getUserTeam,
   removeMember,
   leaveTeam,
   updateDescription, teamLists, CancelRequest, } = require("../controllers/team.controller")
-const authMiddleware = require("../middleware/auth.middleware")
+// const authMiddleware = require("../middleware/auth.middleware")
 
 
 router.post("/create", createTeam)

@@ -18,7 +18,7 @@ export default function Login() {
         e.preventDefault();
         try {
             const response = await login(formData);
-            sessionStorage.setItem('token', response.token);
+            localStorage.setItem('token', response.token);
             setUser(response.user);
             toast.success('Login successful!');
             navigate('/hackathon');
