@@ -30,6 +30,7 @@ import Developer from "./pages/Developer";
 import Footer from "./components/Footer";
 import WorkshopPage from './pages/WorkshopPage';
 import Speaker from "./pages/Speaker";
+import Carousel from "./components/Carousel";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
             <Route path="/hackathon-info" element={<TeamManagementPage />} />
             <Route path="/createteam" element={<CreateTeam />} />
             <Route path="/developer" element={<Developer />} />
+            <Route path="testing" element={<Carousel/>} />
             <Route
               path="/profile"
               element={
