@@ -1,9 +1,13 @@
-const {Cashfree} = require('cashfree-pg');
+const { Cashfree } = require('cashfree-pg');
 const crypto = require('crypto')
 const express  =  require('express')
 
 
 router = express.Router();
+
+Cashfree.XClientId = process.env.CLIENT_ID;
+Cashfree.XClientSecret = process.env.CLIENT_SECRET;
+Cashfree.XEnvironment = Cashfree.Environment.PRODUCTION;
 
 function generateOrderId() {
     const uniqueId = crypto.randomBytes(16).toString('hex');
@@ -16,7 +20,7 @@ function generateOrderId() {
     return orderId.substring(0, 12);
 }
 
-router.get('/api/payment', async (req, res) => {
+router.get('/payment', async (req, res) => {
 
     try {
 
@@ -28,11 +32,11 @@ router.get('/api/payment', async (req, res) => {
                 "customer_id": "webcodder01",
                 "customer_phone": "8809795723",
                 "customer_name": "Abhinav",
-                "customer_email": "zap@example.com"
+                "customer_email": "workforabhinavkumar@gmail.com"
             },
         }
 
-        Cashfree.PGCreateOrder("2023-08-01", request).then(response => {
+        Cashfree.PGCreateOrder("2022-09-01", request).then(response => {
             console.log(response.data);
             res.json(response.data);
 
@@ -49,7 +53,7 @@ router.get('/api/payment', async (req, res) => {
 })
 
 
-router.post('/api/verify', async (req, res) => {
+router.post('/verify', async (req, res) => {
 
     try {
 
@@ -57,7 +61,7 @@ router.post('/api/verify', async (req, res) => {
             orderId
         } = req.body;
 
-        Cashfree.PGFetchOrder("2023-08-01", orderId).then((response) => {
+        Cashfree.PGFetchOrder("2022-09-01", orderId).then((response) => {
 
             res.json(response.data);
         }).catch(error => {
