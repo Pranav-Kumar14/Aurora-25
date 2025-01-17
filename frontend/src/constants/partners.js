@@ -4,6 +4,8 @@ const Partners = [
     { id: 3, src: "path/to/image3.png", alt: "Logo 3" },
     { id: 4, src: "path/to/image4.png", alt: "Logo 4" },
     { id: 5, src: "path/to/image5.png", alt: "Logo 5" },
+    { id: 6, src: "path/to/image6.png", alt: "Logo 6" },
+    { id: 7, src: "path/to/image7.png", alt: "Logo 7" },
 ];
 
 export default Partners;
