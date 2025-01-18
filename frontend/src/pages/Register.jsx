@@ -13,6 +13,10 @@ export default function Register() {
         email: '',
         password: '',
         collegeid: '',
+        year: '',
+        branch: '',
+        interest: '',
+        phone: '',
     });
 
     const handleSubmit = async (e) => {
@@ -37,7 +41,6 @@ export default function Register() {
             }}
             className="flex flex-col justify-center pb-12 sm:px-6 lg:px-8"
         >
-
                     <div className="flex flex-row items-center justify-center space-x-4">
                             <img
                                 src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/SIGN_UP_imhjkv.png"
@@ -45,7 +48,6 @@ export default function Register() {
                                 style={{ height: '50px', width: 'auto',paddingBottom: '15px' }}
                             />
                         </div>
-
 
 
             <div className="sm:mx-auto sm:w-full sm:max-w-4xl">
@@ -103,9 +105,6 @@ export default function Register() {
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 />
                             </div>
-                        </div>
-
-                        <div className="flex flex-col space-y-4 w-full sm:w-5/12">
                             <div>
                                 <label htmlFor="collegeid" className="block text-md font-medium text-white">
                                     College ID
@@ -120,7 +119,62 @@ export default function Register() {
                                     onChange={(e) => setFormData({ ...formData, collegeid: e.target.value })}
                                 />
                             </div>
-
+                            <div>
+                                <label htmlFor="year" className="block text-md font-medium text-white">
+                                    Year
+                                </label>
+                                <input
+                                    id="year"
+                                    name="year"
+                                    type="text"
+                                    required
+                                    className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                    value={formData.year}
+                                    onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="branch" className="block text-md font-medium text-white">
+                                    Branch
+                                </label>
+                                <input
+                                    id="branch"
+                                    name="branch"
+                                    type="text"
+                                    required
+                                    className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                    value={formData.branch}
+                                    onChange={(e) => setFormData({ ...formData, branch: e.target.value })}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="phone" className="block text-md font-medium text-white">
+                                    Phone Number
+                                </label>
+                                <input
+                                    id="phone"
+                                    name="phone"
+                                    type="text"
+                                    required
+                                    className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                    value={formData.phone}
+                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="interest" className="block text-md font-medium text-white">
+                                    Interest
+                                </label>
+                                <input
+                                    id="interest"
+                                    name="interest"
+                                    type="text"
+                                    required
+                                    className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                    value={formData.interest}
+                                    onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
+                                />
+                            </div>
                             <div>
                                 <label htmlFor="password" className="block text-md font-medium text-white">
                                     Password
@@ -134,20 +188,22 @@ export default function Register() {
                                     value={formData.password}
                                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                 />
+                                <div className="mt-6 flex justify-center">
+                                    <button
+                                        type="submit"
+                                        className="w-full sm:w-1/2 py-3 px-5 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#040D4C] hover:bg-[#072C5F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+
+                                    >
+                                        Register
+                                    </button>
+                                </div>
                             </div>
+
                         </div>
                     </form>
 
 
-                    <div className="mt-6 flex justify-center">
-                        <button
-                            type="submit"
-                            className="w-full sm:w-1/2 py-3 px-5 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#040D4C] hover:bg-[#072C5F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 
-                        >
-                            Register
-                        </button>
-                    </div>
 
 
                     <div className="mt-6 text-center">

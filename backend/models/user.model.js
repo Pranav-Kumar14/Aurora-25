@@ -36,6 +36,22 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
     },
+    year:{
+        type: Number,
+        required: true,
+    },
+    branch:{
+        type: String,
+        required: true,
+    },
+    interest:{
+        type: Array,
+        required:true,
+    },
+    phone: {
+        type: Number,
+        required: true,
+    },
     workshopPaid: {
         type: Boolean,
         default: false
@@ -44,12 +60,22 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    workshops:{
+    workshops: {
         type: Array,
-        default:[],
+        default: [],
     }
 
 }, { timestamps: true })
 
-module.exports = mongoose.model('User', userSchema);
+userSchema.static('updatePassword', async function (email, password) {
+    const user = await this.findOne({ email })
+    if (!user) throw new Error('User not found')
 
+    user.password = password
+    await user.save()
+    return { msg: "Password updated successfully", user }
+})
+
+
+
+module.exports = mongoose.model('User', userSchema);

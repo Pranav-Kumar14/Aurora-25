@@ -19,7 +19,7 @@ const WorkshopPage = () => {
   const handleRegister = (workshop) => {
     if (!user || !user.id) {
       console.error("User is not logged in or user ID is missing");
-      toast.error("Please Login, to Access the Workshops!!",{position:'top-center'});
+      toast.error("Please Login, to Access the Workshops!!", { position: 'top-center' });
       navigate('/login');
       return;
     }
@@ -28,7 +28,7 @@ const WorkshopPage = () => {
     // if (!selectedWorkshops[key] || selectedWorkshops[key]?.id !== workshop.id) {
     //   toast.error('Please press the Submit Button to confirm!');
     // }
-    toast.error('Please press Submit Button to confirm!!',{position:'top-center'})
+    toast.error('Please press Submit Button to confirm!!', { position: 'top-center' })
 
     setSelectedWorkshops((prev) => {
       if (prev[key]?.id === workshop.id) {
@@ -57,7 +57,7 @@ const WorkshopPage = () => {
     // Check if user is logged in
     if (!user || !user.id) {
       console.error("User is not logged in or user ID is missing");
-      toast.error("Please Login, To Access the Contents",{position:'top-center'});
+      toast.error("Please Login, To Access the Contents", { position: 'top-center' });
       navigate('/login');
       return;
     }
@@ -67,25 +67,25 @@ const WorkshopPage = () => {
       userId: user.id, // Ensure this is the correct user ID from your auth context
       selectedWorkshops: selectedIds, // Send the array of selected workshop IDs
     };
-    
+
     // Make the API request
     toast.promise(
-    fetch("http://localhost:8000/user/updateWorkshops", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      }),
+      fetch("http://localhost:8000/user/updateWorkshops", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        }),
       {
         loading: 'Submitting your workshops...',
         success: 'Workshops successfully updated!',
         error: 'Failed to update workshops. Please try again.',
-      },{position:'top-center'})
+      }, { position: 'top-center' })
       .then((data) => {
         console.log("Success:", data);
         // Update the user context
@@ -94,9 +94,9 @@ const WorkshopPage = () => {
           workshops: data.workshops,
         }));
         // alert("Workshops successfully updated!");
-        
+
         navigate("/profile"); // Optionally navigate to the profile page
-        
+
       })
       .catch((error) => console.error("Error:", error));
   };
