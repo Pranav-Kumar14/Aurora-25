@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Ctfevent = () => {
   return (
@@ -22,8 +22,8 @@ const Ctfevent = () => {
         </div>
       </div>
       <button className="w-[150px] h-[40px] bg-[#9d31a1] rounded-[40px] shadow-[inset_0px_4px_5px_0px_rgba(0,0,0,0.25)] border border-black mt-10">
-          Register Now!
-        </button>
+        Register Now!
+      </button>
     </div>
   );
 };
