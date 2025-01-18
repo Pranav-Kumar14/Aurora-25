@@ -13,6 +13,10 @@ export default function Register() {
         email: '',
         password: '',
         collegeid: '',
+        year: '',
+        branch: '',
+        interest: '',
+        phone: '',
     });
 
     const handleSubmit = async (e) => {
@@ -103,9 +107,6 @@ export default function Register() {
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 />
                             </div>
-                        </div>
-
-                        <div className="flex flex-col space-y-4 w-full sm:w-5/12">
                             <div>
                                 <label htmlFor="collegeid" className="block text-md font-medium text-white">
                                     College ID
@@ -120,7 +121,62 @@ export default function Register() {
                                     onChange={(e) => setFormData({ ...formData, collegeid: e.target.value })}
                                 />
                             </div>
-
+                            <div>
+                                <label htmlFor="year" className="block text-md font-medium text-white">
+                                    Year
+                                </label>
+                                <input
+                                    id="year"
+                                    name="year"
+                                    type="text"
+                                    required
+                                    className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                    value={formData.year}
+                                    onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="branch" className="block text-md font-medium text-white">
+                                    Branch
+                                </label>
+                                <input
+                                    id="branch"
+                                    name="branch"
+                                    type="text"
+                                    required
+                                    className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                    value={formData.branch}
+                                    onChange={(e) => setFormData({ ...formData, branch: e.target.value })}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="phone" className="block text-md font-medium text-white">
+                                    Phone Number
+                                </label>
+                                <input
+                                    id="phone"
+                                    name="phone"
+                                    type="text"
+                                    required
+                                    className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                    value={formData.phone}
+                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="interest" className="block text-md font-medium text-white">
+                                    Interest
+                                </label>
+                                <input
+                                    id="interest"
+                                    name="interest"
+                                    type="text"
+                                    required
+                                    className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                    value={formData.interest}
+                                    onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
+                                />
+                            </div>
                             <div>
                                 <label htmlFor="password" className="block text-md font-medium text-white">
                                     Password

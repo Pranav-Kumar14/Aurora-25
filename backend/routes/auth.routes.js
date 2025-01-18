@@ -10,7 +10,7 @@ const {
 const { sendOTP, verifyOTP } = require('../controllers/otp');
 const authMiddleware = require('../middleware/auth.middleware');
 const User = require("../models/user.model");
-const Workshop = require('../models/workshop');
+const Workshop = require('../models/workshop.models');
 
 const router = express.Router();
 

@@ -4,9 +4,9 @@ const { generateToken } = require("../utils/jwtUtils");
 const e = require("express");
 
 const registerUser = async (req, res) => {
-  const { fullName, username, email, password, collegeid } = req.body;
+  const { fullName, username, email, password, collegeid, year, branch, interest, phone } = req.body;
 
-  if ((fullName, username === "" || email === "" || password === "" || collegeid === "")) {
+  if ((fullName, username === "" || email === "" || password === "" || collegeid === "" || year === "" || branch === "" || interest === "" || phone === "")) {
     return res.status(400).json({ message: "Please fill in all fields" });
   }
   const existingUser = await User.findOne({ $or: [{ username }, { email }, { collegeid }] });
@@ -19,6 +19,10 @@ const registerUser = async (req, res) => {
     newUser = await User.create({
       username: username.toLowerCase(),
       fullName,
+      year,
+      branch,
+      interest,
+      phone,
       email,
       collegeid,
       password: hashedPassword,
