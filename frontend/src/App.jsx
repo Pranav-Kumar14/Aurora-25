@@ -28,6 +28,7 @@ import Footer from "./components/Footer";
 import WorkshopPage from './pages/WorkshopPage';
 import Speaker from "./pages/Speaker";
 import Carousel from "./components/Carousel";
+import Ctf from "./pages/CTf";
 import ForgotPassword from "./pages/ForgotPassword";
 import Workshop1 from "./pages/workpage/Workshop1";
 import Workshop2 from "./pages/workpage/Workshop2";
@@ -60,7 +61,8 @@ function App() {
             <Route path="/fetchnew" element={<TeamManagementPage />} />
             <Route path="/createteam" element={<CreateTeam />} />
             <Route path="/developer" element={<Developer />} />
-            <Route path="testing" element={<Carousel />} />
+            <Route path="testing" element={<Carousel/>} />
+            <Route path="ctf" element={<Ctf/>} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/Workshop1" element={<Workshop1/>} />
             <Route path="/Workshop2" element={<Workshop2/>} />

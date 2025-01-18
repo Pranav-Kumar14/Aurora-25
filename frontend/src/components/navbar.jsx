@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import auroralogo from "../images/aurora_logo.png";
+import Captf from "../images/Captf.png";
+import CTF from "../images/ctfhead.png";
 import { useNavigate } from "react-router-dom";
 // import Home from "../images/Home.png";
 // import Speaker from "../images/Speaker.png";
@@ -60,13 +62,13 @@ function Navbar() {
                         /> */}
                         {/* </Link> */}
                         <Link
-                            to="/sponsors"
+                            to="/ctf"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Sponsers_th9hym.png"
-                            alt="Sponsors"
+                            src={CTF}
+                            alt="CTF"
                         />
                         </Link>
                         <Link
