@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import workshp from "../constants/ws";
+import { Link } from "react-router-dom";
 
 const Carousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -61,23 +62,35 @@ const Carousel = () => {
             </button>
 
             {/* Carousel items */}
-            <div className="flex items-center space-x-4 sm:space-x-6 overflow-hidden">
-                {getVisibleItems().map((item, index) => (
-                    <div
-                        key={item.id}
-                        className={`flex-shrink-0 transition-all duration-300 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full flex items-center justify-center ${
-                            index === Math.floor(visibleCount / 2)
-                                ? "scale-110 bg-white shadow-lg"
-                                : "scale-90 opacity-50"
-                        }`}
-                    >
-                        <img
-                            src={item.src}
-                            alt={item.alt}
-                            className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 object-contain rounded-full"
-                        />
-                    </div>
-                ))}
+            <div className="flex items-center py-4 space-x-6 sm:space-x-8 md:space-x-10 lg:space-x-12 overflow-hidden">
+                {getVisibleItems().map((item, index) => {
+                    const isHighlighted =
+                        index === Math.floor(visibleCount / 2);
+                    const itemContent = (
+                        <div
+                            key={item.id}
+                            className={`flex-shrink-0 transition-all duration-300 w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-48 lg:h-48 rounded-full flex items-center justify-center ${
+                                isHighlighted
+                                    ? "scale-110 shadow-lg border-gray-300 bg-white"
+                                    : "scale-90 opacity-50"
+                            }`}
+                        >
+                            <img
+                                src={item.src}
+                                alt={item.alt}
+                                className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-44 lg:h-44 object-contain rounded-full"
+                            />
+                        </div>
+                    );
+
+                    return isHighlighted ? (
+                        <Link key={item.id} to="/workshop">
+                            {itemContent}
+                        </Link>
+                    ) : (
+                        itemContent
+                    );
+                })}
             </div>
 
             {/* Right arrow */}
