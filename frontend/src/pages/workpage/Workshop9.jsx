@@ -1,9 +1,11 @@
 import React from 'react';
-import w1 from '../../images/workshop1.png';
-import logo from '../../images/logo.png';
+import w1 from '../../images/debate.svg';
+import logo from '../../images/Blank.jpeg';
 import workback from '../../images/work_back.png';
+import { useNavigate } from "react-router-dom";
 
 const Workshop1 = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center p-8 pt-[299px] pb-[250px] font-press-start bg-cover bg-top bg-no-repeat"
@@ -30,7 +32,7 @@ const Workshop1 = () => {
         <div className="mt-8">
           <h3 className="text-3xl text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
-            In machine learning, a neural network (also artificial neural network or neural net, abbreviated ANN or NN) is a model inspired by the structure and function of biological neural networks in animal brains.
+            Engage in the interesting Tech Based Debates.
           </p>
           <div className="mt-6 flex justify-center items-center gap-8 text-center">
             {/* Date */}
@@ -94,17 +96,21 @@ const Workshop1 = () => {
 
         {/* About Our Club Section */}
         <div className="mt-8 pt-9 p-6 rounded-[36px] bg-[rgba(255,255,255,0.1)] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px]">
+        <div className="absolute top-4 leftt-4">
+    <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
+  </div>
           <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
           <p className="mt-4 text-center font-body text-base  text-[#EAEAEA] leading-loose">
-            ISTE Manipal, part of Manipal Academy of Higher Education, is a leading institute specializing in space science, engineering, and technology. It offers cutting-edge programs, advanced facilities, and collaborations with space agencies, fostering innovation and expertise in aerospace and satellite technologies.
+          Welcome to MIT's official Public Speaking Club, Blank101, the center of eloquence, where words take flight and voices ring out with assurance. We're not just a club; we're a thriving community of individuals who share a passion for making an impact.Beyond public speaking, we also delve into the realm of written expression, crafting compelling articles, and thought-provoking pieces that engage and enlighten.
           </p>
         </div>
 
         {/* Register Button */}
         <div className="text-center mt-8">
-          <button
-            className="rounded-[135px] bg-orange-400 shadow-inner shadow-[0_4px_6px_5px_rgba(0,0,0,0.25)] px-6 py-2 text-white font-semibold hover:bg-[#04c3d0] transition duration-300 ease-in-out"
-          >
+        <button className="rounded-[135px] bg-orange-400 shadow-inner shadow-[0_4px_6px_5px_rgba(0,0,0,0.25)] px-6 py-2 text-white font-semibold hover:bg-[#04c3d0] transition duration-300 ease-in-out"
+          onClick={()=>{
+            navigate(`/Workshop`)
+          }}>
             Go To Workshop Page
           </button>
           <p className="mt-4 text-sm font-body">Register to reserve your spot now!!</p>
