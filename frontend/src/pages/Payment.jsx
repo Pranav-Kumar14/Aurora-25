@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { load } from "@cashfreepayments/cashfree-js";
-import getProfile from "../services/auth"
+import {getProfile} from "../services/auth"
 
 const PaymentButton = ({ userId, orderAmount, onPaymentSuccess }) => {
   const [orderId, setOrderId] = useState("");
@@ -18,7 +18,9 @@ const PaymentButton = ({ userId, orderAmount, onPaymentSuccess }) => {
     const getUserDetails = async () => {
       try {
         const data = await getProfile(); 
+        console.log(data);
         setUserData(data);
+        console.log({"userdata":userData});
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -132,7 +134,7 @@ const PaymentButton = ({ userId, orderAmount, onPaymentSuccess }) => {
     }
   };
 
-  return <button onClick={handleOrderSubmit}>Pay ₹{orderAmount || "200"}</button>;
+  return <button  onClick={handleOrderSubmit}>Pay ₹{orderAmount || "225"}</button>;
 };
 
 export default PaymentButton;

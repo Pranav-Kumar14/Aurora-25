@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import  {useAuth}  from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { User, LogOut } from "lucide-react";
 import { workshops } from "../constants/workshops";
 import { updateProfile } from "../services/auth";
+import PaymentButton from "./Payment";
+
 
 export default function Profile() {
     const { user, setUser } = useAuth();
     console.log("user check ", user)
     const [registeredWorkshops, setRegisteredWorkshops] = useState([]);
     const navigate = useNavigate();
+    const handlePaymentSuccess = (paymentData) =>{
+        console.log("Payment Success:",paymentData);
+    }
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -110,7 +115,16 @@ export default function Profile() {
                                     )}
                                 </dd>
                             </div>
+
                         )}
+                        <button className="bg-[#519984] px-6 py-2 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]">
+                        <PaymentButton
+                            userId="12345"
+                            orderAmount="225"
+                            onPaymentSuccess={handlePaymentSuccess}
+                        />
+
+                        </button> 
                     </dl>
                 </div>
             </div>
