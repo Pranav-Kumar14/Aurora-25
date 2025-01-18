@@ -38,13 +38,13 @@ export default function Register() {
             className="flex flex-col justify-center pb-12 sm:px-6 lg:px-8"
         >
 
-                    <div className="flex flex-row items-center justify-center space-x-4">
-                            <img
-                                src={SignInText}
-                                alt="Login Text"
-                                style={{ height: '50px', width: 'auto',paddingBottom: '15px' }}
-                            />
-                        </div>
+            <div className="flex flex-row items-center justify-center space-x-4">
+                <img
+                    src={SignInText}
+                    alt="Login Text"
+                    style={{ height: '50px', width: 'auto', paddingBottom: '15px' }}
+                />
+            </div>
 
 
 
@@ -134,20 +134,22 @@ export default function Register() {
                                     value={formData.password}
                                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                 />
+                                <div className="mt-6 flex justify-center">
+                                    <button
+                                        type="submit"
+                                        className="w-full sm:w-1/2 py-3 px-5 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#040D4C] hover:bg-[#072C5F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+
+                                    >
+                                        Register
+                                    </button>
+                                </div>
                             </div>
+
                         </div>
                     </form>
 
 
-                    <div className="mt-6 flex justify-center">
-                        <button
-                            type="submit"
-                            className="w-full sm:w-1/2 py-3 px-5 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#040D4C] hover:bg-[#072C5F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 
-                        >
-                            Register
-                        </button>
-                    </div>
 
 
                     <div className="mt-6 text-center">

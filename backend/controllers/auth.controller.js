@@ -11,7 +11,7 @@ const registerUser = async (req, res) => {
   }
   const existingUser = await User.findOne({ $or: [{ username }, { email }, { collegeid }] });
   if (existingUser) {
-    return res.status(400).json({ message: "Username or email already exists" });
+    return res.status(400).json({ message: "Username or email or College ID already exists" });
   }
   let newUser
   try {
