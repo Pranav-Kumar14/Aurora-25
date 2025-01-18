@@ -5,7 +5,8 @@ const {
     registerUser,
     loginUser,
     updateWorkshops,
-    handlePasswordReset
+    handlePasswordReset,
+    upateProfile
 } = require('../controllers/auth.controller');
 const { sendOTP, verifyOTP } = require('../controllers/otp');
 const authMiddleware = require('../middleware/auth.middleware');
@@ -92,7 +93,7 @@ router.post('/subtract-users', async (req, res) => {
     }
 });
 
-module.exports = router;
 
+router.post('/updateProfile',upateProfile);
 
 module.exports = router;
