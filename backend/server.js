@@ -7,12 +7,13 @@ const userRouter = require("./routes/auth.routes");
 const teamRouter = require("./routes/team.routes");
 const paymentRouter = require("./routes/payment.routes")
 const cashfreeRoutes = require("./routes/payment.routes")
+const bodyParser = require("body-parser");
 
 const app = express();
 
 Cashfree.XClientId = process.env.CLIENT_ID;
 Cashfree.XClientSecret = process.env.CLIENT_SECRET;
-Cashfree.XEnvironment = Cashfree.Environment.SANDBOX;
+Cashfree.XEnvironment = Cashfree.Environment.PRODUCTION;
 
 // Middleware
 app.use(cors({
@@ -21,6 +22,7 @@ app.use(cors({
   credentials: true,
 }));
 app.use(express.json());
+app.use(bodyParser.json());
 
 // Connect to MongoDB
 const PORT = process.env.PORT || 8000;

@@ -119,6 +119,8 @@ const updateWorkshops = async (req, res) => {
 const upateProfile = async (req,res) => {
   try {
     const data = req.body.userId;
+    console.log(data);
+    
   const user = await User.findById(data); 
   user.workshopPaid = true;
   await user.save();

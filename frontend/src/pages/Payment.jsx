@@ -1,51 +1,60 @@
 import { useState, useEffect } from "react";
 import { load } from "@cashfreepayments/cashfree-js";
 import {getProfile} from "../services/auth"
+import  {useAuth}  from "../context/AuthContext";
 
-const PaymentButton = ({ userId, orderAmount, onPaymentSuccess }) => {
+const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
+  const { user, setUser } = useAuth();
   const [orderId, setOrderId] = useState("");
   const [userData, setUserData] = useState(null);
 
   let cashfree; 
   let insitialzeSDK = async function () {
     cashfree = await load({
-      mode: "sandbox",
+      mode: "production",
     })
   }
   insitialzeSDK()
 
-  useEffect(() => {
-    const getUserDetails = async () => {
-      try {
-        const data = await getProfile(); 
-        console.log(data);
-        setUserData(data);
-        console.log({"userdata":userData});
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
+  // const getUserDetails = async () => {
+  //   try {
+  //     console.log('hi')
+  //     const data = await updateProfile(user.email); 
+  //     console.log(data);
+  //     setUserData(data);
+  //     console.log({"userdata":userData});
+  //   } catch (error) {
+  //     console.error("Error fetching user data:", error);
+  //   }
+  // };
 
-    getUserDetails();
-  }, []);
+  // useEffect(() => {
+    
+
+  //   getUserDetails();
+  // }, []);
 
   const handleOrderSubmit = async () => {
-    if (!userId) {
+    // getUserDetails();
+
+    if (!userDataNew._id) {
       console.error("User ID is required");
       return;
     }
 
+    console.log(userDataNew)
+
     const orderData = {
       customer_details:{
-        id:userData.data.id,
-        name: userData.data.name, // Replace with actual user name if available
-        email: userData.data.email, // Replace with actual user email if available
-        contact: "8809795734"
+        id:userDataNew._id,
+        name: userDataNew.name, // Replace with actual user name if available
+        email: userDataNew.email, // Replace with actual user email if available
+        phone_number: "8809795734"
       }
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/create-order", {
+      const response = await fetch("http://localhost:8000/cashfree/create-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +101,7 @@ const PaymentButton = ({ userId, orderAmount, onPaymentSuccess }) => {
 
   const verifyPayment = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/verify-payment", {
+      const response = await fetch("http://localhost:8000/cashfree/verify-payment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,12 +124,15 @@ const PaymentButton = ({ userId, orderAmount, onPaymentSuccess }) => {
 
   const updateUserProfile = async () => {
     try {
+      const payload = {
+        userId: userDataNew._id, 
+      };
       const response = await fetch("http://localhost:8000/user/updateProfile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId }),
+        body: JSON.stringify(payload),
       });
 
       const data = await response.json();
