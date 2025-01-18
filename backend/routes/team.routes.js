@@ -6,8 +6,8 @@ const { createTeam, joinTeam, teamList, teamRequest, checkLeader, getUserTeam,
   rejectRequest,
   removeMember,
   leaveTeam,
-  updateDescription,teamLists,CancelRequest, } = require("../controllers/team.controller")
-// const authMiddleware = require("../middleware/auth.middleware")
+  updateDescription, teamLists, CancelRequest, } = require("../controllers/team.controller")
+const authMiddleware = require("../middleware/auth.middleware")
 
 
 router.post("/create", createTeam)
@@ -16,7 +16,7 @@ router.get("/list", teamList)
 router.get("/list/team", teamLists)
 
 
-router.post("/join",joinTeam)
+router.post("/join", authMiddleware, joinTeam)
 
 router.post("/request-join", teamRequest)
 
@@ -37,6 +37,6 @@ router.post("/leave", leaveTeam);
 
 router.post("/update-description", updateDescription);
 
-router.post("/cancel-request",CancelRequest);
+router.post("/cancel-request", CancelRequest);
 
 module.exports = router;

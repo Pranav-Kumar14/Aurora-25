@@ -4,14 +4,14 @@ const { generateToken } = require("../utils/jwtUtils");
 const e = require("express");
 
 const registerUser = async (req, res) => {
-  const { fullName, username, email, password, collegeid } = req.body;
+  const { fullName, username, email, password, collegeid, year, branch, interest, phone } = req.body;
 
-  if ((fullName, username === "" || email === "" || password === "" || collegeid === "")) {
+  if ((fullName, username === "" || email === "" || password === "" || collegeid === "" || year === "" || branch === "" || interest === "" || phone === "")) {
     return res.status(400).json({ message: "Please fill in all fields" });
   }
   const existingUser = await User.findOne({ $or: [{ username }, { email }, { collegeid }] });
   if (existingUser) {
-    return res.status(400).json({ message: "Username or email already exists" });
+    return res.status(400).json({ message: "Username or email or College ID already exists" });
   }
   let newUser
   try {
@@ -19,6 +19,10 @@ const registerUser = async (req, res) => {
     newUser = await User.create({
       username: username.toLowerCase(),
       fullName,
+      year,
+      branch,
+      interest,
+      phone,
       email,
       collegeid,
       password: hashedPassword,
@@ -65,26 +69,25 @@ const loginUser = async (req, res) => {
   }
 };
 
-const changeCurrentPassword = async (req, res) => {
-  const { oldPassword, newPassword } = req.body
-
-  const user = await User.findById(req.user?._id)
-  if (!user) {
-    return res.status(404).json({ message: "User not found" });
+async function handlePasswordReset(req, res) {
+  const email = req.body.email
+  const newPassword = req.body.newPassword
+  const confirmPassword = req.body.confirmPassword
+  if (newPassword !== confirmPassword) {
+    return res.status(404).json({ error: "Passwords do not match" })
   }
-  const isPasswordCorrect = await user.isPassword(oldPassword)
-
-  if (!isPasswordCorrect) {
-    return res.status(401).json({ error: "Invalid old password" });
+  try {
+    // const msg = await updatePassword(email, newPassword)
+    const user = await User.findOne({ email })
+    if (!user) throw new Error('User not found')
+    const id = user._id;
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    await User.findByIdAndUpdate(id, { password: hashedPassword });
+    console.log("password updated successfully! ")
+  } catch (error) {
+    return res.status(404).json({ error: error })
   }
-  user.password = await bcrypt.hash(newPassword, 10);
-  await user.save()
-
-  return res
-    .status(200)
-    .json(
-      { message: "Password changed successfully" }
-    )
+  return res.status(200).json({ message: "Password Reset Successful" })
 }
 
 const updateWorkshops = async (req, res) => {
@@ -113,5 +116,23 @@ const updateWorkshops = async (req, res) => {
   }
 };
 
+const upateProfile = async (req,res) => {
+  try {
+    const data = req.body.userId;
+  const user = await User.findById(data); 
+  user.workshopPaid = true;
+  await user.save();
 
-module.exports = { registerUser, loginUser, changeCurrentPassword, updateWorkshops };
+  return res.status(200).json({
+    message: "Successfully paid for workshop"
+  })
+  } catch (error) {
+    return res.status(500).json({
+      message: "Error saving workshop to paid"
+    })
+  }
+  
+}
+
+
+module.exports = { registerUser, loginUser, changeCurrentPassword, updateWorkshops, upateProfile};

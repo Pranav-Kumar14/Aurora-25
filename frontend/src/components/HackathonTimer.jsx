@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-const CountdownTimer = () => {
+const HackathonTimer = () => {
     const calculateTimeLeft = () => {
-        const eventDate = new Date('2025-01-24T00:00:00');
+        const eventDate = new Date('2025-02-02T08:00:00');
         const now = new Date();
         const difference = eventDate - now;
 
@@ -41,4 +41,4 @@ const CountdownTimer = () => {
     );
 };
 
-export default CountdownTimer;
+export default HackathonTimer;
