@@ -21,7 +21,7 @@ export default function Login() {
             sessionStorage.setItem('token', response.token);
             setUser(response.user);
             toast.success('Login successful!');
-            navigate('/hackathon');
+            navigate('/home');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Login failed');
         }

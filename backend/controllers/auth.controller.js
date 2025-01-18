@@ -74,10 +74,10 @@ async function handlePasswordReset(req, res) {
   }
   try {
     // const msg = await updatePassword(email, newPassword)
-    const user = await this.findOne({ email })
+    const user = await User.findOne({ email })
     if (!user) throw new Error('User not found')
     const id = user._id;
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
     await User.findByIdAndUpdate(id, { password: hashedPassword });
     console.log("password updated successfully! ")
   } catch (error) {

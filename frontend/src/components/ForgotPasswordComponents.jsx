@@ -75,7 +75,7 @@ export function VerifyOTP({ email, otp, handleVerifyEmailAndSentOTP, handleOTPCh
         e.preventDefault()
         console.log("VERIFYOTP", email, otp)
         try {
-            const response = await api.post('/forgotpassword/verifyotp', { email, otp })
+            const response = await api.post('user/forgotpassword/verifyotp', { email, otp })
             //loading
             if (response.status == 200) { setFormState("passwordReset") }
             console.log(response)
@@ -133,64 +133,83 @@ export function VerifyOTP({ email, otp, handleVerifyEmailAndSentOTP, handleOTPCh
 }
 
 export function PasswordReset({ email, setFormState }) {
-
-    const [password, setPassword] = useState({})
+    const [passwords, setPasswords] = useState({ newPassword: "", confirmPassword: "" });
 
     function handlePasswordChange(e) {
-        setPassword({ ...password, [e.target.name]: e.target.value })
+        setPasswords({ ...passwords, [e.target.name]: e.target.value });
     }
 
     async function handlePasswordReset(e) {
-        e.preventDefault()
-        console.log("PASSWORD RESET", email, password)
-        if (password.newPassword !== password.confirmPassword) {
-            console.log("Passwords doesnot match")
-            //toast
+        e.preventDefault();
+        console.log("PASSWORD RESET", email, passwords);
+
+        if (passwords.newPassword !== passwords.confirmPassword) {
+            console.log("Passwords do not match");
+            // Add toast notification for user feedback
             return;
         }
-        else {
-            try {
-                const response = await axios.post('/resetpassword', { email, newPassword: password.newPassword, confirmPassword: password.confirmPassword })
-                console.log(response)
-                if (response.status == 200) { setFormState("resetSuccessful") }
-            } catch (error) {
-                console.log(error.response)
+
+        try {
+            console.log({
+                email,
+                newPassword: passwords.newPassword,
+                confirmPassword: passwords.confirmPassword
+            })
+            const response = await api.post("user/forgotpassword/resetpassword", {
+                email,
+                newPassword: passwords.newPassword,
+                confirmPassword: passwords.confirmPassword
+            });
+            console.log(response);
+            if (response.status === 200) {
+                setFormState("resetSuccessful");
             }
+        } catch (error) {
+            console.error(error.response || error);
+            // Add toast notification or error handling logic
         }
     }
 
     return (
         <form onSubmit={handlePasswordReset}>
             <div className="flex flex-col items-center justify-center px-24 pt-60">
-                <h1 className="font-semibold text-5xl">Set new Password.</h1>
+                <h1 className="font-semibold text-5xl">Set New Password</h1>
                 <p className="pt-12 font-semibold text-gray-500">
-                    Your new password must be different to previously used passwords.
+                    Your new password must be different from previously used passwords.
                 </p>
-                <div className="w-full max-w-md pt-12 text-gray-400">
+                <div className="w-full max-w-md pt-4 text-gray-400">
                     <Input
+                        name="Email"
                         value={email}
-                        onChange={(e) => handleEmailChange(e)}
+                        onChange={handlePasswordChange}
                         required
-                        type="email"
+                        type="password"
                         label="Email"
-                        color="default"
-                        variant="bordered"
-                        placeholder="prof@manipal.edu"
-                        helperText={email ? '' : 'Please enter your email address'}
+                        placeholder="Enter your email"
                     />
-
                 </div>
                 <div className="w-full max-w-md pt-4 text-gray-400">
                     <Input
+                        name="newPassword"
+                        value={passwords.newPassword}
                         onChange={handlePasswordChange}
-                        name="confirmPassword"
                         required
-                        isRequired
-                        type="text"
-                        label="Verify Password"
+                        type="password"
+                        label="New Password"
+                        placeholder="Enter new password"
                     />
                 </div>
-
+                <div className="w-full max-w-md pt-4 text-gray-400">
+                    <Input
+                        name="confirmPassword"
+                        value={passwords.confirmPassword}
+                        onChange={handlePasswordChange}
+                        required
+                        type="password"
+                        label="Confirm Password"
+                        placeholder="Re-enter new password"
+                    />
+                </div>
                 <div className="w-full max-w-md pt-6">
                     <Button
                         type="submit"
@@ -199,7 +218,6 @@ export function PasswordReset({ email, setFormState }) {
                         className="w-full h-12 text-medium text-white font-semibold"
                         size="md"
                         radius="sm"
-                        style={{ width: "calc(100%)" }}
                     >
                         Reset Password
                     </Button>
@@ -213,7 +231,6 @@ export function PasswordReset({ email, setFormState }) {
         </form>
     );
 }
-
 export function ResetSuccessful() {
     return (
         <div className="flex flex-col items-center justify-center px-24 pt-60">
