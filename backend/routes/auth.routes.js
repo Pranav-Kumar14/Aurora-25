@@ -6,12 +6,13 @@ const {
     loginUser,
     updateWorkshops,
     handlePasswordReset,
-    upateProfile
+    updateProfile
 } = require('../controllers/auth.controller');
 const { sendOTP, verifyOTP } = require('../controllers/otp');
 const authMiddleware = require('../middleware/auth.middleware');
 const User = require("../models/user.model");
 const Workshop = require('../models/workshop.models');
+const { addUsersByWorkshopIds, substractUsersByWorkshopIds } = require('../controllers/workshop.controller');
 
 const router = express.Router();
 
@@ -22,6 +23,9 @@ router.post('/updateWorkshops', updateWorkshops);
 router.post('/forgotpassword/sendotp', sendOTP);
 router.post('/forgotpassword/verifyotp', verifyOTP);
 router.post('/forgotpassword/resetpassword', handlePasswordReset);
+
+router.put('/workshop/add', addUsersByWorkshopIds);
+router.put('/workshop/substract', substractUsersByWorkshopIds);
 
 // Protected route example
 router.get('/profile', authMiddleware, (req, res) => {
@@ -94,6 +98,6 @@ router.post('/subtract-users', async (req, res) => {
 });
 
 
-router.post('/updateProfile',upateProfile);
+router.post('/updateProfile', updateProfile);
 
 module.exports = router;
