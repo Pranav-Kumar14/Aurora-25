@@ -134,5 +134,5 @@ const updateProfile = async (req, res) => {
 
 }
 
-
 module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops, updateProfile };
+
