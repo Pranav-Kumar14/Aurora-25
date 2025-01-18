@@ -7,7 +7,7 @@ import { updateProfile } from "../services/auth";
 
 export default function Profile() {
     const { user, setUser } = useAuth();
-    console.log("user check ",user)
+    console.log("user check ", user)
     const [registeredWorkshops, setRegisteredWorkshops] = useState([]);
     const navigate = useNavigate();
 
@@ -58,7 +58,6 @@ export default function Profile() {
     };
 
     if (!user) return null;
-
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">

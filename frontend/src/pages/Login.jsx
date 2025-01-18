@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/auth';
 import { useAuth } from '../context/AuthContext';
-import toast from 'react-hot-toast'
+import toast from 'react-hot-toast';
 import LoginBg from '../images/Bg1.png';
-import LoginIcon from '../images/log.png';
 import LoginText from '../images/LOGIN.png';
 
 export default function Login() {
@@ -19,10 +18,10 @@ export default function Login() {
         e.preventDefault();
         try {
             const response = await login(formData);
-            localStorage.setItem('token', response.token);
+            sessionStorage.setItem('token', response.token);
             setUser(response.user);
             toast.success('Login successful!');
-            navigate('/hackathon');
+            navigate('/home');
         } catch (error) {
             toast.error(error.response?.data?.message || 'Login failed');
         }
@@ -41,16 +40,16 @@ export default function Login() {
             className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8"
         >
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-    <div className="flex flex-row items-center justify-center space-x-4">
-        <img
-            src={LoginText}
-            alt="Login Text"
-            style={{ height: '50px', width: 'auto',paddingBottom: '15px' }}
-        />
-    </div>
-</div>
+                <div className="flex flex-row items-center justify-center space-x-4">
+                    <img
+                        src={LoginText}
+                        alt="Login Text"
+                        style={{ height: '50px', width: 'auto', paddingBottom: '15px' }}
+                    />
+                </div>
+            </div>
 
-            <div className=" sm:mx-auto sm:w-full sm:max-w-lg">
+            <div className="sm:mx-auto sm:w-full sm:max-w-lg">
                 <div
                     className="py-6 px-6 shadow sm:rounded-lg sm:px-10"
                     style={{
@@ -91,35 +90,24 @@ export default function Login() {
                         </div>
 
                         <div className="mt-6 flex justify-center">
-                        <button
-                            type="submit"
-                            className="w-full sm:w-1/2 py-3 px-5 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#040D4C] hover:bg-[#072C5F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-
-                        >
-                            Sign In
-                        </button>
-                    </div>
+                            <button
+                                type="submit"
+                                className="w-full sm:w-1/2 py-3 px-5 border border-transparent rounded-md shadow-sm text-md font-medium text-white bg-[#040D4C] hover:bg-[#072C5F] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                Sign In
+                            </button>
+                        </div>
 
                         <div className="flex flex-col items-center space-y-4 mt-4">
-
-
                             <div className="relative">
-                                <span
-                                    className="px-3 text-white"
-                                    style={{
-                                        backgroundColor: 'rgba(69, 92, 147, 0.7)',
-                                        backdropFilter: 'blur(10px)',
-                                        borderRadius: '8px',
-                                    }}
+                                <button
+                                    onClick={() => navigate('/forgotpassword')}
+                                    className="font-medium text-white hover:text-[#040D4C]"
                                 >
-                                    <button
-                                        onClick={() => navigate('/forgot-password')}
-                                        className="font-medium text-white hover:text-[#040D4C]"
-                                    >
-                                        Forgot Password?
-                                    </button>
-                                </span>
+                                    Forgot Password?
+                                </button>
                             </div>
+
                             <div className="relative">
                                 <span
                                     className="px-3 text-white"
