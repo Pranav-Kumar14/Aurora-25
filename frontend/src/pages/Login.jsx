@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/auth';
 import { useAuth } from '../context/AuthContext';
-import toast from 'react-hot-toast';
-import LoginBg from '../images/Bg1.png';
-import LoginText from '../images/LOGIN.png';
+import toast from 'react-hot-toast'
+// import LoginBg from '../images/Bg1.png';
+// import LoginIcon from '../images/log.png';
+// import LoginText from '../images/LOGIN.png';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function Login() {
     return (
         <div
             style={{
-                backgroundImage: `url(${LoginBg})`,
+                backgroundImage: `url("https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Bg1_ouzd2n.png")`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -40,14 +41,15 @@ export default function Login() {
             className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8"
         >
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="flex flex-row items-center justify-center space-x-4">
-                    <img
-                        src={LoginText}
-                        alt="Login Text"
-                        style={{ height: '50px', width: 'auto', paddingBottom: '15px' }}
-                    />
-                </div>
+            <div className="flex flex-row items-center justify-center space-x-4">
+                <img
+                    src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/LOGIN_zpic7f.png"
+                    alt="Login Text"
+                    style={{ height: '50px', width: 'auto',paddingBottom: '15px' }}
+                />
             </div>
+        </div>
+
 
             <div className="sm:mx-auto sm:w-full sm:max-w-lg">
                 <div

@@ -46,7 +46,7 @@ function App() {
             <Route path="/workshop" element={<WorkshopPage />} />
             <Route path="/fetch" element={<Teamlogin />} />
             <Route path="/fetchteam" element={<TeamManagement />} />
-            <Route path="/hackathon-info" element={<TeamManagementPage />} />
+            <Route path="/fetchnew" element={<TeamManagementPage />} />
             <Route path="/createteam" element={<CreateTeam />} />
             <Route path="/developer" element={<Developer />} />
             <Route path="testing" element={<Carousel />} />

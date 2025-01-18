@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { workshops } from "../constants/workshops";
 import { getProfile } from "../services/auth";
 import toast from 'react-hot-toast';
+import BaseUrl from "../BaseUrl";
 
 const WorkshopPage = () => {
 
@@ -153,7 +154,7 @@ const WorkshopPage = () => {
                 }`}
             >
               <div className="flex justify-center mb-4">
-                <img src={icon} alt="Workshop Icon" className="w-16 h-16" />
+                <img src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/workicon_bit2xw.png" alt="Workshop Icon" className="w-16 h-16" />
               </div>
               <h2 className="text-xl font-semibold text-center mb-2">{workshop.title}</h2>
               <div className="rounded-[8px] border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">
