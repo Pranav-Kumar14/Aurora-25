@@ -119,9 +119,10 @@ const updateWorkshops = async (req, res) => {
 const updateProfile = async (req, res) => {
   try {
     const data = req.body.userId;
-    const user = await User.findById(data);
-    user.workshopPaid = true;
-    await user.save();
+    
+  const user = await User.findById(data); 
+  user.workshopPaid = true;
+  await user.save();
 
     return res.status(200).json({
       message: "Successfully paid for workshop"

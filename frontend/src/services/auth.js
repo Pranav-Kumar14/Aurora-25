@@ -8,7 +8,6 @@ export const register = async (data) => {
 
 export const login = async (data) => {
     const response = await api.post('/user/login', data);
-    console.log(response);
     return response.data;
 };
 

@@ -3,7 +3,7 @@ const {Cashfree} = require('cashfree-pg');
 
 Cashfree.XClientId = process.env.CLIENT_ID;
 Cashfree.XClientSecret = process.env.CLIENT_SECRET;
-Cashfree.XEnvironment = Cashfree.Environment.SANDBOX;
+Cashfree.XEnvironment = Cashfree.Environment.PRODUCTION;
 
 function generateOrderId() {
   const uniqueId = crypto.randomBytes(16).toString('hex');
@@ -22,7 +22,6 @@ const createOrderHandler = async (req, res) => {
     if (!req) {
       return res.json("Request was empty").status(401);
     }
-    console.log(req);
     
     let request = {
       "order_amount": "225",
@@ -58,7 +57,7 @@ const verifyPayment = async (req, res) => {
 
     Cashfree.PGFetchOrder("2022-09-01", req.body.orderId)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         res.json(response.data);
       })
       .catch((error) => {
