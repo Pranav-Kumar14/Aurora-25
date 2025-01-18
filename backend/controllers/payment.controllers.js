@@ -1,54 +1,72 @@
-const { createRazorPayinstance } = require ("../utils/razorpay.config.js");
-const {crypto} = require ("crypto");
+const crypto = require('crypto');
+const {Cashfree} = require('cashfree-pg');
 
-const razorpayInstance = createRazorPayinstance();
+Cashfree.XClientId = process.env.CLIENT_ID;
+Cashfree.XClientSecret = process.env.CLIENT_SECRET;
+Cashfree.XEnvironment = Cashfree.Environment.SANDBOX;
 
-const createOrder = async (req, res) => {
-    const { courseId, amount } = req.body;
+function generateOrderId() {
+  const uniqueId = crypto.randomBytes(16).toString('hex');
 
-    // Create order options
-    const options = {
-        amount: amount * 100, // Amount in paise (smallest currency unit)
-        currency: "INR",
-        receipt: `receipt_order_${courseId}`, // Unique receipt ID
+  const hash = crypto.createHash('sha256');
+  hash.update(uniqueId);
+
+  const orderId = hash.digest('hex');
+
+  return orderId.substring(0, 12);
+}
+
+
+const createOrderHandler = async (req, res) => {
+  try {
+    if (!req) {
+      return res.json("Request was empty").status(401);
+    }
+    console.log(req);
+    
+    let request = {
+      "order_amount": "225",
+      "order_currency": "INR",
+      "order_id": await generateOrderId(),
+      customer_details: {
+        "customer_id": req.body.customer_details.id,
+        "customer_phone": req.body.customer_details.phone_number,
+        "customer_name": req.body.customer_details.name,
+        "customer_email": req.body.customer_details.email,
+      },
+      "order_meta": {
+        "return_url": "http://localhost:8000/workshop"
+    }
     };
 
-    try {
-        const order = await razorpayInstance.orders.create(options);
-        return res.status(200).json({
-            success: true,
-            order,
-        });
-    } catch (err) {
-        return res.status(500).json({
-            success: false,
-            message: "Something went wrong",
-            error: err.message,
-        });
-    }
+    Cashfree.PGCreateOrder("2022-09-01", request)
+      .then((response) => {
+        // console.log(response.data);
+        res.json(response.data);
+      })
+      .catch((error) => {
+        console.error(error.response.data.message + "here");
+      });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const verifyPayment = async (req, res) => {
-    const { order_id, payment_id, signature } = req.body;
-    const secret = process.env.KEY_SECRET; // Ensure this is set in your environment variables
+  try {
+    // console.log({"req":req.body});
 
-    // Create HMAC object
-    const hmac = crypto.createHmac("sha256", secret);
-    hmac.update(order_id + "|" + payment_id);
-
-    const generatedSignature = hmac.digest("hex");
-
-    if (generatedSignature === signature) {
-        return res.status(200).json({
-            success: true,
-            message: "Payment verified",
-        });
-    } else {
-        return res.status(400).json({
-            success: false,
-            message: "Payment is not verified",
-        });
-    }
+    Cashfree.PGFetchOrder("2022-09-01", req.body.orderId)
+      .then((response) => {
+        console.log(response.data);
+        res.json(response.data);
+      })
+      .catch((error) => {
+        console.error(error.response);
+      });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-module.exports = { createOrder, verifyPayment };
+module.exports = { createOrderHandler, verifyPayment };

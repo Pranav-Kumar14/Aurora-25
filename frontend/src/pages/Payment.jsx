@@ -1,66 +1,138 @@
-import { useState, useEffect } from 'react';
-import axios from "axios";
-import { load } from '@cashfreepayments/cashfree-js';
+import { useState, useEffect } from "react";
+import { load } from "@cashfreepayments/cashfree-js";
+import getProfile from "../services/auth"
 
-function PaymentPage() {
-    let cashfree; 
-    let insitialzeSDK = async function () {
-      cashfree = await load({
-        mode: "PRODUCTION",
-      })
-    }
-    insitialzeSDK()
-    const [orderId, setOrderId] = useState("")
-    const getSessionId = async () => {
-      try {
-        let res = await axios.get("https://aurora.istemanipal.com/api/cashfree/payment")
-        if (res.data && res.data.payment_session_id) {
-          console.log(res.data)
-          setOrderId(res.data.order_id)
-          return res.data.payment_session_id
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    const verifyPayment = async () => {
-      try {
-        let res = await axios.post("https://aurora.istemanipal.com/api/cashfree/verify", {
-          orderId: orderId
-        })
-        if (res && res.data) {
-          alert("payment verified")
-        }
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    const handleClick = async (e) => {
-      e.preventDefault()
-      try {
-        let sessionId = await getSessionId()
-        let Options = {
-          paymentSessionId: sessionId,
-          redirectTarget: "_modal",
-        }
-        cashfree.checkout(Options).then((res) => {
-          console.log("payment initialized")
-          verifyPayment(orderId)
-        })
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    return (
-      <>
-      <h1 className='text-cyan-50'>Cashfree payment getway</h1>
-        <div className="card text-rose-50">
-          <button onClick={handleClick}>
-            Pay now
-          </button></div>
-        </>
-    )
-  } 
-  
+const PaymentButton = ({ userId, orderAmount, onPaymentSuccess }) => {
+  const [orderId, setOrderId] = useState("");
+  const [userData, setUserData] = useState(null);
 
-export default PaymentPage;
+  let cashfree; 
+  let insitialzeSDK = async function () {
+    cashfree = await load({
+      mode: "sandbox",
+    })
+  }
+  insitialzeSDK()
+
+  useEffect(() => {
+    const getUserDetails = async () => {
+      try {
+        const data = await getProfile(); 
+        setUserData(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    getUserDetails();
+  }, []);
+
+  const handleOrderSubmit = async () => {
+    if (!userId) {
+      console.error("User ID is required");
+      return;
+    }
+
+    const orderData = {
+      customer_details:{
+        id:userData.data.id,
+        name: userData.data.name, // Replace with actual user name if available
+        email: userData.data.email, // Replace with actual user email if available
+        contact: "8809795734"
+      }
+    }
+
+    try {
+      const response = await fetch("http://localhost:8000/api/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      const data = await response.json();
+      if (data.payment_session_id) {
+        setOrderId(data.order_id);
+        handlePayment(data.payment_session_id);
+      } else {
+        console.error("Failed to create payment session");
+      }
+    } catch (error) {
+      console.error("Error creating order:", error);
+    }
+  };
+
+  const handlePayment = async (paymentSessionId) => {
+    if (!cashfree) {
+      console.error("Cashfree SDK is not initialized");
+      return;
+    }
+
+    if(!paymentSessionId){
+      console.log("Payment Session id not recieved");
+      return;
+    }
+
+    const checkoutOptions = {
+      paymentSessionId,
+      redirectTarget: "_modal",
+    };
+
+    try {
+      cashfree.checkout(checkoutOptions).then((result) => {
+        verifyPayment();
+      });
+    } catch (error) {
+      console.error("Error initializing payment:", error);
+    }
+  };
+
+  const verifyPayment = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/verify-payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ orderId }),
+      });
+
+      const data = await response.json();
+      if (data.order_status === "PAID" || data.order_status === "ACTIVE") {
+        alert("Payment verified successfully!");
+        updateUserProfile();
+        if (onPaymentSuccess) onPaymentSuccess(data); // Trigger callback if provided
+      } else {
+        alert("Payment verification failed!");
+      }
+    } catch (error) {
+      console.error("Error verifying payment:", error);
+    }
+  };
+
+  const updateUserProfile = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/user/updateProfile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        console.log("User profile updated successfully!");
+      } else {
+        console.error("Failed to update user profile");
+      }
+    } catch (error) {
+      console.error("Error updating user profile:", error);
+    }
+  };
+
+  return <button onClick={handleOrderSubmit}>Pay ₹{orderAmount || "200"}</button>;
+};
+
+export default PaymentButton;

@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const { generateToken } = require("../utils/jwtUtils");
-const { registerUser, loginUser, updateWorkshops } = require('../controllers/auth.controller');
+const { registerUser, loginUser, updateWorkshops, upateProfile} = require('../controllers/auth.controller');
 const authMiddleware = require('../middleware/auth.middleware');
 const router = express.Router();
 const User = require("../models/user.model");
@@ -41,4 +41,6 @@ router.post('/newtoken', async (req, res) => {
 
 
 })
+
+router.post('/updateProfile',upateProfile);
 module.exports = router;
