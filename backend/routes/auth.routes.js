@@ -10,6 +10,7 @@ const {
 const { sendOTP, verifyOTP } = require('../controllers/otp');
 const authMiddleware = require('../middleware/auth.middleware');
 const User = require("../models/user.model");
+const Workshop = require('../models/workshop');
 
 const router = express.Router();
 
@@ -55,5 +56,43 @@ router.post('/newtoken', async (req, res) => {
         res.status(500).json({ error: 'Failed to retrieve profile!' });
     }
 });
+
+router.post('/add-users', async (req, res) => {
+    const { userArray, workshopId } = req.body;
+
+    try {
+        const workshop = await Workshop.findById(workshopId);
+        if (!workshop) {
+            return res.status(404).send('Workshop not found');
+        }
+
+        // Add users to the fields
+        await workshop.addUsers(userArray);
+        res.status(200).send('Users added successfully');
+    } catch (error) {
+        res.status(500).send('Server error');
+    }
+});
+
+// API endpoint to subtract users
+router.post('/subtract-users', async (req, res) => {
+    const { userArray, workshopId } = req.body;
+
+    try {
+        const workshop = await Workshop.findById(workshopId);
+        if (!workshop) {
+            return res.status(404).send('Workshop not found');
+        }
+
+        // Subtract users from the fields
+        await workshop.subtractUsers(userArray);
+        res.status(200).send('Users subtracted successfully');
+    } catch (error) {
+        res.status(500).send('Server error');
+    }
+});
+
+module.exports = router;
+
 
 module.exports = router;
