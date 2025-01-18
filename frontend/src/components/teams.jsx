@@ -38,7 +38,7 @@ const Teams = ({ onClose }) => {
   };
 
   const inputStyle =
-    "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]";
+    "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white";
   const containerStyle =
     "w-full p-6 bg-gray-800 rounded-lg shadow-lg max-w-md";
 
