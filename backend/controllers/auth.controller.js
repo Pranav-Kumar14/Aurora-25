@@ -116,25 +116,24 @@ const updateWorkshops = async (req, res) => {
   }
 };
 
-const upateProfile = async (req,res) => {
+const updateProfile = async (req, res) => {
   try {
     const data = req.body.userId;
-    console.log(data);
     
   const user = await User.findById(data); 
   user.workshopPaid = true;
   await user.save();
 
-  return res.status(200).json({
-    message: "Successfully paid for workshop"
-  })
+    return res.status(200).json({
+      message: "Successfully paid for workshop"
+    })
   } catch (error) {
     return res.status(500).json({
       message: "Error saving workshop to paid"
     })
   }
-  
+
 }
 
+module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops, updateProfile };
 
-module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops, upateProfile};

@@ -22,3 +22,8 @@ export const updateProfile = async (email) => {
     console.log(payload);
     return payload;
 };
+
+export const updateWorkshops = async (data) => {
+    const response = await api.post('/user/update-workshops', data);
+    return response.data;
+};
