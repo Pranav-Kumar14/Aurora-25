@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import icon from "../images/workicon.png";
+import icon from "../images/check.png";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 import { workshops } from "../constants/workshops";
 import { getProfile } from "../services/auth";
 import toast from 'react-hot-toast';
+import Workshop1 from "./workpage/Workshop1";
 import BaseUrl from "../BaseUrl";
+import workback from '../images/work_back.png';
 
 const WorkshopPage = () => {
   const token = sessionStorage.getItem('token');
@@ -106,7 +108,8 @@ const WorkshopPage = () => {
   const handleChangePreference = () => {
     const selectedIds = Object.values(selectedWorkshops).map((workshop) => workshop.id);
 
-    if (!user || !user.id) {
+    if (!user || !user.id || !user.workshopPaid) {
+      console.log('ok');
       toast.error("Please Login, To Access the Contents", { position: 'top-center' });
       navigate('/login');
       return;
@@ -131,7 +134,7 @@ const WorkshopPage = () => {
         }),
       {
         loading: 'Submitting your workshops...',
-        success: 'Workshops successfully updated!',
+        success: 'Please update your preferences.',
         error: 'Failed to update workshops. Please try again.',
       }, { position: 'top-center' }
     )
@@ -140,12 +143,12 @@ const WorkshopPage = () => {
           ...prev,
           workshops: data.workshops,
         }));
-        window.reload()
       })
       .catch((error) => console.error("Error:", error));
   }
 
   useEffect(() => {
+    console.log(user)
     const setWorkshops = async () => {
       const user1 = await getProfile(token);
       setRegisteredWorkshops(user1.data.data.workshops);
@@ -155,8 +158,18 @@ const WorkshopPage = () => {
   }, [selectedWorkshops]);
 
   return (
-    <div className="bg-gradient-to-b from-[#040D4C] via-[#020528] to-[#020323] min-h-screen pt-6 text-white relative">
-      <div className="text-center my-10 pt-2">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-[299px] pb-[250px] font-press-start bg-cover bg-top bg-no-repeat"
+    style={{ backgroundImage: `url(${workback})` }}>
+      {/* Workshop Title */}
+      <section className="text-center pb-[410px]">
+        <h1 className="text-7xl font-heading font-extrabold">WORKSHOPS</h1>
+        <p className="mt-4 text-2xl max-w-3xl mx-auto font-body leading-relaxed">
+          Get Ready To Embark On An Unforgettable Journey Into The Realms Of Technology with TechWeek: Aurora, Brought To You By ISTE Manipal.
+        </p>
+      </section>
+      
+      
+      {/* <div className="text-center my-10 pt-2">
         <h1 className="text-5xl font-bold text-[#D9D9D9]-400 uppercase"
           style={{
             textShadow: "0px 4px 20px rgba(209, 249, 10, 0.69)",
@@ -164,7 +177,7 @@ const WorkshopPage = () => {
           }}>
           Workshops
         </h1>
-      </div>
+      </div> */}
 
 
       {/* Preference */} 
@@ -179,9 +192,10 @@ const WorkshopPage = () => {
           setCheck(false);
         }}
       >
-        <button className="bg-[#7DC5EE]-500 px-6 py-2 rounded-full hover:bg-blue-600">
-          Change Preference
+        <button className="bg-[#519984] px-6 py-2 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]">
+        Change Preference
         </button>
+
       </div>
 
       {check ? (<>
@@ -197,15 +211,16 @@ const WorkshopPage = () => {
             return (
               <div
                 key={workshop.id}
-                className={`rounded-[36px] border border-white bg-white/10 shadow-[2px_2px_10px_rgba(255,227,80,0.4)] backdrop-blur-[22.5px] p-5 transform transition hover:scale-105 ${isSelected ? "bg-green-200 text-black" : ""
-                  }`}
+                className={`mt-12 w-full max-w-4xl bg-[rgba(255,255,255,0.06)] rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px] rounded-[35.22px] border border-white bg-white/10 backdrop-blur-[100px] p-5 transform transition hover:scale-105 ${
+                  isSelected ? "bg-green-200 text-black" : ""
+                }`}                             
               >
                 <div className="flex justify-center mb-4">
-                  <img src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/workicon_bit2xw.png" alt="Workshop Icon" className="w-16 h-16" />
+                  <img src={icon} alt="Workshop Icon" className="w-[346.2px] h-[255.727px]" />
                 </div>
-                <h2 className="text-xl font-semibold text-center mb-2">{workshop.title}</h2>
-                <div className="rounded-[8px] border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">
-                  <p className="text-center text-sm mb-4">
+                <h2 className="text-2xl p-5 font-body font-semibold text-[#EAEAEA] text-center mb-2">{workshop.title}</h2>
+                <div className="rounded-[8px] text-[#EAEAEA] font-body border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">
+                  <p className="text-center text-md mb-4">
                     {workshop.date}
                     <br />
                     {workshop.time}
@@ -219,7 +234,10 @@ const WorkshopPage = () => {
                   >
                     {isSelected ? "Unregister" : "Register Now"}
                   </button>
-                  <button className="bg-blue-500 text-[#1B1B1B] text-sm px-4 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out">
+                  <button className="bg-blue-500 text-[#1B1B1B] text-sm px-4 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out"
+                  onClick={()=>{
+                    navigate(`/Workshop${workshop.id}`)
+                  }}>
                     Read More
                   </button>
                 </div>
@@ -241,15 +259,16 @@ const WorkshopPage = () => {
             return (
               <div
                 key={workshop.id}
-                className={`rounded-[36px] border border-white bg-white/10 shadow-[2px_2px_10px_rgba(255,227,80,0.4)] backdrop-blur-[22.5px] p-5 transform transition hover:scale-105 ${isSelected ? "bg-green-200 text-black" : ""
-                  }`}
+                className={`mt-12 w-full max-w-4xl bg-[rgba(255,255,255,0.06)] rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px] rounded-[35.22px] border border-white bg-white/10 backdrop-blur-[100px] p-5 transform transition hover:scale-105 ${
+                  isSelected ? "bg-green-200 text-black" : ""
+                }`}   
               >
                 <div className="flex justify-center mb-4">
-                  <img src={icon} alt="Workshop Icon" className="w-16 h-16" />
+                  <img src={icon} alt="Workshop Icon" className="w-[346.2px] h-[255.727px]" />
                 </div>
-                <h2 className="text-xl font-semibold text-center mb-2">{workshop.title}</h2>
-                <div className="rounded-[8px] border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">
-                  <p className="text-center text-sm mb-4">
+                <h2 className="text-2xl font-semibold font-body text-[#EAEAEA] text-center mb-2">{workshop.title}</h2>
+                <div className="rounded-[8px] text-[#EAEAEA]  font-body border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">
+                  <p className="text-center text-md mb-4">
                     {workshop.date}
                     <br />
                     {workshop.time}
@@ -263,7 +282,10 @@ const WorkshopPage = () => {
                   >
                     {isSelected ? "Unregister" : "Register Now"}
                   </button>
-                  <button className="bg-blue-500 text-[#1B1B1B] text-sm px-4 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out">
+                  <button className="bg-blue-500 text-[#1B1B1B] text-sm px-4 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out"
+                  onClick={()=>{
+                    navigate(`/Workshop${workshop.id}`)
+                  }}>
                     Read More
                   </button>
                 </div>

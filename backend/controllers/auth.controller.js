@@ -135,4 +135,4 @@ const upateProfile = async (req,res) => {
 }
 
 
-module.exports = { registerUser, loginUser, changeCurrentPassword, updateWorkshops, upateProfile};
+module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops, upateProfile};
