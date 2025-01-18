@@ -6,7 +6,7 @@ import partners from '../images/PARTNERS.png'
 import workshops from '../images/WORKSHOPS.png'
 import HackathonCard from '../components/Hackathon_card'
 import Carousel from '../components/Carousel'
-import InfiniteCarousel from '../components/slider'
+import MediaSlider from '../components/slider'
 
 const Home = () => {
     return (
@@ -22,7 +22,7 @@ const Home = () => {
             </div>
             <div className="mt-6 py-12">
                 <img src={partners} alt="partners" className="w-1/4 py-8 mx-auto" />
-                <InfiniteCarousel />
+                <MediaSlider />
             </div>
             <div className="py-12">
                 <img src={workshops} alt="workshops" className="w-1/4 py-8 mx-auto" />
