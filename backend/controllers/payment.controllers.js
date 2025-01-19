@@ -34,7 +34,7 @@ const createOrderHandler = async (req, res) => {
         "customer_email": req.body.customer_details.email,
       },
       "order_meta": {
-        "return_url": "http://localhost:8000/workshop"
+        "return_url": "https://aurora.istemanipal.com/api/workshop"
     }
     };
 

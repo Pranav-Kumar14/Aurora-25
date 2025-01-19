@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { load } from "@cashfreepayments/cashfree-js";
 import {getProfile} from "../services/auth"
 import  {useAuth}  from "../context/AuthContext";
+import BaseUrl from "../BaseUrl";
 
 const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
   const { user, setUser } = useAuth();
@@ -54,7 +55,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/cashfree/create-order", {
+      const response = await fetch(`${BaseUrl}/cashfree/create-order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +102,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
 
   const verifyPayment = async () => {
     try {
-      const response = await fetch("http://localhost:8000/cashfree/verify-payment", {
+      const response = await fetch(`${BaseUrl}/cashfree/verify-payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -127,7 +128,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
       const payload = {
         userId: userDataNew._id, 
       };
-      const response = await fetch("http://localhost:8000/user/updateProfile", {
+      const response = await fetch(`${BaseUrl}/user/updateProfile`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

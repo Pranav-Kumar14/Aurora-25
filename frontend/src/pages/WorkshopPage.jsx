@@ -78,7 +78,7 @@ const WorkshopPage = () => {
     };
 
     toast.promise(
-      fetch("http://localhost:8000/user/updateWorkshops", {
+      fetch(`${BaseUrl}/user/updateWorkshops`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -126,7 +126,7 @@ const WorkshopPage = () => {
     };
 
     toast.promise(
-      fetch("http://localhost:8000/user/updateWorkshops", {
+      fetch(`${BaseUrl}/user/updateWorkshops`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
