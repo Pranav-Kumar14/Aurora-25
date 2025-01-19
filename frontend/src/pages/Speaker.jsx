@@ -1,11 +1,84 @@
-import React from "react";
-// import speakerImage from "../images/image.png";
-// import ldin from "../images/lkdin.png";
-// import instaicon from "../images/insta.png";
-import cal from "../images/calendar.png";
-// import clock from "../images/clock.png";
+import React, { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import BaseUrl from "../BaseUrl";
 
 function Speaker() {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const [selectedSpeakers, setSelectedSpeakers] = useState([]); // Changed to an array
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSelectSpeaker = (speaker) => {
+    if (!user || !user.id) {
+      toast.error("Please Login, To Access the Contents", { position: "top-center" });
+      navigate("/login");
+      return;
+    }
+
+    // Check if the speaker is already in the array
+    const alreadySelected = selectedSpeakers.find(
+      (s) => s.id === speaker.id
+    );
+    if (alreadySelected) {
+      toast.error(`"${speaker.name}" is already selected!`, {
+        position: "top-center",
+      });
+      return;
+    }
+
+    // Add the speaker to the array
+    setSelectedSpeakers((prevSpeakers) => [...prevSpeakers, speaker]);
+    toast.success(`Selected "${speaker.name}"!`, { position: "top-center" });
+  };
+
+  const handleSubmit = () => {
+    if (!user || !user.id) {
+      toast.error("Please Login, To Access the Contents", { position: "top-center" });
+      navigate("/login");
+      return;
+    }
+
+    if (selectedSpeakers.length === 0) {
+      toast.error("Please select at least one speaker before submitting.", {
+        position: "top-center",
+      });
+      return;
+    }
+
+    const payload = {
+      userId: user.id,
+      selectedSpeaker: selectedSpeakers, // Send the array
+    };
+    console.log("Submitting payload:", payload);
+
+    toast.promise(
+      fetch(`${BaseUrl}/user/updateSpeakers`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        }),
+      {
+        loading: "Submitting your speaker selection...",
+        success: "Speakers successfully updated!",
+        error: "Failed to update speakers. Please try again.",
+      },
+      { position: "top-center" }
+    )
+      .then((data) => {
+        console.log("Updated speaker data:", data);
+        setSubmitted(true);
+      })
+      .catch((error) => console.error("Error:", error));
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#030d4b] via-[#020428] to-[#020322] flex flex-col justify-center items-center px-4 py-8 sm:px-6 lg:px-8">
       {/* Title */}
@@ -28,53 +101,32 @@ function Speaker() {
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-300 mt-2 mb-4 text-center sm:text-left">
             Dale Vaz, former Chief Technology Officer at Swiggy, led engineering
-            and data science efforts to transform the company into an AI and
-            ML-first organization. After departing Swiggy, he started his own
-            fintech startup, Aaritay Tech.
+            and data science efforts to...
           </p>
-          <div className="flex justify-center sm:justify-start space-x-4 my-4">
-            <a
-              href="https://www.instagram.com/p/C2m-ekAPTWH/?img_index=2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/insta_n9kt5i.png"
-                className="w-10 h-10 sm:w-[47.49px] sm:h-[42.75px]"
-                alt="Instagram Icon"
-              />
-            </a>
-            <a
-              href="https://in.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121208/lkdin_ajtvwk.png"
-                className="w-10 h-10 sm:w-[47.49px] sm:h-[42.75px]"
-                alt="LinkedIn Icon"
-              />
-            </a>
-          </div>
-          <p className="text-base sm:text-lg lg:text-xl text-center sm:text-left text-white">
-            ‘Project To Product: The Art Of Scaling Systems’
-          </p>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-start mt-6 space-y-2 sm:space-y-0 sm:space-x-4 text-gray-400">
-            <div className="flex items-center space-x-2">
-              <img src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/clock_elpwob.png" alt="Clock Icon" className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span>20th January, 2025</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <img src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Icon_erj8vd.png" alt="Calendar Icon" className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span>7:00 - 9:00 PM</span>
-            </div>
-          </div>
-          <button className="mt-6 bg-pink-600 hover:bg-pink-700 text-white font-bold py-2 sm:py-3 px-6 rounded-full w-full">
-            Register
+          <button
+            className="bg-blue-500 text-white text-sm px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
+            onClick={() =>
+              handleSelectSpeaker(1)
+            }
+          >
+            Select Speaker
           </button>
         </div>
       </div>
-    </div>
+
+      {/* Submit Button */}
+      {
+        selectedSpeakers.length > 0 && !submitted && (
+          <div
+            className="sticky bottom-0 left-0 w-full bg-[#007bff] text-white py-4 text-center cursor-pointer"
+            onClick={handleSubmit}
+            navigate="/login"
+          >
+            Submit
+          </div>
+        )
+      }
+    </div >
   );
 }
 

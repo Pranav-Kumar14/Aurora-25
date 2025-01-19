@@ -5,7 +5,9 @@ const {
     registerUser,
     loginUser,
     updateWorkshops,
+    updateSpeakers,
     handlePasswordReset,
+    updateCTF,
     updateProfile
 } = require('../controllers/auth.controller');
 const { sendOTP, verifyOTP } = require('../controllers/otp');
@@ -13,13 +15,14 @@ const authMiddleware = require('../middleware/auth.middleware');
 const User = require("../models/user.model");
 const Workshop = require('../models/workshop.models');
 const { addUsersByWorkshopIds, substractUsersByWorkshopIds } = require('../controllers/workshop.controller');
-
 const router = express.Router();
 
 // User routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.post('/updateWorkshops', updateWorkshops);
+router.post('/updateSpeakers', updateSpeakers);
+router.post('/ctf', updateCTF);
 router.post('/forgotpassword/sendotp', sendOTP);
 router.post('/forgotpassword/verifyotp', verifyOTP);
 router.post('/forgotpassword/resetpassword', handlePasswordReset);
