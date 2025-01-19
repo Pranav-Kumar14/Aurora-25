@@ -36,17 +36,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
     },
-    year:{
+    year: {
         type: Number,
         required: true,
     },
-    branch:{
+    branch: {
         type: String,
         required: true,
     },
-    interest:{
+    interest: {
         type: Array,
-        required:true,
+        required: true,
     },
     phone: {
         type: Number,
@@ -63,6 +63,14 @@ const userSchema = new mongoose.Schema({
     workshops: {
         type: Array,
         default: [],
+    },
+    speaker: {
+        type: Array,
+        default: [],
+    },
+    ctf:{
+        type: Boolean,
+        default: false
     }
 
 }, { timestamps: true })

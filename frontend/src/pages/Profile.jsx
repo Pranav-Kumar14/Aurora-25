@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
-import  {useAuth}  from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { User, LogOut } from "lucide-react";
 import { workshops } from "../constants/workshops";
+import { speakers } from "../constants/speakers"; // Add a speakers array similar to workshops
 import { updateProfile } from "../services/auth";
 import PaymentButton from "./Payment";
 import prof from"../images/prof.webp";
 
-
 export default function Profile() {
     const { user, setUser } = useAuth();
     const [registeredWorkshops, setRegisteredWorkshops] = useState([]);
+    const [selectedSpeaker, setSelectedSpeaker] = useState(null); // For speaker details
     const navigate = useNavigate();
-    const handlePaymentSuccess = (paymentData) =>{
-        console.log("Payment Success:",paymentData);
-    }
+
+    const handlePaymentSuccess = (paymentData) => {
+        console.log("Payment Success:", paymentData);
+    };
 
     useEffect(() => {
         const fetchUserData = async () => {
-            if (!user) return; // Avoid calling when user is null
+            if (!user) return;
 
             try {
                 const response = await updateProfile(user.email);
@@ -29,7 +31,6 @@ export default function Profile() {
 
                 const updatedUser = response.data.user;
 
-                // Update user only if it has changed
                 if (JSON.stringify(user) !== JSON.stringify(updatedUser)) {
                     setUser(updatedUser);
                 }
@@ -47,14 +48,20 @@ export default function Profile() {
                     })
                     : [];
                 setRegisteredWorkshops(workshopsList);
+
+                // Find the speaker details based on the ID
+                const speakerDetails =
+                    updatedUser.speaker?.length > 0
+                        ? speakers.find((s) => s.id === updatedUser.speaker[0]) // Assuming one speaker
+                        : null;
+                setSelectedSpeaker(speakerDetails);
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }
         };
 
         fetchUserData();
-    }, [user]); // Only depend on `user`
-
+    }, [user, setUser]);
 
     const handleLogout = () => {
         sessionStorage.removeItem("token");
@@ -63,6 +70,7 @@ export default function Profile() {
     };
 
     if (!user) return null;
+
     return (
     
         <div className="min-h-screen bg  py-12 px-4 sm:px-6 lg:px-8">
@@ -116,8 +124,21 @@ export default function Profile() {
                                     )}
                                 </dd>
                             </div>
-
                         )}
+                        {selectedSpeaker && (
+                            <div className="sm:col-span-2">
+                                <dt className="text-sm font-medium text-gray-500">Selected Speaker</dt>
+                                <dd className="mt-1 text-sm text-gray-900">
+                                    {`${selectedSpeaker.name} - ${selectedSpeaker.details}`}
+                                </dd>
+                            </div>
+                        )}
+                        <div className="sm:col-span-2">
+                            <dt className="text-sm font-medium text-gray-500">CTF Registration</dt>
+                            <dd className="mt-1 text-sm text-gray-900">
+                                {user.ctf ? "CTF Registered" : "CTF Not Registered"}
+                            </dd>
+                        </div>
                         {!user.workshopPaid ? (
                             <button className="bg-[#519984] w-full px-6 py-2 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]">
                             <PaymentButton

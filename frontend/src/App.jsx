@@ -61,20 +61,20 @@ function App() {
             <Route path="/fetchnew" element={<TeamManagementPage />} />
             <Route path="/createteam" element={<CreateTeam />} />
             <Route path="/developer" element={<Developer />} />
-            <Route path="testing" element={<Carousel/>} />
-            <Route path="ctf" element={<Ctf/>} />
+            <Route path="testing" element={<Carousel />} />
+            <Route path="/ctf" element={<Ctf />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
-            <Route path="/Workshop1" element={<Workshop1/>} />
-            <Route path="/Workshop2" element={<Workshop2/>} />
-            <Route path="/Workshop3" element={<Workshop3/>} />
-            <Route path="/Workshop4" element={<Workshop4/>} />
-            <Route path="/Workshop5" element={<Workshop5/>} />
-            <Route path="/Workshop6" element={<Workshop6/>} />
-            <Route path="/Workshop7" element={<Workshop7/>} />
-            <Route path="/Workshop8" element={<Workshop8/>} />
-            <Route path="/Workshop9" element={<Workshop9/>} />
-            <Route path="/Workshop10" element={<Workshop10/>} />
-            <Route path="/Workshop11" element={<Workshop11/>} />
+            <Route path="/Workshop1" element={<Workshop1 />} />
+            <Route path="/Workshop2" element={<Workshop2 />} />
+            <Route path="/Workshop3" element={<Workshop3 />} />
+            <Route path="/Workshop4" element={<Workshop4 />} />
+            <Route path="/Workshop5" element={<Workshop5 />} />
+            <Route path="/Workshop6" element={<Workshop6 />} />
+            <Route path="/Workshop7" element={<Workshop7 />} />
+            <Route path="/Workshop8" element={<Workshop8 />} />
+            <Route path="/Workshop9" element={<Workshop9 />} />
+            <Route path="/Workshop10" element={<Workshop10 />} />
+            <Route path="/Workshop11" element={<Workshop11 />} />
             <Route
               path="/profile"
               element={

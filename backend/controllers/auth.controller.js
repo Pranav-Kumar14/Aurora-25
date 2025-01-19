@@ -77,7 +77,6 @@ async function handlePasswordReset(req, res) {
     return res.status(404).json({ error: "Passwords do not match" })
   }
   try {
-    // const msg = await updatePassword(email, newPassword)
     const user = await User.findOne({ email })
     if (!user) throw new Error('User not found')
     const id = user._id;
@@ -92,7 +91,6 @@ async function handlePasswordReset(req, res) {
 
 const updateWorkshops = async (req, res) => {
   const { userId, selectedWorkshops } = req.body;
-
   if (!userId || !Array.isArray(selectedWorkshops)) {
     return res.status(400).json({ message: "Invalid request data" });
   }
@@ -103,7 +101,7 @@ const updateWorkshops = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    user.workshops = selectedWorkshops; // Update workshops array
+    user.workshops = selectedWorkshops;
     await user.save();
 
     return res.status(200).json({
@@ -116,13 +114,64 @@ const updateWorkshops = async (req, res) => {
   }
 };
 
+const updateSpeakers = async (req, res) => {
+  const { userId, selectedSpeaker } = req.body;
+  console.log(req.body)
+  if (!userId || !Array.isArray(selectedSpeaker)) {
+    return res.status(400).json({ message: "Invalid request data" });
+  }
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.speaker = selectedSpeaker;
+    await user.save();
+
+    return res.status(200).json({
+      message: "Workshops updated successfully",
+      workshops: user.workshops,
+    });
+  } catch (error) {
+    console.error("Error updating workshops:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+const updateCTF = async (req, res) => {
+  const { userId } = req.body;
+
+  if (!userId) {
+    return res.status(400).json({ message: "Invalid request data" });
+  }
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.ctf = !user.ctf;
+    await user.save();
+
+    res.status(200).json({ message: "CTF status updated", user });
+  } catch (error) {
+    console.error("Error updating CTF status:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+
 const updateProfile = async (req, res) => {
   try {
     const data = req.body.userId;
-    
-  const user = await User.findById(data); 
-  user.workshopPaid = true;
-  await user.save();
+
+    const user = await User.findById(data);
+    user.workshopPaid = true;
+    await user.save();
 
     return res.status(200).json({
       message: "Successfully paid for workshop"
@@ -135,5 +184,5 @@ const updateProfile = async (req, res) => {
 
 }
 
-module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops, updateProfile };
+module.exports = { registerUser, loginUser, handlePasswordReset, updateWorkshops, updateSpeakers, updateCTF, updateProfile };
 

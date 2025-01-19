@@ -5,7 +5,9 @@ const {
     registerUser,
     loginUser,
     updateWorkshops,
+    updateSpeakers,
     handlePasswordReset,
+    updateCTF,
     updateProfile
 } = require('../controllers/auth.controller');
 const { sendOTP, verifyOTP } = require('../controllers/otp');
@@ -13,17 +15,18 @@ const authMiddleware = require('../middleware/auth.middleware');
 const User = require("../models/user.model");
 const Workshop = require('../models/workshop.models');
 const { addUsersByWorkshopIds, substractUsersByWorkshopIds } = require('../controllers/workshop.controller');
-
 const router = express.Router();
 
 // User routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.post('/updateWorkshops', updateWorkshops);
+router.post('/updateSpeakers', updateSpeakers);
+router.post('/ctf', updateCTF);
 router.post('/forgotpassword/sendotp', sendOTP);
 router.post('/forgotpassword/verifyotp', verifyOTP);
 router.post('/forgotpassword/resetpassword', handlePasswordReset);
-
+//add-substract
 router.put('/workshop/add', addUsersByWorkshopIds);
 router.put('/workshop/substract', substractUsersByWorkshopIds);
 
@@ -62,42 +65,7 @@ router.post('/newtoken', async (req, res) => {
     }
 });
 
-router.post('/add-users', async (req, res) => {
-    const { userArray, workshopId } = req.body;
-
-    try {
-        const workshop = await Workshop.findById(workshopId);
-        if (!workshop) {
-            return res.status(404).send('Workshop not found');
-        }
-
-        // Add users to the fields
-        await workshop.addUsers(userArray);
-        res.status(200).send('Users added successfully');
-    } catch (error) {
-        res.status(500).send('Server error');
-    }
-});
-
-// API endpoint to subtract users
-router.post('/subtract-users', async (req, res) => {
-    const { userArray, workshopId } = req.body;
-
-    try {
-        const workshop = await Workshop.findById(workshopId);
-        if (!workshop) {
-            return res.status(404).send('Workshop not found');
-        }
-
-        // Subtract users from the fields
-        await workshop.subtractUsers(userArray);
-        res.status(200).send('Users subtracted successfully');
-    } catch (error) {
-        res.status(500).send('Server error');
-    }
-});
-
-
+// Update user profile
 router.post('/updateProfile', updateProfile);
 
 module.exports = router;

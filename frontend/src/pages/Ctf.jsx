@@ -1,36 +1,123 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import CtfHero from "../components/ctfhome";
-import Ctfevent from "../components/ctfevent";
 import CtfRules from "../components/CtfRules";
-import CtfPrize from "../components/CtfPrize";
-import prize from "../images/prize.png";
-import info from "../images/info.png";
-import bg from "../images/cttbg.png";
-import leadercolor from "../images/leadercolor.png";
+import BaseUrl from "../BaseUrl";
+import toast from "react-hot-toast";
+import ctfInfo from "../images/info.png";
+import ctfBackground from "../images/cttbg.png";
+import { getProfile, updateProfile } from "../services/auth";
 
-const Ctf = () => {
+const CtfPage = () => {
+  const { user, setUser } = useAuth();
+  const navigate = useNavigate();
+  const [isRegistered, setIsRegistered] = useState(false);
+  const token = sessionStorage.getItem('token');
+
+  useEffect(() => {
+    const checkRegistration = async () => {
+      if (user?.id) {
+        try {
+          const response = await updateProfile(user.email);
+          const data = response.data;
+          console.log(data);
+          setIsRegistered(data.isRegistered);
+        } catch (error) {
+          console.error("Error checking CTF registration:", error);
+          setIsRegistered(false);
+        }
+      }
+    };
+
+    checkRegistration();
+  }, [user]);
+
+  const handleRegistrationToggle = () => {
+    if (!user || !user.id) {
+      toast.error("Please log in to register for the CTF!", { position: "top-center" });
+      navigate("/login");
+      return;
+    }
+
+    const payload = { userId: user.id };
+    const method = isRegistered ? "DELETE" : "POST";
+    const actionText = isRegistered ? "Unregistering" : "Registering";
+
+    toast.promise(
+      fetch(`${BaseUrl}/user/ctf`, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error(`${isRegistered ? "Unregistration" : "Registration"} failed.`);
+        }
+        return response.json();
+      })
+        .then((data) => {
+          setIsRegistered(!isRegistered);
+          // Update user state with new CTF registration status
+          setUser((prev) => ({
+            ...prev,
+            ctfRegistered: !isRegistered
+          }));
+          return data;
+        }),
+      {
+        loading: `${actionText} for the CTF...`,
+        success: `${actionText} successfully for the CTF!`,
+        error: `Failed to ${actionText.toLowerCase()} for the CTF. Please try again.`,
+      }
+    );
+  };
+
   return (
-    <>
-      <div
-        className="min-h-screen flex flex-col items-center justify-center p-8 pt-0 pb-[250px] font-press-start bg-cover bg-top bg-no-repeat"
-        style={{ backgroundImage: `url(${bg})` }}
-      >
-        <CtfHero />
-        <div className="flex justify-center items-center pb-4">
-          <img className="max-w-xs" src={info} alt="Info" />
+    <div
+      className="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 font-press-start bg-cover bg-top bg-no-repeat relative"
+      style={{
+        backgroundImage: `url(${ctfBackground})`,
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+
+      {/* Content container */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto">
+        <div className="mb-12">
+          <CtfHero />
         </div>
-        <div className="flex justify-center">
-          <button className="w-[250px] h-[75px] text-[20px] text-center bg-[#9d31a1] rounded-[40px] shadow-[inset_0px_4px_5px_0px_rgba(0,0,0,0.25)] border border-black mt-8">
-            Register Now!
+
+        <div className="text-center mb-16 transform hover:scale-105 transition-transform duration-300">
+          <img
+            className="max-w-xs md:max-w-sm mx-auto rounded-lg shadow-2xl"
+            src={ctfInfo}
+            alt="CTF Info"
+          />
+        </div>
+
+        <div className="text-center mb-16">
+          <button
+            onClick={handleRegistrationToggle}
+            className={`px-8 py-4 text-lg font-bold text-white rounded-full 
+                     transition-all duration-300 transform hover:scale-105
+                     shadow-lg animate-pulse hover:animate-none
+                     ${isRegistered
+                ? 'bg-red-500 hover:bg-red-400 hover:shadow-red-500/50'
+                : 'bg-green-500 hover:bg-green-400 hover:shadow-green-500/50'
+              }`}
+          >
+            {isRegistered ? 'Unregister from CTF' : 'Register for CTF'}
           </button>
         </div>
-        <CtfRules />
-        <div className="flex justify-center items-center mt-8 pb-10">
-          <img className="max-w-4xl" src={leadercolor} alt="Prize" />
+
+        <div className="bg-black/40 backdrop-blur-md rounded-xl p-6 md:p-8 shadow-2xl">
+          <CtfRules />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Ctf;
+export default CtfPage;

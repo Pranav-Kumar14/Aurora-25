@@ -23,7 +23,7 @@ function Navbar() {
                     <div className="mr-[2rem] flex-shrink-0 py-2">
                         <img
                             className="h-12 w-12"
-                            src= "https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/logo_b0anb8.png"
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/logo_b0anb8.png"
                             alt="Logo"
                         />
                     </div>
@@ -91,7 +91,7 @@ function Navbar() {
                     {/* Profile icon on the right */}
                     <div className="hidden md:block pt-2">
                         <button className="text-white hover:text-blue-300"
-                        onClick={() => navigate("/profile")}
+                            onClick={() => navigate("/profile")}
                         >
                             <img src={icon} alt="" className="round w-[70.422px] h-[80.437px] pb-2"/>
                             
