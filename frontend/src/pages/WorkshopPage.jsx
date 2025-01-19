@@ -178,12 +178,12 @@ const WorkshopPage = () => {
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-[299px] pb-[250px] font-press-start bg-cover bg-top bg-no-repeat"
     style={{ backgroundImage: `url(${workback})` }}>
       {/* Workshop Title */}
-      <section className="text-center pb-[410px]">
+      {/* <section className="text-center pb-[410px]">
         <h1 className="text-7xl font-heading font-extrabold">WORKSHOPS</h1>
         <p className="mt-4 text-2xl max-w-3xl mx-auto font-body leading-relaxed">
           Get Ready To Embark On An Unforgettable Journey Into The Realms Of Technology with TechWeek: Aurora, Brought To You By ISTE Manipal.
         </p>
-      </section>
+      </section> */}
       
       
       {/* <div className="text-center my-10 pt-2">

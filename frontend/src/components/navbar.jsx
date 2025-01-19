@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import auroralogo from "../images/aurora_logo.png";
 import Captf from "../images/Captf.png";
 import CTF from "../images/ctfhead.png";
@@ -31,24 +30,24 @@ function Navbar() {
 
                     {/* Center-aligned tabs */}
                     <div className="hidden md:flex flex-grow justify-center space-x-8">
-                        <Link
-                            to="/home"
+                        <a
+                            href="/home"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <p className="font-heading">
                                 HOME
                             </p>
-                        </Link>
-                        <Link
-                            to="/speaker"
+                        </a>
+                        <a
+                            href="/speaker"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <p className="font-heading">
                                 SPEAKER
                             </p>
-                        </Link>
-                        {/* <Link
-                            to="/timeline"
+                        </a>
+                        {/* <a
+                            href="/timeline"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <img
@@ -56,31 +55,31 @@ function Navbar() {
                             src={Sponsors}
                             alt="Sponsors"
                         /> */}
-                        {/* </Link> */}
-                        <Link
-                            to="/ctf"
+                        {/* </a> */}
+                        <a
+                            href="/ctf"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <p className="font-heading">
                                 CTF
                             </p>
-                        </Link>
-                        <Link
-                            to="/developer"
+                        </a>
+                        <a
+                            href="/developer"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <p className="font-heading">
                                 DEVELOPER
                             </p>
-                        </Link>
-                        <Link
-                            to="/hackathon"
+                        </a>
+                        <a
+                            href="/hackathon"
                             className="lg:px-3 md:px-2 py-2 rounded-full text-sm text-[#E67E22] font-medium hover:text-white hover:bg-[#E67E22] transition duration-300"
                         >
                             <p className="font-heading">
                                 HACKATHON
                             </p>
-                        </Link>
+                        </a>
                         <a
                             href="/workshop"
                             className="lg:px-3 md:px-2 py-2 rounded-full text-sm text-[#E67E22] font-medium hover:text-white hover:bg-[#E67E22] transition duration-300"
@@ -135,8 +134,8 @@ function Navbar() {
             {isOpen && (
                 <div className="md:hidden bg-gradient-to-r from-[#0f0d39] to-[#201867]">
                     <div className="space-y-1 px-2 pt-2 pb-3">
-                        <Link
-                            to="/home"
+                        <a
+                            href="/home"
                             className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
                         >
                             <img
@@ -144,9 +143,9 @@ function Navbar() {
                             src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
                             alt="Home"
                         />
-                        </Link>
-                        <Link
-                            to="/speaker"
+                        </a>
+                        <a
+                            href="/speaker"
                             className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
                         >
                             <img
@@ -154,15 +153,15 @@ function Navbar() {
                             src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
                             alt="speaker"
                         />
-                        </Link>
-                        {/* <Link
-                            to="/timeline"
+                        </a>
+                        {/* <a
+                            href="/timeline"
                             className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
                         >
                             Timeline
-                        </Link> */}
-                        <Link
-                            to="/sponsors"
+                        </a> */}
+                        <a
+                            href="/sponsors"
                             className="block px-3 py-2 rounded-md text-base font-medium"
                         >
                             <img
@@ -170,9 +169,9 @@ function Navbar() {
                             src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Sponsers_th9hym.png"
                             alt="Sponsors"
                         />
-                        </Link>
-                        <Link
-                        to="/developer"
+                        </a>
+                        <a
+                        href="/developer"
                         className="block px-3 py-2 rounded-md text-base font-medium"
                         >
                             <img
@@ -180,9 +179,9 @@ function Navbar() {
                             src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
                             alt="Developers"
                         />
-                        </Link>
-                        <Link
-                            to="/hackathon"
+                        </a>
+                        <a
+                            href="/hackathon"
                             className="block px-3 py-2 rounded-full text-base font-medium"
                         >
                             <img
@@ -190,9 +189,9 @@ function Navbar() {
                             src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
                             alt="Hackathon"
                         />
-                        </Link>
-                        <Link
-                            to="/workshop"
+                        </a>
+                        <a
+                            href="/workshop"
                             className="block px-3 py-2 rounded-full text-base font-medium"
                         >
                             <img
@@ -200,7 +199,7 @@ function Navbar() {
                             src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
                             alt="Workshop"
                         />
-                        </Link>
+                        </a>
                     </div>
                 </div>
             )}
