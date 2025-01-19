@@ -21,7 +21,7 @@ const Workshop1 = () => {
 
     {/* Neural Network Section */}
     <div className="text-center">
-          <h2 className="text-4xl text-[#05E0EE] font-bold font-heading mb-6">VisionCraft: Mastering Computer Vision</h2>
+          <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">VisionCraft: Mastering Computer Vision</h2>
           <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
      </div>
 
@@ -30,7 +30,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[22px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
           VisionCraft: Mastering Computer Vision" is an engaging workshop that introduces participants to OpenCV, a powerful library for image processing, and Convolutional Neural Networks (CNNs), the backbone of modern computer vision. The sessions cover essential techniques and implementation of algorithms. Participants will apply their learning by creating a hands-on project using computer vision
           </p>
@@ -96,10 +96,24 @@ const Workshop1 = () => {
 
         {/* About Our Club Section */}
         <div className="mt-8 pt-9 p-6 rounded-[36px] bg-[rgba(255,255,255,0.1)] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px] relative">
-  <div className="absolute top-4 leftt-4">
-    <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
+  {/* Club Icon */}
+  <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
+    <img 
+      src={logo} 
+      alt="Neural Network" 
+      className="rounded-full" 
+      style={{ width: '64px', height: '64px' }} 
+    />
   </div>
-  <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
+  
+  {/* About Our Club Heading */}
+  <div className="sm:mt-8 mt-12">
+    <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">
+      About Our Club
+    </h3>
+  </div>
+  
+  {/* Club Description */}
   <p className="mt-4 text-center font-body text-base text-[#EAEAEA] leading-loose">
     ACM-W is a dynamic community dedicated to empowering women in computing. We explore diverse fields like artificial intelligence, machine learning, software development, and data science through hands-on workshops, mentorship, and collaborative projects. Our goal is to create an inclusive space where students can learn, innovate, and connect with like-minded peers.
   </p>

@@ -21,7 +21,7 @@ const Workshop1 = () => {
 
     {/* Neural Network Section */}
     <div className="text-center">
-          <h2 className="text-4xl text-[#05E0EE] font-bold font-heading mb-6">CloudQuest: Intro to Cloud Computing with Azure</h2>
+          <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">CloudQuest: Intro to Cloud Computing with Azure</h2>
           <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
      </div>
 
@@ -30,7 +30,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[22px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
             
 CloudQuest: Intro to Cloud Computing with Azure introduces the fundamentals of cloud computing, focusing on Microsoft's Azure platform. Learn to deploy, manage, and scale applications in the cloud with hands-on exercises.
@@ -97,14 +97,17 @@ CloudQuest: Intro to Cloud Computing with Azure introduces the fundamentals of c
 
         {/* About Our Club Section */}
         <div className="mt-8 pt-9 p-6 rounded-[36px] bg-[rgba(255,255,255,0.1)] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px]">
-        <div className="lg:absolute top-4 left-4 md:pb-12">
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
     <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
   </div>
+
+  <div className="sm:mt-8 mt-12">
           <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
           <p className="mt-4 text-center font-body text-base  text-[#EAEAEA] leading-loose">
           The Indian Society for Technical Education (ISTE) Student Chapter, Manipal, is a leading technical club that provides students with opportunities to explore domains, enhance skills, and grow professionally. With five specialized domains, including a coding community, ISTE fosters learning through workshops, seminars, and hands-on experiences.
 Key events like ACUMEN in TechTatva, AURORA TechWeek, and the ISTE Summer School drive innovation and excellence in the tech community.
           </p>
+          </div>
         </div>
 
         {/* Register Button */}

@@ -21,7 +21,7 @@ const Workshop1 = () => {
 
     {/* Neural Network Section */}
     <div className="text-center">
-          <h2 className="text-4xl text-[#05E0EE] font-bold font-heading mb-6">Tech Divide: A Tech Debate competition</h2>
+          <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">Tech Divide: A Tech Debate competition</h2>
           <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
      </div>
 
@@ -30,7 +30,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[22px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
             Engage in the interesting Tech Based Debates.
           </p>
@@ -99,10 +99,12 @@ const Workshop1 = () => {
         <div className="absolute top-4 leftt-4">
     <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
   </div>
+  <div className="sm:mt-8 mt-12">
           <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
           <p className="mt-4 text-center font-body text-base  text-[#EAEAEA] leading-loose">
           Welcome to MIT's official Public Speaking Club, Blank101, the center of eloquence, where words take flight and voices ring out with assurance. We're not just a club; we're a thriving community of individuals who share a passion for making an impact.Beyond public speaking, we also delve into the realm of written expression, crafting compelling articles, and thought-provoking pieces that engage and enlighten.
           </p>
+          </div>
         </div>
 
         {/* Register Button */}
