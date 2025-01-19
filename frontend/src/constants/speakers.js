@@ -1,7 +1,7 @@
 export const speakers = [
     {
         id: 1,
-        name: 'Dale Vaz',
-        details: 'Former Chief Technology Officer at Swiggy'
+        name: 'Arpan Garg',
+        details: 'Co-Founder & CTO at Exa Protocol'
     }
 ]

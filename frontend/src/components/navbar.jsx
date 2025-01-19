@@ -24,7 +24,7 @@ function Navbar() {
                     <div className="mr-[2rem] flex-shrink-0 py-2">
                         <img
                             className="h-12 w-12"
-                            src= "https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/logo_b0anb8.png"
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/logo_b0anb8.png"
                             alt="Logo"
                         />
                     </div>
@@ -36,21 +36,21 @@ function Navbar() {
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <img
-                            className="mt-[0.75rem] h-4 w-auto"
-                            src= "https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
-                            alt="Home"
-                        />
+                                className="mt-[0.75rem] h-4 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
+                                alt="Home"
+                            />
                         </Link>
-                        <Link
-                            to="/speaker"
+                        <a
+                            href="/speaker"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <img
-                            className="mt-[0.75rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
-                            alt="speaker"
-                        />
-                        </Link>
+                                className="mt-[0.75rem] h-4 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
+                                alt="speaker"
+                            />
+                        </a>
                         {/* <Link
                             to="/timeline"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
@@ -61,52 +61,52 @@ function Navbar() {
                             alt="Sponsors"
                         /> */}
                         {/* </Link> */}
-                        <Link
-                            to="/ctf"
+                        <a
+                            href="/ctf"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <img
-                            className="mt-[0.75rem] h-4 w-auto"
-                            src={CTF}
-                            alt="CTF"
-                        />
-                        </Link>
+                                className="mt-[0.75rem] h-4 w-auto"
+                                src={CTF}
+                                alt="CTF"
+                            />
+                        </a>
                         <Link
                             to="/developer"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <img
-                            className="mt-[0.75rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
-                            alt="Developers"
-                        />
+                                className="mt-[0.75rem] h-4 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
+                                alt="Developers"
+                            />
                         </Link>
                         <Link
                             to="/hackathon"
                             className="mt-[0.1rem] lg:px-3 md:px-2 py-2 rounded-full text-sm font-medium"
                         >
                             <img
-                            className="h-10 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
-                            alt="Hackathon"
-                        />
+                                className="h-10 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
+                                alt="Hackathon"
+                            />
                         </Link>
                         <a
                             href="/workshop"
                             className="lg:px-3 md:px-2 py-2 rounded-full text-sm font-medium"
                         >
                             <img
-                            className="h-10 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
-                            alt="Logo"
-                        />
+                                className="h-10 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
+                                alt="Logo"
+                            />
                         </a>
                     </div>
 
                     {/* Profile icon on the right */}
                     <div className="hidden md:block pt-2">
                         <button className="text-white hover:text-blue-300"
-                        onClick={() => navigate("/profile")}
+                            onClick={() => navigate("/profile")}
                         >
                             <svg
                                 className="h-12 w-12"
@@ -159,20 +159,20 @@ function Navbar() {
                             className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
                         >
                             <img
-                            className="ml-[0.25rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
-                            alt="Home"
-                        />
+                                className="ml-[0.25rem] h-4 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
+                                alt="Home"
+                            />
                         </Link>
                         <Link
                             to="/speaker"
                             className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
                         >
                             <img
-                            className="ml-[0.25rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
-                            alt="speaker"
-                        />
+                                className="ml-[0.25rem] h-4 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
+                                alt="speaker"
+                            />
                         </Link>
                         {/* <Link
                             to="/timeline"
@@ -185,40 +185,40 @@ function Navbar() {
                             className="block px-3 py-2 rounded-md text-base font-medium"
                         >
                             <img
-                            className="ml-[0.25rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Sponsers_th9hym.png"
-                            alt="Sponsors"
-                        />
+                                className="ml-[0.25rem] h-4 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Sponsers_th9hym.png"
+                                alt="Sponsors"
+                            />
                         </Link>
                         <Link
-                        to="/developer"
-                        className="block px-3 py-2 rounded-md text-base font-medium"
+                            to="/developer"
+                            className="block px-3 py-2 rounded-md text-base font-medium"
                         >
                             <img
-                            className="ml-[0.25rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
-                            alt="Developers"
-                        />
+                                className="ml-[0.25rem] h-4 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
+                                alt="Developers"
+                            />
                         </Link>
                         <Link
                             to="/hackathon"
                             className="block px-3 py-2 rounded-full text-base font-medium"
                         >
                             <img
-                            className="h-9 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
-                            alt="Hackathon"
-                        />
+                                className="h-9 w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
+                                alt="Hackathon"
+                            />
                         </Link>
                         <Link
                             to="/workshop"
                             className="block px-3 py-2 rounded-full text-base font-medium"
                         >
                             <img
-                            className="h-[38px] w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
-                            alt="Workshop"
-                        />
+                                className="h-[38px] w-auto"
+                                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
+                                alt="Workshop"
+                            />
                         </Link>
                     </div>
                 </div>
