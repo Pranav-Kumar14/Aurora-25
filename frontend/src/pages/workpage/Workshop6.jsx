@@ -22,7 +22,7 @@ const Workshop1 = () => {
     {/* Neural Network Section */}
     <div className="text-center">
           <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">StarTrail: Stargazing</h2>
-          <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
+          {/* <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} /> */}
      </div>
 
       {/* Workshop Content */}
@@ -34,7 +34,7 @@ const Workshop1 = () => {
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
           Interested in astrophotography and stargazing? Then here is your opportunity to discover the cosmos like never before with our two-day workshop! Topics like telescope basics and handling, astrophotography techniques especially using smartphones and  image stacking will be covered in these sessions along with a mesmerizing stargazing session. Join us to explore and connect with the universe!!
           </p>
-          <div className="mt-6 flex justify-center items-center gap-8 text-center">
+          <div className="mt-6 flex justify-center items-center gap-5 text-center">
             {/* Date */}
             <div className="flex items-center gap-2">
               <svg
@@ -95,7 +95,7 @@ const Workshop1 = () => {
         </div>
 
         {/* About Our Club Section */}
-        <div className="mt-8 pt-9 p-6 rounded-[36px] bg-[rgba(255,255,255,0.1)] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px]">
+        <div className="mt-8 pt-9 p-6 rounded-[36px] bg-transparent border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px]">
         <div className="absolute top-4 leftt-4">
     <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
   </div>
@@ -116,7 +116,7 @@ I guess we have all at least once looked at the sky and wondered " huh that look
           }}>
             Go To Workshop Page
           </button>
-          <p className="mt-4 text-sm font-body">Register to reserve your spot now!!</p>
+          <p className="mt-4 text-sm font-body text-white">Register to reserve your spot now!!</p>
         </div>
       </section>
     </div>

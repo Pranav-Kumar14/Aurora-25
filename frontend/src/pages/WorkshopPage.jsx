@@ -227,7 +227,7 @@ const WorkshopPage = () => {
             return (
               <div
                 key={workshop.id}
-                className={`mt-12 w-full max-w-4xl bg-[rgba(255,255,255,0.06)] rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px] rounded-[35.22px] border border-white bg-white/10 transform transition hover:scale-105 ${isSelected ? "bg-green-200 text-black" : ""
+                className={`mt-12 w-full max-w-4xl bg-transparent rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px] transform transition hover:scale-105 ${isSelected ? "bg-green-200 text-black" : ""
                   }`}
               >
                 <div className="flex justify-center mb-4">
@@ -241,15 +241,15 @@ const WorkshopPage = () => {
                     {workshop.time}
                   </p>
                 </div>
-                <div className="flex justify-around">
+                <div className="flex justify-around gap-2">
                   <button
                     className={`${isSelected ? "bg-red-500 hover:bg-red-400" : "bg-zinc-700"
-                      } text-white lg:text-lg text-xs px-4 py-2 rounded-full hover:shadow-[0_0_10px_4px_rgba(34,213,94,0.8)] transition duration-300`}
+                      } text-white lg:text-lg text-xs px-2 py-2 rounded-full hover:shadow-[0_0_10px_4px_rgba(34,213,94,0.8)] transition duration-300`}
                     onClick={() => toast.error('First select change preference, Previous Selections will be Lost!!!', { position: 'top-center' })}
                   >
                     {isSelected ? "Unregister" : "Register"}
                   </button>
-                  <button className="bg-blue-500 text-[#1B1B1B] lg:text-lg text-xs px-4 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out"
+                  <button className="bg-blue-500 text-[#1B1B1B] lg:text-lg text-xs px-2 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out"
                     onClick={() => {
                       navigate(`/Workshop${workshop.id}`)
                     }}>
@@ -304,7 +304,7 @@ const WorkshopPage = () => {
         //             </button>
         //           </div>
         : (<>
-          <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 px-10">
+          <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 px-10 mb-20">
             {workshops.map((workshop) => {
               const key = workshop.date + workshop.time;
               const isSelected = selectedWorkshops[key]?.id === workshop.id;
@@ -316,7 +316,7 @@ const WorkshopPage = () => {
               return (
                 <div
                   key={workshop.id}
-                  className={`mt-12 w-full max-w-4xl bg-[rgba(255,255,255,0.06)] rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px] rounded-[35.22px] border border-white bg-white/10 backdrop-blur-[100px] p-5 transform transition hover:scale-105 ${isSelected ? "bg-green-200 text-black" : ""
+                  className={`mt-12 w-full max-w-4xl bg-transparent rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] pt-[95px] backdrop-blur-[100px] p-5 transform transition hover:scale-105 ${isSelected ? "bg-green-200 text-black" : ""
                     }`}
                 >
                   <div className="flex justify-center mb-4">
@@ -333,12 +333,12 @@ const WorkshopPage = () => {
                   <div className="flex justify-around">
                     <button
                       className={`${isSelected ? "bg-red-500 hover:bg-red-400" : "bg-green-500 hover:bg-green-400"
-                        } text-[#1B1B1B] text-sm px-4 py-2 rounded-full hover:shadow-[0_0_10px_4px_rgba(34,213,94,0.8)] transition duration-300`}
+                        } text-[#1B1B1B] lg:text-lg text-xs px-2 py-2 rounded-full hover:shadow-[0_0_10px_4px_rgba(34,213,94,0.8)] transition duration-300`}
                       onClick={() => handleRegister(workshop)}
                     >
-                      {isSelected ? "Unregister" : "Register Now"}
+                      {isSelected ? "Unregister" : "Register"}
                     </button>
-                    <button className="bg-blue-500 text-[#1B1B1B] text-sm px-4 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out"
+                    <button className="bg-blue-500 text-[#1B1B1B] lg:text-lg text-xs px-2 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out"
                       onClick={() => {
                         navigate(`/Workshop${workshop.id}`)
                       }}>
@@ -353,7 +353,7 @@ const WorkshopPage = () => {
 
       {!check && (
         <div
-          className="sticky bottom-0 left-0 w-full bg-[#007bff] text-white py-4 text-center cursor-pointer "
+          className="sticky bottom-0 left-0 w-full bg-[#007bff] text-white py-4 text-center cursor-pointer rounded-full"
           onClick={handleSubmit}
         >
           Submit

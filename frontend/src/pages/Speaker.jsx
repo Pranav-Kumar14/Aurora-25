@@ -41,7 +41,7 @@ function Speaker() {
     }
 
     if (isRegistered) {
-      toast.error("You are already registered for this speaker.", {
+      toast.error("You are already registered for the talk.", {
         position: "top-center",
       });
       return;
