@@ -24,7 +24,7 @@ const createOrderHandler = async (req, res) => {
     }
     
     let request = {
-      "order_amount": "10",
+      "order_amount": "2",
       "order_currency": "INR",
       "order_id": await generateOrderId(),
       customer_details: {
