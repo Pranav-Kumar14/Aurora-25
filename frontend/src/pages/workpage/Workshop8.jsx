@@ -23,7 +23,7 @@ const Workshop1 = () => {
     {/* Neural Network Section */}
     <div className="text-center">
           <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">Crafting the Web:  A Beginner's Guide to WebDev</h2>
-          <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
+          {/* <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} /> */}
      </div>
 
       {/* Workshop Content */}
@@ -97,7 +97,7 @@ const Workshop1 = () => {
         </div>
 
         {/* About Our Club Section */}
-        <div className="mt-8 pt-9 p-6 rounded-[36px] bg-[rgba(255,255,255,0.1)] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px]">
+        <div className="mt-8 pt-9 p-6 rounded-[36px] bg-transparent border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px]">
         <div className="absolute top-4 leftt-4">
     <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
   </div>
@@ -118,7 +118,7 @@ Key events like ACUMEN in TechTatva, AURORA TechWeek, and the ISTE Summer School
           }}>
             Go To Workshop Page
           </button>
-          <p className="mt-4 text-sm font-body">Register to reserve your spot now!!</p>
+          <p className="mt-4 text-sm font-body text-white">Register to reserve your spot now!!</p>
         </div>
       </section>
     </div>

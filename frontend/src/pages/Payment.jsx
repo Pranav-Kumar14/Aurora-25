@@ -111,7 +111,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
       });
 
       const data = await response.json();
-      if (data.order_status === "PAID" || data.order_status === "ACTIVE") {
+      if (data.order_status === "PAID") {
         alert("Payment verified successfully!");
         updateUserProfile();
         if (onPaymentSuccess) onPaymentSuccess(data); // Trigger callback if provided
@@ -120,6 +120,9 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
       }
     } catch (error) {
       console.error("Error verifying payment:", error);
+    }
+    finally{
+      location.reload();
     }
   };
 
@@ -147,7 +150,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
     }
   };
 
-  return <button className="bg-[#519984] w-full px-6 py-2 mt-4 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]" onClick={handleOrderSubmit}>Pay ₹{orderAmount || "225"}</button>;
+  return <button className="bg-[#519984] w-full px-6 py-2 mt-4 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]" onClick={handleOrderSubmit}>Pay ₹{orderAmount || "250"}</button>;
 };
 
 export default PaymentButton;

@@ -31,7 +31,7 @@ export default function Register() {
 
         // Validate college ID
         if (!/^\d{9}$/.test(formData.collegeid)) {
-            toast.error('College ID must be exactly 9 digits.');
+            toast.error('Registration Number must be exactly 9 digits.');
             return;
         }
 
@@ -79,7 +79,7 @@ export default function Register() {
                                 name="fullName"
                                 type="text"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.fullName}
                                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                             />
@@ -94,7 +94,7 @@ export default function Register() {
                                 name="username"
                                 type="text"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.username}
                                 onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                             />
@@ -109,7 +109,7 @@ export default function Register() {
                                 name="email"
                                 type="email"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
@@ -124,7 +124,7 @@ export default function Register() {
                                 name="collegeid"
                                 type="text"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.collegeid}
                                 onChange={(e) => setFormData({ ...formData, collegeid: e.target.value })}
                             />
@@ -138,7 +138,7 @@ export default function Register() {
                                 id="year"
                                 name="year"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.year}
                                 onChange={(e) => setFormData({ ...formData, year: e.target.value })}
                             >
@@ -159,7 +159,7 @@ export default function Register() {
                                 id="branch"
                                 name="branch"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.branch}
                                 onChange={(e) => setFormData({ ...formData, branch: e.target.value })}
                             >
@@ -181,7 +181,7 @@ export default function Register() {
                                 name="phone"
                                 type="text"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             />
@@ -196,7 +196,7 @@ export default function Register() {
                                 name="interest"
                                 type="text"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.interest}
                                 onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                             />
@@ -211,7 +211,7 @@ export default function Register() {
                                 name="password"
                                 type="password"
                                 required
-                                className="mt-2 block w-full rounded-md border-transparent bg-white text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
+                                className="mt-2 block w-full rounded-md border-transparent bg-white text-black shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
                                 value={formData.password}
                                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                             />

@@ -22,11 +22,11 @@ const Workshop1 = () => {
     {/* Neural Network Section */}
     <div className="text-center">
           <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">VisionCraft: Mastering Computer Vision</h2>
-          <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
+          {/* <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} /> */}
      </div>
 
       {/* Workshop Content */}
-      <section className="mt-12 w-full max-w-4xl bg-[rgba(255,255,255,0.06)] rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px]">
+      <section className="mt-12 w-full max-w-4xl bg-transparent rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px]">
 
         {/* Description Section */}
         <div className="mt-8">
@@ -129,7 +129,7 @@ const Workshop1 = () => {
           }}>
             Go To Workshop Page
           </button>
-          <p className="mt-4 text-sm font-body">Register to reserve your spot now!!</p>
+          <p className="mt-4 text-sm font-body text-white">Register to reserve your spot now!!</p>
         </div>
       </section>
     </div>

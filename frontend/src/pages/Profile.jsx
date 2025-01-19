@@ -144,7 +144,7 @@ export default function Profile() {
                     </dl>
                     {!user.workshopPaid ? (
                             <PaymentButton
-                                orderAmount="225"
+                                orderAmount="250"
                                 onPaymentSuccess={handlePaymentSuccess}
                                 userDataNew={user}
                             />
