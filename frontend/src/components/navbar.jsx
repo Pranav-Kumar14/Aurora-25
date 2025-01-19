@@ -15,11 +15,14 @@ function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo on the left */}
           <div className="mr-[2rem] flex-shrink-0 py-2">
+            <button onClick={()=> navigate("/home")}>
             <img
               className="h-12 w-12"
               src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/logo_b0anb8.png"
               alt="Logo"
             />
+            </button>
+            
           </div>
 
           <div className="hidden md:flex flex-grow justify-center space-x-8">
@@ -41,12 +44,12 @@ function Navbar() {
             >
               <p className="font-heading">CTF</p>
             </a>
-            <a
+            {/* <a
               href="/developer"
               className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
             >
               <p className="font-heading">DEVELOPER</p>
-            </a>
+            </a> */}
             <a
               href="/hackathon"
               className="lg:px-3 md:px-2 py-2 rounded-full text-sm font-medium text-[#E67E22]  hover:text-white hover:bg-[#E67E22] transition duration-300"
@@ -126,12 +129,12 @@ function Navbar() {
             >
               <p className="font-heading">CTF</p>
             </a>
-            <a
+            {/* <a
               href="/developer"
               className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
             >
               <p className="font-heading">Developers</p>
-            </a>
+            </a> */}
             <a
               href="/hackathon"
               className="block text-[#E67E22] hover:text-white hover:bg-[#E67E22] transition duration-300 px-3 py-2 rounded-md text-base font-medium"

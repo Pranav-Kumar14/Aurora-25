@@ -14,12 +14,12 @@ const CtfHero = () => {
 
 
       <div className="relative z-10 flex flex-col items-center w-full h-full px-6">
-        <h1 className="text-6xl font-bold text-white pb-20 pt-20 capitalize font-['Chakra Petch']">
+        <h1 className="text-4xl font-bold text-white pb-20 pt-20 capitalize font-['Chakra Petch']">
           CAPTURE THE FLAG
         </h1>
 
         <div className="bg-[#040222] bg-opacity-80 shadow-[0px_0px_18px_7px_rgba(255,255,255,1.00)] p-8 rounded-lg max-w-4xl mx-auto">
-          <p className="text-white text-lg font-['Chakra Petch']">
+          <p className="text-white lg:text-lg text-xs font-['Chakra Petch']">
             Welcome to our Tech-Based Capture the Flag (CTF) event! Dive into
             the thrilling world of cybersecurity challenges designed to test your
             skills in cryptography, reverse engineering, web exploitation, and

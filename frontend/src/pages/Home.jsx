@@ -11,6 +11,7 @@ import Timeline from '../components/Timeline'
 import {workshops} from '../constants/workshops'
 
 
+
 const Home = () => {
     return (
         <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
@@ -20,9 +21,10 @@ const Home = () => {
             <div className='py-12'>
                 <CountdownTimer targetDate={new Date("2025-01-23T00:00:00")} />
             </div>
-            <div className='mt-8 py-12'>
+            <p className='font-heading lg:text-5xl text-center text-white  text-2xl lg:mt-20'>
+                    SPEAKER
+                </p>
                 <KeynoteSpeakerCard />
-            </div>
             
             <div className="lg:py-12 py-4">
             <p className='font-heading lg:text-5xl text-center text-white lg:pb-20  text-2xl pb-10'>
@@ -35,7 +37,7 @@ const Home = () => {
             </main>
 
             <div className='lg:py-12 lg:mb-6'>
-            <p className='font-heading lg:text-5xl text-center text-white lg:pb-20 my-1 text-2xl pb-10'>
+            <p className='font-heading lg:text-5xl text-center text-white lg:pb-5 my-1 text-2xl'>
                     HACKATHON
                 </p>
 

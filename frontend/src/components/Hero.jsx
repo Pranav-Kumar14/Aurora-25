@@ -1,6 +1,8 @@
 import React from "react";
+import toast from 'react-hot-toast';
 
 function Hero() {
+  const token = sessionStorage.getItem('token');
   return (
     <section className="text-white py-16 sm:py-20 lg:py-24">
       <div className="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
@@ -15,26 +17,31 @@ function Hero() {
         </p>
 
         {/* Register Button */}
-        <a
-          href="/register"
-          className="bg-purple-500 font-body hover:bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-medium inline-flex items-center"
-        >
-          <svg
-            className="h-5 w-5 sm:h-6 sm:w-6 mr-2"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+        {!token && (
+            <a
+            href="/register" 
+            className="bg-purple-500 font-body hover:bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-medium inline-flex items-center"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M14.752 11.168l-4.197-4.197m0 0L15.6 2.293m-5.045 4.678H3.9m16.2 0a7.5 7.5 0 11-15 0h15z"
-            />
-          </svg>
-          Register Here!
-        </a>
+            <svg
+              className="h-5 w-5 sm:h-6 sm:w-6 mr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M14.752 11.168l-4.197-4.197m0 0L15.6 2.293m-5.045 4.678H3.9m16.2 0a7.5 7.5 0 11-15 0h15z"
+              />
+            </svg>
+            Register Here!
+          </a>
+        )
+            
+        }
+        
       </div>
     </section>
   );

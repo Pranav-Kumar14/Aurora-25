@@ -182,11 +182,11 @@ const WorkshopPage = () => {
 >
       {/* Workshop Title */}
       <section className="text-center pb-[410px]">
-        <h1 className="lg:text-7xl font-heading font-extrabold text-[40px] pb-[235px]">
+        <h1 className="lg:text-7xl font-heading font-extrabold text-[40px] lg:pb-[100px] pb-[220px] text-black">
   WORKSHOPS
 </h1>
 
-        <p className="mt-4 text-2xl max-w-3xl mx-auto font-body leading-relaxed">
+        <p className="text-2xl max-w-3xl mx-auto font-body leading-relaxed">
           Get Ready To Embark On An Unforgettable Journey Into The Realms Of Technology with TechWeek: Aurora, Brought To You By ISTE Manipal.
         </p>
       </section> 
@@ -240,12 +240,12 @@ const WorkshopPage = () => {
                 <div className="flex justify-around">
                   <button
                     className={`${isSelected ? "bg-red-500 hover:bg-red-400" : "bg-zinc-700"
-                      } text-[#1B1B1B] text-sm px-4 py-2 rounded-full hover:shadow-[0_0_10px_4px_rgba(34,213,94,0.8)] transition duration-300`}
+                      } text-white lg:text-lg text-xs px-4 py-2 rounded-full hover:shadow-[0_0_10px_4px_rgba(34,213,94,0.8)] transition duration-300`}
                     onClick={() => toast.error('First select change preference, Previous Selections will be Lost!!!', { position: 'top-center' })}
                   >
-                    {isSelected ? "Unregister" : "Register Now"}
+                    {isSelected ? "Unregister" : "Register"}
                   </button>
-                  <button className="bg-blue-500 text-[#1B1B1B] text-sm px-4 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out"
+                  <button className="bg-blue-500 text-[#1B1B1B] lg:text-lg text-xs px-4 py-2 rounded-full hover:bg-blue-600 hover:shadow-[0_0_10px_4px_rgba(59,130,246,0.8)] transition-all duration-300 ease-in-out"
                     onClick={() => {
                       navigate(`/Workshop${workshop.id}`)
                     }}>

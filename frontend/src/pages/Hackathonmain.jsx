@@ -9,8 +9,8 @@ import Calendar from "../images/calendar.png";
 import Clock from "../images/clock.png";
 import Location from "../images/Location.png";
 import Team from "../images/hackteam.png";
-import 'aos/dist/aos.css';
-import AOS from 'aos';
+// import 'aos/dist/aos.css';
+// import AOS from 'aos';
 
 const teamRules = [
   "The hackathon is open to all MIT students. Teams can consist of 2 to 5 members.",
@@ -43,12 +43,12 @@ const general = [
 
 const Home = () => {
   const navigate = useNavigate();
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  }, []);
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 1000,
+  //     once: true,
+  //   });
+  // }, []);
   return (
     <div
       className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen w-full bg-no-repeat bg-cover"
@@ -57,7 +57,7 @@ const Home = () => {
       {/* Hero Section */}
       <div
         className="flex flex-col items-center justify-center font-press-start h-screen text-center space-y-6 px-4"
-        data-aos="fade-up"
+        // data-aos="fade-up"
       >
         <h1 className="font-extrabold text-[50px] lg:text-[60px] p-4 transition-transform duration-500 hover:scale-110">
           Error 456
@@ -134,7 +134,7 @@ const Home = () => {
               style={{ backgroundImage: `url(${Team})` }}
             ></div>
             <h1 className="font-press-start text-xl tracking-wide text-center">
-              Team Size: 2-4
+              Team : 2-4
             </h1>
           </div>
         </div>

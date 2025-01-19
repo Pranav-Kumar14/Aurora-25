@@ -6,7 +6,6 @@ import { workshops } from "../constants/workshops";
 import { speakers } from "../constants/speakers"; // Add a speakers array similar to workshops
 import { updateProfile } from "../services/auth";
 import PaymentButton from "./Payment";
-import prof from"../images/prof.webp";
 
 export default function Profile() {
     const { user, setUser } = useAuth();
@@ -108,36 +107,39 @@ export default function Profile() {
                             <dd className="mt-1 text-sm  text-gray-900">{user.collegeid}</dd>
                         </div>
                         {user.workshopPaid && (
-                            <div className="sm:col-span-2">
-                                <dt className="text-sm font-medium font-heading text-black-500">Registered Workshops</dt>
-                                <dd className="mt-1 text-sm text-gray-900">
-                                    {registeredWorkshops.length > 0 ? (
-                                        <ul className="list-disc ml-5">
-                                            {registeredWorkshops.map((details, index) => (
-                                                <li key={index}>{details}</li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        "No workshops registered."
-                                    )}
-                                </dd>
-                            </div>
+                            <>
+                                <div className="sm:col-span-2">
+                                    <dt className="text-sm font-medium font-heading text-black-500">Registered Workshops</dt>
+                                    <dd className="mt-1 text-sm text-gray-900">
+                                        {registeredWorkshops.length > 0 ? (
+                                            <ul className="list-disc ml-5">
+                                                {registeredWorkshops.map((details, index) => (
+                                                    <li key={index}>{details}</li>
+                                                ))}
+                                            </ul>
+                                        ) : (
+                                            "No workshops registered."
+                                        )}
+                                    </dd>
+                                </div>
+                                <div className="sm:col-span-2">
+                                    <dd className="mt-1 text-sm text-gray-900 font-press-start">CTF
+                                    </dd>
+                                    <dd className="mt-1 text-sm  text-gray-900">
+                                        {user.ctf ? "Registered" : "Not Registered"}
+                                    </dd>
+                                </div>
+                            </>
                         )}
                         {selectedSpeaker && (
                             <div className="sm:col-span-2">
-                                <dt className="text-sm font-medium text-black font-press-start">Selected Speaker</dt>
+                                <dt className="text-sm font-medium text-black font-press-start">Speaker</dt>
                                 <dd className="mt-1 text-sm text-gray-900">
                                     {`${speakers[0].name} - ${speakers[0].details}`}
                                 </dd>
                             </div>
                         )}
-                        <div className="sm:col-span-2">
-                            <dd className="mt-1 text-sm text-gray-900 font-press-start">CTF
-                            </dd>
-                            <dd className="mt-1 text-sm  text-gray-900">
-                                {user.ctf ? "Registered" : "Not Registered"}
-                            </dd>
-                        </div>
+                        
                         
                     </dl>
                     {!user.workshopPaid ? (
