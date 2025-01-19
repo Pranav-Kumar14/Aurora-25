@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 const faqs = [
   {
     question: "How long is the hackathon?",
@@ -38,49 +39,50 @@ const FAQ = () => {
   };
 
   return (
-    <div>
-      <div className="mx-auto p-6 mt-[400px]">
-        <h1 className="text-2xl font-bold text-center mb-3 font-press-start">
-          FAQ's
-        </h1>
-        <div className="">
-          {faqs.map((faq, index) => (
-            <div
-              key={faq.question}
-              className="rounded-xl border border-gray-200 p-6 mb-4"
+    <div className="bg-transparent py-12 px-6">
+  <div className="max-w-4xl mx-auto p-6 mt-20">
+    <h1 className="text-4xl font-bold text-center mb-8 font-press-start text-white">
+      FAQ's
+    </h1>
+    <div className="space-y-6">
+      {faqs.map((faq, index) => (
+        <div
+          key={faq.question}
+          className="bg-transparent border border-white rounded-xl p-6 transition-all duration-300 hover:shadow-xl"
+        >
+          <dt
+            className="flex justify-between items-center cursor-pointer"
+            onClick={() => toggleFAQ(index)}
+          >
+            <p className="font-semibold text-lg md:text-xl text-white font-press-start">
+              {faq.question}
+            </p>
+            <p
+              className={`text-xl text-white transform ${
+                activeIndex === index ? "rotate-0" : "rotate-180"
+              } transition-transform duration-200`}
             >
-              <dt
-                className="flex justify-between items-center cursor-pointer"
-                onClick={() => toggleFAQ(index)}
-              >
-                <p className="font-semibold text-xl font-press-start">
-                  {faq.question}
-                </p>
-                <p
-                  className={`text-xl ${
-                    activeIndex === index ? "rotate-0" : "rotate-180"
-                  } transition-transform duration-200 font-press-start`}
-                >
-                  ^
-                </p>
-              </dt>
-              {activeIndex === index && (
-                <dd className="text-2xl font-light mt-6">
-                  <p className="font-pixelify">
-                    {faq.answer.split("\n").map((item, i) => (
-                      <React.Fragment key={i}>
-                        {item}
-                        <br />
-                      </React.Fragment>
-                    ))}
-                  </p>
-                </dd>
-              )}
-            </div>
-          ))}
+              ^
+            </p>
+          </dt>
+          {activeIndex === index && (
+            <dd className="text-base md:text-lg text-gray-300 font-light mt-4">
+              <p className="font-pixelify leading-relaxed">
+                {faq.answer.split("\n").map((item, i) => (
+                  <React.Fragment key={i}>
+                    {item}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </p>
+            </dd>
+          )}
         </div>
-      </div>
+      ))}
     </div>
+  </div>
+</div>
+
   );
 };
 

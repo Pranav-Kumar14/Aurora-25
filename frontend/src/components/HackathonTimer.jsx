@@ -24,20 +24,27 @@ const HackathonTimer = () => {
     }, []);
 
     return (
-        <div className="text-white justify-center font-press-start text-[25px] md:text-[40px] flex space-x-8 mb-4">
-        <div className="flex flex-col items-center">
-            <span className="font-press-start">{String(timeLeft.days).padStart(2, '0')}</span>
-            <span className="text-sm md:text-base mt-1">Days</span>
-        </div>
-        <div className="flex flex-col items-center">
-            <span className="font-press-start">{String(timeLeft.hours).padStart(2, '0')}</span>
-            <span className="text-sm md:text-base mt-1">Hours</span>
-        </div>
-        <div className="flex flex-col items-center">
-            <span className="font-press-start">{String(timeLeft.minutes).padStart(2, '0')}</span>
-            <span className="text-sm md:text-base mt-1">Minutes</span>
-        </div>
-        </div>
+        <div className="text-white font-press-start text-[25px] md:text-[40px] flex justify-center space-x-8 mb-8">
+  {/* Time Block */}
+  {[
+    { label: 'Days', value: timeLeft.days },
+    { label: 'Hours', value: timeLeft.hours },
+    { label: 'Minutes', value: timeLeft.minutes },
+  ].map((unit, index) => (
+    <div
+      key={index}
+      className="flex flex-col items-center p-4 bg-gradient-to-br from-[#1c1f3a] to-[#2a2d4a] rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+    >
+      <span className="font-press-start text-4xl md:text-5xl">
+        {String(unit.value).padStart(2, '0')}
+      </span>
+      <span className="text-sm md:text-base mt-2 uppercase tracking-wide text-gray-400">
+        {unit.label}
+      </span>
+    </div>
+  ))}
+</div>
+
     );
 };
 
