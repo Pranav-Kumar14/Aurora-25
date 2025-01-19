@@ -30,7 +30,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="text-3xl text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
           Interested in astrophotography and stargazing? Then here is your opportunity to discover the cosmos like never before with our two-day workshop! Topics like telescope basics and handling, astrophotography techniques especially using smartphones and  image stacking will be covered in these sessions along with a mesmerizing stargazing session. Join us to explore and connect with the universe!!
           </p>

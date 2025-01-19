@@ -30,7 +30,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="text-3xl text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
           " Intro to UI/UX: Designing Wireframes and Prototypes"
 A beginner-friendly workshop that introduces the essentials of UI/UX design. Learn how to create wireframes and interactive prototypes using Canva, focusing on simplicity, consistency, and accessibility. Perfect for those with no prior experience in design!
@@ -97,7 +97,7 @@ A beginner-friendly workshop that introduces the essentials of UI/UX design. Lea
 
         {/* About Our Club Section */}
         <div className="mt-8 pt-9 p-6 rounded-[36px] bg-[rgba(255,255,255,0.1)] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px]">
-        <div className="absolute top-4 leftt-4">
+        <div className="lg:absolute top-4 left-4 ">
     <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
   </div>
           <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
