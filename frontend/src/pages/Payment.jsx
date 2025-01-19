@@ -147,7 +147,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
     }
   };
 
-  return <button  onClick={handleOrderSubmit}>Pay ₹{orderAmount || "225"}</button>;
+  return <button onClick={handleOrderSubmit} className="text-white bg-black rounded-md p-2 m-3 ml-0 text-xl font-press-start">Pay ₹{orderAmount || "225"}</button>;
 };
 
 export default PaymentButton;

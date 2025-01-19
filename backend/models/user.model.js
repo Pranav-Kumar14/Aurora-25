@@ -65,8 +65,8 @@ const userSchema = new mongoose.Schema({
         default: [],
     },
     speaker: {
-        type: Array,
-        default: [],
+        type: Boolean,
+        default: false,
     },
     ctf:{
         type: Boolean,

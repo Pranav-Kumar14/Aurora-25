@@ -115,9 +115,9 @@ const updateWorkshops = async (req, res) => {
 };
 
 const updateSpeakers = async (req, res) => {
-  const { userId, selectedSpeaker } = req.body;
+  const { userId } = req.body;
   console.log(req.body)
-  if (!userId || !Array.isArray(selectedSpeaker)) {
+  if (!userId) {
     return res.status(400).json({ message: "Invalid request data" });
   }
 
@@ -127,15 +127,14 @@ const updateSpeakers = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    user.speaker = selectedSpeaker;
+    user.speaker = !user.speaker;
     await user.save();
 
     return res.status(200).json({
-      message: "Workshops updated successfully",
-      workshops: user.workshops,
+      message: "Speaker updated successfully",
     });
   } catch (error) {
-    console.error("Error updating workshops:", error);
+    console.error("Error updating Speaker:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
