@@ -100,7 +100,7 @@ const Home = () => {
               className="w-14 h-14 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${Calendar})` }}
             ></div>
-            <h1 className="font-press-start text-xl tracking-wide text-center">
+            <h1 className="font-sans text-xl tracking-wide text-center">
               2 February 2025
             </h1>
           </div>
@@ -111,7 +111,7 @@ const Home = () => {
               className="w-14 h-14 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${Location})` }}
             ></div>
-            <h1 className="font-press-start text-xl tracking-wide text-center">
+            <h1 className="font-sans text-xl tracking-wide text-center">
               GSH, MIT Library
             </h1>
           </div>
@@ -122,7 +122,7 @@ const Home = () => {
               className="w-14 h-14 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${Clock})` }}
             ></div>
-            <h1 className="font-press-start text-xl tracking-wide text-center">
+            <h1 className="font-sans text-xl tracking-wide text-center">
               8:00 AM - 6:00 PM
             </h1>
           </div>
@@ -133,7 +133,7 @@ const Home = () => {
               className="w-14 h-14 bg-contain bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${Team})` }}
             ></div>
-            <h1 className="font-press-start text-xl tracking-wide text-center">
+            <h1 className="font-sans text-xl tracking-wide text-center">
               Team : 2-4
             </h1>
           </div>
@@ -191,7 +191,7 @@ const Home = () => {
             <h2 className="font-press-start text-2xl text-center mb-8">
               {section}
             </h2>
-            <ul className="list-disc space-y-6 text-sm font-press-start pl-8 leading-relaxed">
+            <ul className="list-disc space-y-6 text-sm font-sans font-semibold pl-8 leading-relaxed">
               {(section === "Rules"
                 ? teamRules
                 : section === "Criteria"

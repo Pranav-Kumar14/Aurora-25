@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import ctfInfo from "../images/info.png";
 import ctfBackground from "../images/cttbg.png";
 import { updateProfile } from "../services/auth";
-import leadercolor from "../images/leadercolor.png";
+import leadercolor from "../images/ctfupdate.png";
 
 const TARGET_TEXT_REGISTER = "Register for CTF";
 const TARGET_TEXT_UNREGISTER = "Unregister from CTF";
