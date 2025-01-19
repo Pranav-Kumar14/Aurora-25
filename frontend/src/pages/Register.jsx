@@ -38,6 +38,7 @@ export default function Register() {
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 minHeight: '100vh',
+                padding: "1rem"
             }}
             className="flex flex-col justify-center pb-12 sm:px-6 lg:px-8"
         >

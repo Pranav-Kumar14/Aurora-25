@@ -6,7 +6,7 @@ function Hero() {
       <div className="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
         {/* Title */}
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 sm:mb-8 lg:mb-10">
-          Aurora `25
+          Aurora`25
         </h1>
 
         {/* Description */}

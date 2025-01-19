@@ -84,9 +84,9 @@ const Carousel = () => {
                     );
 
                     return isHighlighted ? (
-                        <Link key={item.id} to="/workshop">
+                        <div key={item.id}>
                             {itemContent}
-                        </Link>
+                        </div>
                     ) : (
                         itemContent
                     );

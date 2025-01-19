@@ -108,9 +108,14 @@ const WorkshopPage = () => {
   const handleChangePreference = () => {
     const selectedIds = Object.values(selectedWorkshops).map((workshop) => workshop.id);
 
-    if (!user || !user.id || !user.workshopPaid) {
-      console.log('ok');
-      toast.error("Please Login, To Access the Contents", { position: 'top-center' });
+    if (!user.workshopPaid) {
+      toast.error("Please finish payment in Profile to access the contents.", { position: 'top-center' });
+      navigate('/profile');
+      return;
+    }
+
+    if (!user || !user.id) {
+      toast.error("Please Login to Access the Contents", { position: 'top-center' });
       navigate('/login');
       return;
     }
