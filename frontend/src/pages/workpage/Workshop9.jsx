@@ -21,7 +21,7 @@ const Workshop1 = () => {
 
     {/* Neural Network Section */}
     <div className="text-center">
-          <h2 className="text-4xl text-[#05E0EE] font-bold font-heading mb-6">ech Divide: A Tech Debate competition</h2>
+          <h2 className="text-4xl text-[#05E0EE] font-bold font-heading mb-6">Tech Divide: A Tech Debate competition</h2>
           <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
      </div>
 
@@ -30,7 +30,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="text-3xl text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
             Engage in the interesting Tech Based Debates.
           </p>

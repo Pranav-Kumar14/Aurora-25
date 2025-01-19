@@ -31,7 +31,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="text-3xl text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className=" lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
             In machine learning, a neural network (also artificial neural network or neural net, abbreviated ANN or NN) is a model inspired by the structure and function of biological neural networks in animal brains.
           </p>
@@ -97,10 +97,10 @@ const Workshop1 = () => {
 
         {/* About Our Club Section */}
         <div className="mt-8 pt-9 p-6 rounded-[36px] bg-[rgba(255,255,255,0.1)] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] pt-[56px]">
-        <div className="absolute top-4 leftt-4">
-    <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
+        <div className="lg:absolute top-4 left-4 ">
+    <img src={logo} alt="Neural Network" className="rounded-full " style={{ width: '64px', height: '64px' }} />
   </div>
-          <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
+          <h3 className=" text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
           <p className="mt-4 text-center font-body text-base  text-[#EAEAEA] leading-loose">
           "The ACM Manipal Chapter is a technical club that hosts events like Codentine (coding contest), Epoch (ML contest), as well as MIT Open and Cryptic Finds in TechTatva. We focus on coding, AI/ML, development, and other technical domains, offering opportunities to learn, grow, and collaborate on impactful projects."
           </p>

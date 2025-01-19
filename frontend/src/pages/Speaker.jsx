@@ -64,6 +64,7 @@ function Speaker() {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
+          console.log(response);
           return response.json();
         }),
         {
@@ -152,8 +153,20 @@ function Speaker() {
           </button>
         </div>
       </div>
+
+      {/* Submit Button */}
+      <div className="text-center mt-8">
+        <button
+          onClick={handleSubmit}
+          className="px-8 py-4 bg-[#9d31a1] text-white rounded-full text-lg font-medium 
+                   hover:bg-[#bf5ac3] transition-all duration-300"
+        >
+          Submit Selection
+        </button>
+      </div>
     </div>
   );
+
 }
 
 export default Speaker;

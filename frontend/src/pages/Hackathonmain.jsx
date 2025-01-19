@@ -45,7 +45,7 @@ const Home = () => {
   const navigate = useNavigate();
   useEffect(() => {
     AOS.init({
-      duration: 1000, 
+      duration: 1000,
       once: true,
     });
   }, []);
@@ -195,10 +195,10 @@ const Home = () => {
               {(section === "Rules"
                 ? teamRules
                 : section === "Criteria"
-                ? judgingCrit
-                : section === "Process"
-                ? judgingProc
-                : general
+                  ? judgingCrit
+                  : section === "Process"
+                    ? judgingProc
+                    : general
               ).map((rule, idx) => (
                 <li key={idx}>{rule}</li>
               ))}

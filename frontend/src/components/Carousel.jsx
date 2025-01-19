@@ -1,107 +1,88 @@
 import React, { useState, useEffect } from "react";
-import workshp from "../constants/ws";
-import { Link } from "react-router-dom";
+import dp1 from '../images/acm.png'
+import dp2 from '../images/dronaid.jpeg'
+import dp3 from '../images/leanin.jpeg'
+import dp4 from '../images/varise.png'
+import dp5 from '../images/mist.jpeg'
+import dp6 from '../images/tacm.jpeg'
+import dp7 from '../images/adg_logo.jpg'
+import dp8 from '../images/iste.png'
+import dp9 from '../images/Blank.jpeg'
+import dp11 from '../images/ACMW_LOGO.png'
 
 const Carousel = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [visibleCount, setVisibleCount] = useState(3); // Default visible count for smallest screen
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(3);
 
-    // Detect screen size and adjust visible count
-    useEffect(() => {
-        const updateVisibleCount = () => {
-            if (window.innerWidth >= 1024) {
-                setVisibleCount(5); // Large screens
-            } else if (window.innerWidth >= 768) {
-                setVisibleCount(4); // Medium screens
-            } else {
-                setVisibleCount(3); // Small screens
-            }
-        };
+  const logos = [
+    { id: 1, src: dp1, alt: "ACM" },
+    { id: 2, src: dp2, alt: "Dronaid" },
+    { id: 3, src: dp3, alt: "LeanIn" },
+    { id: 4, src: dp4, alt: "Varise" },
+    // { id: 5, src: dp5, alt: "Dronaid" },
+    { id: 6, src: dp6, alt: "TACM" },
+    { id: 7, src: dp7, alt: "ADG" },
+    { id: 8, src: dp8, alt: "ISTE" },
+    { id: 9, src: dp9, alt: "Blank" },
+    { id: 10, src: dp5, alt: "MIST" },
+    { id: 11, src: dp11, alt: "ACMW" }
+  ];
 
-        // Set the initial visible count
-        updateVisibleCount();
-
-        // Add resize listener
-        window.addEventListener("resize", updateVisibleCount);
-
-        // Cleanup listener on unmount
-        return () => {
-            window.removeEventListener("resize", updateVisibleCount);
-        };
-    }, []);
-
-    const handlePrev = () => {
-        setCurrentIndex((prev) =>
-            prev === 0 ? workshp.length - 1 : prev - 1
-        );
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      setVisibleCount(
+        window.innerWidth >= 1024 ? 5 : window.innerWidth >= 768 ? 4 : 3
+      );
     };
 
-    const handleNext = () => {
-        setCurrentIndex((prev) => (prev + 1) % workshp.length);
-    };
+    updateVisibleCount();
+    window.addEventListener("resize", updateVisibleCount);
+    return () => window.removeEventListener("resize", updateVisibleCount);
+  }, []);
 
-    const getVisibleItems = () => {
-        const endIndex = currentIndex + visibleCount;
-        return workshp
-            .slice(currentIndex, endIndex)
-            .concat(
-                endIndex > workshp.length
-                    ? workshp.slice(0, endIndex % workshp.length)
-                    : []
-            );
-    };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % logos.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [logos.length]);
 
-    return (
-        <div className="relative flex items-center justify-center w-full h-48 md:h-56 lg:h-64 px-4 sm:px-6 lg:px-8">
-            {/* Left arrow */}
-            <button
-                className="absolute md:relative md:mx-6 md:px-6 left-4 text-white bg-gray-800 p-2 rounded-full hover:bg-gray-700 focus:outline-none"
-                onClick={handlePrev}
-            >
-                &#8249;
-            </button>
+  const getVisibleItems = () => {
+    const items = [];
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (currentIndex + i) % logos.length;
+      items.push(logos[index]);
+    }
+    return items;
+  };
 
-            {/* Carousel items */}
-            <div className="flex items-center py-4 space-x-6 sm:space-x-8 md:space-x-10 lg:space-x-12 overflow-hidden">
-                {getVisibleItems().map((item, index) => {
-                    const isHighlighted =
-                        index === Math.floor(visibleCount / 2);
-                    const itemContent = (
-                        <div
-                            key={item.id}
-                            className={`flex-shrink-0 transition-all duration-300 w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-48 lg:h-48 rounded-full flex items-center justify-center ${
-                                isHighlighted
-                                    ? "scale-110 shadow-lg border-gray-300 bg-white"
-                                    : "scale-90 opacity-50"
-                            }`}
-                        >
-                            <img
-                                src={item.src}
-                                alt={item.alt}
-                                className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-44 lg:h-44 object-contain rounded-full"
-                            />
-                        </div>
-                    );
-
-                    return isHighlighted ? (
-                        <div key={item.id}>
-                            {itemContent}
-                        </div>
-                    ) : (
-                        itemContent
-                    );
-                })}
+  return (
+    <div className="relative w-full overflow-hidden py-8">
+      <div className="flex transition-all duration-1000 ease-in-out">
+        {getVisibleItems().map((item, index) => (
+          <div
+            key={item.id}
+            className="flex-shrink-0 px-2 transition-all duration-500"
+            style={{
+              width: `${100 / visibleCount}%`
+            }}
+          >
+            <div className={`
+              w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 mx-auto rounded-full bg-white p-2
+              ${index === Math.floor(visibleCount / 2) ? 'scale-110 shadow-lg' : 'scale-90 opacity-50'}
+              transition-all duration-500
+            `}>
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="w-full h-full object-contain rounded-full"
+              />
             </div>
-
-            {/* Right arrow */}
-            <button
-                className="absolute md:relative md:mx-6 md:px-6 right-4 text-white bg-gray-800 p-2 rounded-full hover:bg-gray-700 focus:outline-none"
-                onClick={handleNext}
-            >
-                &#8250;
-            </button>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Carousel;

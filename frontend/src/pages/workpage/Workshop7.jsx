@@ -31,7 +31,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="text-3xl text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
             Learn App Dev..
           </p>

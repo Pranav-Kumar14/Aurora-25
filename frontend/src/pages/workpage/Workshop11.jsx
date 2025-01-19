@@ -30,7 +30,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="text-3xl text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
           VisionCraft: Mastering Computer Vision" is an engaging workshop that introduces participants to OpenCV, a powerful library for image processing, and Convolutional Neural Networks (CNNs), the backbone of modern computer vision. The sessions cover essential techniques and implementation of algorithms. Participants will apply their learning by creating a hands-on project using computer vision
           </p>
