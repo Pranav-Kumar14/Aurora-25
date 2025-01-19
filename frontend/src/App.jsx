@@ -28,7 +28,7 @@ import Footer from "./components/Footer";
 import WorkshopPage from './pages/WorkshopPage';
 import Speaker from "./pages/Speaker";
 import Carousel from "./components/Carousel";
-import Ctf from "./pages/CTf";
+import Ctf from "./pages/Ctf";
 import ForgotPassword from "./pages/ForgotPassword";
 import Workshop1 from "./pages/workpage/Workshop1";
 import Workshop2 from "./pages/workpage/Workshop2";

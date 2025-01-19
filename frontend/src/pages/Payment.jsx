@@ -6,13 +6,13 @@ import BaseUrl from "../BaseUrl";
 
 const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
   const { user, setUser } = useAuth();
-  const [orderId, setOrderId] = useState("");
+  //const [orderId, setOrderId] = useState("");
   const [userData, setUserData] = useState(null);
 
   let cashfree; 
   let insitialzeSDK = async function () {
     cashfree = await load({
-      mode: "production",
+      mode: "sandbox",
     })
   }
   insitialzeSDK()
@@ -50,7 +50,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
         id:userDataNew._id,
         name: userDataNew.name, // Replace with actual user name if available
         email: userDataNew.email, // Replace with actual user email if available
-        phone_number: "8809795734"
+        phone_number: userDataNew.phone.toString()
       }
     }
 
@@ -65,8 +65,8 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
 
       const data = await response.json();
       if (data.payment_session_id) {
-        setOrderId(data.order_id);
-        handlePayment(data.payment_session_id);
+        //setOrderId(data.order_id);
+        handlePayment(data.payment_session_id, data.order_id);
       } else {
         console.error("Failed to create payment session");
       }
@@ -75,7 +75,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
     }
   };
 
-  const handlePayment = async (paymentSessionId) => {
+  const handlePayment = async (paymentSessionId, orderId) => {
     if (!cashfree) {
       console.error("Cashfree SDK is not initialized");
       return;
@@ -93,14 +93,14 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
 
     try {
       cashfree.checkout(checkoutOptions).then((result) => {
-        verifyPayment();
+        verifyPayment(orderId);
       });
     } catch (error) {
       console.error("Error initializing payment:", error);
     }
   };
 
-  const verifyPayment = async () => {
+  const verifyPayment = async (orderId) => {
     try {
       const response = await fetch(`${BaseUrl}/cashfree/verify-payment`, {
         method: "POST",
@@ -124,7 +124,7 @@ const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
   };
 
   const updateUserProfile = async () => {
-    try {
+    try { 
       const payload = {
         userId: userDataNew._id, 
       };

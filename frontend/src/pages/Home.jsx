@@ -3,10 +3,13 @@ import CountdownTimer from '../components/CountdownTimer'
 import KeynoteSpeakerCard from '../components/Keynote_card'
 import hackathon from '../images/HACKATHON.png'
 import partners from '../images/PARTNERS.png'
-import workshops from '../images/WORKSHOPS.png'
+import workshopsImg from '../images/WORKSHOPS.png'
 import HackathonCard from '../components/Hackathon_card'
 import Carousel from '../components/Carousel'
 import MediaSlider from '../components/slider'
+import Timeline from '../components/Timeline'
+import {workshops} from '../constants/workshops'
+
 
 const Home = () => {
     return (
@@ -25,9 +28,12 @@ const Home = () => {
                 <MediaSlider />
             </div>
             <div className="py-12">
-                <img src={workshops} alt="workshops" className="w-1/4 py-8 mx-auto" />
+                <img src={workshopsImg} alt="workshops" className="w-1/4 py-8 mx-auto" />
                 <Carousel />
             </div>
+            <main className="min-h-screen ">
+                <Timeline workshops={workshops} />
+            </main>
 
             <div className='py-12 mb-6'>
             <img src={hackathon} alt="hackathon" className="w-1/4 py-8 mx-auto" />
