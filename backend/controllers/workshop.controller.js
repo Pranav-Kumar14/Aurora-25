@@ -53,19 +53,15 @@ exports.addUsersByWorkshopIds = async (req, res) => {
 exports.substractUsersByWorkshopIds = async (req, res) => {
     try {
         const { workshopIds } = req.body;
-
-        // Validate that workshopIds is provided and is an array
         if (!Array.isArray(workshopIds)) {
             return res.status(400).json({ message: "workshopIds must be an array of integers." });
         }
 
-        // Find the single object in the database (assuming there's only one)
         const workshop = await Workshop.findOne();
         if (!workshop) {
             return res.status(404).json({ message: "Workshop object not found." });
         }
 
-        // Map workshop IDs to field names
         const idToFieldMap = {
             1: 'workshop1',
             2: 'workshop2',
@@ -83,7 +79,6 @@ exports.substractUsersByWorkshopIds = async (req, res) => {
             14: 'ctf',
         };
 
-        // Iterate over the provided workshop IDs and increment the corresponding fields
         workshopIds.forEach(id => {
             const fieldName = idToFieldMap[id];
             if (fieldName && workshop[fieldName] !== undefined) {
@@ -91,7 +86,6 @@ exports.substractUsersByWorkshopIds = async (req, res) => {
             }
         });
 
-        // Save the updated object
         await workshop.save();
         res.status(200).json({ message: "Users removed successfully.", workshop });
     } catch (error) {

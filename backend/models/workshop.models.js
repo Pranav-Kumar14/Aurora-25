@@ -18,6 +18,5 @@ const workshopSchema = new Schema({
     ctf: { type: Number, default: 0 },
 });
 
-// Create and export the Workshop model
 const Workshop = mongoose.model('Workshop', workshopSchema);
 module.exports = Workshop;

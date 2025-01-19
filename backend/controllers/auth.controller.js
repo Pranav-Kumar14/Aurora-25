@@ -77,7 +77,6 @@ async function handlePasswordReset(req, res) {
     return res.status(404).json({ error: "Passwords do not match" })
   }
   try {
-    // const msg = await updatePassword(email, newPassword)
     const user = await User.findOne({ email })
     if (!user) throw new Error('User not found')
     const id = user._id;
@@ -102,7 +101,7 @@ const updateWorkshops = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    user.workshops = selectedWorkshops; // Update workshops array
+    user.workshops = selectedWorkshops;
     await user.save();
 
     return res.status(200).json({
@@ -128,7 +127,7 @@ const updateSpeakers = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    user.speaker = selectedSpeaker; // Update workshops array
+    user.speaker = selectedSpeaker;
     await user.save();
 
     return res.status(200).json({
@@ -149,20 +148,15 @@ const updateCTF = async (req, res) => {
   }
 
   try {
-    // Fetch the user from the database
     const user = await User.findById(userId);
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Toggle the `ctf` field
     user.ctf = !user.ctf;
-
-    // Save the updated user to the database
     await user.save();
 
-    // Return the updated user data
     res.status(200).json({ message: "CTF status updated", user });
   } catch (error) {
     console.error("Error updating CTF status:", error);

@@ -7,20 +7,30 @@ import BaseUrl from "../BaseUrl";
 import toast from "react-hot-toast";
 import ctfInfo from "../images/info.png";
 import ctfBackground from "../images/cttbg.png";
+import { getProfile, updateProfile } from "../services/auth";
 
 const CtfPage = () => {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   const navigate = useNavigate();
   const [isRegistered, setIsRegistered] = useState(false);
+  const token = sessionStorage.getItem('token');
 
   useEffect(() => {
-    // Check registration status when component mounts
-    if (user?.id) {
-      fetch(`${BaseUrl}/user/ctf/status/${user.id}`)
-        .then(response => response.json())
-        .then(data => setIsRegistered(data.isRegistered))
-        .catch(() => setIsRegistered(false));
-    }
+    const checkRegistration = async () => {
+      if (user?.id) {
+        try {
+          const response = await updateProfile(user.email);
+          const data = response.data;
+          console.log(data);
+          setIsRegistered(data.isRegistered);
+        } catch (error) {
+          console.error("Error checking CTF registration:", error);
+          setIsRegistered(false);
+        }
+      }
+    };
+
+    checkRegistration();
   }, [user]);
 
   const handleRegistrationToggle = () => {
@@ -43,9 +53,17 @@ const CtfPage = () => {
         if (!response.ok) {
           throw new Error(`${isRegistered ? "Unregistration" : "Registration"} failed.`);
         }
-        setIsRegistered(!isRegistered);
         return response.json();
-      }),
+      })
+        .then((data) => {
+          setIsRegistered(!isRegistered);
+          // Update user state with new CTF registration status
+          setUser((prev) => ({
+            ...prev,
+            ctfRegistered: !isRegistered
+          }));
+          return data;
+        }),
       {
         loading: `${actionText} for the CTF...`,
         success: `${actionText} successfully for the CTF!`,
