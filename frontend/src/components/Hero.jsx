@@ -11,7 +11,7 @@ function Hero() {
 
         {/* Description */}
         <p className="text-base sm:text-lg lg:text-xl font-sans leading-relaxed sm:leading-relaxed lg:leading-loose mb-8 sm:mb-10 lg:mb-12">
-        Get ready to embark on an unforgettable journey into the realms of technology with <b>TechWeek: Aurora</b>, brought to you by ISTE Manipal. This year, we're taking it to the next level with an incredible lineup of student workshops that cover a wide range of technical domains, from software to Collaborating with esteemed student bodies from MIT.
+        Get ready to embark on an unforgettable journey into the realms of technology with <b>TechWeek: Aurora</b>, brought to you by ISTE Manipal. This year, we're taking it to the next level with an incredible lineup of student workshops that cover a wide range of technical domains, from software to collaborating with esteemed student bodies from MIT.
         </p>
 
         {/* Register Button */}
