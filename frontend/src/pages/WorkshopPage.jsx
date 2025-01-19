@@ -1,5 +1,15 @@
 import { useState, useEffect } from "react";
-import icon from "../images/check.png";
+import icon1 from "../images/workshop1.png";
+import icon2 from "../images/workshop2.jpeg";
+import icon3 from "../images/workshop3.jpg";
+import icon4 from "../images/workshop4.jpg";
+import icon5 from "../images/workshop5.jpg";
+import icon6 from "../images/workshop6.jpg";
+import icon7 from "../images/workshop7.jpg";
+import icon8 from "../images/workshop8.jpg";
+import icon9 from "../images/workshop9.jpg";
+import icon10 from "../images/workshop10.jpg";
+import icon11 from "../images/workshop11.jpg";
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
 import { workshops } from "../constants/workshops";
@@ -17,8 +27,10 @@ const WorkshopPage = () => {
   const navigate = useNavigate();
   const { user, setUser } = useAuth();
 
+  const icons = [icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon9,icon10,icon11];
+
   const handleRegister = (workshop) => {
-    const key = workshop.date; // Group workshops by date
+    const key = workshop.date+workshop.time; // Group workshops by date
     if (!user || !user.id) {
       toast.error("Please Login, To Access the Contents", { position: 'top-center' });
       navigate('/login');
@@ -108,15 +120,15 @@ const WorkshopPage = () => {
   const handleChangePreference = () => {
     const selectedIds = Object.values(selectedWorkshops).map((workshop) => workshop.id);
 
-    if (!user.workshopPaid) {
-      toast.error("Please finish payment in Profile to access the contents.", { position: 'top-center' });
-      navigate('/profile');
-      return;
-    }
-
     if (!user || !user.id) {
       toast.error("Please Login to Access the Contents", { position: 'top-center' });
       navigate('/login');
+      return;
+    }
+
+    if (!user.workshopPaid) {
+      toast.error("Please finish payment in Profile to access the contents.", { position: 'top-center' });
+      navigate('/profile');
       return;
     }
 
@@ -206,7 +218,7 @@ const WorkshopPage = () => {
       {check ? (<>
         <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 px-10">
           {workshops.map((workshop) => {
-            const key = workshop.date;
+            const key = workshop.date+workshop.time;
             // const isSelected = selectedWorkshops[key]?.id === workshop.id;
             const isSelected = registeredWorkshops.find((id) => id === workshop.id);
             //THIS IS WORKIBG BROOOOO
@@ -221,7 +233,7 @@ const WorkshopPage = () => {
                 }`}                             
               >
                 <div className="flex justify-center mb-4">
-                  <img src={icon} alt="Workshop Icon" className="w-[346.2px] h-[255.727px]" />
+                  <img src={icons[`${workshop.id-1}`]} alt="Workshop Icon" className="w-[346.2px] h-[255.727px]" />
                 </div>
                 <h2 className="text-2xl p-5 font-body font-semibold text-[#EAEAEA] text-center mb-2">{workshop.title}</h2>
                 <div className="rounded-[8px] text-[#EAEAEA] font-body border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">
@@ -254,7 +266,7 @@ const WorkshopPage = () => {
       : (<>
         <div className="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 px-10">
           {workshops.map((workshop) => {
-            const key = workshop.date;
+            const key = workshop.date+workshop.time;
             const isSelected = selectedWorkshops[key]?.id === workshop.id;
             // const isSelected = registeredWorkshops.find((id) => id === workshop.id);
             //THIS IS WORKIBG BROOOOO
@@ -269,7 +281,7 @@ const WorkshopPage = () => {
                 }`}   
               >
                 <div className="flex justify-center mb-4">
-                  <img src={icon} alt="Workshop Icon" className="w-[346.2px] h-[255.727px]" />
+                  <img src={icons[`${workshop.id-1}`]} alt="Workshop Icon" className="w-[346.2px] h-[255.727px]" />
                 </div>
                 <h2 className="text-2xl font-semibold font-body text-[#EAEAEA] text-center mb-2">{workshop.title}</h2>
                 <div className="rounded-[8px] text-[#EAEAEA]  font-body border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">

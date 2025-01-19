@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 // import Speaker from "../images/Speaker.png";
 // import Dev from "../images/Developers.png";
 // import Hack from "../images/Hack.png";
-// import Icon from "../images/Icon.png";
+import icon from "../images/log.png";
 // import Sponsors from "../images/Sponsers.png";
 // import Work from "../images/Work.png";
 
@@ -35,21 +35,17 @@ function Navbar() {
                             to="/home"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
-                            <img
-                            className="mt-[0.75rem] h-4 w-auto"
-                            src= "https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
-                            alt="Home"
-                        />
+                            <p className="font-heading">
+                                HOME
+                            </p>
                         </Link>
                         <Link
                             to="/speaker"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
-                            <img
-                            className="mt-[0.75rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
-                            alt="speaker"
-                        />
+                            <p className="font-heading">
+                                SPEAKER
+                            </p>
                         </Link>
                         {/* <Link
                             to="/timeline"
@@ -65,41 +61,31 @@ function Navbar() {
                             to="/ctf"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
-                            <img
-                            className="mt-[0.75rem] h-4 w-auto"
-                            src={CTF}
-                            alt="CTF"
-                        />
+                            <p className="font-heading">
+                                CTF
+                            </p>
                         </Link>
                         <Link
                             to="/developer"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
-                            <img
-                            className="mt-[0.75rem] h-4 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
-                            alt="Developers"
-                        />
+                            <p className="font-heading">
+                                DEVELOPER
+                            </p>
                         </Link>
                         <Link
                             to="/hackathon"
-                            className="mt-[0.1rem] lg:px-3 md:px-2 py-2 rounded-full text-sm font-medium"
+                            className="lg:px-3 md:px-2 py-2 rounded-full text-sm text-[#E67E22] font-medium hover:text-white hover:bg-[#E67E22] transition duration-300"
                         >
-                            <img
-                            className="h-10 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
-                            alt="Hackathon"
-                        />
+                            <p className="font-heading">
+                                HACKATHON
+                            </p>
                         </Link>
                         <a
                             href="/workshop"
-                            className="lg:px-3 md:px-2 py-2 rounded-full text-sm font-medium"
+                            className="lg:px-3 md:px-2 py-2 rounded-full text-sm text-[#E67E22] font-medium hover:text-white hover:bg-[#E67E22] transition duration-300"
                         >
-                            <img
-                            className="h-10 w-auto"
-                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
-                            alt="Logo"
-                        />
+                            <p className="font-heading">WORKSHOP</p>
                         </a>
                     </div>
 
@@ -108,20 +94,15 @@ function Navbar() {
                         <button className="text-white hover:text-blue-300"
                         onClick={() => navigate("/profile")}
                         >
-                            <svg
-                                className="h-12 w-12"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
+                            <img src={icon} alt="" className="round w-[70.422px] h-[80.437px] pb-2"/>
+                            
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     strokeWidth="2"
                                     d="M5.121 18.364A9 9 0 1118.364 5.121 9 9 0 015.121 18.364z"
                                 />
-                            </svg>
+
                         </button>
                     </div>
 
