@@ -223,11 +223,11 @@ const WorkshopPage = () => {
             return (
               <div
                 key={workshop.id}
-                className={`mt-12 w-full max-w-4xl bg-[rgba(255,255,255,0.06)] rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px] rounded-[35.22px] border border-white bg-white/10 backdrop-blur-[100px] p-5 transform transition hover:scale-105 ${isSelected ? "bg-green-200 text-black" : ""
+                className={`mt-12 w-full max-w-4xl bg-[rgba(255,255,255,0.06)] rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-8 pt-[95px] rounded-[35.22px] border border-white bg-white/10 transform transition hover:scale-105 ${isSelected ? "bg-green-200 text-black" : ""
                   }`}
               >
                 <div className="flex justify-center mb-4">
-                  <img src={icons[`${workshop.id-1}`]} alt="Workshop Icon" className="w-[346.2px] h-[255.727px]" />
+                  <img src={icons[`${workshop.id-1}`]} alt="Workshop Icon" className="w-[346.2px] lg:h-[255.727px]" />
                 </div>
                 <h2 className="text-2xl p-5 font-body font-semibold text-[#EAEAEA] text-center mb-2">{workshop.title}</h2>
                 <div className="rounded-[8px] text-[#EAEAEA] font-body border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">

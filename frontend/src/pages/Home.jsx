@@ -23,22 +23,23 @@ const Home = () => {
             <div className='mt-8 py-12'>
                 <KeynoteSpeakerCard />
             </div>
-            <div className="mt-6 py-12">
-                <img src={partners} alt="partners" className="w-1/4 py-8 mx-auto" />
-                <MediaSlider />
-            </div>
-            <div className="py-12">
-                <img src={workshopsImg} alt="workshops" className="w-1/4 py-8 mx-auto" />
+            
+            <div className="lg:py-12 py-4">
+            <p className='font-heading lg:text-5xl text-center text-white lg:pb-20  text-2xl pb-10'>
+                    PARTNERS
+                </p>
                 <Carousel />
             </div>
-            <main className="min-h-screen ">
+            <main className="lg:mb-2 mb-16">
                 <Timeline workshops={workshops} />
             </main>
 
-            <div className='py-12 mb-6'>
-            <img src={hackathon} alt="hackathon" className="w-1/4 py-8 mx-auto" />
+            <div className='lg:py-12 lg:mb-6'>
+            <p className='font-heading lg:text-5xl text-center text-white lg:pb-20 my-1 text-2xl pb-10'>
+                    HACKATHON
+                </p>
 
-<HackathonCard />
+            <HackathonCard />
             </div>
 
 

@@ -17,7 +17,7 @@ function Hero() {
         {/* Register Button */}
         <a
           href="/register"
-          className="bg-purple-500 hover:bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-medium inline-flex items-center"
+          className="bg-purple-500 font-body hover:bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-medium inline-flex items-center"
         >
           <svg
             className="h-5 w-5 sm:h-6 sm:w-6 mr-2"

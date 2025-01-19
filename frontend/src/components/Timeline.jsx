@@ -14,7 +14,7 @@ import dp1 from '../images/acm.png'
 import dp2 from '../images/dronaid.jpeg'
 import dp3 from '../images/leanin.jpeg'
 import dp4 from '../images/varise.png'
-import dp5 from '../images/logoLight.png'
+import dp5 from '../images/mist.jpeg'
 import dp6 from '../images/tacm.jpeg'
 import dp7 from '../images/adg_logo.jpg'
 import dp8 from '../images/iste.png'
@@ -34,9 +34,9 @@ export default function TimelineSection({ workshops }) {
   const scrollContainerRef = useRef(null)
 
   return (
-    <div className="mb-16 mt-32">
+    <div className="lg:mb-16 lg:mt-32 mt-16">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold tracking-wider text-white mb-4">TIMELINE</h2>
+        <h2 className="lg:text-4xl font-bold font-heading tracking-wider text-white mb-4 text-2xl">TIMELINE</h2>
         <p className="text-gray-300">23rd - 31st January, 2025</p>
       </div>
       
