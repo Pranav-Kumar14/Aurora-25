@@ -27,7 +27,7 @@ const Home = () => {
                 <KeynoteSpeakerCard />
             
             <div className="lg:py-12 py-4">
-            <p className='font-heading lg:text-5xl text-center text-white lg:pb-20  text-2xl pb-10'>
+            <p className='font-heading lg:text-5xl text-center text-white lg:pb-20  text-2xl pb-5 mt-10'>
                     PARTNERS
                 </p>
                 <Carousel />

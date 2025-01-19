@@ -6,7 +6,6 @@ import dp4 from '../images/varise.png'
 import dp5 from '../images/mist.jpeg'
 import dp6 from '../images/tacm.jpeg'
 import dp7 from '../images/adg_logo.jpg'
-import dp8 from '../images/iste.png'
 import dp9 from '../images/Blank.jpeg'
 import dp11 from '../images/ACMW_LOGO.png'
 
@@ -22,7 +21,6 @@ const Carousel = () => {
     // { id: 5, src: dp5, alt: "Dronaid" },
     { id: 6, src: dp6, alt: "TACM" },
     { id: 7, src: dp7, alt: "ADG" },
-    { id: 8, src: dp8, alt: "ISTE" },
     { id: 9, src: dp9, alt: "Blank" },
     { id: 10, src: dp5, alt: "MIST" },
     { id: 11, src: dp11, alt: "ACMW" }
