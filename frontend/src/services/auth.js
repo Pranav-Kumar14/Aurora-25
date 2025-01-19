@@ -23,12 +23,12 @@ export const updateProfile = async (email) => {
 };
 
 export const addUsers = async (data) => {
-    const response = await api.post('/user/workshop/add', data);
+    const response = await api.put('/user/workshop/add', data);
     return response.data;
 };
 
 export const subtractUsers = async (data) => {
-    const response = await api.post('/user/workshop/subtract', data);
+    const response = await api.put('/user/workshop/substract', data);
     return response.data;
 }
 

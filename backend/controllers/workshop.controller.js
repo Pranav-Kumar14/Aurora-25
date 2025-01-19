@@ -3,10 +3,11 @@ const Workshop = require('../models/workshop.models');
 // PATCH request to add users by workshop IDs
 exports.addUsersByWorkshopIds = async (req, res) => {
     try {
-        const { workshopIds } = req.body;
+        const { WorkshopIds } = req.body;
+        console.log(WorkshopIds);
 
         // Validate that workshopIds is provided and is an array
-        if (!Array.isArray(workshopIds)) {
+        if (!Array.isArray(WorkshopIds)) {
             return res.status(400).json({ message: "workshopIds must be an array of integers." });
         }
 
@@ -29,13 +30,10 @@ exports.addUsersByWorkshopIds = async (req, res) => {
             9: 'workshop9',
             10: 'workshop10',
             11: 'workshop11',
-            12: 'speaker1',
-            13: 'speaker2',
-            14: 'ctf',
         };
 
         // Iterate over the provided workshop IDs and increment the corresponding fields
-        workshopIds.forEach(id => {
+        WorkshopIds.forEach(id => {
             const fieldName = idToFieldMap[id];
             if (fieldName && workshop[fieldName] !== undefined) {
                 workshop[fieldName] += 1;
@@ -52,8 +50,9 @@ exports.addUsersByWorkshopIds = async (req, res) => {
 
 exports.substractUsersByWorkshopIds = async (req, res) => {
     try {
-        const { workshopIds } = req.body;
-        if (!Array.isArray(workshopIds)) {
+        const { WorkshopIds } = req.body;
+        console.log(WorkshopIds);
+        if (!Array.isArray(WorkshopIds)) {
             return res.status(400).json({ message: "workshopIds must be an array of integers." });
         }
 
@@ -79,7 +78,7 @@ exports.substractUsersByWorkshopIds = async (req, res) => {
             14: 'ctf',
         };
 
-        workshopIds.forEach(id => {
+        WorkshopIds.forEach(id => {
             const fieldName = idToFieldMap[id];
             if (fieldName && workshop[fieldName] !== undefined) {
                 workshop[fieldName] -= 1;
