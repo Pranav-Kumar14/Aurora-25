@@ -22,7 +22,7 @@ const Workshop1 = () => {
 
     {/* Neural Network Section */}
     <div className="text-center">
-          <h2 className="text-4xl text-[#05E0EE] font-bold font-heading mb-6">PCB Designing</h2>
+          <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">PCB Designing</h2>
           <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
      </div>
 
@@ -31,7 +31,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[22px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
           PCB (Printed Circuit Board) designing involves creating the layout and schematic for electronic circuits, ensuring optimal connectivity between components. It combines electrical engineering principles with design tools to fabricate efficient and reliable circuit boards.
           </p>
@@ -100,11 +100,13 @@ const Workshop1 = () => {
         <div className="lg:absolute top-4 left-4 ">
     <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
   </div>
+  <div className="sm:mt-8 mt-12">
           <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
           <p className="mt-4 text-center font-body text-base  text-[#EAEAEA] leading-loose">
             DRONAID-
             Coming Soon...
           </p>
+          </div>
         </div>
 
         {/* Register Button */}

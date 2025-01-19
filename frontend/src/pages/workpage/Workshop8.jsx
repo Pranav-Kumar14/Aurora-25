@@ -22,7 +22,7 @@ const Workshop1 = () => {
 
     {/* Neural Network Section */}
     <div className="text-center">
-          <h2 className="text-4xl text-[#05E0EE] font-bold font-heading mb-6">Crafting the Web:  A Beginner's Guide to WebDev</h2>
+          <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">Crafting the Web:  A Beginner's Guide to WebDev</h2>
           <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
      </div>
 
@@ -31,7 +31,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[22px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
             
 "Crafting the Web: A Beginner's Guide to WebDev" is an introductory guide to building websites, covering HTML, CSS, and JavaScript basics. It empowers beginners to create modern, responsive, and interactive web experiences.
@@ -101,11 +101,13 @@ const Workshop1 = () => {
         <div className="absolute top-4 leftt-4">
     <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
   </div>
+  <div className="sm:mt-8 mt-12">
           <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
           <p className="mt-4 text-center font-body text-base  text-[#EAEAEA] leading-loose">
           The Indian Society for Technical Education (ISTE) Student Chapter, Manipal, is a leading technical club that provides students with opportunities to explore domains, enhance skills, and grow professionally. With five specialized domains, including a coding community, ISTE fosters learning through workshops, seminars, and hands-on experiences.
 Key events like ACUMEN in TechTatva, AURORA TechWeek, and the ISTE Summer School drive innovation and excellence in the tech community.
           </p>
+          </div>
         </div>
 
         {/* Register Button */}

@@ -21,7 +21,7 @@ const Workshop1 = () => {
 
     {/* Neural Network Section */}
     <div className="text-center">
-          <h2 className="text-4xl text-[#05E0EE] font-bold font-heading mb-6">VR and Game Dev</h2>
+          <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">VR and Game Dev</h2>
           <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px', height: '654px' }} />
      </div>
 
@@ -30,7 +30,7 @@ const Workshop1 = () => {
 
         {/* Description Section */}
         <div className="mt-8">
-          <h3 className="lg:text-4xl  text-[27px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
+          <h3 className="lg:text-4xl  text-[22px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
           Dive into the world of VR game development with our interactive workshop on creating a *VR Basketball Arcade* Game! Learn the essentials of game environment setup, realistic physics, and intuitive player interactions.
             With hands-on guidance, you'll craft a seamless VR experience from start menus to hoop collisions, all while testing your skills in real-time. Whether you're a gamer, developer, or tech enthusiast, this workshop promises an exciting blend of creativity and innovation. Don’t just play the game, create it!!
@@ -100,10 +100,12 @@ const Workshop1 = () => {
           <div className="lg:absolute top-4 left-4 ">
     <img src={logo} alt="Neural Network" className="rounded-full" style={{ width: '64px', height: '64px' }} />
   </div>
+  <div className="sm:mt-8 mt-12">
           <h3 className="text-3xl font-bold text-center text-[#EAEAEA] font-heading">About Our Club</h3>
           <p className="mt-4 text-center font-body text-base  text-[#EAEAEA] leading-loose">
           Project V.ARISE- [Coming Soon...]
           </p>
+          </div>
         </div>
 
         {/* Register Button */}
