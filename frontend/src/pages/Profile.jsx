@@ -30,7 +30,7 @@ export default function Profile() {
                 }
 
                 const updatedUser = response.data.user;
-
+                console.log(updatedUser);
                 if (JSON.stringify(user) !== JSON.stringify(updatedUser)) {
                     setUser(updatedUser);
                 }
@@ -50,11 +50,9 @@ export default function Profile() {
                 setRegisteredWorkshops(workshopsList);
 
                 // Find the speaker details based on the ID
-                const speakerDetails =
-                    updatedUser.speaker?.length > 0
-                        ? speakers.find((s) => s.id === updatedUser.speaker[0]) // Assuming one speaker
-                        : null;
-                setSelectedSpeaker(speakerDetails);
+                const speakerDetails = updatedUser.speaker;
+                if(speakerDetails){
+                setSelectedSpeaker(speakerDetails);}
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }
@@ -94,20 +92,20 @@ export default function Profile() {
                 <div className="px-4 py-5 sm:p-6">
                     <dl className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
                         <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium font-body text-gray-500">Full Name</dt>
-                            <dd className="mt-1 text-sm font-heading text-gray-900">{user.fullName}</dd>
+                            <dt className="text-sm font-medium text-black  font-press-start">Full Name</dt>
+                            <dd className="mt-1 text-sm  text-gray-900">{user.fullName}</dd>
                         </div>
                         <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium font-body text-gray-500">Username</dt>
-                            <dd className="mt-1 text-sm font-heading text-gray-900">{user.username}</dd>
+                            <dt className="text-sm font-medium text-black  font-press-start">Username</dt>
+                            <dd className="mt-1 text-sm  text-gray-900">{user.username}</dd>
                         </div>
                         <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">Email Address</dt>
-                            <dd className="mt-1 text-sm text-gray-900">{user.email}</dd>
+                            <dt className="text-sm font-medium text-black  font-press-start">Email Address</dt>
+                            <dd className="mt-1 text-sm  text-gray-900">{user.email}</dd>
                         </div>
                         <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">College ID</dt>
-                            <dd className="mt-1 text-sm text-gray-900">{user.collegeid}</dd>
+                            <dt className="text-sm font-medium text-black  font-press-start">College ID</dt>
+                            <dd className="mt-1 text-sm  text-gray-900">{user.collegeid}</dd>
                         </div>
                         {user.workshopPaid && (
                             <div className="sm:col-span-2">
@@ -127,16 +125,17 @@ export default function Profile() {
                         )}
                         {selectedSpeaker && (
                             <div className="sm:col-span-2">
-                                <dt className="text-sm font-medium text-gray-500">Selected Speaker</dt>
+                                <dt className="text-sm font-medium text-black font-press-start">Selected Speaker</dt>
                                 <dd className="mt-1 text-sm text-gray-900">
-                                    {`${selectedSpeaker.name} - ${selectedSpeaker.details}`}
+                                    {`${speakers[0].name} - ${speakers[0].details}`}
                                 </dd>
                             </div>
                         )}
                         <div className="sm:col-span-2">
-                            <dt className="text-sm font-medium font-heading text-black-500">CTF Registration</dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                {user.ctf ? "CTF Registered" : "CTF Not Registered"}
+                            <dd className="mt-1 text-sm text-gray-900 font-press-start">CTF
+                            </dd>
+                            <dd className="mt-1 text-sm  text-gray-900">
+                                {user.ctf ? "Registered" : "Not Registered"}
                             </dd>
                         </div>
                         

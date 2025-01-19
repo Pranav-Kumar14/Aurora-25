@@ -29,7 +29,7 @@ const HackathonTimer = () => {
   {[
     { label: 'Days', value: timeLeft.days },
     { label: 'Hours', value: timeLeft.hours },
-    { label: 'Minutes', value: timeLeft.minutes },
+    { label: 'Mins', value: timeLeft.minutes },
   ].map((unit, index) => (
     <div
       key={index}

@@ -141,7 +141,7 @@ const Home = () => {
       </div>
 
       {/* Prizes Section */}
-      <div id="Prizes" className="mt-20 text-center" data-aos="fade-up">
+      <div id="Prizes" className="mt-20 text-center p-7" data-aos="fade-up">
         <h1 className="font-press-start text-4xl text-white mb-12">
           Cash Prizes
         </h1>

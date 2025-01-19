@@ -3,24 +3,28 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import BaseUrl from "../BaseUrl";
-import { UserPlus, Check, Star } from "lucide-react";
-import { speakers } from "../constants/speakers";
-import { getProfile } from "../services/auth";
+import { getProfile, updateProfile } from "../services/auth";
+import Calendar from "../images/calendar.png";
+import Clock from "../images/clock.png";
+import Arpan from "../images/Arpan.jpeg";
+import Location from "../images/Location.png";
 
 function Speaker() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const [selectedSpeakers, setSelectedSpeakers] = useState([]);
-  const [registeredSpeakers, setRegisteredSpeakers] = useState([]);
+  const [isRegistered, setIsRegistered] = useState(false);
 
-  // Fetch user profile to update registered speakers
+  const speakerId = 1; // Specific speaker ID for registration
+
+  // Fetch user profile to update registered state
   useEffect(() => {
     if (user?.id) {
       const fetchProfile = async () => {
         try {
-          const token = sessionStorage.getItem("token");
-          const profile = await getProfile(token); // Fetch profile data
-          setRegisteredSpeakers(profile?.data?.registeredSpeakers || []);
+          const token = sessionStorage.getItem('token')
+          const profile = await updateProfile(user.email);
+          console.log(profile)
+          setIsRegistered(profile.data.user.speaker);
         } catch (error) {
           console.error("Failed to fetch profile:", error);
         }
@@ -29,121 +33,125 @@ function Speaker() {
     }
   }, [user]);
 
-  const handleSelectSpeaker = (speaker) => {
+  const handleRegister = () => {
     if (!user || !user.id) {
-      toast.error("Please Login to Access the Contents", { position: "top-center" });
+      toast.error("Please login to register.", { position: "top-center" });
       navigate("/login");
       return;
     }
 
-    const alreadySelected = selectedSpeakers.includes(speaker.id);
-    if (alreadySelected) {
-      setSelectedSpeakers((prevSpeakers) =>
-        prevSpeakers.filter((id) => id !== speaker.id)
-      );
-      toast.success(`Unselected "${speaker.name}"!`, { position: "top-center" });
-      return;
-    }
-
-    setSelectedSpeakers((prevSpeakers) => [...prevSpeakers, speaker.id]);
-    toast.success(`Selected "${speaker.name}"!`, { position: "top-center" });
-  };
-
-  const handleSubmit = () => {
-    if (!user || !user.id) {
-      toast.error("Please Login to Access the Contents", { position: "top-center" });
-      navigate("/login");
-      return;
-    }
-
-    if (selectedSpeakers.length === 0) {
-      toast.error("Please select at least one speaker before submitting.", {
+    if (isRegistered) {
+      toast.error("You are already registered for this speaker.", {
         position: "top-center",
       });
       return;
     }
-
+    console.log(user.id)
     const payload = {
-      userId: user.id,
-      selectedSpeaker: selectedSpeakers,
+      userId: user.id
     };
 
-    toast.promise(
-      fetch(`${BaseUrl}/user/updateSpeakers`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      })
-        .then((response) => {
+    
+    
+    toast
+      .promise(
+        fetch(`${BaseUrl}/user/updateSpeakers`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }).then((response) => {
+          console.log(response);
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
           console.log(response);
           return response.json();
         }),
-      {
-        loading: "Submitting your speaker selection...",
-        success: "Speakers successfully updated!",
-        error: "Failed to update speakers. Please try again.",
-      },
-      { position: "top-center" }
-    ).then((data) => {
-      setRegisteredSpeakers(data.updatedSpeakers);
-    }).catch((error) => console.error("Error:", error));
+        {
+          loading: "Submitting your registration...",
+          success: "Successfully registered for the talk!",
+          error: "Failed to register. Please try again.",
+        },
+        { position: "top-center" }
+      )
+      .then(() => {
+        setIsRegistered(true);
+      })
+      .catch((error) => console.error("Error:", error));
   };
 
-  const isSelected = (speakerId) =>
-    selectedSpeakers.includes(speakerId) || registeredSpeakers.includes(speakerId);
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#030d4b] via-[#020428] to-[#020322] px-4 py-16 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-r from-[#0f0d39] to-[#201867] px-4 py-16 sm:px-6 lg:px-8">
       {/* Header Section */}
       <div className="text-center mb-16 max-w-4xl mx-auto">
         <div className="flex items-center justify-center mb-4">
-          <Star className="text-[#9d31a1] w-8 h-8 mr-2" />
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-widest text-white">
-            Featured Speakers
+          <h1 className="text-3xl sm:text-5xl lg:text-4xl font-bold uppercase text-white font-press-start">
+            MEET THE SPEAKER
           </h1>
-          <Star className="text-[#9d31a1] w-8 h-8 ml-2" />
         </div>
-        <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Connect with industry leaders and gain invaluable insights from their experiences.
+        <p className="text-blue-500 text-3xl max-w-2xl mx-auto font-press-start">
+          ARPAN GARG
         </p>
       </div>
 
-      {/* Speakers Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {speakers.map((speaker) => (
-          <div
-            key={speaker.id}
-            className="group bg-gradient-to-b from-[#d9d9d9]/10 to-[#d9d9d9]/5 backdrop-blur-sm 
-                   rounded-[30px] border border-white/10 shadow-2xl p-8 
-                   transform hover:scale-[1.02] transition-all duration-300"
-          >
-            <div className="relative mb-6">
-              <img
-                src={speaker.image}
-                alt={speaker.name}
-                className="relative w-48 h-48 mx-auto rounded-full object-cover 
-                       border-4 border-white/10 shadow-xl"
-              />
-            </div>
-            <div className="text-center">
-              <h2 className="text-[#9d31a1] text-3xl font-bold mb-2">{speaker.name}</h2>
-              <h3 className="text-white/80 text-lg font-medium mb-1">{speaker.role}</h3>
-              <button
-                onClick={() => handleSelectSpeaker(speaker)}
-                disabled={isSelected(speaker.id)}
-                className={`w-full px-6 py-3 rounded-full text-sm font-medium ${isSelected(speaker.id)
-                  ? "bg-green-500 text-white cursor-not-allowed"
-                  : "bg-[#9d31a1] text-white hover:bg-[#bf5ac3]"
-                  }`}
-              >
-                {isSelected(speaker.id) ? "Registered" : "Register"}
-              </button>
-            </div>
+      {/* Speaker Details */}
+      <div className="group bg-transparent backdrop-blur-sm rounded-[30px] p-8 max-w-7xl mx-auto">
+        {/* Image Section */}
+        <div className="flex justify-center mb-6">
+          <div className="w-56 h-56 rounded-full overflow-hidden border-4 border-white">
+            <img src={Arpan} alt="Arpan Garg" className="w-full h-full object-cover" />
           </div>
-        ))}
+        </div>
+
+        <div className="bg-white text-black rounded-xl max-w-3xl mx-auto p-6 text-xl shadow-lg">
+          <p className="text-md text-heading font-bold text-center">
+            Arpan Garg, the Co-founder & CTO of Exa Protocol, a two-time winner of the
+            Smart India Hackathon (SIH), and former Product Head at Coding Ninjas. He’s here to
+            share his inspiring journey of building Commudle, a startup that's part of the Google for
+            Startups Accelerator program!
+          </p>
+        </div>
+
+        {/* Topic Section */}
+        <div className="mt-6 bg-blue-500 text-white py-3 max-w-3xl mx-auto px-4 text-center rounded-lg shadow-md">
+          <p className="font-heading text-base sm:text-lg">
+            AURORA'25 Tech Talk – Product Development & Innovation!
+          </p>
+        </div>
+
+        {/* Date and Time */}
+        <div className="mt-6 text-center space-y-4">
+          <div className="flex justify-center items-center gap-2">
+            <div className="w-8 h-8">
+              <img src={Calendar} alt="Date Icon" className="w-full h-full object-contain" />
+            </div>
+            <p className="text-xl text-white">20th January, 2025</p>
+          </div>
+          <div className="flex justify-center items-center gap-2">
+            <div className="w-8 h-8">
+              <img src={Clock} alt="Time Icon" className="w-full h-full object-contain" />
+            </div>
+            <p className="text-xl text-white">7:00 - 9:00 PM</p>
+          </div>
+          <div className="flex justify-center items-center gap-2">
+            <div className="w-8 h-8">
+              <img src={Location} alt="Location Icon" className="w-full h-full object-contain" />
+            </div>
+            <p className="text-xl text-white">Library Auditorium, MIT</p>
+          </div>
+        </div>
+
+        {/* Register Button */}
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={handleRegister}
+            className={`px-6 py-3 rounded-lg text-sm font-bold bg-gradient-to-r from-blue-400 to-blue-600 text-white hover:from-blue-600 hover:to-blue-800 transition ${
+              isRegistered ? "bg-green-500 cursor-not-allowed" : ""
+            }`}
+          >
+            {isRegistered ? "Registered" : "Register"}
+          </button>
+        </div>
       </div>
 
       {/* Submit Button */}
