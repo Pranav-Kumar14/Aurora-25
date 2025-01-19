@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import Teams from "../components/teams";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
-// import createpng from "../images/create.png";
-// import framepng from "../images/Frame.png";
-// import reqimg from "../images/reqicon.png";
-// import grpimg from "../images/Group.png";
+import SquidGame from "../images/hackbg.png";
 
 const TeamManagementPage = () => {
   const [team, setTeam] = useState(null);
@@ -269,7 +266,7 @@ const TeamManagementPage = () => {
   }, [showAddMemberPopup]);
 
   return (
-    <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen p-8 font-press-start">
+    <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen p-8 font-press-start bg-no-repeat bg-cover" style={{ backgroundImage: `url(${SquidGame})` }}>
       <div className="max-w-5xl sm:max-w-5xl mx-auto space-y-8">
         {!showTeams ? (
           <>
