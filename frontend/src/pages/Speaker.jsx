@@ -124,13 +124,13 @@ function Speaker() {
             <div className="w-8 h-8">
               <img src={Calendar} alt="Date Icon" className="w-full h-full object-contain" />
             </div>
-            <p className="text-xl text-white">20th January, 2025</p>
+            <p className="text-xl text-white">25th January, 2025</p>
           </div>
           <div className="flex justify-center items-center gap-2">
             <div className="w-8 h-8">
               <img src={Clock} alt="Time Icon" className="w-full h-full object-contain" />
             </div>
-            <p className="text-xl text-white">7:00 - 9:00 PM</p>
+            <p className="text-xl text-white">5:30PM Onwards</p>
           </div>
           <div className="flex justify-center items-center gap-2">
             <div className="w-8 h-8">
