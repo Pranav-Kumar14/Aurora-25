@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import auroralogo from "../images/aurora_logo.png";
-import Home from "../images/Home.png";
-import Speaker from "../images/Speaker.png";
-import Dev from "../images/Developers.png";
-import Hack from "../images/Hack.png";
-import Icon from "../images/Icon.png";
-import Sponsors from "../images/Sponsers.png";
-import Work from "../images/Work.png";
+import Captf from "../images/Captf.png";
+import CTF from "../images/ctfhead.png";
+import { useNavigate } from "react-router-dom";
+// import Home from "../images/Home.png";
+// import Speaker from "../images/Speaker.png";
+// import Dev from "../images/Developers.png";
+// import Hack from "../images/Hack.png";
+// import Icon from "../images/Icon.png";
+// import Sponsors from "../images/Sponsers.png";
+// import Work from "../images/Work.png";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <nav className="pt-2 bg-gradient-to-r from-[#0f0d39] to-[#201867] sticky top-0 z-50">
@@ -20,7 +24,7 @@ function Navbar() {
                     <div className="mr-[2rem] flex-shrink-0 py-2">
                         <img
                             className="h-12 w-12"
-                            src={auroralogo}
+                            src= "https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/logo_b0anb8.png"
                             alt="Logo"
                         />
                     </div>
@@ -33,7 +37,7 @@ function Navbar() {
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src={Home}
+                            src= "https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
                             alt="Home"
                         />
                         </Link>
@@ -43,7 +47,7 @@ function Navbar() {
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src={Speaker}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
                             alt="speaker"
                         />
                         </Link>
@@ -58,13 +62,13 @@ function Navbar() {
                         /> */}
                         {/* </Link> */}
                         <Link
-                            to="/sponsors"
+                            to="/ctf"
                             className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src={Sponsors}
-                            alt="Sponsors"
+                            src={CTF}
+                            alt="CTF"
                         />
                         </Link>
                         <Link
@@ -73,7 +77,7 @@ function Navbar() {
                         >
                             <img
                             className="mt-[0.75rem] h-4 w-auto"
-                            src={Dev}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
                             alt="Developers"
                         />
                         </Link>
@@ -83,7 +87,7 @@ function Navbar() {
                         >
                             <img
                             className="h-10 w-auto"
-                            src={Hack}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
                             alt="Hackathon"
                         />
                         </Link>
@@ -93,23 +97,32 @@ function Navbar() {
                         >
                             <img
                             className="h-10 w-auto"
-                            src={Work}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
                             alt="Logo"
                         />
                         </a>
                     </div>
 
                     {/* Profile icon on the right */}
-                    <div className="ml-[2rem] hidden md:block pt-2">
-                        <Link
-                        to='/profile'
-                        className="text-white hover:text-blue-300">
-                        <img
-                            className="h-12 w-auto"
-                            src={Icon}
-                            alt="profile"
-                        />
-                        </Link>
+                    <div className="hidden md:block pt-2">
+                        <button className="text-white hover:text-blue-300"
+                        onClick={() => navigate("/profile")}
+                        >
+                            <svg
+                                className="h-12 w-12"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M5.121 18.364A9 9 0 1118.364 5.121 9 9 0 015.121 18.364z"
+                                />
+                            </svg>
+                        </button>
                     </div>
 
                     {/* Mobile menu button */}
@@ -147,7 +160,7 @@ function Navbar() {
                         >
                             <img
                             className="ml-[0.25rem] h-4 w-auto"
-                            src={Home}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/Home_gqtsux.png"
                             alt="Home"
                         />
                         </Link>
@@ -157,7 +170,7 @@ function Navbar() {
                         >
                             <img
                             className="ml-[0.25rem] h-4 w-auto"
-                            src={Speaker}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Speaker_gem7u2.png"
                             alt="speaker"
                         />
                         </Link>
@@ -173,7 +186,7 @@ function Navbar() {
                         >
                             <img
                             className="ml-[0.25rem] h-4 w-auto"
-                            src={Sponsors}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Sponsers_th9hym.png"
                             alt="Sponsors"
                         />
                         </Link>
@@ -183,7 +196,7 @@ function Navbar() {
                         >
                             <img
                             className="ml-[0.25rem] h-4 w-auto"
-                            src={Dev}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/Developers_fg1z6d.png"
                             alt="Developers"
                         />
                         </Link>
@@ -193,7 +206,7 @@ function Navbar() {
                         >
                             <img
                             className="h-9 w-auto"
-                            src={Hack}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Hack_uqti2o.png"
                             alt="Hackathon"
                         />
                         </Link>
@@ -203,7 +216,7 @@ function Navbar() {
                         >
                             <img
                             className="h-[38px] w-auto"
-                            src={Work}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/Work_sizk58.png"
                             alt="Workshop"
                         />
                         </Link>

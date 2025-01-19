@@ -1,100 +1,152 @@
-import { useState, useEffect } from 'react';
-import axios from "axios";
-import { load } from '@cashfreepayments/cashfree-js';
+import { useState, useEffect } from "react";
+import { load } from "@cashfreepayments/cashfree-js";
+import {getProfile} from "../services/auth"
+import  {useAuth}  from "../context/AuthContext";
 
-function PaymentPage() {
-    const [orderId, setOrderId] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [paymentStatus, setPaymentStatus] = useState(null);
-    let cashfree;
+const PaymentButton = ({ orderAmount, onPaymentSuccess, userDataNew }) => {
+  const { user, setUser } = useAuth();
+  const [orderId, setOrderId] = useState("");
+  const [userData, setUserData] = useState(null);
 
-    useEffect(() => {
-        const initializeSDK = async () => {
-            try {
-                cashfree = await load({
-                    mode: "PRODUCTION"
-                });
-            } catch (err) {
-                setError("Failed to initialize payment SDK");
-            }
-        };
-        initializeSDK();
-    }, []);
+  let cashfree; 
+  let insitialzeSDK = async function () {
+    cashfree = await load({
+      mode: "production",
+    })
+  }
+  insitialzeSDK()
 
-    const getSessionId = async () => {
-        try {
-            let res = await axios.get("https://aurora.istemanipal.com/cashfree/api/payment");
-            if (res.data?.payment_session_id) {
-                setOrderId(res.data.order_id);
-                return res.data.payment_session_id;
-            }
-        } catch (err) {
-            setError("Failed to create payment session");
-            throw err;
-        }
+  // const getUserDetails = async () => {
+  //   try {
+  //     console.log('hi')
+  //     const data = await updateProfile(user.email); 
+  //     console.log(data);
+  //     setUserData(data);
+  //     console.log({"userdata":userData});
+  //   } catch (error) {
+  //     console.error("Error fetching user data:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+    
+
+  //   getUserDetails();
+  // }, []);
+
+  const handleOrderSubmit = async () => {
+    // getUserDetails();
+
+    if (!userDataNew._id) {
+      console.error("User ID is required");
+      return;
+    }
+
+    console.log(userDataNew)
+
+    const orderData = {
+      customer_details:{
+        id:userDataNew._id,
+        name: userDataNew.name, // Replace with actual user name if available
+        email: userDataNew.email, // Replace with actual user email if available
+        phone_number: "8809795734"
+      }
+    }
+
+    try {
+      const response = await fetch("http://localhost:8000/cashfree/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      const data = await response.json();
+      if (data.payment_session_id) {
+        setOrderId(data.order_id);
+        handlePayment(data.payment_session_id);
+      } else {
+        console.error("Failed to create payment session");
+      }
+    } catch (error) {
+      console.error("Error creating order:", error);
+    }
+  };
+
+  const handlePayment = async (paymentSessionId) => {
+    if (!cashfree) {
+      console.error("Cashfree SDK is not initialized");
+      return;
+    }
+
+    if(!paymentSessionId){
+      console.log("Payment Session id not recieved");
+      return;
+    }
+
+    const checkoutOptions = {
+      paymentSessionId,
+      redirectTarget: "_modal",
     };
 
-    const verifyPayment = async () => {
-        try {
-            let res = await axios.post("https://aurora.istemanipal.com/cashfree/api/verify", {
-                orderId
-            });
-            if (res?.data) {
-                setPaymentStatus("success");
-            }
-        } catch (err) {
-            setError("Payment verification failed");
-            setPaymentStatus("failed");
-        }
-    };
+    try {
+      cashfree.checkout(checkoutOptions).then((result) => {
+        verifyPayment();
+      });
+    } catch (error) {
+      console.error("Error initializing payment:", error);
+    }
+  };
 
-    const handlePayment = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setError(null);
+  const verifyPayment = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/cashfree/verify-payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ orderId }),
+      });
 
-        try {
-            const sessionId = await getSessionId();
-            const checkoutOptions = {
-                paymentSessionId: sessionId,
-                redirectTarget: "_modal",
-            };
+      const data = await response.json();
+      if (data.order_status === "PAID" || data.order_status === "ACTIVE") {
+        alert("Payment verified successfully!");
+        updateUserProfile();
+        if (onPaymentSuccess) onPaymentSuccess(data); // Trigger callback if provided
+      } else {
+        alert("Payment verification failed!");
+      }
+    } catch (error) {
+      console.error("Error verifying payment:", error);
+    }
+  };
 
-            await cashfree.checkout(checkoutOptions);
-            console.log("Payment initialized");
-            await verifyPayment();
-        } catch (err) {
-            setError("Payment failed");
-        } finally {
-            setLoading(false);
-        }
-    };
+  const updateUserProfile = async () => {
+    try {
+      const payload = {
+        userId: userDataNew._id, 
+      };
+      const response = await fetch("http://localhost:8000/user/updateProfile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
 
-    return (
-        <div className="payment-page">
-            <div className="payment-container">
-                <h1>Cashfree Payment Gateway</h1>
-                {error && (
-                    <div className="error-message">
-                        {error}
-                    </div>
-                )}
-                {paymentStatus && (
-                    <div className={`status-message ${paymentStatus}`}>
-                        Payment Status: {paymentStatus}
-                    </div>
-                )}
-                <button 
-                    className="payment-button"
-                    onClick={handlePayment}
-                    disabled={loading}
-                >
-                    {loading ? "Processing..." : "Pay Now"}
-                </button>
-            </div>
-        </div>
-    );
-}
+      const data = await response.json();
+      if (data.success) {
+        console.log("User profile updated successfully!");
+      } else {
+        console.error("Failed to update user profile");
+      }
+    } catch (error) {
+      console.error("Error updating user profile:", error);
+    }
+  };
 
-export default PaymentPage;
+  return <button  onClick={handleOrderSubmit}>Pay ₹{orderAmount || "225"}</button>;
+};
+
+export default PaymentButton;

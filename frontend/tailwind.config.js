@@ -5,6 +5,8 @@ module.exports = {
       fontFamily: {
         pixelify: ['Pixelify Sans', 'sans-serif'], 
         'press-start': ['"Press Start 2P"', 'monospace'],
+        body: ['"Chakra Petch"', 'sans-serif'], 
+        heading: ['"Press Start 2P"', 'cursive'],
       },
     },
   },

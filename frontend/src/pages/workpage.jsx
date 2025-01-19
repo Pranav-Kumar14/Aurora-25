@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
-import icon from "../images/frame.png";
+import { useState, useEffect } from "react";
+import icon from "../images/Frame.png";
 import { useAuth } from '../context/AuthContext';
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { workshops } from "../constants/workshops";
 import { getProfile } from "../services/auth";
+import toast from 'react-hot-toast';
 import BaseUrl from "../BaseUrl";
 
-const WorkPage = () => {
+const WorkshopPage = () => {
+
+
   const token = sessionStorage.getItem('token');
   const [selectedWorkshops, setSelectedWorkshops] = useState({});
   const [registeredWorkshops, setRegisteredWorkshops] = useState([]);
@@ -14,7 +17,18 @@ const WorkPage = () => {
   const { user, setUser } = useAuth();
 
   const handleRegister = (workshop) => {
+    if (!user || !user.id) {
+      console.error("User is not logged in or user ID is missing");
+      toast.error("Please Login, to Access the Workshops!!", { position: 'top-center' });
+      navigate('/login');
+      return;
+    }
     const key = `${workshop.date}-${workshop.time}`; // Unique key for each workshop group
+
+    // if (!selectedWorkshops[key] || selectedWorkshops[key]?.id !== workshop.id) {
+    //   toast.error('Please press the Submit Button to confirm!');
+    // }
+    toast.error('Please press Submit Button to confirm!!', { position: 'top-center' })
 
     setSelectedWorkshops((prev) => {
       if (prev[key]?.id === workshop.id) {
@@ -43,7 +57,7 @@ const WorkPage = () => {
     // Check if user is logged in
     if (!user || !user.id) {
       console.error("User is not logged in or user ID is missing");
-      alert("Just fucking login, man!!!!");
+      toast.error("Please Login, To Access the Contents", { position: 'top-center' });
       navigate('/login');
       return;
     }
@@ -55,17 +69,23 @@ const WorkPage = () => {
     };
 
     // Make the API request
-    fetch(`${BaseUrl}/user/updateWorkshops`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
+    toast.promise(
+      fetch("http://localhost:8000/user/updateWorkshops", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        }),
+      {
+        loading: 'Submitting your workshops...',
+        success: 'Workshops successfully updated!',
+        error: 'Failed to update workshops. Please try again.',
+      }, { position: 'top-center' })
       .then((data) => {
         console.log("Success:", data);
         // Update the user context
@@ -73,8 +93,10 @@ const WorkPage = () => {
           ...prev,
           workshops: data.workshops,
         }));
-        alert("Workshops successfully updated!");
+        // alert("Workshops successfully updated!");
+
         navigate("/profile"); // Optionally navigate to the profile page
+
       })
       .catch((error) => console.error("Error:", error));
   };
@@ -123,6 +145,7 @@ const WorkPage = () => {
         {workshops.map((workshop) => {
           const key = `${workshop.date}-${workshop.time}`;
           const isSelected = registeredWorkshops.find((id) => id === workshop.id);
+          // const isSelected = {handleSubmit};
           // console.log(registeredWorkshops);
           return (
             <div
@@ -131,7 +154,7 @@ const WorkPage = () => {
                 }`}
             >
               <div className="flex justify-center mb-4">
-                <img src={icon} alt="Workshop Icon" className="w-16 h-16" />
+                <img src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121211/workicon_bit2xw.png" alt="Workshop Icon" className="w-16 h-16" />
               </div>
               <h2 className="text-xl font-semibold text-center mb-2">{workshop.title}</h2>
               <div className="rounded-[8px] border-[1px] border-x-2 border-y-0 border-[#F3F3F3] ">
@@ -169,4 +192,4 @@ const WorkPage = () => {
   );
 };
 
-export default WorkPage;
+export default WorkshopPage;

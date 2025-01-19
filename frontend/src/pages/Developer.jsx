@@ -1,7 +1,7 @@
 import React from "react";
-import icon from "../images/dpicon.png";
-import git_icon from "../images/git.png";
-import ldin_icon from "../images/ldin.png";
+// import icon from "../images/dpicon.png";
+// import git_icon from "../images/git.png";
+// import ldin_icon from "../images/ldin.png";
 
 const developers = [
     {
@@ -84,11 +84,11 @@ const MeetTheDevelopers = () => {
                         className="w-[270px] h-[431px] flex-shrink-0 rounded-[126px] bg-[#182574] shadow-[inset_0px_0px_10px_5px_rgba(255,255,255,0.2)] flex flex-col items-center align-top p-4"
                     >
                         <img
-                            src={icon}
+                            src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/dpicon_fjuvrh.jpg"
                             alt={developer.name}
                             className="w-[166.253px] h-[189.829px] rounded-full  mt-6"
                         />
-                        <h2 className="text-lg font-bold pb-17.02px mt-[26.02px] text-3xl">
+                        <h2 className="text-lg font-bold pb-17.02px mt-[26.02px]">
                             {developer.name}
                         </h2>
                         {/* <p className="text-sm text-gray-300">{developer.role}</p> */}
@@ -100,7 +100,7 @@ const MeetTheDevelopers = () => {
                                 rel="noopener noreferrer"
                             >
                                 <img
-                                    src={git_icon}
+                                    src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/git_dqvsqt.png"
                                     className="w-[47.49px] h-[42.75px] mr-[52.37px]"
                                 />
                             </a>
@@ -111,7 +111,7 @@ const MeetTheDevelopers = () => {
                                 rel="noopener noreferrer"
                             >
                                 <img
-                                    src={ldin_icon}
+                                    src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121212/ldin_jxumaw.png"
                                     className="w-[47.49px] h-[42.75px]"
                                     alt="LinkedIn Icon"
                                 />

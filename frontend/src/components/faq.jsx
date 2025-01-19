@@ -1,44 +1,32 @@
 import React, { useState } from "react";
 const faqs = [
   {
-    question: "What is the Aurora Hackathon?",
+    question: "How long is the hackathon?",
     answer:
-      "The Aurora Hackathon is a competitive event that challenges developers, designers, and innovators to build creative solutions using cutting-edge technologies, with a focus on generative AI, payment systems, and more.",
+      "The hackathon lasts for 10 hours, from 8:00 AM to 6:00 PM. The day will include coding time, mini-games, and a final presentation session.",
   },
   {
-    question: "How can I register for the Aurora Hackathon?",
-    answer:
-      "To register, visit the Aurora Hackathon website, complete the registration form, and follow the instructions to confirm your participation.",
+    question: "How many people can be on a team?",
+    answer: "Teams can consist of two to five participants.",
   },
   {
-    question: "What are the hackathon themes and challenges?",
+    question: "What are the mini-games, and how do they affect my score?",
     answer:
-      "The Aurora Hackathon features challenges in areas like generative AI, payment systems, fraud detection, and conversational AI. Participants are expected to create innovative solutions in these domains.",
+      "To add an element of excitement, we are adding an additional minigame concept.\nThe exact rules of the mini-games will be provided as and when the games occur.\n These minigames in totality will take up only fifteen minutes of your time.\n Winning these minigames can slightly boost your score, however preference will always be given to your app.",
   },
   {
-    question: "What resources are provided during the Aurora Hackathon?",
+    question: "Do we need to bring our own laptops?",
     answer:
-      "Participants have access to API keys, tech stacks, mentorship, and online resources to help them throughout the event. Details are available on the hackathon’s resource page.",
+      "Yes, each team must bring their own laptops and devices. The venue will provide internet access.",
   },
   {
-    question: "How are Aurora Hackathon projects judged?",
+    question: "What are the Prices?",
     answer:
-      "Projects are judged based on their innovation, impact, technical complexity, and relevance to the given challenges. Judges will evaluate how well the project solves real-world problems using AI and other technologies.",
+      "1st Place: ₹8,000\n2nd Place: ₹4,000\n3rd Place: ₹3,000\nCertificates of participation for all participants.",
   },
   {
-    question: "What prizes can I win in the Aurora Hackathon?",
-    answer:
-      "The Aurora Hackathon offers exciting prizes, including tech gadgets, internships, opportunities to showcase your project, and other exclusive rewards for top teams and individuals.",
-  },
-  {
-    question: "Can I participate individually or in a team?",
-    answer:
-      "You can participate either individually or as part of a team. Teams are encouraged to leverage diverse skills and expertise to tackle the challenges more effectively.",
-  },
-  {
-    question: "When is the Aurora Hackathon event?",
-    answer:
-      "The Aurora Hackathon is taking place from [start date] to [end date]. Be sure to check the event schedule for specific timings and important announcements.",
+    question: "How do I register for the hackathon?",
+    answer: "Registration will commence on the AURORA website",
   },
 ];
 
@@ -46,30 +34,30 @@ const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const toggleFAQ = (index) => {
     console.log("clicked");
-    setActiveIndex(activeIndex === index ? null : index); // Toggle visibility
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
     <div>
-      <div className="mx-auto p-6 mt-[400px] ">
-        <h1 className="text-2xl font-bold text-center mb-3 font-press-start  ">
+      <div className="mx-auto p-6 mt-[400px]">
+        <h1 className="text-2xl font-bold text-center mb-3 font-press-start">
           FAQ's
         </h1>
         <div className="">
           {faqs.map((faq, index) => (
             <div
               key={faq.question}
-              className="rounded-xl border border-gray-200  p-6 mb-4"
+              className="rounded-xl border border-gray-200 p-6 mb-4"
             >
               <dt
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggleFAQ(index)}
               >
-                <p className="font-semibold text-lg font-press-start">
+                <p className="font-semibold text-xl font-press-start">
                   {faq.question}
                 </p>
                 <p
-                  className={` text-xl ${
+                  className={`text-xl ${
                     activeIndex === index ? "rotate-0" : "rotate-180"
                   } transition-transform duration-200 font-press-start`}
                 >
@@ -77,8 +65,15 @@ const FAQ = () => {
                 </p>
               </dt>
               {activeIndex === index && (
-                <dd className="text-lg font-light mt-6 ">
-                  <p className="font-press-start">{faq.answer}</p>
+                <dd className="text-2xl font-light mt-6">
+                  <p className="font-pixelify">
+                    {faq.answer.split("\n").map((item, i) => (
+                      <React.Fragment key={i}>
+                        {item}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </p>
                 </dd>
               )}
             </div>
