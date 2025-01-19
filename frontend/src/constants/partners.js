@@ -1,11 +1,14 @@
-const Partners = [
-    { id: 1, src: "path/to/image1.png", alt: "Logo 1" },
-    { id: 2, src: "path/to/image2.png", alt: "Logo 2" },
-    { id: 3, src: "path/to/image3.png", alt: "Logo 3" },
-    { id: 4, src: "path/to/image4.png", alt: "Logo 4" },
-    { id: 5, src: "path/to/image5.png", alt: "Logo 5" },
-    { id: 6, src: "path/to/image6.png", alt: "Logo 6" },
-    { id: 7, src: "path/to/image7.png", alt: "Logo 7" },
+import cloud from "../images/cloud.jpg";
+import ye from "../images/ye.jpg";
+
+const workshp = [
+    { id: 1, src: cloud, alt: "ws 1" },
+    { id: 2, src: cloud, alt: "ws 2" },
+    { id: 3, src: cloud, alt: "ws 3" },
+    { id: 4, src: cloud, alt: "ws 4" },
+    { id: 5, src: cloud, alt: "ws 5" },
+    { id: 6, src: cloud, alt: "ws 6" },
+    { id: 7, src: ye, alt: "ws 7" },
 ];
 
-export default Partners;
+export default workshp;
