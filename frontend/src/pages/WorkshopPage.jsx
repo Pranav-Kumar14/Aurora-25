@@ -176,11 +176,16 @@ const WorkshopPage = () => {
   }, [selectedWorkshops]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-[299px] pb-[250px] font-press-start bg-cover bg-top bg-no-repeat"
-      style={{ backgroundImage: `url(${workback})` }}>
+    <div
+  className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 pt-[150px] sm:pt-[200px] md:pt-[299px] pb-[100px] sm:pb-[150px] md:pb-[250px] font-press-start bg-cover bg-top bg-no-repeat"
+  style={{ backgroundImage: `url(${workback})` }}
+>
       {/* Workshop Title */}
       <section className="text-center pb-[410px]">
-        <h1 className="text-7xl font-heading font-extrabold">WORKSHOPS</h1>
+        <h1 className="lg:text-7xl font-heading font-extrabold text-[40px] pb-[235px]">
+  WORKSHOPS
+</h1>
+
         <p className="mt-4 text-2xl max-w-3xl mx-auto font-body leading-relaxed">
           Get Ready To Embark On An Unforgettable Journey Into The Realms Of Technology with TechWeek: Aurora, Brought To You By ISTE Manipal.
         </p>
