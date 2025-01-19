@@ -18,7 +18,8 @@ function Speaker() {
     if (user?.id) {
       const fetchProfile = async () => {
         try {
-          const profile = await getProfile(user.id); // Fetch profile data
+          const token = sessionStorage.getItem("token");
+          const profile = await getProfile(token); // Fetch profile data
           setRegisteredSpeakers(profile?.data?.registeredSpeakers || []);
         } catch (error) {
           console.error("Failed to fetch profile:", error);
@@ -77,6 +78,7 @@ function Speaker() {
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
+          console.log(response);
           return response.json();
         }),
       {
@@ -115,15 +117,15 @@ function Speaker() {
           <div
             key={speaker.id}
             className="group bg-gradient-to-b from-[#d9d9d9]/10 to-[#d9d9d9]/5 backdrop-blur-sm 
-                     rounded-[30px] border border-white/10 shadow-2xl p-8 
-                     transform hover:scale-[1.02] transition-all duration-300"
+                   rounded-[30px] border border-white/10 shadow-2xl p-8 
+                   transform hover:scale-[1.02] transition-all duration-300"
           >
             <div className="relative mb-6">
               <img
                 src={speaker.image}
                 alt={speaker.name}
                 className="relative w-48 h-48 mx-auto rounded-full object-cover 
-                         border-4 border-white/10 shadow-xl"
+                       border-4 border-white/10 shadow-xl"
               />
             </div>
             <div className="text-center">
@@ -143,8 +145,20 @@ function Speaker() {
           </div>
         ))}
       </div>
+
+      {/* Submit Button */}
+      <div className="text-center mt-8">
+        <button
+          onClick={handleSubmit}
+          className="px-8 py-4 bg-[#9d31a1] text-white rounded-full text-lg font-medium 
+                   hover:bg-[#bf5ac3] transition-all duration-300"
+        >
+          Submit Selection
+        </button>
+      </div>
     </div>
   );
+
 }
 
 export default Speaker;
