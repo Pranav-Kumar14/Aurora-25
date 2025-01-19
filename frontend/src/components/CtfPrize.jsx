@@ -23,15 +23,15 @@ const CtfPrize = () => {
         <div className="space-y-4">
           <p className="flex items-center text-yellow-400  text-3xl">
             
-            1st Rs 6000
+            1st Rs 4000
           </p>
           <p className="flex items-center text-gray-300 text-3xl">
             
-            2nd Rs 4000
+            2nd Rs 2000
           </p>
           <p className="flex items-center text-orange-500 text-3xl">
             
-            3rd Rs 2000
+            3rd Rs 1000
           </p>
         </div>
       </div>

@@ -21,7 +21,7 @@ const faqs = [
       "Yes, each team must bring their own laptops and devices. The venue will provide internet access.",
   },
   {
-    question: "What are the Prices?",
+    question: "What are the Prizes?",
     answer:
       "1st Place: ₹8,000\n2nd Place: ₹4,000\n3rd Place: ₹3,000\nCertificates of participation for all participants.",
   },
@@ -42,7 +42,7 @@ const FAQ = () => {
     <div className="bg-transparent py-12 px-6">
   <div className="max-w-4xl mx-auto p-6 mt-20">
     <h1 className="text-4xl font-bold text-center mb-8 font-press-start text-white">
-      FAQ's
+      FAQs
     </h1>
     <div className="space-y-6">
       {faqs.map((faq, index) => (
@@ -67,7 +67,7 @@ const FAQ = () => {
           </dt>
           {activeIndex === index && (
             <dd className="text-base md:text-lg text-gray-300 font-light mt-4">
-              <p className="font-pixelify leading-relaxed">
+              <p className="font-sans font-semibold leading-relaxed">
                 {faq.answer.split("\n").map((item, i) => (
                   <React.Fragment key={i}>
                     {item}
