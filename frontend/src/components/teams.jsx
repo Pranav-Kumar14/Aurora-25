@@ -24,6 +24,7 @@ const Teams = ({ onClose }) => {
         e.preventDefault();
         try {
             const response = await axios.post(`${url}/team/create`, teamData);
+
             if (response.data.success) {
                 setMessage("Team created successfully!");
                 setCreatedTeam(response.data.team);
@@ -39,10 +40,6 @@ const Teams = ({ onClose }) => {
             setMessage("An error occurred while creating the team.");
         }
     };
-     const inputStyle =
-      "w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-white";
-    const containerStyle =
-      "w-full p-6 bg-gray-800 rounded-lg shadow-lg max-w-md";
 
     return (
         <div className="w-full h-full flex flex-col items-center justify-center text-white p-8">
