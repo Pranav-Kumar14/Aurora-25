@@ -24,7 +24,7 @@ const HackathonTimer = () => {
     }, []);
 
     return (
-        <div className="text-white font-press-start text-[25px] md:text-[40px] flex justify-center space-x-8 mb-8">
+        <div className="text-white font-chakra text-[10px] pt-4 lg:text-[40px] mt-10 flex justify-center space-x-3 mb-8">
   {/* Time Block */}
   {[
     { label: 'Days', value: timeLeft.days },
@@ -33,12 +33,12 @@ const HackathonTimer = () => {
   ].map((unit, index) => (
     <div
       key={index}
-      className="flex flex-col items-center p-4 bg-gradient-to-br from-[#1c1f3a] to-[#2a2d4a] rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+      className="flex flex-col items-center p-4 text-xs bg-gradient-to-br from-[#1c1f3a] to-[#2a2d4a] rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
     >
-      <span className="font-press-start text-4xl md:text-5xl">
+      <span className="font-chakrapetch text-[32px] md:text-5xl pt-2">
         {String(unit.value).padStart(2, '0')}
       </span>
-      <span className="text-sm md:text-base mt-2 uppercase tracking-wide text-gray-400">
+      <span className="text-xs md:text-base mt-2 pt-2 uppercase tracking-wide text-gray-400">
         {unit.label}
       </span>
     </div>

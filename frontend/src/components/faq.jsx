@@ -39,8 +39,8 @@ const FAQ = () => {
   };
 
   return (
-    <div className="bg-transparent py-12 px-6">
-  <div className="max-w-4xl mx-auto p-6 mt-20">
+    <div className="bg-transparent py-12 px-6 mt-0">
+  <div className="  max-w-5xl  md:max-w-6xl  lg:mx-auto lg:p-6 p-2  mt-20">
     <h1 className="text-4xl font-bold text-center mb-8 font-press-start text-white">
       FAQs
     </h1>
@@ -48,17 +48,17 @@ const FAQ = () => {
       {faqs.map((faq, index) => (
         <div
           key={faq.question}
-          className="bg-transparent border border-white rounded-xl p-6 transition-all duration-300 hover:shadow-xl"
+          className="bg-transparent border border-white rounded-md p-6 transition-all duration-300 hover:shadow-xl"
         >
           <dt
             className="flex justify-between items-center cursor-pointer"
             onClick={() => toggleFAQ(index)}
           >
-            <p className="font-semibold text-lg md:text-xl text-white font-press-start">
+            <p className="font-semibold text-lg md:text-xl text-white font-sans ">
               {faq.question}
             </p>
             <p
-              className={`text-xl text-white transform ${
+              className={`text-xl m-4 text-white transform ${
                 activeIndex === index ? "rotate-0" : "rotate-180"
               } transition-transform duration-200`}
             >
