@@ -4,20 +4,23 @@ import { useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import HackathonTimer from "../components/HackathonTimer";
 import FAQ from "../components/faq";
-import SquidGame from "../images/hackbg.png";
+import SquidGame from "../images/vasavibg.png";
 import Calendar from "../images/calendar.png";
 import Clock from "../images/clock.png";
 import Location from "../images/Location.png";
 import Team from "../images/hackteam.png";
+import gold from "../images/1trophy.png";
+import silver from "../images/2trophy.png";
+import bronze from "../images/3trophy.png";
 // import 'aos/dist/aos.css';
 // import AOS from 'aos';
 
 const teamRules = [
-  "The hackathon is open to all MIT students. Teams can consist of 2 to 5 members.",
-  "Teams have to be formed before the event, and registered with the AURORA website.",
   "Respect your fellow participants, organizers, and judges. Any form of cheating, plagiarism, or unsportsmanlike behavior will result in disqualification.",
   "Participants must bring their own laptops and devices. Internet access will be provided, but participants should ensure they have backup data plans if required.",
   "You are free to use any coding platform or IDE.",
+
+  "Each team has 3 minutes to present their solution, followed by a 5-minute Q&A session with the judges.",
 ];
 
 const judgingCrit = [
@@ -29,16 +32,10 @@ const judgingCrit = [
 ];
 
 const judgingProc = [
-  "At the end of the hackathon, all teams will present their projects to the panel of judges.",
-  "Each team has 3 minutes to present their solution, followed by a 5-minute Q&A session with the judges.",
-  "Judges will evaluate each project based on the outlined criteria.",
 ];
 
 const general = [
-  "The hackathon lasts for 10 hours. You must ensure that your solution is functional and ready for presentation by the end of the event.",
-  "Mini-games will be played during breaks and will impact your overall score. However greater preference will be given to the app implemented.",
-  "Mini-game rules will be made known to the participants on and at the time the mini-game is to be commenced.",
-  "Light snacks will be available during breaks. Teams should bring their own meals if needed. Adequate time for lunch will be provided.",
+  
 ];
 
 const Home = () => {
@@ -51,20 +48,20 @@ const Home = () => {
   // }, []);
   return (
     <div
-      className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen w-full bg-no-repeat bg-cover"
+      className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen w-full bg-no-repeat bg-center"
       style={{ backgroundImage: `url(${SquidGame})` }}
     >
       {/* Hero Section */}
       <div
-        className="flex flex-col items-center justify-center font-press-start h-screen text-center space-y-6 px-4"
+        className="flex flex-col items-center justify-top font-press-start h-screen text-center space-y-6 mt-0 px-4 mb-0 pt-20"
         // data-aos="fade-up"
       >
-        <h1 className="font-extrabold text-[50px] lg:text-[60px] p-4 transition-transform duration-500 hover:scale-110">
-          Error 456
+        <h1 className="font-sans text-[20px] lg:text-[30px] p-2 pb-0 mt-0">
+          Aurora presents
         </h1>
-        <h3 className="font-semibold text-[24px] lg:text-[32px] p-2 transition-opacity duration-500 hover:opacity-80">
-          Out of Lives
-        </h3>
+        <h1 className="font-extrabold text-[20px] lg:text-[50px] p-4 pt-0 transition-transform duration-500 hover:scale-110">
+          ("DEVSPRINT")
+        </h1>
         <TypeAnimation
           sequence={[
             "Build amazing projects",
@@ -79,18 +76,19 @@ const Home = () => {
           className="font-pixelify block text-[1.5em] max-w-[100%] mt-4"
           repeat={Infinity}
         />
-        <button className="bg-black text-white px-6 py-3 mt-4 rounded hover:bg-gray-700 transition-all transform hover:scale-105 duration-300 ease-in-out">
-          Registrations Soon
-        </button>
+        <button className="bg-[#A00F0F] ring-2 ring-white rounded-full shadow-[0_0_15px_4px_rgba(255,255,255,0.5)] text-white px-6 py-3 mt-4 hover:bg-[#A00F0F] transition-all transform hover:scale-105 duration-300 ease-in-out">
+  Register Now
+</button>
+
         <HackathonTimer />
       </div>
 
       {/* Event Details */}
       <div
-        className="max-w-4xl lg:mx-auto my-16 mx-10 p-10 rounded-2xl bg-gradient-to-b from-[#1c1f3a] to-[#2a2d4a] text-white shadow-xl space-y-10 border border-white transition-transform duration-500 hover:scale-105"
+        className="max-w-4xl lg:mx-auto my-16 mx-10 p-10 mt-0 rounded-2xl bg-gradient-to-b from-[#1c1f3a] to-[#2a2d4a] text-white shadow-xl space-y-10 border border-white transition-transform duration-500 hover:scale-105"
         data-aos="fade-right"
       >
-        <h1 className="text-3xl font-press-start text-center mb-8">
+        <h1 className="text-3xl font-press-start text-center mb-8 mt-0">
           Event Details
         </h1>
         <div className="flex flex-col items-center gap-10">
@@ -134,7 +132,7 @@ const Home = () => {
               style={{ backgroundImage: `url(${Team})` }}
             ></div>
             <h1 className="font-sans text-xl tracking-wide text-center">
-              Team : 2-4
+              Team : 2-5
             </h1>
           </div>
         </div>
@@ -145,21 +143,21 @@ const Home = () => {
         <h1 className="font-press-start text-4xl text-white mb-12">
           Cash Prizes
         </h1>
-        <div className="flex justify-center items-end gap-12">
+        <div className="flex justify-center items-end gap-8">
           <div className="flex flex-col items-center transition-transform duration-500 hover:scale-110">
             <img
-              src="https://res.cloudinary.com/db1ziohil/image/upload/v1737188014/icons8-trophy-color-pixels-96_1_gpe47t.png"
+              src= {silver}
               alt="Silver Trophy"
-              className="w-24 h-24 md:w-28 md:h-28"
+              className="w-28 h-24 md:w-32 md:h-28"
             />
             <p className="font-press-start text-lg text-gray-300 mt-4">₹4000</p>
           </div>
 
           <div className="flex flex-col items-center transition-transform duration-500 hover:scale-110">
             <img
-              src="https://res.cloudinary.com/db1ziohil/image/upload/v1737188014/icons8-trophy-32_2_vndf33.png"
+              src= {gold}
               alt="Gold Trophy"
-              className="w-32 h-32 md:w-36 md:h-36"
+              className="w-36 h-32 md:w-32 md:h-32"
             />
             <p className="font-press-start text-lg text-yellow-400 mt-4">
               ₹8000
@@ -168,9 +166,9 @@ const Home = () => {
 
           <div className="flex flex-col items-center transition-transform duration-500 hover:scale-110">
             <img
-              src="https://res.cloudinary.com/db1ziohil/image/upload/v1737188013/3RD_l1wald.png"
+              src= {bronze}
               alt="Bronze Trophy"
-              className="w-24 h-24 md:w-28 md:h-28"
+              className="w-28 h-24 md:w-32 md:h-28"
             />
             <p className="font-press-start text-lg text-orange-500 mt-4">
               ₹3000
@@ -180,7 +178,7 @@ const Home = () => {
       </div>
 
       {/* Rules, Judging Criteria, Process, and General Sections */}
-      {["Rules", "Criteria", "Process", "General"].map((section, index) => (
+      {["Rules", "Criteria"].map((section, index) => (
         <div
           key={index}
           id={section}
@@ -191,7 +189,7 @@ const Home = () => {
             <h2 className="font-press-start text-2xl text-center mb-8">
               {section}
             </h2>
-            <ul className="list-disc space-y-6 text-sm font-sans font-semibold pl-8 leading-relaxed">
+            <ul className="list-disc space-y-6  lg:text-xl sm:text-xs font-sans font-semibold pl-8 leading-relaxed">
               {(section === "Rules"
                 ? teamRules
                 : section === "Criteria"
