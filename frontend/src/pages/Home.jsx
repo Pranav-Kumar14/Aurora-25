@@ -8,7 +8,7 @@ import HackathonCard from '../components/Hackathon_card'
 import Carousel from '../components/Carousel'
 import MediaSlider from '../components/slider'
 import Timeline from '../components/Timeline'
-import {workshops} from '../constants/workshops'
+import {workshops} from '../constants/timeline'
 
 
 
