@@ -5,8 +5,9 @@ import speakerImage from "../images/arpan.jpeg";
 
 const KeynoteSpeakerCard = () => {
   return (
+    <>
     <div
-  className="relative rounded-xl sp-6 m-5 sm:p-8 w-lg max-w-lg mx-auto text-white bg-transparent "
+  className="relative rounded-xl sp-6 m-5 sm:p-8 w-lg max-w-lg mx-auto text-white bg-transparent  "
   style={{
     fontFamily: 'monospace',
   }}
@@ -44,6 +45,7 @@ const KeynoteSpeakerCard = () => {
     </Link>
   </div>
 </div>
+</>
   );
 };
 

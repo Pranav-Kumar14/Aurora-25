@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./bubble.module.css";
 import toast from 'react-hot-toast';
 
 function Hero() {
@@ -7,8 +8,8 @@ function Hero() {
     <section className="text-white py-16 sm:py-20 lg:py-24">
       <div className="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 sm:mb-8 lg:mb-10">
-          Aurora`25
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold z-10 mb-6 sm:mb-8 lg:mb-10">
+          <BubbleText text="Aurora '25" />
         </h1>
 
         {/* Description */}
@@ -46,5 +47,17 @@ function Hero() {
     </section>
   );
 }
+
+const BubbleText = ({ text }) => {
+  return (
+    <span>
+      {text.split("").map((char, idx) => (
+        <span className={styles.hoverText} key={idx}>
+          {char}
+        </span>
+      ))}
+    </span>
+  );
+};
 
 export default Hero;
