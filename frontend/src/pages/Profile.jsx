@@ -155,6 +155,7 @@ export default function Profile() {
                             </button> 
                         )}
                 </div>
+                <p className="px-2 pb-4 text-[0.7rem] text-center">Please reach out to us at <mark>9845780894/9769983228/8809795723</mark> in case of any issues.</p>
             </div>
         </div>
     );

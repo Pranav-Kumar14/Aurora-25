@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FiLock } from "react-icons/fi";
-import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import CtfHero from "../components/ctfhome";
 import CtfRules from "../components/CtfRules";
 import BaseUrl from "../BaseUrl";
 import toast from "react-hot-toast";
-import ctfInfo from "../images/info.png";
 import ctfBackground from "../images/cttbg.png";
 import { updateProfile } from "../services/auth";
 import leadercolor from "../images/ctfupdate.png";
+import Calendar from "../images/calendar.png";
+import Clock from "../images/clock.png";
+import Team from "../images/hackteam.png";
 
 const TARGET_TEXT_REGISTER = "Register for CTF";
 const TARGET_TEXT_UNREGISTER = "Unregister from CTF";
@@ -130,25 +130,68 @@ const CtfPage = () => {
           <CtfHero />
         </div>
 
-        <div className="text-center mb-10 md:mb-16 mt-12">
+        {/* <div className="text-center mb-10 md:mb-16 mt-12">
           <img
             className="w-full lg:max-w-lg max-w-sm mx-auto rounded-lg shadow-2xl"
             src={ctfInfo}
             alt="CTF Info"
           />
-        </div>
+        </div> */}
 
-        <div className="text-center mb-10 md:mb-16">
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={handleRegistrationToggle}
-            className={`px-6 py-3 rounded-lg text-sm font-bold bg-gradient-to-r from-blue-400 to-blue-600 text-white hover:from-blue-600 hover:to-blue-800 transition ${
-              isRegistered ? "bg-green-500 cursor-not-allowed" : ""
-            }`}
+          <div
+            className="max-w-4xl lg:mx-auto my-16 mx-10 p-10 rounded-2xl bg-transparent text-white shadow-xl space-y-10 transition-transform duration-500 hover:scale-105"
           >
-            {isRegistered ? "Registered" : "Register"}
-          </button>
-        </div>
+            <h1 className="text-3xl font-press-start text-center mb-8">
+              Event Details
+            </h1>
+            <div className="flex flex-col items-center gap-10">
+              {/* Event Date */}
+              <div className="flex items-center gap-6 transition-opacity duration-500 hover:opacity-90">
+                <div
+                  className="w-14 h-14 bg-contain bg-center bg-no-repeat"
+                  style={{ backgroundImage: `url(${Calendar})` }}
+                ></div>
+                <h1 className="font-sans text-xl tracking-wide text-center">
+                  6:00PM, 29 January 2025 - 11:59PM, 30 January 2025
+                </h1>
+              </div>
+    
+              {/* Team Size */}
+              <div className="flex items-center gap-6 transition-opacity duration-500 hover:opacity-90">
+                <div
+                  className="w-14 h-14 bg-contain bg-center bg-no-repeat"
+                  style={{ backgroundImage: `url(${Team})` }}
+                ></div>
+                <h1 className="font-sans text-xl tracking-wide text-center">
+                  Team : 1-2
+                </h1>
+              </div>
+            </div>
+          </div>
+
+        <p className="text-white text-center font-mono text-[2rem]">To be registered by Team Leader only</p>
+        <div className="text-center mb-10 md:mb-16 flex justify-center gap-10">
+          <div className="p-5 flex flex-col gap-2 justify-center mt-8">
+            <button
+              onClick={handleRegistrationToggle}
+              className={`px-6 py-3 rounded-lg text-sm font-bold bg-gradient-to-r from-blue-400 to-blue-600 text-white hover:from-blue-600 hover:to-blue-800 transition ${
+                isRegistered ? "bg-green-500 cursor-not-allowed" : ""
+              }`}
+            >
+              {isRegistered ? "Registered" : "Register"}
+            </button>
+            <p className="text-white text-center font-mono text-[2rem]">Workshops + CTF</p>
+          </div>
+
+          <div className="p-5 flex flex-col gap-2 justify-center mt-8">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfGdId6XP6IMGKC_Zo2khfk3Sc6VuaPQPzTMs_aNseeCQVf4g/viewform" target="_blank"
+              className={`px-6 py-3 rounded-lg text-sm font-bold bg-gradient-to-r from-blue-400 to-blue-600 text-white hover:from-blue-600 hover:to-blue-800 transition`}
+            >
+              Only CTF Registration
+            </a>
+            <p className="text-white text-center font-mono text-[2rem]">Only CTF</p>
+          </div>
 
         </div>
         <div className="bg-black/40 backdrop-blur-md rounded-xl p-6 md:p-8 shadow-2xl">
