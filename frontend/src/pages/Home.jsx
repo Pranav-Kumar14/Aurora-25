@@ -1,47 +1,56 @@
+import { useEffect } from "react";
 import Hero from "../components/Hero";
 import CountdownTimer from "../components/CountdownTimer";
 import KeynoteSpeakerCard from "../components/Keynote_card";
-import hackathon from "../images/HACKATHON.png";
-import partners from "../images/PARTNERS.png";
-import workshopsImg from "../images/WORKSHOPS.png";
 import HackathonCard from "../components/Hackathon_card";
 import Carousel from "../components/Carousel";
-import MediaSlider from "../components/slider";
 import Timeline from "../components/Timeline";
 import { workshops } from "../constants/timeline";
-import SimpleParallax from "simple-parallax-js";
 import SponsorCard from "../components/SponsorCard.jsx";
 
 const Home = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      const video = document.querySelector(".parallax-video");
+      if (video) {
+        const scrollTop = window.scrollY;
+        const parallaxSpeed = 0.1; // Slow vertical movement
+        const scaleSpeed = 0.0005; // Subtle scaling effect
+        video.style.transform = `translateY(-${scrollTop * parallaxSpeed}px) scale(${
+          1 + scrollTop * scaleSpeed
+        })`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
-      {/* Hero Section with Parallax Background */}
-      <div className="relative w-full h-screen">
-        <SimpleParallax>
-          <img
-            src="https://res.cloudinary.com/dopqveduc/image/upload/v1737391884/download_q68wxi.jpg"
-            alt="Parallax Image"
-            className="w-full h-auto top-0 z-0 object-co left-0 object-cover"
-          />
-        </SimpleParallax>
-        <div className="absolute inset-0 flex items-center justify-center">
+      <div className="relative w-full h-screen z-0">
+        <video
+          className="parallax-video fixed top-0 left-0 w-full h-full object-cover z-0"
+          src="https://res.cloudinary.com/dopqveduc/video/upload/v1737297038/homebg_x66y59.mp4"
+          autoPlay
+          loop
+          muted
+          type="video/mp4"
+        ></video>
+        <div className="absolute inset-0 flex items-center justify-center z-10">
           <Hero />
         </div>
       </div>
-
-      {/* Countdown Timer Section */}
-      <div className="py-5 relative z-10">
+      <div className="py-0 relative z-10">
         <CountdownTimer targetDate={new Date("2025-01-23T00:00:00")} />
       </div>
-
-      {/* Keynote Speaker Section */}
-      <div className="relative rounded-xl shadow-md p-6 sm:p-8 w-xl max-w-2xl mx-auto text-white border-2 border-blue-500">
-        <p className="font-heading lg:text-5xl text-center text-white text-2xl lg:mt-20 relative z-10">
-          SPEAKER
-        </p>
-        <KeynoteSpeakerCard />
-      </div>
-
+      <p className="font-heading lg:text-5xl text-center mb-11 text-white text-2xl lg:mt-20 relative z-10">
+        SPEAKER
+      </p>
+      <KeynoteSpeakerCard />
       {/* Partners Section */}
       <div className="lg:py-12 py-4 relative z-10">
         <p className="font-heading lg:text-5xl text-center text-white lg:pb-20 text-2xl pb-5 mt-10">
@@ -51,7 +60,7 @@ const Home = () => {
       </div>
 
       {/* Timeline Section */}
-      <main className="lg:mb-2 mb-16 relative  z-10">
+      <main className="lg:mb-2 mb-16 relative z-10">
         <Timeline workshops={workshops} />
       </main>
 
@@ -62,6 +71,8 @@ const Home = () => {
         </p>
         <HackathonCard />
       </div>
+
+      {/* Sponsors Section */}
       <div className="lg:py-12 lg:mb-6 relative z-10">
         <p className="font-heading lg:text-5xl text-center text-white lg:pb-5 my-1 text-2xl">
           SPONSORS
