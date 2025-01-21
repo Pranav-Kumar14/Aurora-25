@@ -1,5 +1,5 @@
 import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const Example = () => {
   return (
@@ -15,7 +15,24 @@ const HorizontalScrollCarousel = () => {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-31%"]);
+  const [scrollRange, setScrollRange] = useState(["1%", "-31%"]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setScrollRange(["1%", "-110%"]);
+      } else {
+        setScrollRange(["1%", "-31%"]);
+      }
+    };
+
+    handleResize(); // initial check
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const x = useTransform(scrollYProgress, [0, 1], scrollRange);
 
   return (
     <section ref={targetRef} className="relative h-[300vh]">
@@ -42,14 +59,9 @@ const Card = ({ card }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
+        className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-55"
       ></div>
-      <div className="absolute inset-0 z-10 grid place-content-center">
-        {/* Uncomment if you want to show the title */}
-        {/* <p className="bg-gradient-to-br from-white/20 to-white/0 p-4 text-2xl font-black uppercase text-white backdrop-blur-lg">
-          {card.title}
-        </p> */}
-      </div>
+      <div className="absolute inset-0 z-10 grid place-content-center"></div>
     </div>
   );
 };
