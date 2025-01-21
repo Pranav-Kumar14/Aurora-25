@@ -48,8 +48,8 @@ const Home = () => {
   // }, []);
   return (
     <div
-      className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen w-full bg-no-repeat bg-center"
-      style={{ backgroundImage: `url(${SquidGame})` }}
+      className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen w-full bg-no-repeat bg-center bg-cover"
+      style={{ backgroundImage: `url(${SquidGame})`, backgroundPositionY: "1px" }}
     >
       {/* Hero Section */}
       <div

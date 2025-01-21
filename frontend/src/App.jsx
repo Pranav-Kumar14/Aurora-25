@@ -42,6 +42,38 @@ import Workshop9 from "./pages/workpage/Workshop9";
 import Workshop10 from "./pages/workpage/Workshop10";
 import Workshop11 from "./pages/workpage/Workshop11";
 
+function TermsAndConditions() {
+  return (
+    <div style={{ margin: 0, padding: 0, height: "100vh", width: "100vw", overflow: "hidden" }}>
+      <iframe
+        src="/website_tnc_877271.pdf" // Adjust the path if needed
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+        title="PDF Viewer"
+      ></iframe>
+    </div>
+  );
+}
+
+function ContactUs() {
+  return (
+    <div style={{ margin: 0, padding: 0, height: "100vh", width: "100vw", overflow: "hidden" }}>
+      <iframe
+        src="/website_contactUs_877271.pdf" // Adjust the path if needed
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+        title="PDF Viewer"
+      ></iframe>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
@@ -84,6 +116,8 @@ function App() {
               }
             />
             <Route path="/" element={<Navigate to="/login" replace />} />
+            <Route path="/termsandconditions" element={<TermsAndConditions />} />
+            <Route path="/contactus" element={<ContactUs />} />
           </Routes>
         </AuthProvider>
       </Router>
