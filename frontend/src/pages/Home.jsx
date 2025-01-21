@@ -152,6 +152,12 @@ const Home = () => {
             <HackathonCard />
             </div>
 
+            <div className="lg:py-12 lg:mb-6 relative z-10">
+              <p className="font-heading text-center text-white text-2xl sm:text-3xl lg:text-5xl lg:pb-5 my-1">
+                SPONSORS
+              </p>
+              <SponsorCard />
+            </div>
 
         </div>
     )}

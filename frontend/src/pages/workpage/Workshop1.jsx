@@ -22,7 +22,7 @@ const Workshop1 = () => {
 
     {/* Neural Network Section */}
     <div className="text-center">
-          <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">Neural Network</h2>
+          <h2 className="lg:text-4xl text-3xl text-[#05E0EE] font-bold font-heading mb-6">Convenient</h2>
           {/* <img src={w1} alt="Neural Network" className="mx-auto" style={{ width: '1153px' }} /> */}
      </div>
 
@@ -33,7 +33,7 @@ const Workshop1 = () => {
         <div className="mt-8">
           <h3 className=" lg:text-4xl  text-[22px] text-[#EAEAEA] font-bold text-center font-heading">Description</h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-base leading-relaxed">
-            In machine learning, a neural network (also artificial neural network or neural net, abbreviated ANN or NN) is a model inspired by the structure and function of biological neural networks in animal brains.
+          Learn the basics of the building blocks of Computer Vision, the Convolutional Neural Network WITHOUT the worries of prerequisite coding and machine learning knowledge. We'll look into the inner workings with awesome visualizations and clarity you won't find anywhere else! Finally, implement an End to End CNN Project with you own architecture and deploy the project on Flask.
           </p>
           <div className="mt-6 flex justify-center items-center gap-8 text-center">
             {/* Date */}
