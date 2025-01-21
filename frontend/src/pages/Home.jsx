@@ -86,8 +86,34 @@ const Home = () => {
         <SponsorCard />
       </div>
 
-      {/* Extra space at the bottom for footer */}
-      <div className="pb-16"></div>
+      {/* footer */}
+      <footer
+        className="text-white text-center relative z-[999] top-[5rem]"
+        // style={{
+        //     backgroundImage: `url(${footerImg})`,
+        //     backgroundSize: 'fill',
+        //     backgroundPosition: 'center',
+        // }}
+        >
+        {/* <h2 className="bg-purple-500 hover:bg-purple-600 text-white px-2 py-1 mb-4 rounded-full text-lg font-medium inline-flex items-center">Contact Us</h2> */}
+        <div className="flex justify-center space-x-6 mb-6">
+            <a href="https://www.instagram.com/iste_manipal/" className="text-white hover:text-gray-400">
+            <i className="fab fa-instagram text-2xl"></i>
+            </a>
+            <a href="https://www.facebook.com/istemanipal/" className="text-white hover:text-gray-400">
+            <i className="fab fa-facebook text-2xl"></i>
+            </a>
+            <a href="https://in.linkedin.com/company/iste-manipal" className="text-white hover:text-gray-400">
+            <i className="fab fa-linkedin text-2xl"></i>
+            </a>
+        </div>
+        <p className="text-sm mb-2"> 
+            For any queries, contact:<br /> +91-9845780894 | +91-8809795723
+        </p>
+        <p className="text-sm"> 
+            Copyright &copy; 2024 All rights reserved | Made by ISTE Manipal
+        </p>
+        </footer>
     </div>
   );
 };
