@@ -47,7 +47,7 @@ export default function TimelineSection({ workshops }) {
   return (
     <div className="lg:mb-16 lg:mt-32 mt-16">
       <div className="text-center mb-16">
-        <h2 className="lg:text-4xl font-bold font-heading tracking-wider text-white mb-4 text-2xl">TIMELINE</h2>
+        <h2 className="lg:text-5xl font-bold font-heading tracking-wider text-white mb-4 text-2xl">TIMELINE</h2>
         <p className="text-gray-300">24th - 31st January, 2025</p>
       </div>
       

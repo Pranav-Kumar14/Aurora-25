@@ -24,7 +24,10 @@ const Footer = () => {
             <i className="fab fa-linkedin text-2xl"></i>
             </a>
         </div>
-        <p className="text-sm mb-2">
+        <p className="text-sm mb-2"> 
+            For any queries, contact:<br /> +91-9845780894 | +91-8809795723
+        </p>
+        <p className="text-sm mb-2"> 
             Copyright &copy; 2024 All rights reserved | Made by ISTE Manipal
         </p>
         </footer>

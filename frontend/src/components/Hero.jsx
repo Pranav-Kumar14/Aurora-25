@@ -1,5 +1,7 @@
 import React from "react";
+import styles from "./bubble.module.css";
 import toast from 'react-hot-toast';
+import DrawOutlineButton from "./DrawOutlineButton";
 
 function Hero() {
   const token = sessionStorage.getItem('token');
@@ -7,8 +9,8 @@ function Hero() {
     <section className="text-white py-16 sm:py-20 lg:py-24">
       <div className="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold mb-6 sm:mb-8 lg:mb-10">
-          Aurora`25
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold z-10 mb-6 sm:mb-8 lg:mb-10">
+          <BubbleText text="Aurora '25" />
         </h1>
 
         {/* Description */}
@@ -17,12 +19,14 @@ function Hero() {
         </p>
 
         {/* Register Button */}
+        
         {!token && (
+          <DrawOutlineButton>
             <a
             href="/register" 
-            className="bg-purple-500 font-body hover:bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-xl font-medium inline-flex items-center"
+            className="px-4 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg lg:text-3xl font-medium inline-flex items-center"
           >
-            <svg
+            {/* <svg
               className="h-5 w-5 sm:h-6 sm:w-6 mr-2"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -35,9 +39,11 @@ function Hero() {
                 strokeWidth="2"
                 d="M14.752 11.168l-4.197-4.197m0 0L15.6 2.293m-5.045 4.678H3.9m16.2 0a7.5 7.5 0 11-15 0h15z"
               />
-            </svg>
+            </svg> */}
             Register Here!
           </a>
+          </DrawOutlineButton>
+          
         )
             
         }
@@ -46,5 +52,17 @@ function Hero() {
     </section>
   );
 }
+
+const BubbleText = ({ text }) => {
+  return (
+    <span>
+      {text.split("").map((char, idx) => (
+        <span className={styles.hoverText} key={idx}>
+          {char}
+        </span>
+      ))}
+    </span>
+  );
+};
 
 export default Hero;

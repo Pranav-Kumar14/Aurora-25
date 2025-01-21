@@ -1,0 +1,10 @@
+.hoverText {
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  
+  .hoverText:hover {
+    transform: translateY(-10px);
+    color: #4f46e5; 
+  }
+  

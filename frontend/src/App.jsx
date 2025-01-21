@@ -121,7 +121,7 @@ function App() {
           </Routes>
         </AuthProvider>
       </Router>
-      <Footer />
+      <Footer/>
 
     </div>
   );
