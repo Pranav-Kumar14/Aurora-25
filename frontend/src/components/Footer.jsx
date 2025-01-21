@@ -28,7 +28,7 @@ const Footer = () => {
             For any queries, contact:<br /> +91-9845780894 | +91-8809795723
         </p>
         <p className="text-sm mb-2"> 
-            Copyright &copy; 2024 All rights reserved | Made by ISTE Manipal
+            Copyright &copy; 2025 All rights reserved | Made by ISTE Manipal
         </p>
         </footer>
     );
