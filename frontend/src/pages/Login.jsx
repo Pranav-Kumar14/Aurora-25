@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/auth';
 import { useAuth } from '../context/AuthContext';
@@ -10,6 +10,7 @@ import toast from 'react-hot-toast'
 export default function Login() {
     const navigate = useNavigate();
     const { setUser } = useAuth();
+    const [emailupd, setemailupd] = useState("")
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -18,15 +19,20 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            
             const response = await login(formData);
             sessionStorage.setItem('token', response.token);
             setUser(response.user);
             toast.success('Login successful!');
             navigate('/home');
         } catch (error) {
-            toast.error(error.response?.data?.message || 'Login failed');
+            toast.error(error.response?.data?.message || `Login failed ${error}`);
         }
     };
+   useEffect(() => {
+    console.log(emailupd)
+ 
+   }, []);
 
     return (
         <div
@@ -86,7 +92,7 @@ export default function Login() {
                                 type="password"
                                 required
                                 className="mt-2 block w-full rounded-md border-transparent bg-white bg-opacity-20 text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-md py-2 px-4"
-                                value={formData.password}
+                                value={formData.password} 
                                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                             />
                         </div>

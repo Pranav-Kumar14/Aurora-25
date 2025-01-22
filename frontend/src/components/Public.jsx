@@ -7,8 +7,35 @@ const PublicTeams = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [userId, setUserId] = useState("");
-  const { user, setUser } = useAuth();
+  // const { user, setUser } = useAuth();
+      // const [userId, setUserId] = useState(null);
+       const [newEmail, setNewEmail] = useState(null);
+       const { user } = useAuth();
+       // console.log(token)
+       
+       
+       useEffect(() => {
+         const fetchUserData = async () => {
+             if (user) {
+                 console.log("User from AuthContext:", user);
      
+                 try {
+                     // Simulate async operations, if needed
+                     await new Promise((resolve) => setTimeout(resolve, 500)); // Mock delay
+     
+                     setUserId(user.id);
+                     setNewEmail(user.email);
+     
+                     // console.log("User ID:", user.id);
+                     // console.log("User Email:", user.email);
+                 } catch (error) {
+                     // console.error("Error setting user data:", error);
+                 }
+             }
+         };
+     
+         fetchUserData();
+     }, [user]);
 
   const url = "http://localhost:8000/team";
 

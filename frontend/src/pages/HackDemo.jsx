@@ -19,19 +19,43 @@ const TeamManagementPage = () => {
   const [newMemberEmail, setNewMemberEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
-  const [userId, setuserId] = useState("");
+  // const [userId, setuserId] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
-  const [loading, setloading] = useState("");
+  // const [loading, setloading] = useState("");
   const [showTeams, setShowTeams] = useState(false);
   const [activeSection, setActiveSection] = useState("publicTeams");
   const token = sessionStorage.getItem("token");
-
+  const [userData, setUserData] = useState(null); // To store the decoded token data
+    const [error, setError] = useState(null);
+  const [newemail, setnewemail] = useState("")
+  const [userId, setUserId] = useState(null);
+  const [newEmail, setNewEmail] = useState(null);
+  const { user } = useAuth();
+  // console.log(token)
   
   
-  //  const user1 = getProfile(token);
-  //  console.log(user1.data.data)
-   const { user, setUser } = useAuth();
+  useEffect(() => {
+    const fetchUserData = async () => {
+        if (user) {
+            console.log("User from AuthContext:", user);
 
+            try {
+                // Simulate async operations, if needed
+                await new Promise((resolve) => setTimeout(resolve, 500)); // Mock delay
+
+                setUserId(user.id);
+                setNewEmail(user.email);
+
+                console.log("User ID:", user.id);
+                console.log("User Email:", user.email);
+            } catch (error) {
+                // console.error("Error setting user data:", error);
+            }
+        }
+    };
+
+    fetchUserData();
+}, [user]);
 
 
   
@@ -44,6 +68,7 @@ const TeamManagementPage = () => {
   const url = "http://localhost:8000/team";
 
   const FetchTeamDetails = async (email) => {
+    // console.log(userId)
     console.log(email)
     try {
       const response = await axios.get(`${url}/list/team`,{
@@ -52,7 +77,7 @@ const TeamManagementPage = () => {
       console.log(response);
       if (response.data.success && response.data.teams.length > 0) {
         const teamData = response.data.teams[0];
-        console.log("Fetched team data:", teamData);
+        // console.log("Fetched team data:", teamData);
         setTeam(teamData);
         setTeamcheck(true)
 
@@ -61,24 +86,58 @@ const TeamManagementPage = () => {
         setMembers(teamData.members || ["my memer"]);
         setLeader(teamData.leader || null);
         setJoinRequests(teamData.joinRequests || []);
-      } else {
-        setTeamcheck(false)
-      setMessage("User is not a leader or a member of any team.");
-      }
+      } 
     } catch (error) {
       console.log(`Error fetching team details.: ${error}`);
     }
   };
 
   useEffect(() => {
-
+// console.log("userid text",user?.email)
 
   }, []);
   useEffect(() => {
+    // Fetch the token from sessionStorage
+    // const token = sessionStorage.getItem('token');
+    console.log(token)
 
-    FetchTeamDetails(user?.email);
-  }, []);
-  // console.log("ne w email",newMemberEmail)
+    if (!token) {
+        setError('Token not found. Please log in.');
+        return;
+    }
+
+    // Send a POST request to the backend to decode the token
+    fetch('http://localhost:8000/user/token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }), // Send token in the body
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch token data. Please log in again.');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            if (data.success) {
+                setUserData(data.data); // Set the decoded user data
+            } else {
+                setError('Invalid token. Please log in again.');
+            }
+        })
+        .catch((err) => {
+            setError(err.message);
+        });
+}, []); 
+useEffect(() => {
+  if (newEmail) {
+      console.log("Fetching team details for email:", newEmail);
+      FetchTeamDetails(newEmail);
+  }
+}, [newEmail]);
+
 
   const updateVisibility = async (newvisibility) => {
     try {
@@ -509,3 +568,4 @@ const TeamManagementPage = () => {
 };
 
 export default TeamManagementPage;
+

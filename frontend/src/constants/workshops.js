@@ -27,7 +27,7 @@ export const workshopsData = [
   {
     id: 1,
     title: "CONVenient-Convolutional Neutral Network Workshop",
-    description: "Learn the basics of the building blocks of Computer Vision, the Convolutional Neural Network WITHOUT the worries of prerequisite coding and machine learning knowledge. We'll look into the inner workings with awesome visualizations and clarity you won't find anywhere else! Finally, implement an End to End CNN Project with your own architecture and deploy the project on Flask.",
+    description: "Learn the basics of the building blocks of Computer Vision, the Convolutional Neural Network WITHOUT the worries of prerequisite coding and machine learning knowledge. We'll look into the inner workings with awesome visualizations and clarity you won't find anywhere else! Finally, implement an End to End CNN Project with you own architecture and deploy the project on Flask.",
     date: "24th January, 2025",
     location: "AB 3",
     time: " 5:30 PM - 8:30 PM",

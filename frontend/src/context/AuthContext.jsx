@@ -18,17 +18,17 @@ export const AuthProvider = ({ children }) => {
         if (token) {
             getProfile(token)
                 .then((response) => {
-                    console.log(response.data.data)
+                    // console.log(response.data.data)
                     // Assuming response contains user details
                     if (response && response.data.data) {
                         setUser(response.data.data);
                     } else {
-                        console.error('Invalid profile response:', response);
+                        // console.error('Invalid profile response:', response);
                         sessionStorage.removeItem('token');
                     }
                 })
                 .catch((error) => {
-                    console.error('Error fetching profile:', error);
+                    // console.error('Error fetching profile:', error);
                     sessionStorage.removeItem('token');
                 })
                 .finally(() => {
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
                 });
         } else {
             setLoading(false); // No token, loading ends
-            console.log('User is logged out.');
+            // console.log('User is logged out.');
             sessionStorage.removeItem('token');
         }
     }, []);
