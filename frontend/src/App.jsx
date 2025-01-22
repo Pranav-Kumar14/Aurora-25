@@ -20,14 +20,12 @@ import Hackathon from './pages/Hackathonmain';
 import Home from './pages/Home';
 import Navbar from './components/navbar';
 import TeamManagementPage from './pages/HackDemo';
-import CreateTeam from './components/Createteam';
 import Developer from "./pages/Developer";
 import Footer from "./components/Footer";
 import WorkshopPage from './pages/WorkshopPage';
 import Speaker from "./pages/Speaker";
 import Ctf from "./pages/Ctf";
 import ForgotPassword from "./pages/ForgotPassword";
-// import { workshopsData } from "./constants/workshops";
 import WorkshopPages from "./pages/workpage/WorkshopPages";
 
 function TermsAndConditions() {
