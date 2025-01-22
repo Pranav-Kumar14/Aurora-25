@@ -1,18 +1,29 @@
 import { useRef } from 'react'
-import icon1 from '../images/workshop1.png'
-import icon2 from '../images/workshop2.jpeg'
-import icon3 from '../images/workshop3.jpg'
-import icon4 from '../images/arpan.jpeg'
-import icon5 from '../images/workshop4.jpg'
-import icon6 from '../images/workshop6.jpg'
-import icon7 from '../images/workshop5.jpg'
+// import icon1 from '../images/workshop1.png'
+// import icon2 from '../images/workshop2.jpeg'
+// import icon3 from '../images/workshop3.jpg'
+// import icon4 from '../images/arpan.jpeg'
+// import icon5 from '../images/workshop4.jpg'
+// import icon6 from '../images/workshop6.jpg'
+// import icon7 from '../images/workshop5.jpg'
 
-import icon8 from '../images/workshop7.jpg'
-import icon9 from '../images/workshop8.jpg'
-import icon10 from '../images/ctf-latest.png'
-import icon11 from '../images/workshop9.jpg'
-import icon12 from '../images/workshop10.jpg'
-import icon13 from '../images/workshop11.jpg'
+// import icon8 from '../images/workshop7.jpg'
+// import icon9 from '../images/workshop8.jpg'
+// import icon10 from '../images/ctf-latest.png'
+// import icon11 from '../images/workshop9.jpg'
+// import icon12 from '../images/workshop10.jpg'
+// import icon13 from '../images/workshop11.jpg'
+import icon1 from "../images/workshop1.png";
+import icon2 from "../images/workshop2.jpeg";
+import icon3 from "../images/workshop3.jpg";
+import icon4 from "../images/workshop4.jpg";
+import icon5 from "../images/workshop5.jpg";
+import icon6 from "../images/workshop6.jpg";
+import icon7 from "../images/workshop7.jpg";
+import icon8 from "../images/workshop8.jpg";
+import icon9 from "../images/workshop9.jpg";
+import icon10 from "../images/workshop10.jpg";
+import icon11 from "../images/workshop11.jpg";
 
 
 
@@ -40,7 +51,7 @@ import { useNavigate } from 'react-router-dom'
 export default function TimelineSection() {
   const navigate = useNavigate();
 
-  const icons = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11,icon12,icon13]
+  const icons = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11]
   const dps = [dp1,dp2,dp3,dp4,dp5,dp6,dp7,dp8,dp9,dp10,dp11,dp12,dp13]
   const scrollContainerRef = useRef(null)
 
@@ -57,8 +68,8 @@ export default function TimelineSection() {
         
         <div 
           ref={scrollContainerRef}
-          className="relative flex gap-20 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-8 pb-4 scroll-smooth"
-          style={{ minHeight: '400px' }}
+          className="relative flex gap-20 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-8 pb-4 scroll-smooth h-[500px]"
+          style={{ Height: '500px' }}
         >
           
           {workshops.map((workshop) => (

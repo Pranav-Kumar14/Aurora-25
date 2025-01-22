@@ -17,7 +17,7 @@ import { addUsers, getProfile, subtractUsers } from "../services/auth";
 import toast from 'react-hot-toast';
 import Workshop1 from "./workpage/Workshop1";
 import BaseUrl from "../BaseUrl";
-import workback from '../images/work_back.png';
+import workback from '/aurora_header.png';
 
 const WorkshopPage = () => {
   const token = sessionStorage.getItem('token');
@@ -181,9 +181,9 @@ const WorkshopPage = () => {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 pt-[150px] sm:pt-[200px] md:pt-[299px] pb-[100px] sm:pb-[150px] md:pb-[250px] font-press-start bg-cover bg-top bg-no-repeat"
-      style={{ backgroundImage: `url(${workback})` }}
-    >
+    className="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 pt-[150px] sm:pt-[200px] md:pt-[299px] pb-[100px] sm:pb-[150px] md:pb-[250px] font-press-start bg-cover bg-top bg-fixed overflow-hidden"
+    style={{ backgroundImage: `url(${workback})` }}
+  >
       {/* Workshop Title */}
       <section className="text-center pb-[410px]">
         <h1 className="text-2xl md:text-5xl lg:text-7xl font-heading font-extrabold text-[40px] lg:pb-[100px] pb-[220px] text-black">

@@ -10,8 +10,8 @@ import SponsorCard from "../components/SponsorCard.jsx";
 import { useMediaQuery } from 'react-responsive';
 
 const Home = () => {
-  const isLaptop = useMediaQuery({ minWidth: 1024 });
-  const isPhone = useMediaQuery({ maxWidth: 1023 });
+  const isLaptop = useMediaQuery({ minWidth: 200 });
+  const isPhone = useMediaQuery({ maxWidth: 1 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +52,7 @@ const Home = () => {
         </div>
 
         {/* Countdown Timer Section */}
-        <div className="py-0 relative z-10 px-4 sm:px-8 md:px-16">
+        <div className="py-0 relative z-10 px-4 sm:px-8 md:px-16 m-auto ">
           <CountdownTimer targetDate={new Date("2025-01-23T00:00:00")} />
         </div>
 
