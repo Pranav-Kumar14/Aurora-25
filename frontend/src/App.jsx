@@ -78,7 +78,6 @@ function App() {
             <Route path="/workshop" element={<WorkshopPage />} />
          <Route path="/workshop/:id" element={<WorkshopPages />} />
             <Route path="/team" element={<TeamManagementPage />} />
-            <Route path="/createteam" element={<CreateTeam />} />
             <Route path="/developer" element={<Developer />} />
             <Route path="/ctf" element={<Ctf />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
