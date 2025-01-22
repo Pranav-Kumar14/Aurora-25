@@ -4,19 +4,19 @@ import { register } from '../services/auth';
 import toast from 'react-hot-toast';
 
 const years = [1, 2, 3, 4];
-const branches = ["Aeronautical", "Automobile", "Biomed", "BioTech", "Chemical", "Civil", "CCE", "CSE", "AIML", "Fintech", "CPS", "DSE", "EEE", "ECE", "ENI", "VLSI", "Industrial", "IT", "MNC", "Mech", "MechX", "NA", "MAHE"];
+const branches = ["Aeronautical", "Automobile", "Biomed", "BioTech", "Chemical", "Civil", "CCE", "CSE", "AIML", "Fintech", "CPS", "DSE", "EEE", "ECE", "ENI", "VLSI", "Industrial", "IT", "MNC", "Mech", "MechX"];
 
 export default function Register() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         fullName: '',
-        username: 'NA',
+        username: '',
         email: '',
         password: '',
         collegeid: '',
         year: '',
-        branch: 'NA',
-        interest: 'NA',
+        branch: '',
+        interest: '',
         phone: '',
     });
 
@@ -85,7 +85,7 @@ export default function Register() {
                             />
                         </div>
 
-                        {/* <div>
+                        <div>
                             <label htmlFor="username" className="block text-md font-medium text-white">
                                 Username
                             </label>
@@ -98,7 +98,7 @@ export default function Register() {
                                 value={formData.username}
                                 onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                             />
-                        </div> */}
+                        </div>
 
                         <div>
                             <label htmlFor="email" className="block text-md font-medium text-white">
@@ -151,7 +151,7 @@ export default function Register() {
                             </select>
                         </div>
 
-                        {/* <div>
+                        <div>
                             <label htmlFor="branch" className="block text-md font-medium text-white">
                                 Branch
                             </label>
@@ -170,7 +170,7 @@ export default function Register() {
                                     </option>
                                 ))}
                             </select>
-                        </div> */}
+                        </div>
 
                         <div>
                             <label htmlFor="phone" className="block text-md font-medium text-white">
@@ -187,7 +187,7 @@ export default function Register() {
                             />
                         </div>
 
-                        {/* <div>
+                        <div>
                             <label htmlFor="interest" className="block text-md font-medium text-white">
                                 Interest
                             </label>
@@ -200,7 +200,7 @@ export default function Register() {
                                 value={formData.interest}
                                 onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                             />
-                        </div> */}
+                        </div>
 
                         <div>
                             <label htmlFor="password" className="block text-md font-medium text-white">

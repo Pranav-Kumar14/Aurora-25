@@ -37,7 +37,7 @@ import {workshops} from '../constants/workshops'
 import { useNavigate } from 'react-router-dom'
 
 
-export default function TimelineSection({ workshops }) {
+export default function TimelineSection() {
   const navigate = useNavigate();
 
   const icons = [icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11,icon12,icon13]

@@ -41,6 +41,8 @@ import Workshop8 from "./pages/workpage/Workshop8";
 import Workshop9 from "./pages/workpage/Workshop9";
 import Workshop10 from "./pages/workpage/Workshop10";
 import Workshop11 from "./pages/workpage/Workshop11";
+import { workshopsData } from "./constants/workshops";
+import WorkshopPages from "./pages/workpage/WorkshopPages";
 
 function TermsAndConditions() {
   return (
@@ -88,9 +90,10 @@ function App() {
             <Route path="/speaker" element={<Speaker />} />
             <Route path="/hackathon" element={<Hackathon />} />
             <Route path="/workshop" element={<WorkshopPage />} />
+         <Route path="/workshop/:id" element={<WorkshopPages />} />
             <Route path="/fetch" element={<Teamlogin />} />
             <Route path="/fetchteam" element={<TeamManagement />} />
-            <Route path="/fetchnew" element={<TeamManagementPage />} />
+            <Route path="/team" element={<TeamManagementPage />} />
             <Route path="/createteam" element={<CreateTeam />} />
             <Route path="/developer" element={<Developer />} />
             <Route path="testing" element={<Carousel />} />
