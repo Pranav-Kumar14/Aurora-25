@@ -186,11 +186,11 @@ const WorkshopPage = () => {
     >
       {/* Workshop Title */}
       <section className="text-center pb-[410px]">
-        <h1 className="text-2xl md:text-5xl lg:text-7xl font-heading font-extrabold text-[40px] lg:pb-[100px] pb-[220px] text-black">
+        <h1 className="text-2xl md:text-5xl lg:text-7xl font-heading font-extrabold text-[40px] lg:pb-[100px] pb-[220px] text-white">
           WORKSHOPS
         </h1>
 
-        <p className="text-2xl max-w-3xl mx-auto font-body leading-relaxed">
+        <p className="text-2xl max-w-3xl mx-auto font-body leading-relaxed text-white">
           Get Ready To Embark On An Unforgettable Journey Into The Realms Of Technology with TechWeek: Aurora, Brought To You By ISTE Manipal.
         </p>
       </section>
@@ -208,7 +208,7 @@ const WorkshopPage = () => {
           setCheck(false);
         }}
       >
-        <button className="bg-[#519984] px-6 py-2 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]">
+        <button className="bg-[#519984] px-6 py-2 rounded-full text-white font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]">
           Change Preference
         </button>
 

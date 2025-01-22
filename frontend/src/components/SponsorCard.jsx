@@ -22,7 +22,7 @@ const HorizontalScrollCarousel = () => {
       if (window.innerWidth <= 768) {
         setScrollRange(["1%", "-110%"]);
       } else {
-        setScrollRange(["1%", "-31%"]);
+        setScrollRange(["1%", "-51%"]);
       }
     };
 
@@ -51,7 +51,7 @@ const Card = ({ card }) => {
   return (
     <div
       key={card.id}
-      className="group relative h-[300px] w-[300px] overflow-hidden bg-transparent rounded-3xl"
+      className="group relative h-[300px] w-[420px] overflow-hidden bg-transparent rounded-3xl"
     >
       <div
         style={{
@@ -70,7 +70,7 @@ export default Example;
 
 const cards = [
   {
-    url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396552/sp2_vmhawx.jpg",
+    url: "https://res.cloudinary.com/daja3mrty/image/upload/e_improve,w_200,h_160,c_thumb,g_auto/v1737486420/radhamedicals_bjf9mt.jpg",
     title: "Title 1",
     id: 1,
   },

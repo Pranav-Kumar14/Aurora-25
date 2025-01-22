@@ -83,7 +83,7 @@ const TiltCard = () => {
                         className="text-center text-lg sm:text-xl md:text-2xl font-heading text-white"
                     >
                         <p className="text-3xl mb-10 font-heading">
-                        Error 456!
+                        DEVSPRINT
                         </p>
                         
                         <u><p className="text-xl font-body">
