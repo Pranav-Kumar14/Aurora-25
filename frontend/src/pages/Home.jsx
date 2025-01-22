@@ -38,14 +38,16 @@ const Home = () => {
     {isLaptop && (
       <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
         <div className="relative w-full h-[80vh] sm:h-[85vh] lg:h-screen z-1">
-          <video
-            className="parallax-video fixed top-0 left-0 w-full h-full object-cover z-0"
-            src="https://res.cloudinary.com/dopqveduc/video/upload/v1737297038/homebg_x66y59.mp4"
-            autoPlay
-            loop
-            muted
-            type="video/mp4"
-          ></video>
+        <video
+  className="parallax-video fixed top-0 left-0 w-full h-full object-cover z-0"
+  src="https://res.cloudinary.com/dopqveduc/video/upload/v1737297038/homebg_x66y59.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  type="video/mp4"
+></video>
+
           <div className="absolute inset-0 flex items-center justify-center z-10">
             <Hero />
           </div>
