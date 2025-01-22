@@ -10,7 +10,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <nav className="pt-2 bg-gradient-to-r from-[#0f0d39] to-[#201867] sticky top-0 z-50">
+    <nav className="pt-2 bg-[#201867]/30 backdrop-blur-md shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between h-16">
           {/* Logo on the left */}
@@ -60,7 +60,7 @@ function Navbar() {
               href="/workshop"
               className="lg:px-3 md:px-2 py-2 rounded-full text-sm text-[#E67E22] font-medium hover:text-white hover:bg-[#E67E22] transition duration-300"
             >
-              <p className="font-heading">WORKSHOP</p>
+              <p className="font-heading">WORKSHOPS</p>
             </a>
           </div>
 
@@ -109,7 +109,7 @@ function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-gradient-to-r from-[#0f0d39] to-[#201867]">
+        <div className="md:hidden  bg-[#201867]/30 backdrop-blur-md shadow-md">
           <div className="space-y-1 px-2 pt-2 pb-3 flex flex-col justify-center">
             <a
               href="/home"
