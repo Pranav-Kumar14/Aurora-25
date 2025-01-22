@@ -1,20 +1,20 @@
-import icon1 from "../images/workshop1.png";
-import icon2 from "../images/workshop2.jpeg";
-import icon3 from "../images/workshop3.jpg";
-import icon4 from "../images/workshop4.jpg";
-import icon5 from "../images/workshop5.jpg";
-import icon6 from "../images/workshop6.jpg";
-import icon7 from "../images/workshop7.jpg";
-import icon8 from "../images/workshop8.jpg";
-import icon9 from "../images/workshop9.jpg";
-import icon10 from "../images/workshop10.jpg";
-import icon11 from "../images/workshop11.jpg";
+import icon1 from '../images/acm.png'
+import icon2 from '../images/dronaid.jpeg'
+import icon3 from '../images/leanin.jpeg'
+import icon8 from '../images/iste.png'
+import icon4 from '../images/varise.png'
+import icon6 from '../images/tacm.jpeg'
+import icon7 from '../images/adg_logo.jpg'
+import icon10 from '../images/iste.png'
+import icon5 from '../images/mist.jpeg'
+import icon9 from '../images/Blank.jpeg'
+import icon11 from '../images/ACMW_LOGO.png'
 export const workshops = [
-  { id: 1, title: "Convenient", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
+  { id: 1, title: "CONVenient-Convolutional Neutral Network Workshop", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
   { id: 2, title: "Fusion 360 Generative Design and PCB Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
   { id: 3, title: "UI/UX Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
-  { id: 4, title: "GameCraft: Intro to VR and GameDev", date: "26th January, 2025", time: "10:00 AM - 1:00 PM"},
-  { id: 5, title: "HackLinux: Cryptography and Web Exploitation ", date: "27th January, 2025", time: "4:30 - 5:30 PM"},
+  { id: 4, title: "GameCraft: Intro to VR and GameDev", date: "26th January, 2025", time: "2:30 - 5:30 PM"},
+  { id: 5, title: "HackLinux: Cryptography and Web Exploitation ", date: "27th January, 2025", time: "5:30 - 8:30 PM"},
   { id: 6, title: "StarTrail: Stargazing and Astrophotography workshop", date: "26th January, 2025", time: "2:30 PM - 5:30 PM"},
   { id: 7, title: "App Development: App Dev and Backend Workshop", date: "28th January, 2025", time: "5:30 - 8:30 PM"},
   { id: 8, title: "Crafting the Web:  A Beginner's Guide to WebDev", date: "29th January, 2025", time: "5:30 - 8:30 PM"},
@@ -26,11 +26,11 @@ export const workshops = [
 export const workshopsData = [
   {
     id: 1,
-    title: "Convenient",
+    title: "CONVenient-Convolutional Neutral Network Workshop",
     description: "Learn the basics of the building blocks of Computer Vision, the Convolutional Neural Network WITHOUT the worries of prerequisite coding and machine learning knowledge. We'll look into the inner workings with awesome visualizations and clarity you won't find anywhere else! Finally, implement an End to End CNN Project with your own architecture and deploy the project on Flask.",
     date: "24th January, 2025",
     location: "AB 3",
-    time: "5:30 PM - 8:30 PM",
+    time: " 5:30 PM - 8:30 PM",
     clubLogo: icon1, 
     clubInfo: '"The ACM Manipal Chapter is a technical club that hosts events like Codentine (coding contest), Epoch (ML contest), as well as MIT Open and Cryptic Finds in TechTatva. We focus on coding, AI/ML, development, and other technical domains, offering opportunities to learn, grow, and collaborate on impactful projects."',
     buttonText: "Go To Workshop Page",
@@ -65,7 +65,7 @@ export const workshopsData = [
     description: "Dive into the world of VR game development with our interactive workshop on creating a VR Basketball Arcade Game! Learn the essentials of game environment setup, realistic physics, and intuitive player interactions. With hands-on guidance, you'll craft a seamless VR experience from start menus to hoop collisions, all while testing your skills in real-time. Whether you're a gamer, developer, or tech enthusiast, this workshop promises an exciting blend of creativity and innovation.Don't just play create it!!",
     date: "26th January, 2025",
     location: "AB 3, 305",
-    time: "3:30 pm onwards",
+    time: "2:30 - 5:30 PM",
     clubLogo: icon4, 
     clubInfo: "Project V.ARISE- Coming Soon...",
     buttonText: "Go To Workshop Page",
@@ -76,7 +76,7 @@ export const workshopsData = [
     description: "Unlock the art of cyber warfare! Join our HACKLINUX workshop on Cryptography and Web Exploitation. Master ciphers, launch attacks, wield Burp Suite, and outsmart using SQL injections. Get hands-on and elevate your hacking game!",
     date: "27th January, 2025",
     location: "AB 3",
-    time: "2:30 pm onwards",
+    time: "5:30 - 8:30 PM",
     clubLogo: icon5, 
     clubInfo: "MIST is a vibrant community of cybersecurity enthusiasts dedicated to exploring ethical hacking, cryptography, and web exploitation. Through workshops, CTFs, and projects, we equip members with the skills to tackle real-world security challenges. Join us to dive into the fascinating world of information security!",
     buttonText: "Go To Workshop Page",
@@ -87,7 +87,7 @@ export const workshopsData = [
     description: "Interested in astrophotography and stargazing? Then here is your opportunity to discover the cosmos like never before with our two-day workshop! Topics like telescope basics and handling, astrophotography techniques especially using smartphones and image stacking will be covered in these sessions along with a mesmerizing stargazing session. Join us to explore and connect with the universe!",
     date: "26th January, 2025",
     location: "Athletic Ground",
-    time: "9:00 pm onwards",
+    time: "2:30 PM - 5:30 PM",
     clubLogo: icon6,
     clubInfo: '"TACM - Ever wondered how captivating images of stars, nebulae, and galaxies are produced? Learn how astronomical data is stacked to create stunning visuals. Join our workshop to understand how basic stacking for stargazing works!"',
     buttonText: "Go To Workshop Page",
@@ -120,7 +120,7 @@ export const workshopsData = [
     description: "Engage in the interesting Tech-Based Debates.",
     date: "26th January, 2025",
     location: "AB 3, 305",
-    time: "3:30 pm onwards",
+    time: "5:30 PM - 8:30 PM",
     clubLogo: icon9,
     clubInfo: '"Welcome to MIT\'s official Public Speaking Club, Blank101, the center of eloquence, where words take flight and voices ring out with assurance. We\'re not just a club; we\'re a thriving community of individuals who share a passion for making an impact. Beyond public speaking, we also delve into the realm of written expression, crafting compelling articles, and thought-provoking pieces that engage and enlighten."',
     buttonText: "Go To Workshop Page",
