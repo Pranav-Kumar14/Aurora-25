@@ -13,7 +13,7 @@ export const login = async (data) => {
 
 export const getProfile = async (token) => {
     const payload = await api.post('/user/token', { token });
-    console.log(payload);
+    // console.log(payload);
     return payload;
 };
 

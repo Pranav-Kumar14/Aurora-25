@@ -62,7 +62,7 @@ function ContactUs() {
 
 function App() {
   return (
-    <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
+    <div className="bg-[#000518]">
       <Router>
         <Navbar />
         <AuthProvider>

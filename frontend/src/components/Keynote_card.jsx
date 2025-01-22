@@ -5,7 +5,7 @@ import speakerImage from "../images/arpan.jpeg";
 const KeynoteSpeakerCard = () => {
   return (
     <div
-      className="relative rounded-xl shadow-md p-4 w-lg max-w-lg mx-auto text-white bg-transparent border-2 border-blue-500 z-10" // 
+      className="mt-10 relative rounded-xl shadow-md p-4 w-lg max-w-lg mx-auto text-white bg-transparent border-2 border-blue-500 z-10" // 
       style={{
         fontFamily: 'monospace',
         boxShadow: '0 0 15px rgba(0, 0, 255, 0.7)', // Blue glow effect
@@ -27,6 +27,9 @@ const KeynoteSpeakerCard = () => {
         >
           {`{Arpan Garg}`}
         </h1>
+        <p className='text-lg text-center m-auto'> Co-Founder & CTO at Exa Protocol</p>
+        <p className='text-[20px] text-center mt-3'>Founder of Commudle</p>
+        <p className='text-center'>Google for Startups Accelarator</p>
       </div>
       {/* Button */}
       <div className="flex justify-center pb-4 text-center mt-6">

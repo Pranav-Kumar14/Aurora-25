@@ -8,6 +8,7 @@ import Timeline from "../components/Timeline";
 import { workshops } from "../constants/timeline";
 import SponsorCard from "../components/SponsorCard.jsx";
 import { useMediaQuery } from 'react-responsive';
+import homeimg from '/home.jpg';
 
 const Home = () => {
   const isLaptop = useMediaQuery({ minWidth: 1024 });
@@ -36,11 +37,11 @@ const Home = () => {
   return (
     <>
     {isLaptop && (
-      <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
+      <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867] bg-cover bg-top bg-fixed overflow-hidden z-50 top-0" style={{ backgroundImage: `url(${homeimg})` }}>
         <div className="relative w-full h-[80vh] sm:h-[85vh] lg:h-screen z-1">
           <video
             className="parallax-video fixed top-0 left-0 w-full h-full object-cover z-0"
-            src="https://res.cloudinary.com/dopqveduc/video/upload/v1737297038/homebg_x66y59.mp4"
+            // src="https://res.cloudinary.com/dopqveduc/video/upload/v1737297038/homebg_x66y59.mp4"
             autoPlay
             loop
             muted
@@ -122,7 +123,7 @@ const Home = () => {
       </div>
     )}
     {isPhone && (
-      <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
+      <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867] bg-cover bg-top bg-fixed overflow-hidden z-50 top-0" style={{ backgroundImage: `url(${homeimg})` }}>
             <div className='mt-6 py-6'>
                 <Hero />
             </div>
