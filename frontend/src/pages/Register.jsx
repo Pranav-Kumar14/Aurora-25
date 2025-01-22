@@ -7,16 +7,20 @@ const years = [1, 2, 3, 4];
 const branches = ["Aeronautical", "Automobile", "Biomed", "BioTech", "Chemical", "Civil", "CCE", "CSE", "AIML", "Fintech", "CPS", "DSE", "EEE", "ECE", "ENI", "VLSI", "Industrial", "IT", "MNC", "Mech", "MechX"];
 
 export default function Register() {
+    const generateCollegeId = () => {
+        return Date.now().toString().slice(-9); // Get the last 9 characters of the timestamp
+    };
+
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         fullName: '',
-        username: '',
+        username: generateCollegeId(),
         email: '',
         password: '',
-        collegeid: '',
+        collegeid: generateCollegeId(),
         year: '',
-        branch: '',
-        interest: '',
+        branch: 'NA',
+        interest: 'NA',
         phone: '',
     });
 
@@ -85,7 +89,7 @@ export default function Register() {
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label htmlFor="username" className="block text-md font-medium text-white">
                                 Username
                             </label>
@@ -98,7 +102,7 @@ export default function Register() {
                                 value={formData.username}
                                 onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                             />
-                        </div>
+                        </div> */}
 
                         <div>
                             <label htmlFor="email" className="block text-md font-medium text-white">
@@ -115,7 +119,7 @@ export default function Register() {
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label htmlFor="collegeid" className="block text-md font-medium text-white">
                                 Registration Number
                             </label>
@@ -128,7 +132,7 @@ export default function Register() {
                                 value={formData.collegeid}
                                 onChange={(e) => setFormData({ ...formData, collegeid: e.target.value })}
                             />
-                        </div>
+                        </div> */}
 
                         <div>
                             <label htmlFor="year" className="block text-md font-medium text-white">
@@ -151,7 +155,7 @@ export default function Register() {
                             </select>
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label htmlFor="branch" className="block text-md font-medium text-white">
                                 Branch
                             </label>
@@ -170,7 +174,7 @@ export default function Register() {
                                     </option>
                                 ))}
                             </select>
-                        </div>
+                        </div> */}
 
                         <div>
                             <label htmlFor="phone" className="block text-md font-medium text-white">
@@ -187,7 +191,7 @@ export default function Register() {
                             />
                         </div>
 
-                        <div>
+                        {/* <div>
                             <label htmlFor="interest" className="block text-md font-medium text-white">
                                 Interest
                             </label>
@@ -200,7 +204,7 @@ export default function Register() {
                                 value={formData.interest}
                                 onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                             />
-                        </div>
+                        </div> */}
 
                         <div>
                             <label htmlFor="password" className="block text-md font-medium text-white">

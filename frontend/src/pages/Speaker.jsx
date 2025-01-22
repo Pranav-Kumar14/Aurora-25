@@ -3,13 +3,12 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import BaseUrl from "../BaseUrl";
-import { getProfile, updateProfile } from "../services/auth";
+import { updateProfile } from "../services/auth";
 import Calendar from "../images/calendar.png";
 import Clock from "../images/clock.png";
 import Arpan from "../images/Arpan.jpeg";
 import Location from "../images/Location.png";
 import Linkedin from "../images/lkdin.png";
-import Github from "../images/git.png";
 
 function Speaker() {
   const { user } = useAuth();
@@ -106,10 +105,7 @@ function Speaker() {
         {/* Social Buttons */}
         <div className="flex gap-6">
           <div className="w-10 h-10">
-            <img src= {Linkedin} alt="LinkedIn" className="w-full h-full object-contain" />
-          </div>
-          <div className="w-10 h-10">
-            <img src= {Github} alt="GitHub" className="w-full h-full object-contain" />
+          <a href="https://www.linkedin.com/in/arpansac/" target="_blank"><img src= {Linkedin} alt="LinkedIn" className="w-full h-full object-contain" /></a>
           </div>
         </div>
       </div>
@@ -157,14 +153,14 @@ function Speaker() {
 
     {/* Register Button */}
     <div className="flex justify-center mt-8">
-      <button
-        onClick={handleRegister}
+      <a
+        href="https://forms.gle/MvGmu8J5n2QZCpxP8" target="_blank"
         className={`px-6 py-3 rounded-lg text-lg font-bold bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-purple-600 hover:to-pink-500 transition ${
           isRegistered ? "bg-green-500 cursor-not-allowed" : ""
         }`}
       >
         {isRegistered ? "Registered" : "Register"}
-      </button>
+      </a>
     </div>
   </div>
 </div>

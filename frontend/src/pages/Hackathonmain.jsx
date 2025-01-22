@@ -77,7 +77,7 @@ const Home = () => {
           repeat={Infinity}
         />
         <button className="bg-[#A00F0F] ring-2 ring-white rounded-full shadow-[0_0_15px_4px_rgba(255,255,255,0.5)] text-white px-6 py-3  hover:bg-[#A00F0F] transition-all transform hover:scale-105 duration-300 ease-in-out mt-12">
-  Register Now
+  COMING SOON
 </button>
 
         <HackathonTimer />

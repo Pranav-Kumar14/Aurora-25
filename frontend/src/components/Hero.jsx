@@ -9,12 +9,12 @@ function Hero() {
     <section className="text-white py-16 sm:py-20 lg:py-24">
       <div className="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold z-10 mb-6 sm:mb-8 lg:mb-10">
+        <h1 className="lg:text-6xl text-3xl font-heading font-bold z-10 mb-6 sm:mb-8 lg:mb-10">
           <BubbleText text="Aurora '25" />
         </h1>
 
         {/* Description */}
-        <p className="text-base sm:text-lg lg:text-xl font-sans leading-relaxed sm:leading-relaxed lg:leading-loose mb-8 sm:mb-10 lg:mb-12">
+        <p className="lg:text-xl text-md font-sans leading-relaxed sm:leading-relaxed lg:leading-loose mb-8 sm:mb-10 lg:mb-12">
         Get ready to embark on an unforgettable journey into the realms of technology with <b>TechWeek: Aurora</b>, brought to you by ISTE Manipal. This year, we're taking it to the next level with an incredible lineup of student workshops that cover a wide range of technical domains, from software to collaborating with esteemed student bodies from MIT.
         </p>
 

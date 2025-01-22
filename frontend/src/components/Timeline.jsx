@@ -93,9 +93,9 @@ export default function TimelineSection() {
                   before:absolute before:inset-0 before:bg-gradient-to-b before:from-[#0ea5e9]/5 before:to-transparent before:rounded-xl before:opacity-0 before:transition-opacity group-hover:before:opacity-100"
                 >
                   <div className="relative w-full h-40 mb-4 overflow-hidden rounded-lg"
-                  onClick={()=>{
-                    navigate(`/Workshop${workshop.id}`)
-                  }}
+                  // onClick={()=>{
+                  //   navigate(`/Workshop${workshop.id}`)
+                  // }}
                   >
                     <img 
                       src={icons[`${workshop.id-1}`]}

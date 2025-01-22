@@ -10,8 +10,8 @@ import SponsorCard from "../components/SponsorCard.jsx";
 import { useMediaQuery } from 'react-responsive';
 
 const Home = () => {
-  const isLaptop = useMediaQuery({ minWidth: 200 });
-  const isPhone = useMediaQuery({ maxWidth: 1 });
+  const isLaptop = useMediaQuery({ minWidth: 1024 });
+  const isPhone = useMediaQuery({ maxWidth: 1023 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,23 +38,21 @@ const Home = () => {
     {isLaptop && (
       <div className="bg-gradient-to-r from-[#0f0d39] to-[#201867]">
         <div className="relative w-full h-[80vh] sm:h-[85vh] lg:h-screen z-1">
-        <video
-  className="parallax-video fixed top-0 left-0 w-full h-full object-cover z-0"
-  src="https://res.cloudinary.com/dopqveduc/video/upload/v1737297038/homebg_x66y59.mp4"
-  autoPlay
-  loop
-  muted
-  playsInline
-  type="video/mp4"
-></video>
-
+          <video
+            className="parallax-video fixed top-0 left-0 w-full h-full object-cover z-0"
+            src="https://res.cloudinary.com/dopqveduc/video/upload/v1737297038/homebg_x66y59.mp4"
+            autoPlay
+            loop
+            muted
+            type="video/mp4"
+          ></video>
           <div className="absolute inset-0 flex items-center justify-center z-10">
             <Hero />
           </div>
         </div>
 
         {/* Countdown Timer Section */}
-        <div className="py-0 relative z-10 px-4 sm:px-8 md:px-16 m-auto ">
+        <div className="py-0 relative z-10 px-4 sm:px-8 md:px-16">
           <CountdownTimer targetDate={new Date("2025-01-23T00:00:00")} />
         </div>
 
@@ -152,6 +150,13 @@ const Home = () => {
                 </p>
 
             <HackathonCard />
+            </div>
+
+            <div className="lg:py-12 lg:mb-6 relative z-10">
+              <p className="font-heading text-center text-white text-2xl sm:text-3xl lg:text-5xl lg:pb-5 my-1">
+                SPONSORS
+              </p>
+              <SponsorCard />
             </div>
 
 

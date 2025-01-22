@@ -85,11 +85,15 @@ const CtfPage = () => {
       />
       
       <div className="relative z-10 w-full max-w-5xl mx-auto">
-        <div className="mb-8">
+        <div className="mb-2">
           <CtfHero />
         </div>
 
-        <div className="max-w-4xl mx-auto my-8 p-4 sm:p-6 md:p-10 rounded-2xl bg-transparent text-white shadow-xl space-y-6 sm:space-y-10">
+        <div className="lg:h-1 h-40">
+
+        </div>
+
+        <div className="max-w-4xl mx-auto mb-8 p-4 sm:p-6 md:p-10 rounded-2xl bg-transparent text-white shadow-xl space-y-6 sm:space-y-10">
           <h1 className="text-2xl sm:text-3xl font-press-start text-center mb-6">
             Event Details
           </h1>
