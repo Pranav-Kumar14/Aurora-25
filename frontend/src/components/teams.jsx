@@ -42,10 +42,10 @@ const Teams = ({ onClose }) => {
     };
 
     return (
-        <div className="w-full h-full flex flex-col items-center justify-center text-white p-8">
-            <div className="w-full max-w-md bg-[#451A7A] p-6 rounded-lg shadow-lg">
+        <div className="w-full h-full flex flex-col items-center justify-center text-black p-8">
+            <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
                 <div className="flex justify-between items-center">
-                    <h2 className="text-2xl font-bold text-white">Create a Team</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-black">Create a Team</h2>
                     <button
                         onClick={onClose}
                         className="text-white bg-red-500 px-3 py-1 rounded-md hover:bg-red-700"
@@ -102,7 +102,7 @@ const Teams = ({ onClose }) => {
 
                     <button
                         type="submit"
-                        className="w-full bg-[#6932E2] text-white py-2 px-4 rounded-lg hover:bg-[#361c6e] transition duration-300"
+                        className="w-full bg-white text-black py-2 px-4 rounded-lg hover:bg-black-400 border-4 border-black transition duration-300"
                     >
                         Create Team
                     </button>

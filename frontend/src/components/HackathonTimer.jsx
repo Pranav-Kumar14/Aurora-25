@@ -33,9 +33,9 @@ const HackathonTimer = () => {
   ].map((unit, index) => (
     <div
       key={index}
-      className="flex flex-col items-center p-4 text-xs bg-gradient-to-br from-[#1c1f3a] to-[#2a2d4a] rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+      className="flex flex-col items-center p-4 text-xs bg-gradient-to-br from-[#1c1f3a] to-[#2a2d4a] rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 mt-12 "
     >
-      <span className="font-chakrapetch text-[32px] md:text-5xl pt-2">
+      <span className="font-chakrapetch text-[32px] md:text-5xl pt-2 ">
         {String(unit.value).padStart(2, '0')}
       </span>
       <span className="text-xs md:text-base mt-2 pt-2 uppercase tracking-wide text-gray-400">

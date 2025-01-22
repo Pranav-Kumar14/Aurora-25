@@ -164,6 +164,9 @@ const joinTeam = async (req, res) => {
 
 const teamLists = async (req, res) => {
  const {email}= req.query;
+ try {
+  
+
   if (email) {
     const user = await User.findOne({ email });
     if (!user) {
@@ -192,8 +195,8 @@ const teamLists = async (req, res) => {
       success: false,
       message: "User is not a leader or a member of any team.",
     });
-  } else {
-    console.log("Error")
+  }  } catch (error) {
+  console.log("error")
   }
 };
 const teamList = async (req, res) => {

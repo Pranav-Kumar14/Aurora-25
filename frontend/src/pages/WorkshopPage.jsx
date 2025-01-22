@@ -186,7 +186,7 @@ const WorkshopPage = () => {
     >
       {/* Workshop Title */}
       <section className="text-center pb-[410px]">
-        <h1 className="lg:text-7xl font-heading font-extrabold text-[40px] lg:pb-[100px] pb-[220px] text-black">
+        <h1 className="text-2xl md:text-5xl lg:text-7xl font-heading font-extrabold text-[40px] lg:pb-[100px] pb-[220px] text-black">
           WORKSHOPS
         </h1>
 
