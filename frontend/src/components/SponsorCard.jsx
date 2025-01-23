@@ -1,107 +1,127 @@
-import { motion, useTransform, useScroll } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-const Example = () => {
-  return (
-    <div className="">
-      <HorizontalScrollCarousel />
-    </div>
-  );
-};
-
-const HorizontalScrollCarousel = () => {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  const [scrollRange, setScrollRange] = useState(["1%", "-100%"]);
+const SponsorsSection = () => {
+  const containerRef = useRef(null);
+  const [cards, setCards] = useState([
+    {
+      url: "https://res.cloudinary.com/daja3mrty/image/upload/e_improve,w_200,h_160,c_thumb,g_auto/v1737486420/radhamedicals_bjf9mt.jpg",
+      title: "Title 1",
+      id: 1,
+    },
+    {
+      url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp1_c5whux.png",
+      title: "Title 2",
+      id: 2,
+    },
+    {
+      url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp6_ptjjoh.png",
+      title: "Title 3",
+      id: 3,
+    },
+    {
+      url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb-2_mi7jpa.jpg",
+      title: "Title 4",
+      id: 4,
+    },
+    {
+      url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp5_w92uou.jpg",
+      title: "Title 5",
+      id: 5,
+    },
+    {
+      url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb-1_en9eof.jpg",
+      title: "Title 6",
+      id: 6,
+    },
+    {
+      url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb3_ungkna.jpg",
+      title: "Title 7",
+      id: 7,
+    },
+  ]);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setScrollRange(["1%", "-110%"]);
-      } else {
-        setScrollRange(["1%%", "-100%"]);
+    const autoScroll = () => {
+      if (containerRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+
+        if (scrollLeft + clientWidth >= scrollWidth) {
+          // Reset scroll to the start
+          containerRef.current.scrollTo({ left: 0 });
+        } else {
+          // Scroll a small distance for a smooth effect
+          containerRef.current.scrollBy({ left: 1 });
+        }
       }
     };
 
-    handleResize(); // initial check
-    window.addEventListener("resize", handleResize);
+    let animationFrameId;
 
-    return () => window.removeEventListener("resize", handleResize);
+    const smoothScroll = () => {
+      autoScroll();
+      animationFrameId = requestAnimationFrame(smoothScroll); // Continuous smooth scroll
+    };
+
+    smoothScroll(); // Start scrolling
+    return () => cancelAnimationFrame(animationFrameId); // Cleanup on unmount
   }, []);
 
-  const x = useTransform(scrollYProgress, [0, 1], scrollRange);
+  // Clone cards for infinite scroll
+  useEffect(() => {
+    if (containerRef.current) {
+      const handleScroll = () => {
+        const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+
+        if (scrollLeft + clientWidth >= scrollWidth - 1) {
+          // Append cards when nearing the end
+          setCards((prevCards) => [...prevCards, ...prevCards]);
+        }
+      };
+
+      containerRef.current.addEventListener("scroll", handleScroll);
+      return () => containerRef.current.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh]">
-      <div className="sticky top-0 flex h-screen items-center rounded-lg overflow-hidden bg-transparent">
-        <motion.div style={{ x }} className="flex gap-4">
-          {cards.map((card) => {
-            return <Card card={card} key={card.id} />;
-          })}
-        </motion.div>
+    <section className="relative bg-transparent py-10">
+      <div
+        ref={containerRef}
+        className="flex overflow-x-auto whitespace-nowrap gap-4"
+        style={{
+          scrollbarWidth: "none", // For Firefox
+          msOverflowStyle: "none", // For IE and Edge
+        }}
+      >
+        <style>
+          {`
+            /* Hide scrollbar for Chrome, Safari, and Edge */
+            .flex::-webkit-scrollbar {
+              display: none;
+            }
+          `}
+        </style>
+        {cards.map((card, index) => (
+          <motion.div
+            key={index}
+            className="flex-shrink-0 h-[150px] w-[200px] sm:h-[200px] sm:w-[300px] md:h-[250px] md:w-[350px] lg:h-[300px] lg:w-[400px] rounded-lg overflow-hidden bg-gray-100"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div
+              style={{
+                backgroundImage: `url(${card.url})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              className="h-full w-full"
+            ></div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 };
 
-const Card = ({ card }) => {
-  return (
-    <div
-      key={card.id}
-      className="group relative h-[300px] w-[420px] overflow-hidden bg-transparent rounded-3xl"
-    >
-      <div
-        style={{
-          backgroundImage: `url(${card.url})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-55"
-      ></div>
-      <div className="absolute inset-0 z-10 grid place-content-center"></div>
-    </div>
-  );
-};
-
-export default Example;
-
-const cards = [
-  {
-    url: "https://res.cloudinary.com/daja3mrty/image/upload/e_improve,w_200,h_160,c_thumb,g_auto/v1737486420/radhamedicals_bjf9mt.jpg",
-    title: "Title 1",
-    id: 1,
-  },
-  {
-    url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp1_c5whux.png",
-    title: "Title 2",
-    id: 2,
-  },
-  {
-    url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp6_ptjjoh.png",
-    title: "Title 3",
-    id: 3,
-  },
-  {
-    url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb-2_mi7jpa.jpg",
-    title: "Title 4",
-    id: 4,
-  },
-  {
-    url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp5_w92uou.jpg",
-    title: "Title 5",
-    id: 5,
-  },
-  {
-    url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb-1_en9eof.jpg",
-    title: "Title 6",
-    id: 6,
-  },
-  {
-    url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb3_ungkna.jpg",
-    title: "Title 7",
-    id: 7,
-  },
-];
+export default SponsorsSection;

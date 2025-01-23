@@ -9,6 +9,7 @@ import { workshops } from "../constants/timeline";
 import SponsorCard from "../components/SponsorCard.jsx";
 import { useMediaQuery } from 'react-responsive';
 import homeimg from '/home.jpg';
+import SponsorsSection from "../components/SponsorCard.jsx";
 
 const Home = () => {
   const isLaptop = useMediaQuery({ minWidth: 1024 });
@@ -89,7 +90,7 @@ const Home = () => {
           <p className="font-heading text-center text-white text-2xl sm:text-3xl lg:text-5xl lg:pb-5 my-1">
             SPONSORS
           </p>
-          <SponsorCard />
+          <SponsorsSection/>
         </div>
 
         {/* footer */}
