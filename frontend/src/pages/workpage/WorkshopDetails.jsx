@@ -6,6 +6,7 @@ const WorkshopDetails = ({
   title,
   description,
   date,
+  slots,
   location,
   time,
   clubLogo,
@@ -38,62 +39,82 @@ const WorkshopDetails = ({
             {description}
           </p>
           <div className="mt-6 flex flex-wrap justify-center items-center gap-6 lg:gap-8 text-center">
-            {/* Date */}
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-              <p className="font-semibold text-sm lg:text-base text-[#EAEAEA] font-body">{date}</p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
+  {slots.map((slot, index) => (
+    <div
+      key={index}
+      className="bg-[rgba(255,255,255,0.08)] border border-[#EAEAEA] rounded-lg p-4 shadow-md "
+    >
+      {/* Slot Header */}
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg text-orange-400 font-semibold">Day {slot.day}</h3>
+        <span className="text-sm text-[#EAEAEA]">Slot {index + 1}</span>
+      </div>
 
-            {/* Location */}
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 sm:h-6 sm:w-6 text-green-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17.657 16.657L13.414 12l4.243-4.243a4 4 0 00-5.657-5.657L7.757 6.343A4 4 0 005.1 9.757l4.242 4.243-4.243 4.243a4 4 0 105.657 5.657L16.657 17.657a4 4 0 005.657-5.657z"
-                />
-              </svg>
-              <p className="font-semibold text-[#EAEAEA] text-sm lg:text-base font-body">{location}</p>
-            </div>
+      {/* Slot Details */}
+      <div className="space-y-3">
+        {/* Date */}
+        <div className="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-blue-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
+          </svg>
+          <p className="text-sm text-[#EAEAEA]">Date: {slot.date}</p>
+        </div>
 
-            {/* Time */}
-            <div className="flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 sm:h-6 sm:w-6 text-purple-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4l3 3m6-7a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <p className="font-semibold text-[#EAEAEA] text-sm lg:text-base font-body">{time}</p>
-            </div>
+        {/* Time */}
+        <div className="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-purple-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8v4l3 3m6-7a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <p className="text-sm text-[#EAEAEA]">Time: {slot.time}</p>
+        </div>
+
+        {/* Location */}
+        <div className="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-green-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17.657 16.657L13.414 12l4.243-4.243a4 4 0 00-5.657-5.657L7.757 6.343A4 4 0 005.1 9.757l4.242 4.243-4.243 4.243a4 4 0 105.657 5.657L16.657 17.657a4 4 0 005.657-5.657z"
+            />
+          </svg>
+          <p className="text-sm text-[#EAEAEA]">Location: {slot.location}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+           
           </div>
         </div>
 

@@ -17,6 +17,7 @@ const WorkshopPages = () => {
     <WorkshopDetails
       title={workshop.title}
       description={workshop.description}
+      slots={workshop.slots}
       date={workshop.date}
       location={workshop.location}
       time={workshop.time}
