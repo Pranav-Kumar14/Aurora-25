@@ -39,16 +39,16 @@ const WorkshopDetails = ({
             {description}
           </p>
           <div className="mt-6 flex flex-wrap justify-center items-center gap-6 lg:gap-8 text-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center">
+          <div className="flex flex-col sm:flex-row md:flex-wrap gap-5">
   {slots.map((slot, index) => (
     <div
       key={index}
-      className="bg-[rgba(255,255,255,0.08)] border border-[#EAEAEA] rounded-lg p-4 shadow-md "
+      className="bg-[rgba(255,255,255,0.08)] border border-[#EAEAEA] rounded-lg p-4 shadow-md mb-7 "
     >
       {/* Slot Header */}
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg text-orange-400 font-semibold">Day {slot.day}</h3>
-        <span className="text-sm text-[#EAEAEA]">Slot {index + 1}</span>
+        <h3 className="text-lg text-orange-400 font-semibold m-auto">Day {slot.day}</h3>
+     
       </div>
 
       {/* Slot Details */}
