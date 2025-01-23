@@ -33,6 +33,12 @@ const Teams = ({ onClose }) => {
                     email: "",
                     visibility: "private",
                 });
+
+
+                setTimeout(() => {
+        window.location.reload();
+    }, 2000);
+                
             } else {
                 setMessage(response.data.message);
             }

@@ -123,9 +123,9 @@ const teamRequest = async (req, res) => {
 };
 
 const joinTeam = async (req, res) => {
-  const { teamId, userId } = req.body;
+  const { teamId, email } = req.body;
   try {
-    const user = await User.findById(userId);
+    const user = await User.findOne({ email });
     if (!user) {
       return res.json({ success: false, message: "User not found" });
     }
@@ -472,6 +472,7 @@ const leaveTeam = async (req, res) => {
   const { email } = req.body;
 
   try {
+    // Find the user and populate their team
     const user = await User.findOne({ email }).populate("team");
     if (!user) {
       return res.json({ success: false, message: "User not found" });
@@ -480,38 +481,53 @@ const leaveTeam = async (req, res) => {
       return res.json({ success: false, message: "You are not in a Team" });
     }
 
-    const team = await Team.findOne({ _id: user.team._id });
+    // Get the team details
+    const team = await Team.findOne({ _id: user.team._id }).populate("members");
     if (!team) {
       return res.json({ success: false, message: "Team not found" });
     }
 
-    team.members = team.members.filter(
-      (member) => member.toString() !== user._id.toString()
-    );
-
+    // If the user is the team leader, dissolve the team
     if (team.leader.toString() === user._id.toString()) {
+      // Remove the team reference from all members
+      await Promise.all(
+        team.members.map(async (memberId) => {
+          const member = await User.findById(memberId);
+          if (member) {
+            member.team = null;
+            await member.save();
+          }
+        })
+      );
+
+      // Delete the team
       await team.deleteOne();
-      user.team = null;
-      await user.save();
       sendLeaveEmail(email);
+
       return res.json({
         success: true,
-        message: "You left and Your Team is Collapsed",
+        message: "You left and your Team has been dissolved.",
       });
     }
 
+    // If the user is not the leader, remove them from the team
+    team.members = team.members.filter(
+      (member) => member._id.toString() !== user._id.toString()
+    );
     await team.save();
+
     user.team = null;
     await user.save();
     sendLeaveEmail(email);
+
     return res.json({
       success: true,
-      message: "You left the Team Successfully",
+      message: "You left the Team Successfully.",
     });
   } catch (error) {
     return res.json({
       success: false,
-      message: `ServerError ${error}`,
+      message: `Server Error: ${error.message}`,
       error: error.message,
     });
   }

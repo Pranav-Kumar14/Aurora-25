@@ -113,9 +113,6 @@ const PublicTeams = () => {
 
   return (
     <div className="w-full mx-auto p-6">
-      <h2 className="text-3xl font-semibold text-center text-white mb-6">
-        Public Teams
-      </h2>
 
       {loading && <p className="text-center text-lg text-gray-400">Loading public teams...</p>}
       {error && <p className="text-center text-red-400 font-medium">{error}</p>}
