@@ -15,14 +15,14 @@ const HorizontalScrollCarousel = () => {
     target: targetRef,
   });
 
-  const [scrollRange, setScrollRange] = useState(["1%", "-31%"]);
+  const [scrollRange, setScrollRange] = useState(["1%", "-100%"]);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
         setScrollRange(["1%", "-110%"]);
       } else {
-        setScrollRange(["1%", "-51%"]);
+        setScrollRange(["1%%", "-100%"]);
       }
     };
 

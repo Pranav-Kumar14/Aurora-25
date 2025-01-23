@@ -60,6 +60,22 @@ function ContactUs() {
   );
 }
 
+function RefundPolicy() {
+  return (
+    <div style={{ margin: 0, padding: 0, height: "100vh", width: "100vw", overflow: "hidden" }}>
+      <iframe
+        src="/website_refundPolicy_877271.pdf" // Adjust the path if needed
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+        title="PDF Viewer"
+      ></iframe>
+    </div>
+  );
+}
+
 function App() {
   return (
     <div className="bg-[#000518]">
@@ -92,6 +108,7 @@ function App() {
             <Route path="/" element={<Navigate to="/login" replace />} />
             <Route path="/termsandconditions" element={<TermsAndConditions />} />
             <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/refundpolicy" element={<RefundPolicy />} />
           </Routes>
         </AuthProvider>
       </Router>

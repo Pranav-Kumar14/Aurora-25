@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import SquidGame from "../images/hackbg.png";
 import { getProfile } from "../services/auth";
 import PublicTeams from "../components/Public";
+import BaseUrl from "../BaseUrl";
 
 const TeamManagementPage = () => {
   const [team, setTeam] = useState(null);
@@ -65,7 +66,7 @@ const TeamManagementPage = () => {
   const handleClose = () => {
     setShowTeams(false);
   };
-  const url = "http://localhost:8000/team";
+  const url = BaseUrl;//"http://localhost:8000/team";
 
   const FetchTeamDetails = async (email) => {
     // console.log(userId)
