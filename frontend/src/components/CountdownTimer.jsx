@@ -25,7 +25,7 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center text-white font-press-start space-x-4 md:space-x-8 mb-4">
+    <div className="flex justify-center items-center text-white font-press-start space-x-4 md:space-x-8 mb-4 mt-2">
       {[
         { label: 'Days', value: timeLeft.days },
         { label: 'Hours', value: timeLeft.hours },

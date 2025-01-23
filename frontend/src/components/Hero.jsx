@@ -6,7 +6,7 @@ import DrawOutlineButton from "./DrawOutlineButton";
 function Hero() {
   const token = sessionStorage.getItem('token');
   return (
-    <section className="text-white py-16 sm:py-20 lg:py-24">
+    <section className="text-white pt-16 sm:py-20 lg:pt-24">
       <div className="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto text-center">
         {/* Title */}
         <h1 className="lg:text-6xl text-3xl font-heading font-bold z-10 mb-6 sm:mb-8 lg:mb-10">

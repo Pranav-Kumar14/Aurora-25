@@ -238,7 +238,7 @@ const WorkshopPage = () => {
                     {workshop.time}
                   </p>
                 </div>
-                <div className="flex  justify-around gap-2 overflow-scroll">
+                <div className="flex  justify-around gap-2 ">
                   <button
                     className={`${isSelected ? "bg-red-500 hover:bg-red-400" : "bg-zinc-700"
                       } text-white lg:text-lg text-xs px-2 py-2 rounded-full hover:shadow-[0_0_10px_4px_rgba(34,213,94,0.8)] transition duration-300`}

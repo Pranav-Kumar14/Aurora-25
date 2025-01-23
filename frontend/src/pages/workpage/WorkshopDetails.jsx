@@ -31,7 +31,7 @@ const WorkshopDetails = ({
       <section className="mt-8 w-full max-w-3xl lg:max-w-4xl bg-[rgba(255,255,255,0.06)] rounded-[20px] lg:rounded-[36px] border border-[#EAEAEA] shadow-md shadow-[rgba(0,0,0,0.25)] backdrop-blur-[17.5px] p-6 lg:p-8 pt-[80px] lg:pt-[95px]">
         {/* Description Section */}
         <div>
-          <h3 className="text-lg md:text-2xl lg:text-4xl lg:mb-8 text-[#EAEAEA] font-bold text-center font-heading overflow-scroll">
+          <h3 className="text-lg md:text-2xl lg:text-4xl lg:mb-8 text-[#EAEAEA] font-bold text-center font-heading">
             Description
           </h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-sm lg:text-base leading-relaxed">

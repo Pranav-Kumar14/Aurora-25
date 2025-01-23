@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Teams from "../components/Teams";
 import axios from "axios";
-// import Public from "../components/Public";
 import { useAuth } from "../context/AuthContext";
 import SquidGame from "../images/hackbg.png";
 import { getProfile } from "../services/auth";
@@ -20,25 +19,29 @@ const TeamManagementPage = () => {
   const [newMemberEmail, setNewMemberEmail] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
-  // const [userId, setuserId] = useState("");
   const [teamMembers, setTeamMembers] = useState([]);
-  // const [loading, setloading] = useState("");
   const [showTeams, setShowTeams] = useState(false);
   const [activeSection, setActiveSection] = useState("publicTeams");
   const token = sessionStorage.getItem("token");
-  const [userData, setUserData] = useState(null); // To store the decoded token data
+  const [userData, setUserData] = useState(null); 
     const [error, setError] = useState(null);
   const [newemail, setnewemail] = useState("")
   const [userId, setUserId] = useState(null);
   const [newEmail, setNewEmail] = useState(null);
+  const [isLeader, setIsLeader] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { user } = useAuth();
-  // console.log(token)
+  const url = BaseUrl+'/team';
+
+  
+ 
+
   
   
   useEffect(() => {
     const fetchUserData = async () => {
         if (user) {
-            console.log("User from AuthContext:", user);
+            // console.log("User from AuthContext:", user);
 
             try {
                 // Simulate async operations, if needed
@@ -47,8 +50,8 @@ const TeamManagementPage = () => {
                 setUserId(user.id);
                 setNewEmail(user.email);
 
-                console.log("User ID:", user.id);
-                console.log("User Email:", user.email);
+                // console.log("User ID:", user.id);
+                // console.log("User Email:", user.email);
             } catch (error) {
                 // console.error("Error setting user data:", error);
             }
@@ -66,16 +69,15 @@ const TeamManagementPage = () => {
   const handleClose = () => {
     setShowTeams(false);
   };
-  const url = BaseUrl+'/team';
-
+  
   const FetchTeamDetails = async (email) => {
     // console.log(userId)
-    console.log(email)
+    // console.log(email)
     try {
       const response = await axios.get(`${url}/list/team`,{
         params: { email: email },
       });
-      console.log(response);
+      // console.log(response);
       if (response.data.success && response.data.teams.length > 0) {
         const teamData = response.data.teams[0];
         // console.log("Fetched team data:", teamData);
@@ -92,15 +94,31 @@ const TeamManagementPage = () => {
       console.log(`Error fetching team details.: ${error}`);
     }
   };
+  const checkIfLeader = async (email) => {
+    try {
+      const email = email; // Replace with dynamic email
+      const response = await axios.post(url+"/check-leader", {email});
+      console.log(response)
+      if (response.data.success) {
+        console.log("leader",response)
+        setIsLeader(response.data.isLeader);
+      } else {
+        console.error(response.data.message);
+      }
+    } catch (error) {
+      // console.error("Error checking leader status:", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-// console.log("userid text",user?.email)
+    checkIfLeader(newEmail);
 
   }, []);
+
   useEffect(() => {
-    // Fetch the token from sessionStorage
-    // const token = sessionStorage.getItem('token');
-    console.log(token)
+   
 
     if (!token) {
         setError('Token not found. Please log in.');
@@ -134,7 +152,8 @@ const TeamManagementPage = () => {
 }, []); 
 useEffect(() => {
   if (newEmail) {
-      console.log("Fetching team details for email:", newEmail);
+    //  console.log(isLeader)
+      checkIfLeader(newEmail);
       FetchTeamDetails(newEmail);
   }
 }, [newEmail]);
@@ -183,7 +202,7 @@ useEffect(() => {
         leaderEmail: team.leader.email,
       });
       if (response.data.success) {
-        setJoinRequests((prev) => prev.filter((req) => req._id !== requestId));
+        setJoinRequests((prev) => prev.filter((req) => req._id !== userId));
         setMessage(response.data.message);
         FetchTeamDetails(email);
       } else {
@@ -203,7 +222,7 @@ useEffect(() => {
     
       });
       if (response.data.success) {
-        setJoinRequests((prev) => prev.filter((req) => req._id !== requestId));
+        setJoinRequests((prev) => prev.filter((req) => req._id !== userId));
         setMessage(response.data.message);
         FetchTeamDetails(email);
       } else {
@@ -277,6 +296,16 @@ useEffect(() => {
       className="  bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen p-8 font-press-start bg-no-repeat bg-cover overflow-hidden overflow-x-hidden"
       style={{ backgroundImage: `url(${SquidGame})` }}
     >
+       <div>
+      <h1>Welcome to Hack Demo</h1>
+      {isLeader ? (
+        <button onClick={() => console.log("Leader button clicked!")}>
+          Leader Action
+        </button>
+      ) : (
+        <p>You are not a leader.</p>
+      )}
+    </div>
       {/* create team  */}
       <div className="   mx-auto space-y-8 mb-10">
         {!showTeams ? (
@@ -373,8 +402,9 @@ useEffect(() => {
      setVisibility(newVisibility);
      updateVisibility(newVisibility);
    }}
- />
+ /> {isLeader && (
  <div className="w-16 h-8 bg-gray-200 rounded-full  peer dark:bg-gray-700 peer-checked:bg-green-500 peer-checked:after:translate-x-8 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:h-6 after:w-6 after:rounded-full after:transition-all dark:border-gray-600"></div>
+ )}
  <span className="ml-2 text-sm sm:text-base text-white">
    {visibility === "private" ? "Private" : "Public"}
  </span>
@@ -396,20 +426,23 @@ useEffect(() => {
             placeholder="Enter a new team description"
             rows={5}
           />
+           {isLeader && (
           <button
             className="text-sm mt-4 bg-gray-700 text-white hover:bg-gray-900 hover:text-white py-3 px-4 rounded-lg focus:outline-none font-press-start"
             onClick={updateDescription}
           >
             Update Description
-          </button>
+          </button>)}
 
           <div className="mt-6 font-press-start">
+          {isLeader && (
             <button
               className="mt-4 bg-gray-700 text-white hover:bg-gray-400 hover:text-black py-2 px-4 rounded-lg focus:outline-none font-press-start"
               onClick={() => setShowAddMemberPopup(true)}
             >
               Add Member
             </button>
+            )}
           </div>
           {showAddMemberPopup && (
             <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center font-press-start">
@@ -476,8 +509,11 @@ useEffect(() => {
       />
       <h3 className="text-lg font-bold font-press-start">{member.username}</h3>
       <p className="text-sm text-gray-400">{index === 0 ? "Leader" : "Member"}</p>
+      {isLeader ? (
+              <>
       {index === 0 ? (
         // Leader action button
+        
         <button
           onClick={handleDissolveTeam}
           className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
@@ -493,12 +529,17 @@ useEffect(() => {
           Remove
         </button>
       )}
+      </>):(
+        <p></p>
+      )}
     </div>
   ))}
 </div>
 
         {/* Join Requests */}
         <div>
+        
+              
         <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
              <img
                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
@@ -526,6 +567,7 @@ useEffect(() => {
                     {request.username} would like to join your team.
                   </p>
                   <div className="flex gap-2 font-press-start ">
+                  {isLeader && (
                     <button
                       onClick={() =>
                         handleRequestAction(request._id, "approve")
@@ -533,13 +575,15 @@ useEffect(() => {
                       className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
                     >
                       Accept
-                    </button>
+                    </button>)}
+                    {isLeader && (
                     <button
                       onClick={() => handleRejectRequest(request._id, "reject")}
                       className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
                     >
                       Decline
                     </button>
+                  )}
                   </div>
                 </div>
               ))}

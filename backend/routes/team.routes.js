@@ -16,7 +16,7 @@ router.get("/list", teamList)
 router.get("/list/team", teamLists)
 
 
-router.post("/join", authMiddleware, joinTeam)
+router.post("/join", joinTeam)
 
 router.post("/request-join", teamRequest)
 

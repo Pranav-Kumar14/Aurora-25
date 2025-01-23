@@ -18,7 +18,7 @@ const PublicTeams = () => {
        useEffect(() => {
          const fetchUserData = async () => {
              if (user) {
-                 console.log("User from AuthContext:", user);
+                //  console.log("User from AuthContext:", user);
      
                  try {
                      // Simulate async operations, if needed
@@ -43,7 +43,7 @@ const PublicTeams = () => {
   // Fetch public teams
   useEffect(() => {
     setUserId(user?.id)
-    console.log(userId)
+    // console.log(userId)
     const fetchTeams = async () => {
       try {
         const response = await axios.get(`${url}/list`);

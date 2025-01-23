@@ -10,7 +10,6 @@ const Teams = ({ onClose }) => {
     });
     const [message, setMessage] = useState("");
     const [createdTeam, setCreatedTeam] = useState(null);
-    // const url = "https://team-test.onrender.com";
     const url = BaseUrl;
 
     const handleChange = (e) => {
