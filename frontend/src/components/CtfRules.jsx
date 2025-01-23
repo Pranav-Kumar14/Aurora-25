@@ -3,7 +3,7 @@ import React from 'react';
 import line from "../images/tgline.png";
 
 const teamRules = [
-  "Each team can have a minimum of 1 and a maximum of 1 members.",
+  "Each team can have a minimum of 1 and a maximum of 2 members.",
   "Each team should have one team leader, who will be responsible for coordinating tasks and ensuring adherence to the rules.",
   "Do not share any hints or answers with other teams. Disrespect or rule violations will result in disqualification.",
   "We expect all team members to be present at the team checkpoints to avoid delays in the progress of the event.",
