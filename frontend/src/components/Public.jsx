@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import BaseUrl from "../BaseUrl";
 
 const PublicTeams = () => {
   const [teams, setTeams] = useState([]);
@@ -37,7 +38,7 @@ const PublicTeams = () => {
          fetchUserData();
      }, [user]);
 
-  const url = "http://localhost:8000/team";
+  const url = BaseUrl+'/team';
 
   // Fetch public teams
   useEffect(() => {

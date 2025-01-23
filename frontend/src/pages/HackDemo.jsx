@@ -66,7 +66,7 @@ const TeamManagementPage = () => {
   const handleClose = () => {
     setShowTeams(false);
   };
-  const url = BaseUrl;//"http://localhost:8000/team";
+  const url = BaseUrl+'/team';
 
   const FetchTeamDetails = async (email) => {
     // console.log(userId)
@@ -108,7 +108,7 @@ const TeamManagementPage = () => {
     }
 
     // Send a POST request to the backend to decode the token
-    fetch('http://localhost:8000/user/token', {
+    fetch(`${BaseUrl}/user/token`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -1,2 +1,2 @@
-const BaseUrl = "http://localhost:8000";
+const BaseUrl = "https://aurora.istemanipal.com/api";
 export default BaseUrl;
