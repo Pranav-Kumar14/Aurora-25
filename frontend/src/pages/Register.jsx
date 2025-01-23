@@ -17,7 +17,7 @@ export default function Register() {
         username: generateCollegeId(),
         email: '',
         password: '',
-        collegeid: generateCollegeId(),
+        collegeid: '',
         year: '',
         branch: 'NA',
         interest: 'NA',
@@ -119,7 +119,7 @@ export default function Register() {
                             />
                         </div>
 
-                        {/* <div>
+                        <div>
                             <label htmlFor="collegeid" className="block text-md font-medium text-white">
                                 Registration Number
                             </label>
@@ -132,7 +132,7 @@ export default function Register() {
                                 value={formData.collegeid}
                                 onChange={(e) => setFormData({ ...formData, collegeid: e.target.value })}
                             />
-                        </div> */}
+                        </div>
 
                         <div>
                             <label htmlFor="year" className="block text-md font-medium text-white">
