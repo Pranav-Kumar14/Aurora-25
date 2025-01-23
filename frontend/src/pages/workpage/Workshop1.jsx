@@ -28,7 +28,7 @@ const Workshop1 = () => {
             Description
           </h3>
           <p className="mt-4 text-center font-body text-[#EAEAEA] text-sm lg:text-base leading-relaxed">
-            In machine learning, a neural network (also artificial neural network or neural net, abbreviated ANN or NN) is a model inspired by the structure and function of biological neural networks in animal brains.
+          Learn the basics of the building blocks of Computer Vision, the Convolutional Neural Network WITHOUT the worries of prerequisite coding and machine learning knowledge. We'll look into the inner workings with awesome visualizations and clarity you won't find anywhere else! Finally, implement an End to End CNN Project with you own architecture and deploy the project on Flask.
           </p>
           <div className="mt-6 flex flex-wrap justify-center items-center gap-6 lg:gap-8 text-center">
             {/* Date */}

@@ -143,11 +143,18 @@ export default function Profile() {
                         
                     </dl>
                     {!user.workshopPaid ? (
-                            <PaymentButton
-                                orderAmount="250"
-                                onPaymentSuccess={handlePaymentSuccess}
-                                userDataNew={user}
-                            />
+                            // <PaymentButton
+                            //     orderAmount="250"
+                            //     onPaymentSuccess={handlePaymentSuccess}
+                            //     userDataNew={user}
+                            // />
+                            <div className="m-4">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAKtU0MX8aAxX-Af0F1P7uXlup3eBTcThYS7Qm1I4aw0b1cw/viewform?usp=dialog" target="_blank"
+                                className="bg-[#519984] w-full px-6 py-2 mt-4 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]"
+                                >
+                                    Pay Rs. 250
+                                </a>
+                            </div>
                         ) : (
                             <button className="w-full mt-4 bg-gray-600 px-6 py-3 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-lg hover:bg-gray-500">
                                 You have Paid!
