@@ -15,7 +15,7 @@ const Workshop1 = () => {
       {/* Neural Network Section */}
       <div className="text-center">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl text-[#05E0EE] font-bold font-heading mb-6">
-        CONVenient-Convolutional Neutral Network Workshop
+        CONVenient-Convolutional Neural Network Workshop
         </h2>
       </div>
 
