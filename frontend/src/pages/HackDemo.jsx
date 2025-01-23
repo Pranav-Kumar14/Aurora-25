@@ -27,7 +27,7 @@ const TeamManagementPage = () => {
     const [error, setError] = useState(null);
   const [newemail, setnewemail] = useState("")
   const [userId, setUserId] = useState(null);
-  const [newEmail, setNewEmail] = useState(null);
+  const [newEmail, setNewEmail] = useState("");
   const [isLeader, setIsLeader] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
@@ -92,23 +92,6 @@ const TeamManagementPage = () => {
       } 
     } catch (error) {
       console.log(`Error fetching team details.: ${error}`);
-    }
-  };
-  const checkIfLeader = async (email) => {
-    try {
-      const email = email; // Replace with dynamic email
-      const response = await axios.post(url+"/check-leader", {email});
-      console.log(response)
-      if (response.data.success) {
-        console.log("leader",response)
-        setIsLeader(response.data.isLeader);
-      } else {
-        console.error(response.data.message);
-      }
-    } catch (error) {
-      // console.error("Error checking leader status:", error.message);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -287,6 +270,25 @@ useEffect(() => {
       setShowPopup(false);
     }
   };
+  const checkIfLeader = async () => {
+    console.log(newEmail)
+    try {
+      const email = newEmail; // Replace with dynamic email
+      const response = await axios.post(url+"/check-leader", {email});
+      console.log(response)
+      if (response.data.success) {
+        console.log("leader",response)
+        setIsLeader(response.data.isLeader);
+      } else {
+        console.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error checking leader status:", error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
 
 
@@ -403,7 +405,7 @@ useEffect(() => {
      updateVisibility(newVisibility);
    }}
  /> {isLeader && (
- <div className="w-16 h-8 bg-gray-200 rounded-full  peer dark:bg-gray-700 peer-checked:bg-green-500 peer-checked:after:translate-x-8 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:h-6 after:w-6 after:rounded-full after:transition-all dark:border-gray-600"></div>
+  <div className="relative w-16 h-8 bg-gray-300 rounded-full shadow-inner peer dark:bg-gray-800 peer-checked:bg-green-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:h-6 after:w-6 after:rounded-full after:shadow-md after:transition-all peer-hover:after:scale-110 peer-checked:after:translate-x-8 dark:after:border-gray-600"></div>
  )}
  <span className="ml-2 text-sm sm:text-base text-white">
    {visibility === "private" ? "Private" : "Public"}
@@ -428,7 +430,7 @@ useEffect(() => {
           />
            {isLeader && (
           <button
-            className="text-sm mt-4 bg-gray-700 text-white hover:bg-gray-900 hover:text-white py-3 px-4 rounded-lg focus:outline-none font-press-start"
+            className="text-sm mt-4 m-auto bg-gray-700 text-white hover:bg-gray-900 hover:text-white py-3 px-4 rounded-lg focus:outline-none font-press-start"
             onClick={updateDescription}
           >
             Update Description
@@ -507,7 +509,7 @@ useEffect(() => {
         alt="Image description"
         className="w-16 h-16 sm:w-24 rounded-md object-cover"
       />
-      <h3 className="text-lg font-bold font-press-start">{member.username}</h3>
+      <h3 className="text-lg font-bold font-press-start">{member.fullName}</h3>
       <p className="text-sm text-gray-400">{index === 0 ? "Leader" : "Member"}</p>
       {isLeader ? (
               <>
@@ -564,7 +566,7 @@ useEffect(() => {
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <p className="text-sm text-center text-black font-press-start">
-                    {request.username} would like to join your team.
+                    {request.fullName} would like to join your team.
                   </p>
                   <div className="flex gap-2 font-press-start ">
                   {isLeader && (

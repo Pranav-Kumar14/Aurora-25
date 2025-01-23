@@ -51,7 +51,7 @@ const createTeam = async (req, res) => {
 
     user.team = team._id;
     await user.save();
-    sendTeamCreationEmail(user.email, team.teamname, user.username);
+    sendTeamCreationEmail(user.email, team.teamname, user.fullName);
 
     return res.json({
       success: true,
@@ -174,9 +174,9 @@ const teamLists = async (req, res) => {
     }
 
     const leaderTeams = await Team.find({ leader: user._id })
-      .populate("leader", "username email")
-      .populate("members", "username email")
-      .populate("joinRequests", "username email")
+      .populate("leader", "fullName email")
+      .populate("members", "fullName email")
+      .populate("joinRequests", "fullName email")
       .select("teamname description visibility registered");
 
     if (leaderTeams.length > 0) {
@@ -184,8 +184,8 @@ const teamLists = async (req, res) => {
     }
 
     const memberTeams = await Team.find({ members: user._id })
-      .populate("leader", "username email")
-      .populate("members", "username email")
+      .populate("leader", "fullName email")
+      .populate("members", "fullName email")
       .select("teamname description visibility registered");
 
     if (memberTeams.length > 0) {
@@ -204,8 +204,8 @@ const teamList = async (req, res) => {
     let teams = [];
     // Fetch public teams for general users
     teams = await Team.find({ visibility: "public" })
-      .populate("leader", "username email")
-      .populate("members", "username email")
+      .populate("leader", "fullName email")
+      .populate("members", "fullName email")
       .select("teamname description visibility");
 
     return res.json({ success: true, teams });
@@ -264,8 +264,8 @@ const getUserTeam = async (req, res) => {
     }
 
     const team = await Team.findOne({ _id: user.team._id })
-      .populate("members", "username email")
-      .populate("leader", "username email");
+      .populate("members", "fullName email")
+      .populate("leader", "fullName email");
 
     if (!team) {
       return res.json({ success: false, message: "Team not found" });
@@ -277,7 +277,7 @@ const getUserTeam = async (req, res) => {
         name: team.teamname,
         description: team.description,
         leader: team.leader,
-        members: team.members.map((member) => member.username),
+        members: team.members.map((member) => member.fullName),
       },
     });
   } catch (error) {

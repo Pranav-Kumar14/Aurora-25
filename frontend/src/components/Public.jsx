@@ -135,9 +135,9 @@ const PublicTeams = () => {
                 {team.teamname}
               </h3>
               <p className="mt-2 text-gray-800">
-                Leader: <span className="font-medium">{team.leader?.username || "Unknown"}</span>
+                Leader: <span className="font-medium">{team.leader?.fullName || "Unknown"}</span>
               </p>
-              <p className="mt-2 text-gray-800">
+              <p className="mt-2 text-gray-800 ">
                 Description:{" "}
                 <span className="font-light">{team.description || "No description provided"}</span>
               </p>

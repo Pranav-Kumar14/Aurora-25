@@ -69,7 +69,7 @@ const Teams = ({ onClose }) => {
                             value={teamData.teamname}
                             onChange={handleChange}
                             required
-                            className="w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
+                            className=" text-sm w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
                             placeholder="Enter team name"
                         />
                     </div>
@@ -82,7 +82,7 @@ const Teams = ({ onClose }) => {
                             value={teamData.email}
                             onChange={handleChange}
                             required
-                            className="w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
+                            className="text-sm w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
                             placeholder="Enter your email"
                         />
                     </div>
@@ -93,7 +93,7 @@ const Teams = ({ onClose }) => {
                             name="visibility"
                             value={teamData.visibility}
                             onChange={handleChange}
-                            className="w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
+                            className="text-sm w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
                         >
                             <option value="private">Private</option>
                             <option value="public">Public</option>
