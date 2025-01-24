@@ -29,9 +29,11 @@ const TeamManagementPage = () => {
   const [newEmail, setNewEmail] = useState("");
   const [isLeader, setIsLeader] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showvisiVisibility, setshowvisiVisibility] = useState("");
   const { user } = useAuth();
   const url = BaseUrl + "/team";
   const navigate = useNavigate(); // Initialize navigate
+
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -276,15 +278,34 @@ const TeamManagementPage = () => {
       if (response.data.success) {
         setMembers(response.data.team.members);
         setTeam(response.data.team);
-        toast.success("Team Dissolved"); // Show success toast
+
+         if (isLeader) {
+    // Show success toast if the user is the leader
+    toast.success("Team Dissolved");
+  } else {
+    // Show a different message if the user is not the leader
+    toast.info("You left the team");
+  } // Show success toast
         setTeam(null);
       }
-      toast.success("Team Dissolved");
+      if (isLeader) {
+        // Show success toast if the user is the leader
+        toast.success("Team Dissolved");
+      } else {
+        // Show a different message if the user is not the leader
+        toast.info("You left the team");
+      }
       setTimeout(() => {
         window.location.reload();
       }, 2000);
     } catch (error) {
-      toast.success("Team Dissolved");
+      if (isLeader) {
+        // Show success toast if the user is the leader
+        toast.success("Team Dissolved");
+      } else {
+        // Show a different message if the user is not the leader
+        toast.info("You left the team");
+      }
       setTimeout(() => {
         window.location.reload();
       }, 2000);
@@ -391,7 +412,7 @@ const TeamManagementPage = () => {
           ) : null}{" "}
           {/* Show nothing if a team exists */}
           {/* Show Teams component only if no team exists */}
-          {!teamcheck && showTeams && <Teams onClose={handleClose} />}
+          {!teamcheck && showTeams && <Teams email={newEmail} onClose={handleClose} />}
         </div>
         <div className="team-toggle-container">
           <div className="flex justify-center gap-4 mb-8">
@@ -429,8 +450,12 @@ const TeamManagementPage = () => {
                 <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
                   {team?.teamname}
                 </h2>
+                
+                
               </div>
+            
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-4 font-press-start">
+              
                 <span className="text-md sm:text-lg">Team Visibility</span>
                 <label className="relative inline-flex items-center cursor-pointer m-5">
                   <input
@@ -442,15 +467,20 @@ const TeamManagementPage = () => {
                         ? "public"
                         : "private";
                       setVisibility(newVisibility);
+                      setshowvisiVisibility(newVisibility)
                       updateVisibility(newVisibility);
                     }}
                   />
                   {isLeader && (
                     <div className="relative w-16 h-8 bg-gray-300 rounded-full shadow-inner peer dark:bg-gray-800 peer-checked:bg-green-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:h-6 after:w-6 after:rounded-full after:shadow-md after:transition-all peer-hover:after:scale-110 peer-checked:after:translate-x-8 dark:after:border-gray-600"></div>
                   )}
-                  <span className="ml-2 text-sm sm:text-base text-white border border-white p-2">
-                    {visibility === "private" ? "Private" : "Public"}
+                      
+                                    
+                  <span className="ml-2 text-sm sm:text-base text-black bg-white border border-white p-2 rounded-lg pointer-events-none">
+                    {visibility === "private" ? "Private" : "Public"}  
                   </span>
+           
+
                 </label>
               </div>
               <div className="mb-6 font-press-start">
@@ -574,8 +604,16 @@ const TeamManagementPage = () => {
                       <p></p>
                     )}
                   </div>
+                
                 ))}
+                
               </div>
+              <div className="flex justify-center items-center min-h-[200px]"> <button
+                            onClick={handleDissolveTeam}
+                            className="bg-[#c52a28] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start m-5 mt-16"
+                          >
+                            Leave Team
+                          </button></div>
               <div>
                 <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
                   <img

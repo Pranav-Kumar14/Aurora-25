@@ -126,17 +126,23 @@ const PublicTeams = () => {
           teams.map((team) => (
             <div
               key={team._id}
-              className="bg-white p-6 rounded-lg shadow-md border border-black"
+              className="bg-white p-8  rounded-lg shadow-md border border-black "
             >
               <h3 className="text-xl font-semibold text-black">
                 {team.teamname}
               </h3>
               <p className="mt-2 text-gray-800">
-                Leader: <span className="font-medium">{team.leader?.fullName || "Unknown"}</span>
+                Leader
+                Name
+                <br/>
+                 <span className="font-pixelify text-[19px]">{team.leader?.fullName || "Unknown"}</span>
               </p>
-              <p className="mt-2 text-gray-800 ">
+              <p className="mt-2 text-gray-800">
+                Leader Email: <span className="font-pixelify text-[19px] ">{team.leader?.email || "Unknown"}</span>
+              </p>
+              <p className="mt-2 text-gray-800 text-md">
                 Description:{" "}
-                <span className="font-light">{team.description || "No description provided"}</span>
+                <span className="font-pixelify text-[19px]">{team.description || "No description provided"}</span>
               </p>
               <button
                 className={`mt-4 w-full py-2 px-4 rounded-lg text-white ${

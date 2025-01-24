@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import BaseUrl from "../BaseUrl";
 
-const Teams = ({ onClose }) => {
+const Teams = ({ onClose, email }) => {
     const [teamData, setTeamData] = useState({
         teamname: "",
-        email: "",
+        email: email || "", // Set email from prop
         visibility: "private",
     });
     const [message, setMessage] = useState("");
     const [createdTeam, setCreatedTeam] = useState(null);
     const url = BaseUrl;
+
+    // Update email in state if it changes
+    useEffect(() => {
+        setTeamData((prevData) => ({
+            ...prevData,
+            email: email,
+        }));
+    }, [email]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -30,15 +38,13 @@ const Teams = ({ onClose }) => {
                 setCreatedTeam(response.data.team);
                 setTeamData({
                     teamname: "",
-                    email: "",
+                    email: email, // Reset email from prop
                     visibility: "private",
                 });
-
-
                 setTimeout(() => {
-        window.location.reload();
-    }, 2000);
-                
+                    console.log("Reloading page...");
+                    window.location.reload();
+                }, 2000);
             } else {
                 setMessage(response.data.message);
             }
@@ -75,7 +81,7 @@ const Teams = ({ onClose }) => {
                             value={teamData.teamname}
                             onChange={handleChange}
                             required
-                            className=" text-sm w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
+                            className="text-sm w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
                             placeholder="Enter team name"
                         />
                     </div>
@@ -86,10 +92,8 @@ const Teams = ({ onClose }) => {
                             type="email"
                             name="email"
                             value={teamData.email}
-                            onChange={handleChange}
-                            required
+                            readOnly // Prevent manual changes to email
                             className="text-sm w-full p-3 border border-gray-300 bg-[#010A1E] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6932E2]"
-                            placeholder="Enter your email"
                         />
                     </div>
 
