@@ -1,14 +1,15 @@
-import icon1 from '../images/acm.png'
-import icon2 from '../images/dronaid.jpeg'
-import icon3 from '../images/leanin.jpeg'
-import icon8 from '../images/iste.png'
-import icon4 from '../images/varise.png'
-import icon6 from '../images/tacm.jpeg'
-import icon7 from '../images/adg_logo.jpg'
-import icon10 from '../images/iste.png'
-import icon5 from '../images/mist.jpeg'
-import icon9 from '../images/Blank.jpeg'
-import icon11 from '../images/ACMW_LOGO.png'
+import icon1 from '../images/acm.png';
+import icon2 from '../images/dronaid.jpeg';
+import icon3 from '../images/leanin.jpeg';
+import icon4 from '../images/varise.png';
+import icon5 from '../images/mist.jpeg';
+import icon6 from '../images/tacm.jpeg';
+import icon7 from '../images/adg_logo.jpg';
+import icon8 from '../images/iste.png';
+import icon9 from '../images/Blank.jpeg';
+import icon10 from '../images/iste.png';
+import icon11 from '../images/ACMW_LOGO.png';
+
 export const workshops = [
   { id: 1, title: "CONVenient-Convolutional Neural Network Workshop", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
   { id: 2, title: "Fusion 360 Generative Design and PCB Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
