@@ -30,6 +30,7 @@ const TeamManagementPage = () => {
   const [isLeader, setIsLeader] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showvisiVisibility, setshowvisiVisibility] = useState("");
+  const [hackathonPaid, setHackathonPaid] = useState(false);
   const { user } = useAuth();
   const url = BaseUrl + "/team";
   const navigate = useNavigate(); // Initialize navigate
@@ -40,7 +41,9 @@ const TeamManagementPage = () => {
       if (user) {
         try {
           await new Promise((resolve) => setTimeout(resolve, 500)); // Mock delay
+          // console.log(user)
           setNewEmail(user.email);
+          setHackathonPaid(user.hackathonPaid);
         } catch (error) {
           console.error("Error setting user data:", error);
         }
@@ -441,19 +444,29 @@ const TeamManagementPage = () => {
         {activeSection === "yourTeam" ? (
           teamcheck ? (
             <section>
-              <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
-                <img
-                  src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
-                  alt="Image description"
-                  className="w-16 h-16 rounded-md object-cover"
-                />
-                <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
-                  {team?.teamname}
-                </h2>
-                
-                
+              <div className="lg:flex items-center space-x-10 mb-10">
+                <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
+                  <img
+                    src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
+                    alt="Image description"
+                    className="w-16 h-16 rounded-md object-cover"
+                  />
+                  <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
+                    {team?.teamname}
+                  </h2>
+                  
+                  
+                </div>
+                {!hackathonPaid && isLeader && (
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpxrP3_RbFHq6u3u2A4zZIsLX5cj1aSmIBQbImY6BtWkemEg/viewform?usp=dialog" target="_blank"
+                    className="bg-red-700 p-5 h-[4rem] rounded-2xl whitespace-nowrap"
+                  >
+                    Pay Now
+                  </a>
+                )}
               </div>
             
+              
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-4 font-press-start">
               
                 <span className="text-md sm:text-lg">Team Visibility</span>
