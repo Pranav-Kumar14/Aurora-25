@@ -33,7 +33,7 @@ async function sendMail(to,subject,message){
        
         
     } catch (error) {
-        console.log('Email Sent:error');
+        console.log(`Email Sent:${error}`);
     }
   
 }

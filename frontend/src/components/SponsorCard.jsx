@@ -25,7 +25,7 @@ const SponsorsSection = () => {
       id: 4,
     },
     {
-      url: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp5_w92uou.jpg",
+      url: "/cairi.jpg",
       title: "Title 5",
       id: 5,
     },

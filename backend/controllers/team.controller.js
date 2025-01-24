@@ -5,13 +5,12 @@ const TeamLimit = 5;
 const {
   sendJoinEmail,
   sendLeaveEmail,
-  sendStatusUpdateEmail,
+ 
   sendTeamCreationEmail,
   sendJoinRequestEmail,
   sendApprovalEmail,
   sendRejectionEmail,
   sendRemoveMemberEmail,
-  sendStatusChangeEmail,
 } = require("../utils/mailContent.js");
 
 const createTeam = async (req, res) => {
@@ -51,6 +50,7 @@ const createTeam = async (req, res) => {
 
     user.team = team._id;
     await user.save();
+    console.log(user.email, team.teamname, user.fullName)
     sendTeamCreationEmail(user.email, team.teamname, user.fullName);
 
     return res.json({
@@ -146,7 +146,7 @@ const joinTeam = async (req, res) => {
 
     user.team = team._id;
     await user.save();
-    sendJoinEmail(email);
+    sendApprovalEmail(email,team.teamnamex);
 
     return res.json({
       success: true,
@@ -316,7 +316,7 @@ const updateVisibility = async (req, res) => {
 
     team.visibility = visibility;
     await team.save();
-    sendStatusChangeEmail(leaderEmail, visibility);
+    
 
     return res.json({
       success: true,
@@ -557,7 +557,7 @@ const updateDescription = async (req, res) => {
 
     team.description = description;
     await team.save();
-    sendStatusUpdateEmail(leaderEmail, "description updated");
+  
 
     return res.json({
       success: true,

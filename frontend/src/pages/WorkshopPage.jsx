@@ -113,7 +113,7 @@ const WorkshopPage = () => {
           ...prev,
           workshops: data.workshops,
         }));
-        navigate("/profile");
+        
       })
       .catch((error) => console.error("Error:", error));
   };
@@ -351,7 +351,7 @@ const WorkshopPage = () => {
 
       {!check && (
         <div
-          className="sticky bottom-0 left-0 w-full bg-[#007bff] text-white py-4 text-center cursor-pointer rounded-full"
+          className=" bottom-0 left-0 w-full bg-[#007bff] text-white py-4 text-center cursor-pointer rounded-full fixed"
           onClick={handleSubmit}
         >
           Submit

@@ -98,7 +98,7 @@ export const workshopsData = [
     description: "Interested in astrophotography and stargazing? Then here is your opportunity to discover the cosmos like never before with our two-day workshop! Topics like telescope basics and handling, astrophotography techniques especially using smartphones and image stacking will be covered in these sessions along with a mesmerizing stargazing session. Join us to explore and connect with the universe!",
     slots: [
       { day: "1", date: "26th January, 2025", time: "2:30 PM - 5:30 PM", location: "AB 3" },
-      { day: "2", date: "28th January, 2025", time: "9:30 PM - 11:30 PM", location: "MIT Athletic Ground" },
+      { day: "2", date: "28th January, 2025", time: "9:00 PM - 11:30 PM", location: "MIT Athletic Ground" },
     ],
     clubLogo: icon6,
     clubInfo: '"TACM - Ever wondered how captivating images of stars, nebulae, and galaxies are produced? Learn how astronomical data is stacked to create stunning visuals. Join our workshop to understand how basic stacking for stargazing works!"',

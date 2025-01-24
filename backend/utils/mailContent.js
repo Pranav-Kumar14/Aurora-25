@@ -1,142 +1,138 @@
 const { sendMail } = require('./mail.js');
 
 // Send welcome email
-const sendJoinEmail = (userEmail) => {
-    const subject = 'Welcome to Aurora Hackathon – Let the Innovation Begin!';
+const sendJoinEmail = (userEmail,name) => {
+    const subject = `🎉 You're In! Welcome to the Aurora Hackathon! 🚀`;
     const body = `
-        Dear Participant,
+        Hey${name},
+        Woohoo! You’re officially part of the Aurora —let the innovation begin! 🎉
 
-        We are thrilled to welcome you to the Aurora Hackathon, the flagship event of ISTE! This is your chance to showcase your creativity, skills, and innovative ideas.
+Get ready to team up, create, and compete in an epic journey of creativity and tech wizardry. It’s time to push boundaries, turn ideas into reality, and have an absolute blast while doing it! 💡🔥
 
-        The competition promises to be an exciting journey of learning and collaboration. Stay tuned for updates, guidelines, and tips to help you make the most of this experience.
+Expect exciting updates, challenges, and opportunities to make your mark. But first, check your inbox for the next steps, and if you’ve got any burning questions, hit us up at aurora.istemanipal@gmail.com.
 
-        If you have any questions or need assistance, feel free to reach out to us at aurora.hackathon@iste.com.
+Let’s make this hackathon unforgettable! We can’t wait to see the magic you’ll create! ✨
 
-        We look forward to your active participation.
-
-        Sincerely,
-        The Aurora Hackathon Team
-        ISTE Club
+Best,  
+The Aurora Team
+ISTE Club
     `;
     sendMail(userEmail, subject, body);
 };
 
 // Send leave email
 const sendLeaveEmail = (userEmail) => {
-    const subject = 'We’re Sorry to See You Leave the Aurora Hackathon';
+    const subject = 'Confirmation of Your Withdrawal from the Aurora Hackathon';
     const body = `
         Dear Participant,
 
-        We regret to inform you that your participation in the Aurora Hackathon has been deactivated. While we’re saddened by this, we respect your decision and hope to see you in our future events.
 
-        If you change your mind, feel free to contact us at aurora.hackathon@iste.com for guidance on rejoining.
+This email confirms that you have left your current team and, as a result, your participation in the **Aurora Hackathon**, the flagship event of ISTE, is currently on hold.
 
-        Wishing you the very best in your endeavors.
+However, we would like to inform you that you are welcome to rejoin a team and resume your participation in the hackathon. If you need any assistance with finding a team or rejoining the event, please don’t hesitate to contact us at aurora.istemanipal@gmail.com.
 
-        Sincerely,
-        The Aurora Hackathon Team
-        ISTE Club
+We appreciate your efforts and contributions thus far and look forward to seeing you continue your journey in the hackathon.
+
+Best regards, 
+ The Aurora Hackathon Team
+ ISTE Club 
+
+       
     `;
     sendMail(userEmail, subject, body);
 };
 
-// Send status update email
-// const sendStatusUpdateEmail = (userEmail, status) => {
-//     const subject = 'Update on Your Aurora Hackathon Status';
-//     const body = `
-//         Dear Participant,
-
-//         We hope this message finds you well. Please note that your status for the Aurora Hackathon has been updated to: ${status}.
-
-//         If you have any questions or require clarification, do not hesitate to reach out to us at aurora.hackathon@iste.com.
-
-//         Thank you for being a valued participant, and we look forward to seeing your contributions to this exciting event.
-
-//         Sincerely,
-//         The Aurora Hackathon Team
-//         ISTE Club
-//     `;
-//     sendMail(userEmail, subject, body);
-// };
-
 // Send team creation email
 const sendTeamCreationEmail = (userEmail, teamName, teamLeader) => {
-    const subject = `Congratulations on Creating Team: ${teamName} for Aurora!`;
+    const subject = ` Team Created Successfully: Welcome to Aurora Hackathon!`;
     const body = `
         Dear ${teamLeader},
 
         Congratulations on successfully creating your team, ${teamName}, for the Aurora Hackathon, the flagship event of ISTE!
 
-        This is your opportunity to collaborate, innovate, and shine. We are confident that your team will bring forward creative solutions and demonstrate excellence in the competition.
+This marks the beginning of an exciting journey of collaboration and innovation. We are confident that your team will deliver outstanding solutions and demonstrate excellence throughout the competition.
 
-        For any assistance, please don’t hesitate to reach out to us at aurora.hackathon@iste.com.
+Should you require any assistance or have any queries, please feel free to contact us at aurora.istemanipal@gmail.com.
 
-        Wishing you the very best of luck!
+We wish you and your team the very best as you embark on this remarkable challenge.
 
-        Sincerely,
-        The Aurora Hackathon Team
-        ISTE Club
+Best regards,  
+The Aurora Hackathon Team 
+ISTE Club
     `;
     sendMail(userEmail, subject, body);
 };
 
 // Send team join request email
 const sendJoinRequestEmail = (teamLeaderEmail, teamName, userName) => {
-    const subject = `${userName} Wants to Join Your Team: ${teamName} for Aurora!`;
+    const subject = `New Join Request for Your Team: ${teamName} for Aurora Hackathon`;
     const body = `
         Dear Team Leader,
 
-        We hope you’re doing well.
+        We hope this message finds you well.
 
-        You’ve received a new request from ${userName} to join your team, ${teamName}, for the Aurora Hackathon.
+A new request has been submitted by ${fullName} to join your team, ${teamName}, for the **Aurora Hackathon**. Below are the details of the request:
 
-        Please log in to your account to review the request and take appropriate action. If you need assistance, contact us at aurora.hackathon@iste.com.
+----------
 
-        Thank you for your leadership, and good luck with your team!
+Team Name: :${teamName}
+Participant Name :  [User Name]  
+Reason for Joining:
+""
 
-        Sincerely,
-        The Aurora Hackathon Team
-        ISTE Club
+----------
+
+Please log in to your account to review the request and take the necessary action. Should you need any assistance or have any questions, feel free to contact us at aurora.istemanipal@gmail.com.
+
+Thank you for your leadership, and we wish you the best of luck with your team!
+
+Best regards,  
+The Aurora Hackathon Team
+ISTE Club
     `;
     sendMail(teamLeaderEmail, subject, body);
 };
 
 // Send team approval email
 const sendApprovalEmail = (userEmail, teamName) => {
-    const subject = `Welcome to Team ${teamName} for Aurora Hackathon!`;
+    const subject = `Your Request to Join Team ${teamName} for Aurora Hackathon Has Been Approved!`;
     const body = `
         Dear Participant,
 
-        We are excited to inform you that your request to join the team ${teamName} for the Aurora Hackathon has been approved!
+We are pleased to inform you that your request to join the team ${teamName} for the Aurora Hackathon has been successfully approved.
 
-        This is your moment to collaborate and shine with your team. Please reach out to your team leader for further details.
+This is an excellent opportunity to collaborate with your team and contribute to the innovative solutions being developed. Please connect with your team leader for further instructions and details regarding the next steps.
 
-        If you have any questions, feel free to contact us at aurora.hackathon@iste.com.
+Should you have any questions or need assistance, feel free to contact us at aurora.hackathon@iste.com
 
-        Best of luck!
+We wish you all the best in this exciting challenge and look forward to seeing the impact your team will make.
 
-        Sincerely,
-        The Aurora Hackathon Team
-        ISTE Club
+Best regards,  
+The Aurora Hackathon Team
+ISTE Club
     `;
     sendMail(userEmail, subject, body);
 };
 
 // Send team rejection email
 const sendRejectionEmail = (userEmail, teamName) => {
-    const subject = `Your Request to Join Team ${teamName} Has Been Rejected`;
+    const subject = `Your Request to Join Team ${teamName}Has Been Reviewed
+`;
     const body = `
-        Dear Participant,
+       Dear Participant,
 
-        We regret to inform you that your request to join the team ${teamName} for the Aurora Hackathon has been rejected.
+We regret to inform you that after careful review, your request to join the team ${teamName} for the Aurora Hackathon has not been accepted.
 
-        Don’t be disheartened! There are many other teams and opportunities waiting for you. If you need assistance exploring options, feel free to reach out to us at aurora.hackathon@iste.com.
+However, don’t be discouraged! There are other teams available for you to join, and we encourage you to explore these options. Additionally, we welcome you to apply again for next year’s hackathon.
 
-        Thank you for your interest, and we look forward to your participation in future events.
+If you need any assistance or have questions, please feel free to contact us at aurora.istemanipal@gmail.com.
 
-        Sincerely,
-        The Aurora Hackathon Team
-        ISTE Club
+We appreciate your interest and look forward to your future participation in our events.
+
+Best regards,  
+The Aurora Hackathon Team
+ISTE Club
+
     `;
     sendMail(userEmail, subject, body);
 };
@@ -145,36 +141,18 @@ const sendRejectionEmail = (userEmail, teamName) => {
 const sendRemoveMemberEmail = (userEmail, teamName) => {
     const subject = `You Have Been Removed from Team ${teamName} for Aurora Hackathon`;
     const body = `
-        Dear Participant,
+       Dear Participant,
 
-        We regret to inform you that you have been removed from the team ${teamName} for the Aurora Hackathon.
+We wanted to let you know that you've been removed from the team ${teamName} for the Aurora Hackathon.
 
-        If you believe this was a mistake or wish to discuss the matter, please contact your team leader or reach out to us at aurora.hackathon@iste.com.
+Don’t be discouraged—there are plenty of other teams to join, and we’re sure you’ll find a great fit. If you’d like to discuss this or have any questions, feel free to reach out to us at aurora.istemanipal@gmail.com.
 
-        We appreciate your understanding and wish you the best of luck in your endeavors.
+Best of luck, and we look forward to seeing your contributions in the hackathon!
 
-        Sincerely,
-        The Aurora Hackathon Team
-        ISTE Club
-    `;
-    sendMail(userEmail, subject, body);
-};
+Best regards,  
+The Aurora Hackathon Team 
+ISTE Club
 
-// Send status change email
-const sendStatusChangeEmail = (userEmail, status) => {
-    const subject = 'Aurora Hackathon: Update on Your Participation Status';
-    const body = `
-        Dear Participant,
-
-        We want to inform you that your participation status for the Aurora Hackathon has been updated to: ${status}.
-
-        If you have any concerns or need further clarification, feel free to reach out to us at aurora.hackathon@iste.com.
-
-        Thank you for your commitment, and we look forward to your valuable contributions to the event.
-
-        Sincerely,
-        The Aurora Hackathon Team
-        ISTE Club
     `;
     sendMail(userEmail, subject, body);
 };
@@ -183,11 +161,11 @@ const sendStatusChangeEmail = (userEmail, status) => {
 module.exports = {
     sendJoinEmail,
     sendLeaveEmail,
-    // sendStatusUpdateEmail,
+    
     sendTeamCreationEmail,
     sendJoinRequestEmail,
     sendApprovalEmail,
     sendRejectionEmail,
     sendRemoveMemberEmail,
-    sendStatusChangeEmail,
+    
 };

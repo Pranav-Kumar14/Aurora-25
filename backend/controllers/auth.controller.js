@@ -2,6 +2,9 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user.model");
 const { generateToken } = require("../utils/jwtUtils");
 const e = require("express");
+const {
+  sendJoinEmail,
+} = require("../utils/mailContent.js");
 
 const registerUser = async (req, res) => {
   const { fullName, username, email, password, collegeid, year, branch, interest, phone } = req.body;
@@ -38,6 +41,7 @@ const registerUser = async (req, res) => {
   if (!createdUser) {
     return res.status(404).json({ message: "User not found" });
   }
+  sendJoinEmail(email,fullName)
 
   return res
     .status(201)
