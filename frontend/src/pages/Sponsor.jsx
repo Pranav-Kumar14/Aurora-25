@@ -4,7 +4,7 @@ const sponsors = [
     {
         id: 1,
         name: "Manna Rolls",
-        image: "https://asset.cloudinary.com/dquwc8u1i/172101b3acfa8d17ee2b9130afacc68b",
+        image: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb-1_en9eof.jpg",
         description: "Manipal's go-to spot for delicious, affordable, and freshly prepared rolls. Conveniently located on End Point Road, it's a favorite among students for its quick service and flavorful menu. With a focus on quality ingredients and fast service, Manna Rolls ensures every meal is satisfying and budget-friendly.",
         highlights: ["Freshness Guaranteed", "Affordable pricing", "Convenient location", "Student favourite"],
         location: "End Point Road, Vidyaratna Nagar, Manipal 576104, KA",
@@ -14,7 +14,7 @@ const sponsors = [
     {
         id: 2,
         name: "Radha Medicals",
-        image: "https://asset.cloudinary.com/dquwc8u1i/508bd9d576685dc2c1b58be100784202",
+        image: "https://res.cloudinary.com/daja3mrty/image/upload/e_improve,w_200,h_160,c_thumb,g_auto/v1737486420/radhamedicals_bjf9mt.jpg",
         description: "Radha Medicals is a renowned and trusted pharmacy located in the heart of MIT, Manipal, known for its exceptional service and commitment to community health. With a wide range of medicines, supplements, and personal care products, Radha Medicals has been a go-to destination for students and residents and visitors in the Manipal area.",
         highlights: ["Trusted Pharmacy", "Wide Range of Products", "Expert Advice", "Community Health",],
         location: "Manipal Commerical Complex, GF & Mezzane Floor, D.No 16,Eshwara Nagar, Manipal ",
@@ -24,7 +24,7 @@ const sponsors = [
     {
         id: 3,
         name: "Trigger Gaming",
-        image: "https://asset.cloudinary.com/dquwc8u1i/6f703d983f1bc493a31b1ca8a608d705",
+        image: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp1_c5whux.png",
         description: "Located in the heart of Vidyartha Nagar, Manipal, delivers exceptional gaming experiences, catering to both competitive and casual gamers. With high-end gaming PCs, consoles, and a wide selection of games, Trigger Gaming is the ultimate destination for all things gaming.",
         highlights: ["Exciting Tournaments", "Vibrant Gaming Communit", "Top-tier Gaming Setup", "Casual and Competitive Gaming"],
         location: "MS Apartments, Vidyartha Nagar, Manipal 576104, KA",
@@ -34,7 +34,7 @@ const sponsors = [
     {
         id: 4,
         name: "Youstar",
-        image: "https://asset.cloudinary.com/dquwc8u1i/8dd8c373dc56034da230875991d500d2",
+        image: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb-2_mi7jpa.jpg",
         description: "Youstar is a comtemporary clothing brand offering trendy, high-quality, and affordable fashion for all. Focused on sustainability and style, Yousta redefines everyday wear with unique designs, comformatable fabrics, and a commitment to eco-friendly practices.",
         highlights: ["Stylish and Trendy Designs", "Affordable Fashion", "Customer-Centric Approach", "High-Quality Apparel"],
         location: "Pragati Buisness District,Manipal Road, Shivalli, Hayagreeva Nagar,Udupi,Manipal,Karnataka 576104",
@@ -44,7 +44,7 @@ const sponsors = [
     {
         id: 5,
         name: "YRCAIRI",
-        image: "https://asset.cloudinary.com/dquwc8u1i/bfc97611f420c64c6257cc1e3e63e986",
+        image: "/cairi.jpg",
         description: "We are a educational organization that offers online and offline training programs for students at various levels. They specialize in providing industry-oriented courses and research programs to help students at various levels.They specialize in providing industry-oriented courses and research programs to help students develop skills in information technology, data-analytics, and research.",
         highlights: ["Industry-Oriented Courses", "Research Programs", "Skill Development", "Online and Offline Training"],
         location: "Sector-18,Kharghar,Navi Mumbai, Maharashtra",
@@ -54,7 +54,7 @@ const sponsors = [
     {
         id: 6,
         name: "Fitness Zone",
-        image: "https://asset.cloudinary.com/dquwc8u1i/e4cc91617a5a5d03ef8b624a10bbcc97",
+        image: "https://res.cloudinary.com/dopqveduc/image/upload/v1737396553/sp6_ptjjoh.png",
         description: "Fitness Zone is Manipal's premier air-conditioned gym, located just a short ride away from the college. Equipped with state-of-the-art equipment, experienced trainers, and a variety of fitness classes, Fitness Zone is the perfect place to achieve your fitness goals.",
         highlights: ["Flexible and affordable membership plans", "High Quality Equipment", "Certified Trainers", "Hygiene and safety", "Convenient location"],
         location: "Distributed across Manipal",
@@ -64,7 +64,7 @@ const sponsors = [
     {
         id: 7,
         name: "RideAlly",
-        image: "https://asset.cloudinary.com/dquwc8u1i/07530dc7db088d6b5e8b695a0f2b6a43",
+        image: "https://res.cloudinary.com/dopqveduc/image/upload/v1737438289/spb3_ungkna.jpg",
         description: "RideAlly is a tech-driven startup providing GURANTEED CABS services in 6 Metro cities of India for scheduled travels.",
         highlights: ["Guaranteed Cabs", "Scheduled Travels", "Tech-Driven Startup", "6 Metro Cities"],
         location: "569/4, 2nd Floor, 24th Main, 7th Cross Rd, 1st Sector, HSR Layout, Bengaluru, Karnataka 560102",
@@ -81,11 +81,9 @@ function Sponsor() {
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1800')] bg-cover bg-center opacity-10" />
                 <div className="relative container mx-auto text-center">
                     <div className="flex items-center justify-center gap-2 mb-6">
-                        <GamepadIcon className="w-8 h-8 text-[#00ffff]" />
                         <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#00ffff] to-[#0080ff]">
                             Our Sponsors
                         </h1>
-                        <Sparkles className="w-8 h-8 text-[#00ffff]" />
                     </div>
                     <p className="text-lg text-blue-200 max-w-2xl mx-auto">
                         Meet the amazing partners who made this tech event possible

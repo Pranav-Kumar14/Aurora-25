@@ -39,6 +39,12 @@ function Navbar() {
               <p className="font-heading">SPEAKER</p>
             </a>
             <a
+              href="/sponsor"
+              className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
+            >
+              <p className="font-heading">SPONSERS</p>
+            </a>
+            <a
               href="/ctf"
               className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
             >
@@ -122,6 +128,12 @@ function Navbar() {
               className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
             >
               <p className="font-heading">Speaker</p>
+            </a>
+            <a
+              href="/sponsor"
+              className="block text-white hover:text-blue-300 px-3 py-2 rounded-md text-base font-medium"
+            >
+              <p className="font-heading">Sponsors</p>
             </a>
             <a
               href="/ctf"
