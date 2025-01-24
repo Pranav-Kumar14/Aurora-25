@@ -10,7 +10,7 @@ import icon5 from '../images/mist.jpeg'
 import icon9 from '../images/Blank.jpeg'
 import icon11 from '../images/ACMW_LOGO.png'
 export const workshops = [
-  { id: 1, title: "CONVenient-Convolutional Neutral Network Workshop", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
+  { id: 1, title: "CONVenient-Convolutional Neural Network Workshop", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
   { id: 2, title: "Fusion 360 Generative Design and PCB Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
   { id: 3, title: "UI/UX Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
   { id: 4, title: "GameCraft: Intro to VR and GameDev", date: "26th January, 2025", time: "2:30 - 5:30 PM"},
@@ -26,7 +26,7 @@ export const workshops = [
 export const workshopsData = [
   {
     id: 1,
-    title: "CONVenient-Convolutional Neutral Network Workshop",
+    title: "CONVenient-Convolutional Neural Network Workshop",
     description: "Learn the basics of the building blocks of Computer Vision, the Convolutional Neural Network WITHOUT the worries of prerequisite coding and machine learning knowledge. We'll look into the inner workings with awesome visualizations and clarity you won't find anywhere else! Finally, implement an End to End CNN Project with you own architecture and deploy the project on Flask.",
     slots: [
       { day: "1", date: "24th January, 2025", time: "5:30 PM - 8:30 PM", location: "AB 3" },
