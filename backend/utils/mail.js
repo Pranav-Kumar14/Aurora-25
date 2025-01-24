@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport(
         host:'smtp.gmail.com',
         port:'465',
         auth:{
-            user:'gotomail.cc@gmail.com',
+            user:'aurora.istemanipal@gmail.com',
             pass:process.env.PASSWORD
         }
     }

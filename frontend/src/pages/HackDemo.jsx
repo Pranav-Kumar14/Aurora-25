@@ -476,12 +476,14 @@ const TeamManagementPage = () => {
                   )}
                       
                                     
-                  <span className="ml-2 text-sm sm:text-base text-black bg-white border border-white p-2 rounded-lg pointer-events-none">
-                    {visibility === "private" ? "Private" : "Public"}  
-                  </span>
+                  
            
 
                 </label>
+                <span className="ml-2 text-sm sm:text-base text-black bg-white border border-white p-2 rounded-lg pointer-events-none">
+                    {visibility === "private" ? "Private" : "Public"}  
+                  </span>
+                  {/* <div>{visibility}</div> */}
               </div>
               <div className="mb-6 font-press-start">
                 <label
