@@ -2,7 +2,7 @@ const { sendMail } = require('./mail.js');
 
 // Send welcome email
 const sendJoinEmail = (userEmail,name) => {
-    const subject = `🎉 You're In! Welcome to the Aurora Hackathon! 🚀`;
+    const subject = `🎉 You're In! Welcome to the Aurora! 🚀`;
     const body = `
         Hey${name},
         Woohoo! You’re officially part of the Aurora —let the innovation begin! 🎉
