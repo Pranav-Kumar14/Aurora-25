@@ -103,7 +103,7 @@ const CtfPage = () => {
               <div className="w-12 sm:w-14 h-12 sm:h-14 bg-contain bg-center bg-no-repeat"
                    style={{ backgroundImage: `url(${Calendar})` }}
               />
-              <h1 className="font-sans text-lg sm:text-xl text-center">
+              <h1 className="text-lg sm:text-xl text-center font-sans">
                 6:00PM, 29 January 2025 - 11:59PM, 30 January 2025
               </h1>
             </div>
@@ -112,14 +112,14 @@ const CtfPage = () => {
               <div className="w-12 sm:w-14 h-12 sm:h-14 bg-contain bg-center bg-no-repeat"
                    style={{ backgroundImage: `url(${Team})` }}
               />
-              <h1 className="font-sans text-lg sm:text-xl text-center">
+              <h1 className=" text-lg sm:text-xl text-center font-sans">
                 Team : 1-2
               </h1>
             </div>
           </div>
         </div>
 
-        <p className="text-white text-center font-mono text-xl sm:text-2xl mb-4">
+        <p className="text-white text-center font-sans text-xl sm:text-2xl mb-4">
           To be registered by Team Leader only
         </p>
 
@@ -131,7 +131,7 @@ const CtfPage = () => {
             >
               {isRegistered ? "Registered" : "Register"}
             </button>
-            <p className="text-white text-center font-mono text-lg sm:text-2xl">
+            <p className="text-white text-center font-sans text-lg sm:text-2xl mb-5">
               Workshops + CTF
             </p>
           </div>
@@ -144,7 +144,7 @@ const CtfPage = () => {
             >
               Only CTF Registration
             </a>
-            <p className="text-white text-center font-mono text-lg sm:text-2xl">
+            <p className="text-white text-center font-sans text-lg sm:text-2xl">
               Only CTF
             </p>
           </div>

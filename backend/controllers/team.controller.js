@@ -106,7 +106,7 @@ const teamRequest = async (req, res) => {
 
     team.joinRequests.push(user._id);
     await team.save();
-    sendJoinRequestEmail(user.email);
+    sendJoinRequestEmail(team.leader.email,team.teamname,user.fullName);
 
     return res.json({
       success: true,
@@ -130,7 +130,7 @@ const joinTeam = async (req, res) => {
       return res.json({ success: false, message: "User not found" });
     }
     if (user.team) {
-      return res.json({ success: false, message: "You are already in a Team" });
+      return res.json({ success: false, message: "Already in a Team" });
     }
 
     const team = await Team.findById(teamId);
