@@ -67,7 +67,7 @@ export default function Profile() {
         navigate("/login");
     };
 
-    const admins = ["istemancomm2425@gmail.com"]
+    const admins = ["istemancomm2425@gmail.com", "isteboard2425@gmail.com"]
 
     if (!user) return null;
 

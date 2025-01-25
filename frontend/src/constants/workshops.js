@@ -11,17 +11,17 @@ import icon10 from '../images/iste.png';
 import icon11 from '../images/ACMW_LOGO.png';
 
 export const workshops = [
-  { id: 1, title: "CONVenient-Convolutional Neural Network Workshop", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
-  { id: 2, title: "Fusion 360 Generative Design and PCB Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
-  { id: 3, title: "UI/UX Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" },
-  { id: 4, title: "GameCraft: Intro to VR and GameDev", date: "26th January, 2025", time: "2:30 - 5:30 PM"},
-  { id: 5, title: "HackLinux: Cryptography and Web Exploitation ", date: "27th January, 2025", time: "5:30 - 8:30 PM"},
-  { id: 6, title: "StarTrail: Stargazing and Astrophotography workshop", date: "26th January, 2025", time: "2:30 PM - 5:30 PM"},
-  { id: 7, title: "App Development: App Dev and Backend Workshop", date: "28th January, 2025", time: "5:30 - 8:30 PM"},
-  { id: 8, title: "Crafting the Web:  A Beginner's Guide to WebDev", date: "29th January, 2025", time: "5:30 - 8:30 PM"},
-  { id: 9, title: "Tech Divide: A Tech Debate competition", date: "30th January, 2025", time: "5:30 - 8:30 PM"},
-  { id: 10, title: "CloudQuest: Intro to Cloud Computing with Azure", date: "31st January, 2025", time: "5:30 - 8:30 PM"},
-  { id: 11, title: "VisionCraft: Mastering Computer Vision", date: "31st January, 2025", time: "5:30 - 8:30 PM"},
+  { id: 1, title: "CONVenient-Convolutional Neural Network Workshop", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" , club : "ACM"},
+  { id: 2, title: "Fusion 360 Generative Design and PCB Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" , club : "DRONAID"},
+  { id: 3, title: "UI/UX Designing", date: "24th January, 2025", time: "5:30 PM - 8:30 PM" , club : "LEANIN"},
+  { id: 4, title: "GameCraft: Intro to VR and GameDev", date: "26th January, 2025", time: "2:30 - 5:30 PM", club : "VARISE"},
+  { id: 5, title: "HackLinux: Cryptography and Web Exploitation ", date: "27th January, 2025", time: "5:30 - 8:30 PM", club : "MIST"},
+  { id: 6, title: "StarTrail: Stargazing and Astrophotography workshop", date: "26th January, 2025", time: "2:30 PM - 5:30 PM", club : "ASTRONOMY"},
+  { id: 7, title: "App Development: App Dev and Backend Workshop", date: "28th January, 2025", time: "5:30 - 8:30 PM", club : "ADG"},
+  { id: 8, title: "Crafting the Web:  A Beginner's Guide to WebDev", date: "29th January, 2025", time: "5:30 - 8:30 PM", club : "ISTE1"},
+  { id: 9, title: "Tech Divide: A Tech Debate competition", date: "30th January, 2025", time: "5:30 - 8:30 PM", club : "BLANK101"},
+  { id: 10, title: "CloudQuest: Intro to Cloud Computing with Azure", date: "31st January, 2025", time: "5:30 - 8:30 PM", club : "ISTE2"},
+  { id: 11, title: "VisionCraft: Mastering Computer Vision", date: "31st January, 2025", time: "5:30 - 8:30 PM", club : "ACMW"},
 
 ];
 export const workshopsData = [

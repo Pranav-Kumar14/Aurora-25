@@ -113,6 +113,8 @@ function App() {
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/refundpolicy" element={<RefundPolicy />} />
             <Route path="/all-users" element={<AllUsers />} />
+
+            <Route path="*" element={<h1 className="text-white text-center">Error 404 : Not Found</h1>} />
           </Routes>
         </AuthProvider>
       </Router>
