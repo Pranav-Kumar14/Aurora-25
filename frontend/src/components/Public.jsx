@@ -128,21 +128,21 @@ const PublicTeams = () => {
               key={team._id}
               className="bg-white p-8  rounded-lg shadow-md border border-black "
             >
-              <h3 className="text-xl font-semibold text-black">
+              <h3 className="text-xl font-semibold text-black uppercase">
                 {team.teamname}
               </h3>
               <p className="mt-2 text-gray-800">
                 Leader
                 Name
                 <br/>
-                 <span className="font-pixelify text-[19px]">{team.leader?.fullName || "Unknown"}</span>
+                 <span className="font-sans text-[18px]">{team.leader?.fullName || "Unknown"}</span>
               </p>
               <p className="mt-2 text-gray-800">
-                Leader Email: <span className="font-pixelify text-[19px] ">{team.leader?.email || "Unknown"}</span>
+                Leader Email: <span className="font-sans text-[18px] ">{team.leader?.email || "Unknown"}</span>
               </p>
               <p className="mt-2 text-gray-800 text-md">
                 Description:{" "}
-                <span className="font-pixelify text-[19px]">{team.description || "No description provided"}</span>
+                <span className="font-sans text-[18px]">{team.description || "No description provided"}</span>
               </p>
               <button
                 className={`mt-4 w-full py-2 px-4 rounded-lg text-white ${

@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import ArpanImage from "../images/Arpan.jpeg";
 import CalendarIcon from "../images/calendar.png";
 import ClockIcon from "../images/clock.png";
@@ -8,7 +9,16 @@ import { motion } from "framer-motion";
 import speakerimg from '/speaker1.jpg';
 
 const Speaker = () => {
-  return (
+
+  useEffect(() => {
+    if (!performance.getEntriesByType("navigation").some(entry => entry.type === "reload")) {
+      window.location.reload();
+    }
+  }, []);
+  
+  
+  
+    return (
     <div
       className="min-h-screen bg-gradient-to-br from-[#0e0b3d] to-[#1b1b3a] text-white px-6 py-16 bg-cover bg-top bg-fixed overflow-hidden"
       style={{ backgroundImage: `url(${speakerimg})` }}

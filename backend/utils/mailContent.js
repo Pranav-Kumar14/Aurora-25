@@ -71,7 +71,7 @@ const sendJoinRequestEmail = (teamLeaderEmail, teamName, userName) => {
 
         We hope this message finds you well.
 
-A new request has been submitted by ${fullName} to join your team, ${teamName}, for the **Aurora Hackathon**. Below are the details of the request:
+A new request has been submitted by ${userName} to join your team, ${teamName}, for the **Aurora Hackathon**. Below are the details of the request:
 
 ----------
 

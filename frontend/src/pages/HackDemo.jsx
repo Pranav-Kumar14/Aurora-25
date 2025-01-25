@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Teams from "../components/Teams";
+import Teams from "../components/teams";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import SquidGame from "../images/hackbg.png";
 import PublicTeams from "../components/Public";
 import BaseUrl from "../BaseUrl";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast"; // Import react-hot-toast
+import { toast } from "react-hot-toast";
+import HackInfo from "../components/HackInfo";
 
 const TeamManagementPage = () => {
   const [team, setTeam] = useState(null);
@@ -34,7 +35,7 @@ const TeamManagementPage = () => {
   const { user } = useAuth();
   const url = BaseUrl + "/team";
   const navigate = useNavigate(); // Initialize navigate
-
+  const [showInfo, setShowInfo] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -53,15 +54,11 @@ const TeamManagementPage = () => {
     fetchUserData();
   }, [user]);
 
-
   useEffect(() => {
     if (teamcheck) {
       handleToggle("yourTeam"); // Automatically switch to "Your Team" section
     }
   }, [teamcheck]); // Dependency ensures this runs whenever `teamcheck` changes
-  
-
-  
 
   const handleToggle = (section) => {
     setActiveSection(section);
@@ -161,9 +158,6 @@ const TeamManagementPage = () => {
         // Show success toast
         setTeam({ ...team, description }); // Update team state with the new description
       }
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
     } catch (error) {
       toast.error("Error updating description. Please try again.");
     }
@@ -189,7 +183,7 @@ const TeamManagementPage = () => {
       }
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 500);
     } catch (error) {
       toast.error("Error processing request. Please try again.");
     }
@@ -212,12 +206,12 @@ const TeamManagementPage = () => {
       toast.success("User Rejected");
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 500);
     } catch (error) {
       toast.error("User Rejected");
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 500);
     }
     // finally {
     //   window.location.reload(); // Reload the page
@@ -241,7 +235,7 @@ const TeamManagementPage = () => {
       }
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 500);
     } catch (error) {
       toast.error("Error adding member. Please try again.");
     }
@@ -264,7 +258,7 @@ const TeamManagementPage = () => {
       toast.success("Removed member");
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 500);
     } catch (error) {
       toast.error("Removed Member");
     }
@@ -282,13 +276,13 @@ const TeamManagementPage = () => {
         setMembers(response.data.team.members);
         setTeam(response.data.team);
 
-         if (isLeader) {
-    // Show success toast if the user is the leader
-    toast.success("Team Dissolved");
-  } else {
-    // Show a different message if the user is not the leader
-    toast.info("You left the team");
-  } // Show success toast
+        if (isLeader) {
+          // Show success toast if the user is the leader
+          toast.success("Team Dissolved");
+        } else {
+          // Show a different message if the user is not the leader
+          toast.info("You left the team");
+        } // Show success toast
         setTeam(null);
       }
       if (isLeader) {
@@ -300,7 +294,7 @@ const TeamManagementPage = () => {
       }
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 500);
     } catch (error) {
       if (isLeader) {
         // Show success toast if the user is the leader
@@ -311,7 +305,7 @@ const TeamManagementPage = () => {
       }
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 500);
     }
     // finally {
     //   setShowPopup(false);
@@ -376,200 +370,281 @@ const TeamManagementPage = () => {
     );
   }
 
-    return (
-      <div
-        className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen p-8 font-press-start bg-no-repeat bg-cover overflow-hidden overflow-x-hidden"
-        style={{ backgroundImage: `url(${SquidGame})` }}
-      >
-        <div className="mx-auto space-y-8 mb-10">
-          {!teamcheck && !showTeams ? ( // Show create team button only if no team exists
-            <section>
-              <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-1 sm:space-x-3">
+  return (
+    <div
+      className="bg-gradient-to-r from-[#0f0d39] to-[#201867] text-white min-h-screen p-8 font-press-start bg-no-repeat bg-cover overflow-hidden overflow-x-hidden"
+      style={{ backgroundImage: `url(${SquidGame})` }}
+    >
+      <div className="mx-auto space-y-8 mb-10">
+        {!teamcheck && !showTeams ? ( // Show create team button only if no team exists
+          <section>
+            <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-1 sm:space-x-3">
+              <img
+                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
+                alt="Image description"
+                className="w-16 h-16 rounded-md object-cover"
+              />
+              <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
+                Team Management
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-press-start">
+              <button
+                className="bg-gray-100 text-black rounded-lg shadow-md px-4 py-4 hover:bg-gray-200 flex justify-between items-center"
+                onClick={() => setShowTeams(true)}
+              >
+                <div>
+                  <h2 className="text-md font-bold font-press-start">
+                    Create Team
+                  </h2>
+                </div>
+                <img
+                  src="/create icon.png"
+                  alt=""
+                  className="w-16 h-16 rounded-md m-1"
+                />
+              </button>
+            </div>
+          </section>
+        ) : null}{" "}
+        {!teamcheck && showTeams && (
+          <Teams email={newEmail} onClose={handleClose} />
+        )}
+      </div>
+
+      {showInfo && <HackInfo onClose={() => setShowInfo(false)} />} 
+      <div className="team-toggle-container mt-10">
+        <div className="flex justify-center gap-4 mb-8">
+          <button
+            className={`px-4 py-2 rounded-lg ${
+              activeSection === "yourTeam"
+                ? "bg-gray-200 text-black hover:bg-gray-300"
+                : "bg-[#0f0d14] text-white"
+            }`}
+            onClick={() => handleToggle("yourTeam")}
+          >
+            Your Team
+          </button>
+          <button
+            className={`px-4 py-2 rounded-lg ${
+              activeSection === "publicTeams"
+                ? "bg-gray-200 text-black hover:bg-gray-300"
+                : "bg-[#0f0d14] text-white"
+            }`}
+            onClick={() => handleToggle("publicTeams")}
+          >
+            Public Teams
+          </button>
+        </div>
+      </div>
+      
+      {activeSection === "yourTeam" ? (
+        teamcheck ? (
+          <section>
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between text-3xl font-bold mb-8 pt-10">
+              {/* Team Name Section */}
+              <div className="flex items-center space-x-4 mb-4 lg:mb-0">
                 <img
                   src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
                   alt="Image description"
                   className="w-16 h-16 rounded-md object-cover"
                 />
-                <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
-                  Team Management
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold p-5 font-press-start">
+                  {team?.teamname}
                 </h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 font-press-start">
-                <button
-                  className="bg-gray-100 text-black rounded-lg shadow-md px-4 py-4 hover:bg-gray-200 flex justify-between items-center"
-                  onClick={() => setShowTeams(true)}
-                >
-                  <div>
-                    <h2 className="text-md font-bold font-press-start">
-                      Create Team
-                    </h2>
-                  </div>
-                  <img
-                    src="/create icon.png"
-                    alt=""
-                    className="w-16 h-16 rounded-md m-1"
-                  />
-                </button>
-              </div>
-            </section>
-          ) : null}{" "}
-          {/* Show nothing if a team exists */}
-          {/* Show Teams component only if no team exists */}
-          {!teamcheck && showTeams && <Teams email={newEmail} onClose={handleClose} />}
-        </div>
-        <div className="team-toggle-container">
-          <div className="flex justify-center gap-4 mb-8">
-            <button
-              className={`px-4 py-2 rounded-lg ${
-                activeSection === "yourTeam"
-                  ? "bg-gray-200 text-black hover:bg-gray-300"
-                  : "bg-[#0f0d14] text-white"
-              }`}
-              onClick={() => handleToggle("yourTeam")}
-            >
-              Your Team
-            </button>
-            <button
-              className={`px-4 py-2 rounded-lg ${
-                activeSection === "publicTeams"
-                  ? "bg-gray-200 text-black hover:bg-gray-300"
-                  : "bg-[#0f0d14] text-white"
-              }`}
-              onClick={() => handleToggle("publicTeams")}
-            >
-              Public Teams
-            </button>
-          </div>
-        </div>
-        {activeSection === "yourTeam" ? (
-          teamcheck ? (
-            <section>
-              <div className="lg:flex items-center space-x-10 mb-10">
-                <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
-                  <img
-                    src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
-                    alt="Image description"
-                    className="w-16 h-16 rounded-md object-cover"
-                  />
-                  <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
-                    {team?.teamname}
-                  </h2>
-                  
-                  
-                </div>
+
+              {/* Buttons Section */}
+              <div className="flex flex-col items-center space-y-2 mt-4 lg:mt-0 w-full lg:w-auto">
                 {!hackathonPaid && isLeader && (
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpxrP3_RbFHq6u3u2A4zZIsLX5cj1aSmIBQbImY6BtWkemEg/viewform?usp=dialog" target="_blank"
-                    className="bg-red-700 p-5 h-[4rem] rounded-2xl whitespace-nowrap"
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSdpxrP3_RbFHq6u3u2A4zZIsLX5cj1aSmIBQbImY6BtWkemEg/viewform?usp=dialog"
+                    target="_blank"
+                    className="bg-red-700 p-2 lg:p-4 rounded-xl text-white shadow-md text-sm sm:text-base w-3/4 lg:w-auto text-center"
                   >
                     Pay Now
                   </a>
                 )}
-              </div>
-            
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-4 font-press-start">
-              
-                <span className="text-md sm:text-lg">Team Visibility</span>
-                <label className="relative inline-flex items-center cursor-pointer m-5">
-                  <input
-                    type="checkbox"
-                    className="sr-only peer"
-                    checked={visibility === "public"}
-                    onChange={(e) => {
-                      const newVisibility = e.target.checked
-                        ? "public"
-                        : "private";
-                      setVisibility(newVisibility);
-                      setshowvisiVisibility(newVisibility)
-                      updateVisibility(newVisibility);
-                    }}
-                  />
-                  {isLeader && (
-                    <div className="relative w-16 h-8 bg-gray-300 rounded-full shadow-inner peer dark:bg-gray-800 peer-checked:bg-green-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:h-6 after:w-6 after:rounded-full after:shadow-md after:transition-all peer-hover:after:scale-110 peer-checked:after:translate-x-8 dark:after:border-gray-600"></div>
-                  )}
-                      
-                                    
-                  
-           
 
-                </label>
-                <span className="ml-2 text-sm sm:text-base text-black bg-white border border-white p-2 rounded-lg pointer-events-none">
-                    {visibility === "private" ? "Private" : "Public"}  
-                  </span>
-                  {/* <div>{visibility}</div> */}
-              </div>
-              <div className="mb-6 font-press-start">
-                <label
-                  htmlFor="description"
-                  className="block text-lg font-medium text-white my-5 font-press-start"
+                <button
+                  onClick={() => setShowInfo(true)}
+                  className="text-white bg-black rounded-full py-1 px-3 lg:py-2 lg:px-4 flex items-center justify-center gap-2 shadow-md border-2 border-[#451A7A] text-sm sm:text-base w-3/4 lg:w-auto"
                 >
-                  Team Description
-                </label>
-                <textarea
-                  id="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className="w-full sm:w-1/2 sm:flex sm:flex-col p-3 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black font-press-start text-md"
-                  placeholder="Enter a new team description"
-                  rows={5}
-                  readOnly={!isLeader}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 sm:h-5 sm:w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M18 10c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-9-3a1 1 0 112 0v1a1 1 0 11-2 0V7zm0 4a1 1 0 012 0v3a1 1 0 11-2 0v-3z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span>Info</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-4 lg:mt-10 mt-10 font-press-start">
+              <span className="text-md sm:text-lg">Team Visibility</span>
+              <label className="relative inline-flex items-center cursor-pointer m-5">
+                <input
+                  type="checkbox"
+                  className="sr-only peer"
+                  checked={visibility === "public"}
+                  onChange={(e) => {
+                    const newVisibility = e.target.checked
+                      ? "public"
+                      : "private";
+                    setVisibility(newVisibility);
+                    setshowvisiVisibility(newVisibility);
+                    updateVisibility(newVisibility);
+                  }}
                 />
                 {isLeader && (
+                  <div className="relative w-16 h-8 bg-gray-300 rounded-full shadow-inner peer dark:bg-gray-800 peer-checked:bg-green-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:border-gray-300 after:h-6 after:w-6 after:rounded-full after:shadow-md after:transition-all peer-hover:after:scale-110 peer-checked:after:translate-x-8 dark:after:border-gray-600"></div>
+                )}
+              </label>
+              <span className="ml-2 text-sm sm:text-base text-black bg-white border border-white p-2 rounded-lg pointer-events-none">
+                {visibility === "private" ? "Private" : "Public"}
+              </span>
+              {/* <div>{visibility}</div> */}
+            </div>
+            <div className="mb-6 font-press-start">
+              <label
+                htmlFor="description"
+                className="block text-lg font-medium text-white my-5 font-press-start"
+              >
+                Team Description
+              </label>
+              <textarea
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="w-full sm:w-1/2 sm:flex sm:flex-col p-3 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black font-press-start text-md"
+                placeholder="Enter a new team description"
+                rows={5}
+                readOnly={!isLeader}
+              />
+              {isLeader && (
+                <button
+                  className="text-sm mt-4 m-auto bg-gray-700 text-white hover:bg-gray-900 hover:text-white py-3 px-4 rounded-lg focus:outline-none font-press-start"
+                  onClick={updateDescription}
+                >
+                  Update Description
+                </button>
+              )}
+              <div className="mt-6 font-press-start">
+                {isLeader && (
                   <button
-                    className="text-sm mt-4 m-auto bg-gray-700 text-white hover:bg-gray-900 hover:text-white py-3 px-4 rounded-lg focus:outline-none font-press-start"
-                    onClick={updateDescription}
+                    className="mt-4 bg-gray-700 text-white hover:bg-gray-400 hover:text-black py-2 px-4 rounded-lg focus:outline-none font-press-start"
+                    onClick={() => setShowAddMemberPopup(true)}
                   >
-                    Update Description
+                    Add Member
                   </button>
                 )}
-                <div className="mt-6 font-press-start">
-                  {isLeader && (
-                    <button
-                      className="mt-4 bg-gray-700 text-white hover:bg-gray-400 hover:text-black py-2 px-4 rounded-lg focus:outline-none font-press-start"
-                      onClick={() => setShowAddMemberPopup(true)}
+              </div>
+              {showAddMemberPopup && (
+                <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center font-press-start">
+                  <div className="bg-gray-200 p-5 sm:p-8 rounded-lg shadow-lg w-100 font-press-start m-10">
+                    <h2 className="text-md sm:text-xl text-center text-black font-semibold mb-4 font-press-start">
+                      Add Team Member
+                    </h2>
+                    <label
+                      htmlFor="newMemberEmail"
+                      className="block text-sm ms-auto sm:text-lg font-medium text-gray-700 mb-5 font-press-start"
                     >
-                      Add Member
-                    </button>
-                  )}
-                </div>
-                {showAddMemberPopup && (
-                  <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center font-press-start">
-                    <div className="bg-gray-200 p-5 sm:p-8 rounded-lg shadow-lg w-100 font-press-start m-10">
-                      <h2 className="text-md sm:text-xl text-center text-black font-semibold mb-4 font-press-start">
-                        Add Team Member
-                      </h2>
-                      <label
-                        htmlFor="newMemberEmail"
-                        className="block text-sm ms-auto sm:text-lg font-medium text-gray-700 mb-5 font-press-start"
+                      Enter Member's Email
+                    </label>
+                    <textarea
+                      name="email"
+                      value={newMemberEmail}
+                      onChange={(e) => setNewMemberEmail(e.target.value)}
+                      className={`w-full h-11 p-3 text-sm sm:text-sm border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-black font-press-start text-black`}
+                      placeholder="Enter email"
+                      rows="1"
+                    />
+                    <div className="flex justify-between mt-6 font-press-start">
+                      <button
+                        className="bg-[#0f0d14] text-white py-2 px-4 m-2 text-sm sm:text-xl rounded-lg hover:bg-gray-800 font-press-start"
+                        onClick={handleAddMember}
                       >
-                        Enter Member's Email
-                      </label>
-                      <textarea
-                        name="email"
-                        value={newMemberEmail}
-                        onChange={(e) => setNewMemberEmail(e.target.value)}
-                        className={`w-full h-11 p-3 text-sm sm:text-sm border border-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-black font-press-start text-black`}
-                        placeholder="Enter email"
-                        rows="1"
-                      />
-                      <div className="flex justify-between mt-6 font-press-start">
-                        <button
-                          className="bg-[#0f0d14] text-white py-2 px-4 m-2 text-sm sm:text-xl rounded-lg hover:bg-gray-800 font-press-start"
-                          onClick={handleAddMember}
-                        >
-                          Add Member
-                        </button>
-                        <button
-                          className="bg-gray-500 text-white py-2 px-4 m-2 text-sm sm:text-xl rounded-lg hover:bg-gray-600 font-press-start"
-                          onClick={() => setShowAddMemberPopup(false)}
-                        >
-                          Cancel
-                        </button>
-                      </div>
+                        Add Member
+                      </button>
+                      <button
+                        className="bg-gray-500 text-white py-2 px-4 m-2 text-sm sm:text-xl rounded-lg hover:bg-gray-600 font-press-start"
+                        onClick={() => setShowAddMemberPopup(false)}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
+            </div>
+            <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
+              <img
+                src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
+                alt="Image description"
+                className="w-16 h-16 rounded-md object-cover"
+              />
+              <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
+                Members
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-press-start">
+              {members.map((member, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-200 text-gray-800 rounded-xl p-4 flex flex-col items-center gap-4 shadow-md font-press-start"
+                >
+                  <img
+                    src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Group_n98bl6.png"
+                    alt="Image description"
+                    className="w-16 h-16 sm:w-24 rounded-md object-cover"
+                  />
+                  <h3 className="text-lg font-bold font-press-start">
+                    {member.fullName}
+                  </h3>
+                  <p className="text-sm text-gray-400">
+                    {index === 0 ? "Leader" : "Member"}
+                  </p>
+                  {isLeader ? (
+                    <>
+                      {index === 0 ? (
+                        <button
+                          onClick={handleDissolveTeam}
+                          className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
+                        >
+                          Dissolve Team
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => handleRemoveMember(member._id)}
+                          className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </>
+                  ) : (
+                    <p></p>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center items-center min-h-[200px]">
+              {" "}
+              <button
+                onClick={handleDissolveTeam}
+                className="bg-[#c52a28] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start m-5 mt-16"
+              >
+                Leave Team
+              </button>
+            </div>
+            <div>
               <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
                 <img
                   src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
@@ -577,124 +652,67 @@ const TeamManagementPage = () => {
                   className="w-16 h-16 rounded-md object-cover"
                 />
                 <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
-                  Members
+                  Join Requests
                 </h2>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-press-start">
-                {members.map((member, index) => (
-                  <div
-                    key={index}
-                    className="bg-gray-200 text-gray-800 rounded-xl p-4 flex flex-col items-center gap-4 shadow-md font-press-start"
-                  >
-                    <img
-                      src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/Group_n98bl6.png"
-                      alt="Image description"
-                      className="w-16 h-16 sm:w-24 rounded-md object-cover"
-                    />
-                    <h3 className="text-lg font-bold font-press-start">
-                      {member.fullName}
-                    </h3>
-                    <p className="text-sm text-gray-400">
-                      {index === 0 ? "Leader" : "Member"}
-                    </p>
-                    {isLeader ? (
-                      <>
-                        {index === 0 ? (
+              {joinRequests.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 font-press-start">
+                  {joinRequests.map((request) => (
+                    <div
+                      key={request._id}
+                      className="bg-gray-300 text-white rounded-xl p-8 flex flex-col items-center gap-4 shadow-md font-press-start w-full"
+                    >
+                      <img
+                        src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/reqicon_cnnpyi.png"
+                        alt="Image description"
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                      <p className="text-sm text-center text-black font-press-start">
+                        {request.fullName} would like to join your team.
+                      </p>
+                      <p className="text-xs text-center text-black font-press-start">
+                        {request.email}
+                      </p>
+                      <div className="flex gap-2 font-press-start">
+                        {isLeader && (
                           <button
-                            onClick={handleDissolveTeam}
+                            onClick={() =>
+                              handleRequestAction(request._id, "approve")
+                            }
                             className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
                           >
-                            Dissolve Team
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => handleRemoveMember(member._id)}
-                            className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
-                          >
-                            Remove
+                            Accept
                           </button>
                         )}
-                      </>
-                    ) : (
-                      <p></p>
-                    )}
-                  </div>
-                
-                ))}
-                
-              </div>
-              <div className="flex justify-center items-center min-h-[200px]"> <button
-                            onClick={handleDissolveTeam}
-                            className="bg-[#c52a28] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start m-5 mt-16"
+                        {isLeader && (
+                          <button
+                            onClick={() => handleRejectRequest(request._id)}
+                            className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
                           >
-                            Leave Team
-                          </button></div>
-              <div>
-                <div className="text-3xl sm:text-3xl font-bold mb-8 pt-10 flex items-center space-x-4">
-                  <img
-                    src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121210/frame_wilx26.png"
-                    alt="Image description"
-                    className="w-16 h-16 rounded-md object-cover"
-                  />
-                  <h2 className="text-xl sm:text-3xl font-bold p-5 font-press-start">
-                    Join Requests
-                  </h2>
-                </div>
-                {joinRequests.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 font-press-start">
-                    {joinRequests.map((request) => (
-                      <div
-                        key={request._id}
-                        className="bg-gray-300 text-white rounded-xl p-8 px-3 flex flex-col items-center gap-4 shadow-md font-press-start sm:w-[160%] lg:w-[120%]"
-                      >
-                        <img
-                          src="https://res.cloudinary.com/db1ziohil/image/upload/v1737121209/reqicon_cnnpyi.png"
-                          alt="Image description"
-                          className="w-16 h-16 rounded-full object-cover"
-                        />
-                        <p className="text-sm text-center text-black font-press-start">
-                          {request.fullName} would like to join your team.
-                        </p>
-                        <div className="flex gap-2 font-press-start ">
-                          {isLeader && (
-                            <button
-                              onClick={() =>
-                                handleRequestAction(request._id, "approve")
-                              }
-                              className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
-                            >
-                              Accept
-                            </button>
-                          )}
-                          {isLeader && (
-                            <button
-                              onClick={() => handleRejectRequest(request._id)}
-                              className="bg-[#0f0d14] text-white px-4 py-2 rounded-lg hover:bg-[#361c6e] font-press-start"
-                            >
-                              Decline
-                            </button>
-                          )}
-                        </div>
+                            Decline
+                          </button>
+                        )}
                       </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center text-white text-lg font-press-start">
-                    No join requests at the moment.
-                  </div>
-                )}
-              </div>
-            </section>
-          ) : (
-            <div className="text-center text-red-500 text-lg font-bold">
-              You are not a leader or a member of any team.
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center text-white text-lg font-press-start">
+                  No join requests at the moment.
+                </div>
+              )}
             </div>
-          )
+          </section>
         ) : (
-          <PublicTeams />
-        )}
-      </div>
-    );
-  };
+          <div className="text-center text-red-500 text-lg font-bold">
+            You are not a leader or a member of any team.
+          </div>
+        )
+      ) : (
+        <PublicTeams />
+      )}
+    </div>
+  );
+};
 
 export default TeamManagementPage;

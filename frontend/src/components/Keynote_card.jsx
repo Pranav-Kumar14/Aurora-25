@@ -39,10 +39,6 @@ const KeynoteSpeakerCard = () => {
           style={{
             boxShadow: '0 0 15px rgba(128, 0, 255, 1)', // Button shadow
           }}
-          onClick={() => {
-            window.scrollTo(0, 0);
-           
-          }}
         >
           Know More
         </Link>
