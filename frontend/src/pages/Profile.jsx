@@ -50,8 +50,9 @@ export default function Profile() {
 
                 // Find the speaker details based on the ID
                 const speakerDetails = updatedUser.speaker;
-                if(speakerDetails){
-                setSelectedSpeaker(speakerDetails);}
+                if (speakerDetails) {
+                    setSelectedSpeaker(speakerDetails);
+                }
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }
@@ -66,83 +67,96 @@ export default function Profile() {
         navigate("/login");
     };
 
+    const admins = ["istemancomm2425@gmail.com"]
+
     if (!user) return null;
 
     return (
-    
-        <div className="min-h-screen bg-  py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="px-4 py-5 sm:px-6 bg-indigo-600">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center">
-                            <User className="h-8 w-8 text-white" />
-                            <h3 className="ml-3 text-lg leading-6 font-heading font-medium text-white">Profile</h3>
-                        </div>
-                        <button
-                            onClick={handleLogout}
-                            className="inline-flex items-center px-3 py-1 font-body border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:border-indigo-900 focus:shadow-outline-indigo active:bg-indigo-900 transition ease-in-out duration-150"
-                        >
-                            <LogOut className="h-4 w-4 mr-2" />
-                            Logout
-                        </button>
-                    </div>
-                </div>
 
-                <div className="px-4 py-5 sm:p-6">
-                    <dl className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-black  font-press-start">Full Name</dt>
-                            <dd className="mt-1 text-sm  text-gray-900">{user.fullName}</dd>
-                        </div>
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-black  font-press-start">Username</dt>
-                            <dd className="mt-1 text-sm  text-gray-900">{user.username}</dd>
-                        </div>
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-black  font-press-start">Email Address</dt>
-                            <dd className="mt-1 text-sm  text-gray-900">{user.email}</dd>
-                        </div>
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-black  font-press-start">College ID</dt>
-                            <dd className="mt-1 text-sm  text-gray-900">{user.collegeid}</dd>
-                        </div>
-                        {user.workshopPaid && (
-                            <>
-                                <div className="sm:col-span-2">
-                                    <dt className="text-sm font-medium font-heading text-black-500">Registered Workshops</dt>
-                                    <dd className="mt-1 text-sm text-gray-900">
-                                        {registeredWorkshops.length > 0 ? (
-                                            <ul className="list-disc ml-5">
-                                                {registeredWorkshops.map((details, index) => (
-                                                    <li key={index}>{details}</li>
-                                                ))}
-                                            </ul>
-                                        ) : (
-                                            "No workshops registered."
-                                        )}
-                                    </dd>
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <dd className="mt-1 text-sm text-gray-900 font-press-start">CTF
-                                    </dd>
-                                    <dd className="mt-1 text-sm  text-gray-900">
-                                        {user.ctf ? "Registered" : "Not Registered"}
-                                    </dd>
-                                </div>
-                            </>
-                        )}
-                        {selectedSpeaker && (
-                            <div className="sm:col-span-2">
-                                <dt className="text-sm font-medium text-black font-press-start">Speaker</dt>
-                                <dd className="mt-1 text-sm text-gray-900">
-                                    {`${speakers[0].name} - ${speakers[0].details}`}
-                                </dd>
+        <>
+            <div className="min-h-screen bg-  py-12 px-4 sm:px-6 lg:px-8">
+                <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div className="px-4 py-5 sm:px-6 bg-indigo-600">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                                <User className="h-8 w-8 text-white" />
+                                <h3 className="ml-3 text-lg leading-6 font-heading font-medium text-white">Profile</h3>
                             </div>
-                        )}
-                        
-                        
-                    </dl>
-                    {!user.workshopPaid ? (
+
+                            {admins.includes(user.email) &&
+                                <button
+                            onClick={() => navigate("/all-users")}
+                                className="inline-flex items-center px-3 py-1 font-body border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:border-indigo-900 focus:shadow-outline-indigo active:bg-indigo-900 transition ease-in-out duration-150"
+                            >
+                                ALL USERS
+                            </button>
+                            }
+
+                            <button
+                                onClick={handleLogout}
+                                className="inline-flex items-center px-3 py-1 font-body border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:border-indigo-900 focus:shadow-outline-indigo active:bg-indigo-900 transition ease-in-out duration-150"
+                            >
+                                <LogOut className="h-4 w-4 mr-2" />
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+
+                    <div className="px-4 py-5 sm:p-6">
+                        <dl className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2">
+                            <div className="sm:col-span-1">
+                                <dt className="text-sm font-medium text-black  font-press-start">Full Name</dt>
+                                <dd className="mt-1 text-sm  text-gray-900">{user.fullName}</dd>
+                            </div>
+                            <div className="sm:col-span-1">
+                                <dt className="text-sm font-medium text-black  font-press-start">Username</dt>
+                                <dd className="mt-1 text-sm  text-gray-900">{user.username}</dd>
+                            </div>
+                            <div className="sm:col-span-1">
+                                <dt className="text-sm font-medium text-black  font-press-start">Email Address</dt>
+                                <dd className="mt-1 text-sm  text-gray-900">{user.email}</dd>
+                            </div>
+                            <div className="sm:col-span-1">
+                                <dt className="text-sm font-medium text-black  font-press-start">College ID</dt>
+                                <dd className="mt-1 text-sm  text-gray-900">{user.collegeid}</dd>
+                            </div>
+                            {user.workshopPaid && (
+                                <>
+                                    <div className="sm:col-span-2">
+                                        <dt className="text-sm font-medium font-heading text-black-500">Registered Workshops</dt>
+                                        <dd className="mt-1 text-sm text-gray-900">
+                                            {registeredWorkshops.length > 0 ? (
+                                                <ul className="list-disc ml-5">
+                                                    {registeredWorkshops.map((details, index) => (
+                                                        <li key={index}>{details}</li>
+                                                    ))}
+                                                </ul>
+                                            ) : (
+                                                "No workshops registered."
+                                            )}
+                                        </dd>
+                                    </div>
+                                    <div className="sm:col-span-2">
+                                        <dd className="mt-1 text-sm text-gray-900 font-press-start">CTF
+                                        </dd>
+                                        <dd className="mt-1 text-sm  text-gray-900">
+                                            {user.ctf ? "Registered" : "Not Registered"}
+                                        </dd>
+                                    </div>
+                                </>
+                            )}
+                            {selectedSpeaker && (
+                                <div className="sm:col-span-2">
+                                    <dt className="text-sm font-medium text-black font-press-start">Speaker</dt>
+                                    <dd className="mt-1 text-sm text-gray-900">
+                                        {`${speakers[0].name} - ${speakers[0].details}`}
+                                    </dd>
+                                </div>
+                            )}
+
+
+                        </dl>
+                        {!user.workshopPaid ? (
                             // <PaymentButton
                             //     orderAmount="250"
                             //     onPaymentSuccess={handlePaymentSuccess}
@@ -150,7 +164,7 @@ export default function Profile() {
                             // />
                             <div className="m-4">
                                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAKtU0MX8aAxX-Af0F1P7uXlup3eBTcThYS7Qm1I4aw0b1cw/viewform?usp=dialog" target="_blank"
-                                className="bg-[#519984] w-full px-6 py-2 mt-4 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]"
+                                    className="bg-[#519984] w-full px-6 py-2 mt-4 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-[0_0_15px_#7DC5EE] hover:bg-[#ADD6EA]"
                                 >
                                     Pay Rs. 250
                                 </a>
@@ -159,11 +173,12 @@ export default function Profile() {
                             <button className="w-full mt-4 bg-gray-600 px-6 py-3 rounded-full text-white font-heading font-semibold shadow-md transition duration-300 hover:shadow-lg hover:bg-gray-500">
                                 You have Paid!
 
-                            </button> 
+                            </button>
                         )}
+                    </div>
+                    <p className="px-2 pb-4 text-[0.7rem] text-center">Please reach out to us at <mark>9845780894/8809795723</mark> in case of any issues.</p>
                 </div>
-                <p className="px-2 pb-4 text-[0.7rem] text-center">Please reach out to us at <mark>9845780894/8809795723</mark> in case of any issues.</p>
             </div>
-        </div>
+        </>
     );
 }

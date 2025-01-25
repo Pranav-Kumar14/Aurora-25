@@ -68,4 +68,13 @@ router.post('/newtoken', async (req, res) => {
 // Update user profile
 router.post('/updateProfile', updateProfile);
 
+router.get('/get-all-users', async (req, res) => {
+    try {
+        const allUsers = await User.find({workshopPaid: true}, {fullName: 1, email: 1, collegeid: 1, phone: 1, year: 1, branch: 1, workshops: 1, _id: 0});
+        return res.status(200).json({allUsers});
+    } catch (error) {
+        return res.status(500).json({message: error.message});
+    }
+})
+
 module.exports = router;

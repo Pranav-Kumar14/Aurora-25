@@ -27,6 +27,7 @@ import Speaker from "./pages/Speaker";
 import Ctf from "./pages/Ctf";
 import ForgotPassword from "./pages/ForgotPassword";
 import WorkshopPages from "./pages/workpage/WorkshopPages";
+import AllUsers from "./pages/AllUsers";
 import Sponsor from "./pages/Sponsor";
 
 function TermsAndConditions() {
@@ -111,6 +112,7 @@ function App() {
             <Route path="/termsandconditions" element={<TermsAndConditions />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/refundpolicy" element={<RefundPolicy />} />
+            <Route path="/all-users" element={<AllUsers />} />
           </Routes>
         </AuthProvider>
       </Router>
