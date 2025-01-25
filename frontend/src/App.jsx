@@ -28,6 +28,7 @@ import Ctf from "./pages/Ctf";
 import ForgotPassword from "./pages/ForgotPassword";
 import WorkshopPages from "./pages/workpage/WorkshopPages";
 import AllUsers from "./pages/AllUsers";
+import Sponsor from "./pages/Sponsor";
 
 function TermsAndConditions() {
   return (
@@ -98,6 +99,7 @@ function App() {
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/workshop" element={<WorkshopPage />} />
          <Route path="/workshop/:id" element={<WorkshopPages />} />
+         <Route path="/sponsor" element={<Sponsor />} />
             <Route
               path="/profile"
               element={
