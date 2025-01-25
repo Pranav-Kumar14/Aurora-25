@@ -42,7 +42,7 @@ function Navbar() {
               href="/sponsor"
               className="text-white hover:text-blue-300 lg:px-3 md:px-2 py-2 rounded-md text-sm font-medium"
             >
-              <p className="font-heading">SPONSERS</p>
+              <p className="font-heading">SPONSORS</p>
             </a>
             <a
               href="/ctf"
