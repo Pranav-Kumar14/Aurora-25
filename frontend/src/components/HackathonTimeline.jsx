@@ -9,16 +9,14 @@ const Timeline = () => {
   const timelineEvents = [
     { time: "7:00 AM – 8:00 AM", title: "Setup and Hackathon Overview" },
     { time: "8:00 AM – 10:30 AM", title: "Hackathon – Session 1" },
-    { time: "10:30 AM – 10:45 AM", title: "Minigame – 1" },
-    { time: "10:45 AM – 12:30 PM", title: "Hackathon – Session 2" },
+    { time: "10:30 AM – 12:30 PM", title: "Hackathon – Session 2" },
     { time: "12:30 PM – 2:00 PM", title: "Lunch Break" },
-    { time: "2:00 PM – 2:15 PM", title: "Minigame – 2" },
-    { time: "2:15 PM – 4:15 PM", title: "Hackathon – Session 3" },
-    { time: "4:15 PM – 4:30 PM", title: "Minigame – 3" },
+    { time: "2:00 PM – 4:30 PM", title: "Hackathon – Session 3" },
     { time: "4:30 PM – 4:45 PM", title: "Refreshment Break" },
     { time: "4:45 PM – 6:00 PM", title: "Hackathon Wrap-Up – Final Submissions" },
     { time: "6:00 PM – 7:30 PM", title: "Project Presentations and Prize Distribution Ceremony" },
   ];
+  
 
   return (
     <div className="min-h-screen py-10 px-5 ">
