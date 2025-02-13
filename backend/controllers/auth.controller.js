@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/user.model");
 const { generateToken } = require("../utils/jwtUtils");
-const e = require("express");
+const f = require("express");
 const {
   sendJoinEmail,
 } = require("../utils/mailContent.js");
