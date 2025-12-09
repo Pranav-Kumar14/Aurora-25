@@ -1,34 +1,34 @@
-# 🌌 Aurora’25 Web Portal
+# Aurora’25 Web Portal
 
 A full-stack event management portal built for Aurora'25, handling dynamic registration, authentication, and team collaboration across Hackathons, CTFs, and Workshops.
 
-## 🚀 Features
+## Features
 
-- 🔐 **Authentication & Security**
+- **Authentication & Security**
   - JWT-based login and registration
   - Password recovery with secure tokens
   - Team creation and management
 
-- 🧾 **Registration System**
+- **Registration System**
   - Real-time form validation
   - Event-wise participant tracking
   - 300+ participants handled
 
-- 🧩 **Modular Frontend**
+- **Modular Frontend**
   - Reusable components with Tailwind CSS
   - Mobile-first responsive design
   - Role-based content rendering
 
-- 📊 **Admin Dashboard**
+- **Admin Dashboard**
   - View user stats and event registration
   - Manual overrides and approvals
 
-- 🧑‍🤝‍🧑 **Team Collaboration**
+- **Team Collaboration**
   - Invite team members
   - Leader designation & member removal
   - Automatic team-size validation per event
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Tech              | Description                           |
 |-------------------|----------------------------------------|
@@ -39,7 +39,7 @@ A full-stack event management portal built for Aurora'25, handling dynamic regis
 | **Tailwind CSS**  | Utility-first CSS framework            |
 | **JWT & bcrypt**  | Authentication & password hashing      |
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 Aurora-25/
@@ -50,15 +50,15 @@ Aurora-25/
 └── README.md
 ```
 
-## 🧠 Learnings
+## Learnings
 
 - Handling real-time validation and team constraints for large-scale events.
 - Designed reusable UI architecture that scaled across 10+ pages.
 - Worked with authentication workflows securely using JWT and bcrypt.
 
-## 🤝 Contributors
+## Contributors
 
-- [@Pranav-Kumar14](https://github.com/Pranav-Kumar14) – Full Stack Developer
+- [@Pranav-Kumar14](https://github.com/Pranav-Kumar14) - Developer
 
 ## 📄 License
 
