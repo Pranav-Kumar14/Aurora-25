@@ -60,6 +60,6 @@ Aurora-25/
 
 - [@Pranav-Kumar14](https://github.com/Pranav-Kumar14) - Developer
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License 
